@@ -1,21 +1,23 @@
-# README #
+# README
 
-This README would normally document whatever steps are necessary to get your application up and running.
+This repository includes the back-end for the Mosquito Alert web map. It is used to feed the data to the front-end apps.
 
-### What is this repository for? ###
+## Setup
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+### Development setup
 
-### How do I get set up? ###
+* Clone the repo
+* Create a virtual environment
+* Install dependencies (`pip install -r requirements.txt`)
+* Run migrations (`python manage.py migrate`)
+* Run the development web server (`python manage.py runserver`)
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+### Django structure
+
+The back-end includes the following key directories:
+
+* **project**. Includes the project settings and the main entry point for all URLs.
+* **api**. Includes HTTP endpoints to feed the data to the front-end.
 
 ### Contribution guidelines ###
 
