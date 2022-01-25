@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .translations import translations
 
 urlpatterns = [
     path('admin/', admin.site.urls, name="admin"),
-    path('', include('api.urls'))
+    path('api/', include('api.urls')),
+    path('translations/<lang>/', translations)
 ]
