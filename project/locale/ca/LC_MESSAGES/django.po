@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 16:27+0000\n"
+"POT-Creation-Date: 2022-01-25 16:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: api/urls.py:8
+#: project/translations.py:9
 msgid "Open"
 msgstr "Obrir"
+
+#: project/translations.py:10
+msgid "Layers"
+msgstr "Capes"
+
+#: project/translations.py:11
+msgid "Models"
+msgstr "Models"
+
+#: project/translations.py:12
+msgid "Lang"
+msgstr "Idioma"
+
+#: project/translations.py:13
+msgid "Share"
+msgstr "Compartir"
+
+#: project/translations.py:14
+msgid "Help"
+msgstr "Ajuda"
+
+#: project/translations.py:15
+msgid "Log in"
+msgstr "Entrar"
