@@ -2,16 +2,17 @@ from django.utils.translation import gettext as _
 from django.http import JsonResponse
 from django.utils import translation
 
-words = ["Open"]
-# Left drawer toolbar
-words = words + [
-    "Help", "Lang", "Layers", "Log in", "Models", "Share",
-]
+a = ("Open", "Layers")
 
 
 def translations(request, lang):
     translation.activate(lang)
-    translated = {}
-    for word in words:
-        translated[word] = _(word)
-    return JsonResponse(translated)
+    return JsonResponse({
+        "Open": _("Open"),
+        "Layers": _("Layers"),
+        "Models": _("Models"),
+        "Lang": _("Lang"),
+        "Share": _("Share"),
+        "Help": _("Help"),
+        "Log in": _("Log in")
+    })
