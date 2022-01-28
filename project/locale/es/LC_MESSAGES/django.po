@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-28 11:03+0000\n"
+"POT-Creation-Date: 2022-01-28 12:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,29 +27,45 @@ msgid "Close"
 msgstr ""
 
 #: project/translations.py:15
+msgid "Tiger mosquito"
+msgstr ""
+
+#: project/translations.py:17
 msgid "Layers"
 msgstr "Capas"
 
-#: project/translations.py:16
+#: project/translations.py:18
 msgid "Models"
 msgstr "Modelos"
 
-#: project/translations.py:17
+#: project/translations.py:19
 msgid "Lang"
 msgstr "Idioma"
 
-#: project/translations.py:18
+#: project/translations.py:20
 msgid "Share"
 msgstr "Compartir"
 
-#: project/translations.py:19
+#: project/translations.py:21
 msgid "Help"
 msgstr "Ayuda"
 
-#: project/translations.py:20
+#: project/translations.py:22
 msgid "Log in"
 msgstr "Entrar"
 
-#: project/translations.py:22
+#: project/translations.py:24
 msgid "Date"
 msgstr "Fecha"
+
+#: project/translations.py:25
+msgid "Expert note"
+msgstr "Nota experta"
+
+#: project/translations.py:26
+msgid "Confirmed"
+msgstr "Confirmado"
+
+#: project/translations.py:27
+msgid "Probable"
+msgstr "Probable"

@@ -11,6 +11,8 @@ def translations(request, lang):
         # General
         "Open": _("Open"),
         "Close": _("Close"),
+        # Mosquito types
+        "Tiger mosquito": _("Tiger mosquito"),
         # Left drawer, Toolbar
         "Layers": _("Layers"),
         "Models": _("Models"),
@@ -19,5 +21,8 @@ def translations(request, lang):
         "Help": _("Help"),
         "Log in": _("Log in"),
         # Map, Popup
-        "Date": _("Date")
+        "Date": _("Date"),
+        "Expert note": _("Expert note"),
+        "Confirmed": _("Confirmed"),
+        "Probable": _("Probable")
     })
