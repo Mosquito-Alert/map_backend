@@ -4,7 +4,7 @@ from .views import get_feature
 
 
 urlpatterns = [
-    path('get_feature/<id>/', get_feature)
+    path('get_feature/<observation_id>/', get_feature)
     # path('admin/', admin.site.urls),
     # path('', include('api.urls'))
 ]

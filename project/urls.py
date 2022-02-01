@@ -16,13 +16,14 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include, re_path
+from django.conf.urls.static import static
 from .translations import translations
 
 urlpatterns = [
     path('admin/', admin.site.urls, name="admin"),
     path('api/', include('api.urls')),
     path('translations/<lang>/', translations)
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if 'rosetta' in settings.INSTALLED_APPS:
     urlpatterns += [
