@@ -8,64 +8,134 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-01 12:57+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2022-02-08 16:44+0100\n"
+"PO-Revision-Date: 2022-02-08 16:44+0000\n"
+"Last-Translator:   <toni.hernandez@udg.edu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.9.8\n"
 
-#: project/translations.py:12
+#: .\translations.py:12
 msgid "Open"
 msgstr "Obrir"
 
-#: project/translations.py:13
+#: .\translations.py:13
 msgid "Close"
 msgstr "Tancar"
 
-#: project/translations.py:15
+#: .\translations.py:14
+msgid "select"
+msgstr "Selecciona"
+
+#: .\translations.py:15
+msgid "mosquitos"
+msgstr "Mosquits"
+
+#: .\translations.py:16
+msgid "bites"
+msgstr "Picades"
+
+#: .\translations.py:17
+msgid "breeding sites"
+msgstr "Llocs de cria"
+
+#: .\translations.py:18
+msgid "sampling effort"
+msgstr "Esforç de mostreig"
+
+#: .\translations.py:19
+msgid "placeholder location"
+msgstr "Localització (ciutat, País...)"
+
+#: .\translations.py:20
+msgid "placeholder hashtag"
+msgstr "#Hashtag"
+
+#: .\translations.py:23
 msgid "Tiger mosquito"
 msgstr "Mosquit tigre"
 
-#: project/translations.py:17
+#: .\translations.py:24
+msgid "yellow fever mosquito"
+msgstr "Mosquit febre groga"
+
+#: .\translations.py:25
+msgid "japonicus mosquito"
+msgstr "Mosquit japonicus"
+
+#: .\translations.py:26
+msgid "koreicus mosquito"
+msgstr "Mosquit koreicus"
+
+#: .\translations.py:27
+msgid "culex mosquito"
+msgstr "Mosquit culex"
+
+#: .\translations.py:28
+msgid "unidentified mosquito"
+msgstr "Mosquit no identificat"
+
+#: .\translations.py:29
+msgid "others_mosquito"
+msgstr "Altres mosquits"
+
+#: .\translations.py:32
+msgid "storm drain with water"
+msgstr "Embornal amb aigua"
+
+#: .\translations.py:33
+msgid "storm drain without water"
+msgstr "Embornal sense aigua"
+
+#: .\translations.py:34
+#| msgid "breeding sites others"
+msgid "breeding site others"
+msgstr "Altres"
+
+#: .\translations.py:36
+msgid "other species"
+msgstr "Altres espècies"
+
+#: .\translations.py:38
 msgid "Layers"
 msgstr "Capes"
 
-#: project/translations.py:18
+#: .\translations.py:39
 msgid "Models"
 msgstr "Models"
 
-#: project/translations.py:19
+#: .\translations.py:40
 msgid "Lang"
 msgstr "Idioma"
 
-#: project/translations.py:20
+#: .\translations.py:41
 msgid "Share"
 msgstr "Compartir"
 
-#: project/translations.py:21
+#: .\translations.py:42
 msgid "Help"
 msgstr "Ajuda"
 
-#: project/translations.py:22
+#: .\translations.py:43
 msgid "Log in"
 msgstr "Entrar"
 
-#: project/translations.py:24
+#: .\translations.py:45
 msgid "Date"
 msgstr "Data"
 
-#: project/translations.py:25
+#: .\translations.py:46
 msgid "Expert note"
 msgstr "Nota experta"
 
-#: project/translations.py:26
+#: .\translations.py:47
 msgid "Confirmed"
 msgstr "Confirmat"
 
-#: project/translations.py:27
+#: .\translations.py:48
 msgid "Probable"
 msgstr "Probable"

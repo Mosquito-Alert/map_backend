@@ -21,15 +21,15 @@ msgstr ""
 
 #: .\translations.py:12
 msgid "Open"
-msgstr "Abrir"
+msgstr "Open"
 
 #: .\translations.py:13
 msgid "Close"
-msgstr "Cerrar"
+msgstr "Close"
 
 #: .\translations.py:14
 msgid "select"
-msgstr "Selecciona"
+msgstr "Select"
 
 #: .\translations.py:15
 msgid "mosquitos"
@@ -37,19 +37,19 @@ msgstr "Mosquitos"
 
 #: .\translations.py:16
 msgid "bites"
-msgstr "Picadas"
+msgstr "Bites"
 
 #: .\translations.py:17
 msgid "breeding sites"
-msgstr "Lugares de cría"
+msgstr "Breeding Sites"
 
 #: .\translations.py:18
 msgid "sampling effort"
-msgstr "Esfuerzo de muestreo"
+msgstr "Sampling Effort"
 
 #: .\translations.py:19
 msgid "placeholder location"
-msgstr "Localización (ciudad, País...)"
+msgstr "Location (city, country...)"
 
 #: .\translations.py:20
 msgid "placeholder hashtag"
@@ -57,84 +57,84 @@ msgstr "#Hashtag"
 
 #: .\translations.py:23
 msgid "Tiger mosquito"
-msgstr "Mosquito tigre"
+msgstr "Tiger Mosquito"
 
 #: .\translations.py:24
 msgid "yellow fever mosquito"
-msgstr "Mosquito fiebre amarilla"
+msgstr "Yellow Fever Mosquito"
 
 #: .\translations.py:25
 msgid "japonicus mosquito"
-msgstr "Mosquito japonicus"
+msgstr "Japonicus Mosquito"
 
 #: .\translations.py:26
 msgid "koreicus mosquito"
-msgstr "Mosquito koreicus"
+msgstr "Koreicus Mosquito"
 
 #: .\translations.py:27
 msgid "culex mosquito"
-msgstr "Mosquito culex"
+msgstr "Culex Mosquito"
 
 #: .\translations.py:28
 msgid "unidentified mosquito"
-msgstr "Mosquito no identificado"
+msgstr "Unidentified Mosquito"
 
 #: .\translations.py:29
 msgid "others_mosquito"
-msgstr "Otros mosquitos"
+msgstr "Other species"
 
 #: .\translations.py:32
 msgid "storm drain with water"
-msgstr "Imbornal con agua"
+msgstr "Stormdrain With Water"
 
 #: .\translations.py:33
 msgid "storm drain without water"
-msgstr "Imbornal sin agua"
+msgstr "Stormdrain Without Water"
 
 #: .\translations.py:34
-#| msgid "breeding_sites_others"
+#| msgid "breeding sites others"
 msgid "breeding site others"
-msgstr "Otros"
+msgstr "Others"
 
 #: .\translations.py:36
 msgid "other species"
-msgstr "Otras especies"
+msgstr "Other species"
 
 #: .\translations.py:38
 msgid "Layers"
-msgstr "Capas"
+msgstr "Layers"
 
 #: .\translations.py:39
 msgid "Models"
-msgstr "Modelos"
+msgstr "Models"
 
 #: .\translations.py:40
 msgid "Lang"
-msgstr "Idioma"
+msgstr "Lang"
 
 #: .\translations.py:41
 msgid "Share"
-msgstr "Compartir"
+msgstr "Share"
 
 #: .\translations.py:42
 msgid "Help"
-msgstr "Ayuda"
+msgstr "Help"
 
 #: .\translations.py:43
 msgid "Log in"
-msgstr "Entrar"
+msgstr "Log in"
 
 #: .\translations.py:45
 msgid "Date"
-msgstr "Fecha"
+msgstr "Date"
 
 #: .\translations.py:46
 msgid "Expert note"
-msgstr "Nota experta"
+msgstr "Expert Note"
 
 #: .\translations.py:47
 msgid "Confirmed"
-msgstr "Confirmado"
+msgstr "Confirmed"
 
 #: .\translations.py:48
 msgid "Probable"
