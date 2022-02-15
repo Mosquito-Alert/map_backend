@@ -1,8 +1,10 @@
 import random
+from re import M
 from django.shortcuts import render
 from django.templatetags.static import static
-from django.http import JsonResponse
-
+from django.http import JsonResponse, HttpResponse
+from .models import MapAuxReport
+from django.core.serializers import serialize
 
 def get_feature(request, observation_id):
     """Return a feature."""
@@ -19,3 +21,8 @@ def get_feature(request, observation_id):
     if random.random() > 0.5:
         data["img"] = 'http://localhost:8000/static/api/mosquito/dummy.jpg'
     return JsonResponse(data)
+
+def get_observation(request, observation_id):
+    qs = MapAuxReport.objects.get(pk = observation_id)
+    data = serialize("json", [qs])
+    return HttpResponse(data, content_type="application/json")

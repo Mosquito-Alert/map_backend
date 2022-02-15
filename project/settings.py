@@ -138,7 +138,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Overwrite settings
 extra_settings_dir = os.path.dirname(os.path.abspath(__file__))
-ENVIRONMENT_NAME = os.environ.get('ENVIRONMENT_NAME', 'sigserver4')
+ENVIRONMENT_NAME = os.environ.get('ENVIRONMENT_NAME', 'localhost')
 extra_settings_file = 'settings-%s.py' % ENVIRONMENT_NAME
 extra_settings_path = os.path.join(extra_settings_dir, extra_settings_file)
 
@@ -149,3 +149,4 @@ if os.path.exists(extra_settings_path):
         ).read(), extra_settings_path, 'exec'), globals())
 else:
     print("Extra settings path does not exist as %s." % extra_settings_path)
+
