@@ -7,6 +7,8 @@
 node_modules/
 dist/
 data/
+settings-*.py
+db.sqlite3
 # Compiled Java class files
 *.class
 
