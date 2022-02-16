@@ -52,7 +52,7 @@ class Municipality(models.Model):
                                 on_delete=models.CASCADE)
     cod_ccaa = models.CharField(max_length=2, blank=True, null=True)
 
-    objects = MunicipalitiesManager()
+    # objects = MunicipalitiesManager()
 
     def __str__(self):
         """Convert the object into a string."""
