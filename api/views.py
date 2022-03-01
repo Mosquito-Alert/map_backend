@@ -5,6 +5,7 @@ from django.templatetags.static import static
 from django.http import JsonResponse, HttpResponse
 from .models import MapAuxReport
 from django.core.serializers import serialize
+import json
 
 def get_feature(request, observation_id):
     """Return a feature."""
@@ -19,10 +20,11 @@ def get_feature(request, observation_id):
     if random.random() > 0.5:
         data["description"] = 'Lorem ipsum dolor sit amet.'
     if random.random() > 0.5:
-        data["img"] = 'http://localhost:8000/static/api/mosquito/dummy.jpg'
+        data["photo_url"] = 'http://localhost:8000/static/api/mosquito/dummy.jpg'
     return JsonResponse(data)
 
 def get_observation(request, observation_id):
     qs = MapAuxReport.objects.get(pk = observation_id)
     data = serialize("json", [qs])
-    return HttpResponse(data, content_type="application/json")
+    r = json.loads(data)[0]['fields']
+    return HttpResponse(json.dumps(r), content_type="application/json")
