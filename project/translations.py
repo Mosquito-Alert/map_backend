@@ -19,6 +19,21 @@ def translations(request, lang):
         "placeholder location": _("placeholder location"),
         "placeholder hashtag": _("placeholder hashtag"),
 
+        # observation categories
+        "mosquito_tiger_probable": _("mosquito tiger probable"),
+        "breeding_site_not_yet_filtered": _("breeding site not yet filtered"),
+        "conflict": _("conflict"),
+        "mosquito_tiger_confirmed": _("mosquito tiger confirmed"),
+        "unidentified": _("unidentified"),
+        "yellow_fever_confirmed": _("yellow fever confirmed"),
+        "storm_drain_water": _("storm drain water"),
+        "breeding_site_other": _("breeding site other"),
+        "other_species": _("other species"),
+        "storm_drain_dry": _("storm drain dry"),
+        "not_yet_validated": _("not yet validated"),
+        "yellow_fever_probable": _("yellow fever probable"),
+        "trash_layer": _("trash layer"),
+
         # Mosquito types
         "tiger mosquito": _("Tiger mosquito"),
         "yellow fever mosquito": _("yellow fever mosquito"),

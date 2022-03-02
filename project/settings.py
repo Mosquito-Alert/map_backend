@@ -88,16 +88,16 @@ DATABASES = {
 
 # POSTGRESQL DATABASE
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'mosquito_v2',
-#         'USER': 'postgres',
-#         'PASSWORD': '......',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'mosquito_v2',
+        'USER': 'postgres',
+        'PASSWORD': 'p1234',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
