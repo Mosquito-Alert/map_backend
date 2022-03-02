@@ -45,5 +45,7 @@ def translations(request, lang):
         "Date": _("Date"),
         "Expert note": _("Expert note"),
         "Confirmed": _("Confirmed"),
-        "Probable": _("Probable")
+        "Probable": _("Probable"),
+        "Expert validation": _("Expert validation"),
+        "AI validation": _("AI validation")
     })
