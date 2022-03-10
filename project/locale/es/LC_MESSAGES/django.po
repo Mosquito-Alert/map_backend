@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-08 14:19+0000\n"
-"PO-Revision-Date: 2022-02-08 16:45+0000\n"
+"POT-Creation-Date: 2022-03-10 13:12+0100\n"
+"PO-Revision-Date: 2022-03-10 13:16+0000\n"
 "Last-Translator:   <toni.hernandez@udg.edu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,200 +19,215 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
 
-#: project/translations.py:12
+#: .\translations.py:12
 msgid "Open"
 msgstr "Abrir"
 
-#: project/translations.py:13
+#: .\translations.py:13
 msgid "Close"
 msgstr "Cerrar"
 
-#: project/translations.py:14
-msgid "select"
+#: .\translations.py:14
+#| msgid "select"
+msgid "Select"
 msgstr "Selecciona"
 
-#: project/translations.py:15
-msgid "mosquitos"
+#: .\translations.py:15
+#| msgid "mosquitos"
+msgid "Mosquitos"
 msgstr "Mosquitos"
 
-#: project/translations.py:16
-msgid "bites"
+#: .\translations.py:16
+#| msgid "bites"
+msgid "Bites"
 msgstr "Picadas"
 
-#: project/translations.py:17
-msgid "breeding sites"
+#: .\translations.py:17
+#| msgid "breeding sites"
+msgid "Breeding sites"
 msgstr "Lugares de cría"
 
-#: project/translations.py:18
-msgid "sampling effort"
+#: .\translations.py:18
+#| msgid "sampling effort"
+msgid "Sampling effort"
 msgstr "Esfuerzo de muestreo"
 
-#: project/translations.py:19
-msgid "placeholder location"
+#: .\translations.py:19
+#| msgid "placeholder location"
+msgid "Placeholder location"
 msgstr "Localización (ciudad, País...)"
 
-#: project/translations.py:20
-msgid "placeholder hashtag"
+#: .\translations.py:20
+#| msgid "placeholder hashtag"
+msgid "Placeholder hashtag"
 msgstr "#Hashtag"
 
-#: project/translations.py:21
+#: .\translations.py:21
 msgid "Filter"
 msgstr "Filtrar"
 
-#: project/translations.py:24
-msgid "mosquito tiger probable"
-msgstr ""
+#: .\translations.py:24
+msgid "Mosquito tiger probable"
+msgstr "Mosquito tigre probable"
 
-#: project/translations.py:25
-#, fuzzy
+#: .\translations.py:25
 #| msgid "breeding site others"
-msgid "breeding site not yet filtered"
+msgid "Breeding site not yet filtered"
 msgstr "Otros"
 
-#: project/translations.py:26
-msgid "conflict"
-msgstr ""
+#: .\translations.py:26
+msgid "Conflict"
+msgstr "Conflicto"
 
-#: project/translations.py:27
-msgid "mosquito tiger confirmed"
-msgstr ""
+#: .\translations.py:27
+#| msgid "yellow fever mosquito"
+msgid "Mosquito tiger confirmed"
+msgstr "Mosquito fiebre amarilla"
 
-#: project/translations.py:28
-#, fuzzy
+#: .\translations.py:28
 #| msgid "unidentified mosquito"
-msgid "unidentified"
+msgid "Unidentified"
 msgstr "Mosquito no identificado"
 
-#: project/translations.py:29
-#, fuzzy
+#: .\translations.py:29
 #| msgid "yellow fever mosquito"
-msgid "yellow fever confirmed"
+msgid "Yellow fever confirmed"
 msgstr "Mosquito fiebre amarilla"
 
-#: project/translations.py:30
-#, fuzzy
+#: .\translations.py:30
 #| msgid "storm drain with water"
-msgid "storm drain water"
+msgid "Storm drain water"
 msgstr "Imbornal con agua"
 
-#: project/translations.py:31
-#, fuzzy
+#: .\translations.py:31
 #| msgid "breeding site others"
-msgid "breeding site other"
+msgid "Breeding site other"
 msgstr "Otros"
 
-#: project/translations.py:32 project/translations.py:58
-msgid "other species"
+#: .\translations.py:32 .\translations.py:58
+#| msgid "other species"
+msgid "Other species"
 msgstr "Otras especies"
 
-#: project/translations.py:33
-#, fuzzy
+#: .\translations.py:33
 #| msgid "storm drain with water"
-msgid "storm drain dry"
+msgid "Storm drain dry"
 msgstr "Imbornal con agua"
 
-#: project/translations.py:34
-msgid "not yet validated"
-msgstr ""
+#: .\translations.py:34
+msgid "Not yet validated"
+msgstr "Pendiente de validación"
 
-#: project/translations.py:35
-#, fuzzy
+#: .\translations.py:35
 #| msgid "yellow fever mosquito"
-msgid "yellow fever probable"
+msgid "Yellow fever probable"
 msgstr "Mosquito fiebre amarilla"
 
-#: project/translations.py:36
-msgid "trash layer"
-msgstr ""
+#: .\translations.py:36
+msgid "Trash layer"
+msgstr "Capa trash"
 
-#: project/translations.py:39 project/translations.py:40
+#: .\translations.py:39 .\translations.py:40
 msgid "Tiger mosquito"
 msgstr "Mosquito tigre"
 
-#: project/translations.py:41 project/translations.py:42
-msgid "yellow fever mosquito"
+#: .\translations.py:41 .\translations.py:42
+#| msgid "yellow fever mosquito"
+msgid "Yellow fever mosquito"
 msgstr "Mosquito fiebre amarilla"
 
-#: project/translations.py:43 project/translations.py:44
-msgid "japonicus mosquito"
+#: .\translations.py:43 .\translations.py:44
+#| msgid "japonicus mosquito"
+msgid "Japonicus mosquito"
 msgstr "Mosquito japonicus"
 
-#: project/translations.py:45 project/translations.py:46
-msgid "koreicus mosquito"
+#: .\translations.py:45 .\translations.py:46
+#| msgid "koreicus mosquito"
+msgid "Koreicus mosquito"
 msgstr "Mosquito koreicus"
 
-#: project/translations.py:47 project/translations.py:48
-msgid "culex mosquito"
+#: .\translations.py:47 .\translations.py:48
+#| msgid "culex mosquito"
+msgid "Culex mosquito"
 msgstr "Mosquito culex"
 
-#: project/translations.py:49 project/translations.py:50
-msgid "unidentified mosquito"
+#: .\translations.py:49 .\translations.py:50
+#| msgid "unidentified mosquito"
+msgid "Unidentified mosquito"
 msgstr "Mosquito no identificado"
 
-#: project/translations.py:51
-msgid "others_mosquito"
+#: .\translations.py:51
+#| msgid "others_mosquito"
+msgid "Others_mosquito"
 msgstr "Otros mosquitos"
 
-#: project/translations.py:54
-msgid "storm drain with water"
+#: .\translations.py:54
+#| msgid "storm drain with water"
+msgid "Storm drain with water"
 msgstr "Imbornal con agua"
 
-#: project/translations.py:55
-msgid "storm drain without water"
+#: .\translations.py:55
+#| msgid "storm drain without water"
+msgid "Storm drain without water"
 msgstr "Imbornal sin agua"
 
-#: project/translations.py:56
-msgid "breeding site others"
+#: .\translations.py:56
+#| msgid "breeding site others"
+msgid "Breeding site others"
 msgstr "Otros"
 
-#: project/translations.py:60
+#: .\translations.py:60
 msgid "Layers"
 msgstr "Capas"
 
-#: project/translations.py:61
+#: .\translations.py:61
 msgid "Models"
 msgstr "Modelos"
 
-#: project/translations.py:62
+#: .\translations.py:62
 msgid "Lang"
 msgstr "Idioma"
 
-#: project/translations.py:63
+#: .\translations.py:63
 msgid "Share"
 msgstr "Compartir"
 
-#: project/translations.py:64
+#: .\translations.py:64
 msgid "Help"
 msgstr "Ayuda"
 
-#: project/translations.py:65
+#: .\translations.py:65
 msgid "Log in"
 msgstr "Entrar"
 
-#: project/translations.py:67
+#: .\translations.py:67
 msgid "Date"
 msgstr "Fecha"
 
-#: project/translations.py:68
+#: .\translations.py:68
 msgid "Expert note"
 msgstr "Nota experta"
 
-#: project/translations.py:69
+#: .\translations.py:69
 msgid "Confirmed"
 msgstr "Confirmado"
 
-#: project/translations.py:70
+#: .\translations.py:70
 msgid "Probable"
 msgstr "Probable"
 
-#: project/translations.py:71
+#: .\translations.py:71
 msgid "Expert validation"
-msgstr ""
+msgstr "Validación experta"
 
-#: project/translations.py:72
+#: .\translations.py:72
 msgid "AI validation"
-msgstr ""
+msgstr "Validación IA"
 
-#: project/translations.py:74
+#: .\translations.py:74
+msgid "Time series"
+msgstr "Serie temporal"
+
+#: .\translations.py:75
 msgid "Pick a date range"
 msgstr "Rango de fechas"
