@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-10 13:12+0100\n"
-"PO-Revision-Date: 2022-03-10 13:15+0000\n"
-"Last-Translator:   <toni.hernandez@udg.edu>\n"
+"PO-Revision-Date: 2022-03-18 20:58+0000\n"
+"Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -82,7 +82,7 @@ msgstr "Conflicte"
 #: .\translations.py:27
 #| msgid "yellow fever mosquito"
 msgid "Mosquito tiger confirmed"
-msgstr "Mosquit febre groga"
+msgstr "Mosquit tigre"
 
 #: .\translations.py:28
 #| msgid "unidentified mosquito"
@@ -92,7 +92,7 @@ msgstr "Mosquit no identificat"
 #: .\translations.py:29
 #| msgid "yellow fever mosquito"
 msgid "Yellow fever confirmed"
-msgstr "Mosquit febre groga"
+msgstr "Mosquit de la febre groga"
 
 #: .\translations.py:30
 #| msgid "storm drain with water"
@@ -134,22 +134,22 @@ msgstr "Mosquit tigre"
 #: .\translations.py:41 .\translations.py:42
 #| msgid "yellow fever mosquito"
 msgid "Yellow fever mosquito"
-msgstr "Mosquit febre groga"
+msgstr "Mosquit  de la febre groga"
 
 #: .\translations.py:43 .\translations.py:44
 #| msgid "japonicus mosquito"
 msgid "Japonicus mosquito"
-msgstr "Mosquit japonicus"
+msgstr "Mosquit de Japó"
 
 #: .\translations.py:45 .\translations.py:46
 #| msgid "koreicus mosquito"
 msgid "Koreicus mosquito"
-msgstr "Mosquit koreicus"
+msgstr "Mosquit de Corea"
 
 #: .\translations.py:47 .\translations.py:48
 #| msgid "culex mosquito"
 msgid "Culex mosquito"
-msgstr "Mosquit culex"
+msgstr "Mosquit comú"
 
 #: .\translations.py:49 .\translations.py:50
 #| msgid "unidentified mosquito"

@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-10 13:12+0100\n"
-"PO-Revision-Date: 2022-03-10 13:15+0000\n"
-"Last-Translator:   <toni.hernandez@udg.edu>\n"
+"PO-Revision-Date: 2022-03-18 21:00+0000\n"
+"Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -115,40 +115,40 @@ msgstr "Stormdrain With Water"
 
 #: .\translations.py:34
 msgid "Not yet validated"
-msgstr "Not Yet Validated"
+msgstr "Not yet validated"
 
 #: .\translations.py:35
 #| msgid "yellow fever mosquito"
 msgid "Yellow fever probable"
-msgstr "Yellow Fever Mosquito"
+msgstr "Yellow fever mosquito"
 
 #: .\translations.py:36
 msgid "Trash layer"
-msgstr "Trash Layer"
+msgstr "Trash layer"
 
 #: .\translations.py:39 .\translations.py:40
 msgid "Tiger mosquito"
-msgstr "Tiger Mosquito"
+msgstr "Tiger mosquito"
 
 #: .\translations.py:41 .\translations.py:42
 #| msgid "yellow fever mosquito"
 msgid "Yellow fever mosquito"
-msgstr "Yellow Fever Mosquito"
+msgstr "Yellow fever mosquito"
 
 #: .\translations.py:43 .\translations.py:44
 #| msgid "japonicus mosquito"
 msgid "Japonicus mosquito"
-msgstr "Japonicus Mosquito"
+msgstr "Asian bush mosquito"
 
 #: .\translations.py:45 .\translations.py:46
 #| msgid "koreicus mosquito"
 msgid "Koreicus mosquito"
-msgstr "Koreicus Mosquito"
+msgstr "Korean mosquito"
 
 #: .\translations.py:47 .\translations.py:48
 #| msgid "culex mosquito"
 msgid "Culex mosquito"
-msgstr "Culex Mosquito"
+msgstr "Common mosquito"
 
 #: .\translations.py:49 .\translations.py:50
 #| msgid "unidentified mosquito"
