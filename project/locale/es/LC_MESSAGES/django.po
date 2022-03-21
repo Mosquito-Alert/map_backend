@@ -9,8 +9,13 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-10 13:12+0100\n"
+<<<<<<< HEAD
 "PO-Revision-Date: 2022-03-17 07:39+0000\n"
 "Last-Translator:   <toni.hernandez@udg.edu>\n"
+=======
+"PO-Revision-Date: 2022-03-18 21:01+0000\n"
+"Last-Translator:   <admin@gmail.com>\n"
+>>>>>>> cb3328b82727076aea0e03b048bae7805cc7d68b
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -134,17 +139,17 @@ msgstr "Mosquito tigre"
 #: .\translations.py:41 .\translations.py:42
 #| msgid "yellow fever mosquito"
 msgid "Yellow fever mosquito"
-msgstr "Mosquito fiebre amarilla"
+msgstr "Mosquito de la fiebre amarilla"
 
 #: .\translations.py:43 .\translations.py:44
 #| msgid "japonicus mosquito"
 msgid "Japonicus mosquito"
-msgstr "Mosquito japonicus"
+msgstr "Mosquito del Japón"
 
 #: .\translations.py:45 .\translations.py:46
 #| msgid "koreicus mosquito"
 msgid "Koreicus mosquito"
-msgstr "Mosquito koreicus"
+msgstr "Mosquito de Corea"
 
 #: .\translations.py:47 .\translations.py:48
 #| msgid "culex mosquito"
