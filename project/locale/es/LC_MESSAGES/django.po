@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-10 13:12+0100\n"
-"PO-Revision-Date: 2022-03-10 13:16+0000\n"
+"PO-Revision-Date: 2022-03-17 07:39+0000\n"
 "Last-Translator:   <toni.hernandez@udg.edu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -149,7 +149,7 @@ msgstr "Mosquito koreicus"
 #: .\translations.py:47 .\translations.py:48
 #| msgid "culex mosquito"
 msgid "Culex mosquito"
-msgstr "Mosquito culex"
+msgstr "Mosquito común"
 
 #: .\translations.py:49 .\translations.py:50
 #| msgid "unidentified mosquito"
