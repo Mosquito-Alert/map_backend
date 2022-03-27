@@ -27,4 +27,58 @@ def get_observation(request, observation_id):
     qs = MapAuxReport.objects.get(pk = observation_id)
     data = serialize("json", [qs])
     r = json.loads(data)[0]['fields']
+    r['responses_json'] = json.loads(r['responses_json'])
+    if (r['type'].lower() in ['bite', 'site']):
+        r['formatedResponses'] = getFormatedResponses(r['type'], r['responses_json'])
     return HttpResponse(json.dumps(r), content_type="application/json")
+
+def getValueOrNull(key, values):
+    key = str(key)
+    if key in values:
+        return values[key]
+    else:
+        return 'unkown'
+
+def getFormatedResponses(type, responses):
+    locations = {
+        '44': 'resposta desconeguda', '43': 'outdoors',
+        '42': 'inside building','41': 'inside vehicle'
+    }
+    biteTimes = {
+        '31': 'at sunrise', '32': 'at noon',
+        '33': 'at sunset', '34': 'at night',
+        '35': 'not really sure', '51': 'just now'
+    }
+    bodyParts = {
+        '21': 'head', '22': 'left arm',
+        '23': 'right arm', '24': 'chest',
+        '25': 'left leg', '26': 'right leg'
+    }
+    siteTipologies = {
+        '101': 'breeding site with water',
+        '81': 'breeding site without water'
+    }
+    formated = {}
+    if type.lower() == 'bite':
+        for response in responses:
+            if response['question_id'] == 1:
+                formated['howManyBites'] = response['answer_id']
+
+            elif response['question_id'] == 4:              
+                formated['location'] = getValueOrNull(response['answer_id'], locations)
+
+            elif response['question_id'] == 3:
+                formated['biteTime'] = getValueOrNull(response['answer_id'], biteTimes)
+
+            elif response['question_id'] == 5:
+                formated['biteTime'] = getValueOrNull(response['answer_id'], biteTimes)
+
+            elif response['question_id'] == 2:
+                formated['bodyPart'] = getValueOrNull(response['answer_id'], bodyParts)
+                
+    else:
+        for response in responses:
+            if response['question_id'] == 10:
+                formated['siteTipology'] = getValueOrNull(response['answer_id'], siteTipologies)
+
+    return formated

@@ -1,4 +1,5 @@
 from django.db import models
+import json
 
 # Create your models here.
 class ProvinceManager(models.Manager):
@@ -66,7 +67,7 @@ class Municipality(models.Model):
 
 class MapAuxReport(models.Model):
     """All mosquito observations."""
-
+        
     id = models.IntegerField(primary_key=True)
     version_uuid = models.CharField(max_length=36, blank=True, unique=True)
     user_id = models.CharField(max_length=36, blank=True)
@@ -97,6 +98,7 @@ class MapAuxReport(models.Model):
     mosquito_answers = models.CharField(max_length=100, blank=True)
     n_photos = models.IntegerField(blank=True, null=True)
     visible = models.BooleanField()
+    responses_json = models.TextField(blank=True, null=True)
 
     class Meta:
         """Meta."""
