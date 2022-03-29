@@ -41,13 +41,13 @@ def getValueOrNull(key, values):
 
 def getFormatedResponses(type, responses):
     locations = {
-        '44': 'resposta desconeguda', '43': 'outdoors',
+        '44': 'unknown', '43': 'outdoors',
         '42': 'inside building','41': 'inside vehicle'
     }
     biteTimes = {
         '31': 'at sunrise', '32': 'at noon',
         '33': 'at sunset', '34': 'at night',
-        '35': 'not really sure', '51': 'just now'
+        '35': 'not really sure'
     }
     bodyParts = {
         '21': 'head', '22': 'left arm',
@@ -58,27 +58,36 @@ def getFormatedResponses(type, responses):
         '101': 'breeding site with water',
         '81': 'breeding site without water'
     }
+    withLarva = { '81': 'no', '101': 'yes' }
+
+    NUMBER_OF_BITES = 1
+    WHERE_DID_THEY_BITE_YOU = 4
+    BITE_TIME = 3
+    BODY_PART_BITTEN = 2
+    SITE_WATER_STATUS = 10
+    SITE_LARVA_STATUS = 17
     formated = {}
+
     if type.lower() == 'bite':
         for response in responses:
-            if response['question_id'] == 1:
+            if response['question_id'] == NUMBER_OF_BITES:
                 formated['howManyBites'] = response['answer_id']
 
-            elif response['question_id'] == 4:              
+            elif response['question_id'] == WHERE_DID_THEY_BITE_YOU:              
                 formated['location'] = getValueOrNull(response['answer_id'], locations)
 
-            elif response['question_id'] == 3:
+            elif response['question_id'] == BITE_TIME:
                 formated['biteTime'] = getValueOrNull(response['answer_id'], biteTimes)
 
-            elif response['question_id'] == 5:
-                formated['biteTime'] = getValueOrNull(response['answer_id'], biteTimes)
-
-            elif response['question_id'] == 2:
+            elif response['question_id'] == BODY_PART_BITTEN:
                 formated['bodyPart'] = getValueOrNull(response['answer_id'], bodyParts)
                 
     else:
         for response in responses:
-            if response['question_id'] == 10:
+            if response['question_id'] == SITE_WATER_STATUS:
                 formated['siteTipology'] = getValueOrNull(response['answer_id'], siteTipologies)
 
+            if response['question_id'] == SITE_LARVA_STATUS:
+                formated['withLarva'] = getValueOrNull(response['answer_id'], withLarva)
+    
     return formated
