@@ -99,6 +99,7 @@ class MapAuxReport(models.Model):
     n_photos = models.IntegerField(blank=True, null=True)
     visible = models.BooleanField()
     responses_json = models.TextField(blank=True, null=True)
+    report_id = models.CharField(max_length=10, blank=True, null=True)
 
     class Meta:
         """Meta."""
