@@ -29,7 +29,7 @@ def get_observation(request, observation_id):
     r = json.loads(data)[0]['fields']
     r['responses_json'] = json.loads(r['responses_json'])
     if (r['type'].lower() in ['bite', 'site']):
-        r['formatedResponses'] = getFormatedResponses(r['type'], r['responses_json'])
+        r['formatedResponses'] = getFormatedResponses(r['type'], r['responses_json'], r['private_webmap_layer'])
     return HttpResponse(json.dumps(r), content_type="application/json")
 
 def getValueOrNull(key, values):
@@ -39,7 +39,7 @@ def getValueOrNull(key, values):
     else:
         return 'unkown'
 
-def getFormatedResponses(type, responses):
+def getFormatedResponses(type, responses, private_webmap_layer):
     locations = {
         '44': 'unknown', '43': 'outdoors',
         '42': 'inside building','41': 'inside vehicle'
@@ -83,11 +83,22 @@ def getFormatedResponses(type, responses):
                 formated['bodyPart'] = getValueOrNull(response['answer_id'], bodyParts)
                 
     else:
+        EXISTS_WATER_STATUS = False
+        EXISTS_LARVA_STATUS = False
         for response in responses:
             if response['question_id'] == SITE_WATER_STATUS:
+                EXISTS_WATER_STATUS = True
                 formated['siteTipology'] = getValueOrNull(response['answer_id'], siteTipologies)
 
             if response['question_id'] == SITE_LARVA_STATUS:
+                EXISTS_LARVA_STATUS = True
                 formated['withLarva'] = getValueOrNull(response['answer_id'], withLarva)
-    
+        # If info not found, then take data from other attributes
+        if not EXISTS_WATER_STATUS:
+            if private_webmap_layer.lower() == 'storm_drain_water':
+                formated['siteTipology'] = getValueOrNull('101', siteTipologies)
+            else:
+                formated['siteTipology'] = getValueOrNull('81', siteTipologies)
+        if not EXISTS_WATER_STATUS:
+            formated['withLarva'] = ''
     return formated
