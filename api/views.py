@@ -54,9 +54,9 @@ def getFormatedResponses(type, responses, private_webmap_layer):
         '23': 'right arm', '24': 'chest',
         '25': 'left leg', '26': 'right leg'
     }
-    siteTipologies = {
-        '101': 'breeding site with water',
-        '81': 'breeding site without water'
+    waterStatus = {
+        '101': 'yes',
+        '81': 'no'
     }
     withLarva = { '81': 'no', '101': 'yes' }
 
@@ -88,17 +88,17 @@ def getFormatedResponses(type, responses, private_webmap_layer):
         for response in responses:
             if response['question_id'] == SITE_WATER_STATUS:
                 EXISTS_WATER_STATUS = True
-                formated['siteTipology'] = getValueOrNull(response['answer_id'], siteTipologies)
+                formated['with_water'] = getValueOrNull(response['answer_id'], waterStatus)
 
             if response['question_id'] == SITE_LARVA_STATUS:
                 EXISTS_LARVA_STATUS = True
-                formated['withLarva'] = getValueOrNull(response['answer_id'], withLarva)
+                formated['with_larva'] = getValueOrNull(response['answer_id'], withLarva)
         # If info not found, then take data from other attributes
         if not EXISTS_WATER_STATUS:
             if private_webmap_layer.lower() == 'storm_drain_water':
-                formated['siteTipology'] = getValueOrNull('101', siteTipologies)
+                formated['with_water'] = getValueOrNull('101', waterStatus)
             else:
-                formated['siteTipology'] = getValueOrNull('81', siteTipologies)
+                formated['with_water'] = getValueOrNull('81', waterStatus)
         if not EXISTS_WATER_STATUS:
-            formated['withLarva'] = ''
+            formated['with_larva'] = ''
     return formated
