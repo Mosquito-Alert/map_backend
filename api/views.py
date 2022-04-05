@@ -29,7 +29,7 @@ def get_observation(request, observation_id):
     r = json.loads(data)[0]['fields']
     r['responses_json'] = json.loads(r['responses_json'])
     if (r['type'].lower() in ['bite', 'site']):
-        r['formatedResponses'] = getFormatedResponses(r['type'], r['responses_json'])
+        r['formatedResponses'] = getFormatedResponses(r['type'], r['responses_json'], r['private_webmap_layer'])
     return HttpResponse(json.dumps(r), content_type="application/json")
 
 def getValueOrNull(key, values):
@@ -39,7 +39,7 @@ def getValueOrNull(key, values):
     else:
         return 'unkown'
 
-def getFormatedResponses(type, responses):
+def getFormatedResponses(type, responses, private_webmap_layer):
     locations = {
         '44': 'Unknown', '43': 'Outdoors',
         '42': 'Inside building','41': 'Inside vehicle'
@@ -54,7 +54,7 @@ def getFormatedResponses(type, responses):
         '23': 'Right arm', '24': 'Chest',
         '25': 'Left leg', '26': 'Right leg'
     }
-    siteTipologies = {
+    waterStatus = {
         '101': 'Breeding site with water',
         '81': 'Breeding site without water'
     }
@@ -70,24 +70,37 @@ def getFormatedResponses(type, responses):
 
     if type.lower() == 'bite':
         for response in responses:
-            if response['question_id'] == NUMBER_OF_BITES:
-                formated['howManyBites'] = response['answer_id']
+            if not response ['question_id'] is None:
+                if response['question_id'] == NUMBER_OF_BITES:
+                    formated['howManyBites'] = response['answer_value']
 
-            elif response['question_id'] == WHERE_DID_THEY_BITE_YOU:              
-                formated['location'] = getValueOrNull(response['answer_id'], locations)
+                elif response['question_id'] == WHERE_DID_THEY_BITE_YOU:              
+                    formated['location'] = getValueOrNull(response['answer_id'], locations)
 
-            elif response['question_id'] == BITE_TIME:
-                formated['biteTime'] = getValueOrNull(response['answer_id'], biteTimes)
+                elif response['question_id'] == BITE_TIME:
+                    formated['biteTime'] = getValueOrNull(response['answer_id'], biteTimes)
 
-            elif response['question_id'] == BODY_PART_BITTEN:
-                formated['bodyPart'] = getValueOrNull(response['answer_id'], bodyParts)
+                elif response['question_id'] == BODY_PART_BITTEN:
+                    formated['bodyPart'] = getValueOrNull(response['answer_id'], bodyParts)
                 
     else:
+        EXISTS_WATER_STATUS = False
+        EXISTS_LARVA_STATUS = False
         for response in responses:
-            if response['question_id'] == SITE_WATER_STATUS:
-                formated['siteTipology'] = getValueOrNull(response['answer_id'], siteTipologies)
+            if not response ['question_id'] is None:
+                if response['question_id'] == SITE_WATER_STATUS:
+                    EXISTS_WATER_STATUS = True
+                    formated['with_water'] = getValueOrNull(response['answer_id'], waterStatus)
 
-            if response['question_id'] == SITE_LARVA_STATUS:
-                formated['withLarva'] = getValueOrNull(response['answer_id'], withLarva)
-    
+                if response['question_id'] == SITE_LARVA_STATUS:
+                    EXISTS_LARVA_STATUS = True
+                    formated['with_larva'] = getValueOrNull(response['answer_id'], withLarva)
+            # If info not found, then take data from other attributes
+        if not EXISTS_WATER_STATUS:
+            if private_webmap_layer.lower() == 'storm_drain_water':
+                formated['with_water'] = getValueOrNull('101', waterStatus)
+            elif private_webmap_layer.lower() == 'storm_drain_dry':
+                formated['with_water'] = getValueOrNull('81', waterStatus)
+        if not EXISTS_WATER_STATUS:
+            formated['with_larva'] = ''
     return formated
