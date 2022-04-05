@@ -54,8 +54,10 @@ def translations(request, lang):
         "Stormdrain with water": _("Storm drain with water"),
         "Stormdrain without water": _("Storm drain without water"),
         "Breeding site others": _("Breeding site others"),
+        
         # other observations
         "Other species": _("Other species"),
+        
         # Left drawer, Toolbar
         "Layers": _("Layers"),
         "Models": _("Models"),
@@ -63,14 +65,45 @@ def translations(request, lang):
         "Share": _("Share"),
         "Help": _("Help"),
         "Log in": _("Log in"),
+        
+        # Timeseries
+        "Time series": _("Time series"),
+        "Pick a date range": _("Pick a date range"),
+
         # Map, Popup
+        'How many bites': _("How many bites"),
+        'Body part': _("Body part"),
+        'Bite location': _("Bite location"),   
+        'Bite time': _("Bite time"),   
+
         "Date": _("Date"),
         "Expert note": _("Expert note"),
         "Confirmed": _("Confirmed"),
         "Probable": _("Probable"),
         "Expert validation": _("Expert validation"),
         "AI validation": _("AI validation"),
-        # Timeseries
-        "Time series": _("Time series"),
-        "Pick a date range": _("Pick a date range")
+
+        'Unknown': _("_Unknown"),
+        'Outdoors': _("Outdoors"),
+        'Inside building': _("Inside building"),
+        'inside vehicle': _("inside vehicle"),
+        'At sunrise': _("At sunrise"),
+        'At noon': _("At noon"),
+        'At sunset': _("At sunset"),
+        'At night': _("At night"),
+        'Not really sure': _("Not really sure"),
+    
+        'Head':  _("Head"),
+        'Left arm': _("Left arm"),
+        'Right arm': _("Right arm"),
+        'Chest': _("Chest"),
+        'Left leg': _("Left leg"),
+        'Right leg': _("Right leg"),
+    
+        'Breeding site with water': _("Breeding site with water"),
+        'Breeding site without water': _("Breeding site without water"),
+    
+        'No': _("No"),
+        'Yes': _("Yes")        
+
     })

@@ -41,24 +41,24 @@ def getValueOrNull(key, values):
 
 def getFormatedResponses(type, responses):
     locations = {
-        '44': 'unknown', '43': 'outdoors',
-        '42': 'inside building','41': 'inside vehicle'
+        '44': 'Unknown', '43': 'Outdoors',
+        '42': 'Inside building','41': 'Inside vehicle'
     }
     biteTimes = {
-        '31': 'at sunrise', '32': 'at noon',
-        '33': 'at sunset', '34': 'at night',
-        '35': 'not really sure'
+        '31': 'At sunrise', '32': 'At noon',
+        '33': 'At sunset', '34': 'At night',
+        '35': 'Not really sure'
     }
     bodyParts = {
-        '21': 'head', '22': 'left arm',
-        '23': 'right arm', '24': 'chest',
-        '25': 'left leg', '26': 'right leg'
+        '21': 'Head', '22': 'Left arm',
+        '23': 'Right arm', '24': 'Chest',
+        '25': 'Left leg', '26': 'Right leg'
     }
     siteTipologies = {
-        '101': 'breeding site with water',
-        '81': 'breeding site without water'
+        '101': 'Breeding site with water',
+        '81': 'Breeding site without water'
     }
-    withLarva = { '81': 'no', '101': 'yes' }
+    withLarva = { '81': 'No', '101': 'Yes' }
 
     NUMBER_OF_BITES = 1
     WHERE_DID_THEY_BITE_YOU = 4

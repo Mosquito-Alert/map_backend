@@ -147,6 +147,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Rosetta on admin page
+ROSETTA_SHOW_AT_ADMIN_PANEL = True
 
 # Overwrite settings
 extra_settings_dir = os.path.dirname(os.path.abspath(__file__))

@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-10 13:12+0100\n"
-"PO-Revision-Date: 2022-03-25 15:14+0000\n"
-"Last-Translator:   <admin@gmail.com>\n"
+"POT-Creation-Date: 2022-04-05 08:28+0200\n"
+"PO-Revision-Date: 2022-04-05 08:29+0000\n"
+"Last-Translator:   <toni.hernandez@udg.edu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -28,37 +28,30 @@ msgid "Close"
 msgstr "Cerrar"
 
 #: .\translations.py:14
-#| msgid "select"
 msgid "Select"
 msgstr "Selecciona"
 
 #: .\translations.py:15
-#| msgid "mosquitos"
 msgid "Mosquitos"
 msgstr "Mosquitos"
 
 #: .\translations.py:16
-#| msgid "bites"
 msgid "Bites"
 msgstr "Picadas"
 
 #: .\translations.py:17
-#| msgid "breeding sites"
 msgid "Breeding sites"
 msgstr "Lugares de cría"
 
 #: .\translations.py:18
-#| msgid "sampling effort"
 msgid "Sampling effort"
 msgstr "Esfuerzo de muestreo"
 
 #: .\translations.py:19
-#| msgid "placeholder location"
 msgid "Placeholder location"
 msgstr "Localización (ciudad, País...)"
 
 #: .\translations.py:20
-#| msgid "placeholder hashtag"
 msgid "Placeholder hashtag"
 msgstr "#Hashtag"
 
@@ -71,7 +64,6 @@ msgid "Mosquito tiger probable"
 msgstr "Mosquito tigre probable"
 
 #: .\translations.py:25
-#| msgid "breeding site others"
 msgid "Breeding site not yet filtered"
 msgstr "Otros"
 
@@ -80,37 +72,30 @@ msgid "Conflict"
 msgstr "Conflicto"
 
 #: .\translations.py:27
-#| msgid "yellow fever mosquito"
 msgid "Mosquito tiger confirmed"
 msgstr "Mosquito fiebre amarilla"
 
 #: .\translations.py:28
-#| msgid "unidentified mosquito"
 msgid "Unidentified"
 msgstr "Mosquito no identificado"
 
 #: .\translations.py:29
-#| msgid "yellow fever mosquito"
 msgid "Yellow fever confirmed"
 msgstr "Mosquito fiebre amarilla"
 
 #: .\translations.py:30
-#| msgid "storm drain with water"
 msgid "Storm drain water"
 msgstr "Imbornal con agua"
 
 #: .\translations.py:31
-#| msgid "breeding site others"
 msgid "Breeding site other"
 msgstr "Otros"
 
-#: .\translations.py:32 .\translations.py:58
-#| msgid "other species"
+#: .\translations.py:32 .\translations.py:59
 msgid "Other species"
 msgstr "Otras especies"
 
 #: .\translations.py:33
-#| msgid "storm drain with water"
 msgid "Storm drain dry"
 msgstr "Imbornal con agua"
 
@@ -119,7 +104,6 @@ msgid "Not yet validated"
 msgstr "Pendiente de validación"
 
 #: .\translations.py:35
-#| msgid "yellow fever mosquito"
 msgid "Yellow fever probable"
 msgstr "Mosquito fiebre amarilla"
 
@@ -132,102 +116,188 @@ msgid "Tiger mosquito"
 msgstr "Mosquito tigre"
 
 #: .\translations.py:41 .\translations.py:42
-#| msgid "yellow fever mosquito"
 msgid "Yellow fever mosquito"
 msgstr "Mosquito de la fiebre amarilla"
 
 #: .\translations.py:43 .\translations.py:44
-#| msgid "japonicus mosquito"
 msgid "Japonicus mosquito"
 msgstr "Mosquito del Japón"
 
 #: .\translations.py:45 .\translations.py:46
-#| msgid "koreicus mosquito"
 msgid "Koreicus mosquito"
 msgstr "Mosquito de Corea"
 
 #: .\translations.py:47 .\translations.py:48
-#| msgid "culex mosquito"
 msgid "Culex mosquito"
 msgstr "Mosquito común"
 
 #: .\translations.py:49 .\translations.py:50
-#| msgid "unidentified mosquito"
 msgid "Unidentified mosquito"
 msgstr "No identificable"
 
 #: .\translations.py:51
-#| msgid "others_mosquito"
 msgid "Others_mosquito"
 msgstr "Otros mosquitos"
 
 #: .\translations.py:54
-#| msgid "storm drain with water"
 msgid "Storm drain with water"
 msgstr "Imbornal con agua"
 
 #: .\translations.py:55
-#| msgid "storm drain without water"
 msgid "Storm drain without water"
 msgstr "Imbornal sin agua"
 
 #: .\translations.py:56
-#| msgid "breeding site others"
 msgid "Breeding site others"
 msgstr "Otros"
 
-#: .\translations.py:60
+#: .\translations.py:62
 msgid "Layers"
 msgstr "Capas"
 
-#: .\translations.py:61
+#: .\translations.py:63
 msgid "Models"
 msgstr "Modelos"
 
-#: .\translations.py:62
+#: .\translations.py:64
 msgid "Lang"
 msgstr "Idioma"
 
-#: .\translations.py:63
+#: .\translations.py:65
 msgid "Share"
 msgstr "Compartir"
 
-#: .\translations.py:64
+#: .\translations.py:66
 msgid "Help"
 msgstr "Ayuda"
 
-#: .\translations.py:65
+#: .\translations.py:67
 msgid "Log in"
 msgstr "Entrar"
 
-#: .\translations.py:67
-msgid "Date"
-msgstr "Fecha"
-
-#: .\translations.py:68
-msgid "Expert note"
-msgstr "Nota experta"
-
-#: .\translations.py:69
-msgid "Confirmed"
-msgstr "Confirmado"
-
 #: .\translations.py:70
-msgid "Probable"
-msgstr "Probable"
-
-#: .\translations.py:71
-msgid "Expert validation"
-msgstr "Validación experta"
-
-#: .\translations.py:72
-msgid "AI validation"
-msgstr "Validación IA"
-
-#: .\translations.py:74
 msgid "Time series"
 msgstr "Serie temporal"
 
-#: .\translations.py:75
+#: .\translations.py:71
 msgid "Pick a date range"
 msgstr "Rango de fechas"
+
+#: .\translations.py:74
+msgid "How many bites"
+msgstr "Número de picadas"
+
+#: .\translations.py:75
+msgid "Body part"
+msgstr "Parte del cuerpo"
+
+#: .\translations.py:76
+msgid "Bite location"
+msgstr "Lugar de la picada"
+
+#: .\translations.py:77
+msgid "Bite time"
+msgstr "Hora de la picada"
+
+#: .\translations.py:79
+msgid "Date"
+msgstr "Fecha"
+
+#: .\translations.py:80
+msgid "Expert note"
+msgstr "Nota experta"
+
+#: .\translations.py:81
+msgid "Confirmed"
+msgstr "Confirmado"
+
+#: .\translations.py:82
+msgid "Probable"
+msgstr "Probable"
+
+#: .\translations.py:83
+msgid "Expert validation"
+msgstr "Validación experta"
+
+#: .\translations.py:84
+msgid "AI validation"
+msgstr "Validación IA"
+
+#: .\translations.py:86
+msgid "_Unknown"
+msgstr "No lo se"
+
+#: .\translations.py:87
+msgid "Outdoors"
+msgstr "Al aire libre"
+
+#: .\translations.py:88
+msgid "Inside building"
+msgstr "Dentro de un edificio"
+
+#: .\translations.py:89
+msgid "inside vehicle"
+msgstr "Dentro de un vehículo"
+
+#: .\translations.py:90
+msgid "At sunrise"
+msgstr "Por la mañana"
+
+#: .\translations.py:91
+msgid "At noon"
+msgstr "Al mediodía"
+
+#: .\translations.py:92
+msgid "At sunset"
+msgstr "Por la tarde"
+
+#: .\translations.py:93
+msgid "At night"
+msgstr "Por la noche"
+
+#: .\translations.py:94
+msgid "Not really sure"
+msgstr "No lo se"
+
+#: .\translations.py:96
+msgid "Head"
+msgstr "Cabeza"
+
+#: .\translations.py:97
+msgid "Left arm"
+msgstr "Brazo izquierdo"
+
+#: .\translations.py:98
+msgid "Right arm"
+msgstr "Brazo derecho"
+
+#: .\translations.py:99
+msgid "Chest"
+msgstr "Pecho"
+
+#: .\translations.py:100
+msgid "Left leg"
+msgstr "Pierna izquierda"
+
+#: .\translations.py:101
+msgid "Right leg"
+msgstr "Pierna derecha"
+
+#: .\translations.py:103
+msgid "Breeding site with water"
+msgstr "Con agua"
+
+#: .\translations.py:104
+msgid "Breeding site without water"
+msgstr "Sin agua"
+
+#: .\translations.py:106
+msgid "No"
+msgstr "No"
+
+#: .\translations.py:107
+msgid "Yes"
+msgstr "Sí"
+
+#~ msgid "Number of bites"
+#~ msgstr "Número de picadas"
