@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-05 08:28+0200\n"
+"POT-Creation-Date: 2022-04-05 09:31+0200\n"
 "PO-Revision-Date: 2022-04-05 08:29+0000\n"
 "Last-Translator:   <toni.hernandez@udg.edu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -87,7 +87,7 @@ msgstr "Mosquito fiebre amarilla"
 msgid "Storm drain water"
 msgstr "Imbornal con agua"
 
-#: .\translations.py:31
+#: .\translations.py:31 .\translations.py:56
 msgid "Breeding site other"
 msgstr "Otros"
 
@@ -146,10 +146,6 @@ msgstr "Imbornal con agua"
 #: .\translations.py:55
 msgid "Storm drain without water"
 msgstr "Imbornal sin agua"
-
-#: .\translations.py:56
-msgid "Breeding site others"
-msgstr "Otros"
 
 #: .\translations.py:62
 msgid "Layers"
@@ -298,6 +294,9 @@ msgstr "No"
 #: .\translations.py:107
 msgid "Yes"
 msgstr "Sí"
+
+#~ msgid "Breeding site others"
+#~ msgstr "Otros"
 
 #~ msgid "Number of bites"
 #~ msgstr "Número de picadas"
