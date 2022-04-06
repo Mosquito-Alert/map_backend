@@ -102,7 +102,7 @@ def getFormatedResponses(type, responses, private_webmap_layer):
             elif private_webmap_layer.lower() == 'storm_drain_dry':
                 formated['with_water'] = getValueOrNull('81', waterStatus)
             else:
-                formated['with_water'] = 'NA'
+                formated['with_water'] = 'Not available'
         if not EXISTS_WATER_STATUS:
-            formated['with_larva'] = 'NA'
+            formated['with_larva'] = 'Not available'
     return formated

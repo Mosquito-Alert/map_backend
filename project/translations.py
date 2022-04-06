@@ -102,8 +102,9 @@ def translations(request, lang):
     
         'Breeding site with water': _("Breeding site with water"),
         'Breeding site without water': _("Breeding site without water"),
-    
+        'Breeding site with larva': _("Breeding site with larva"),
         'No': _("No"),
-        'Yes': _("Yes")        
+        'Yes': _("Yes"),
 
+        'Not available':_("Not available"),
     })
