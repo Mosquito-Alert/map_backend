@@ -107,4 +107,5 @@ def translations(request, lang):
         'Yes': _("Yes"),
 
         'Not available':_("Not available"),
+        'No results found': _("No results found")
     })

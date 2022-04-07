@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-06 16:25+0200\n"
-"PO-Revision-Date: 2022-04-06 14:28+0000\n"
+"POT-Creation-Date: 2022-04-07 18:59+0200\n"
+"PO-Revision-Date: 2022-04-07 17:00+0000\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -288,7 +288,6 @@ msgid "Breeding site without water"
 msgstr "Others"
 
 #: translations.py:105
-#| msgid "Breeding site with water"
 msgid "Breeding site with larva"
 msgstr "Does it have larvae?"
 
@@ -303,6 +302,10 @@ msgstr "Yes"
 #: translations.py:109
 msgid "Not available"
 msgstr "Not available"
+
+#: translations.py:110
+msgid "No results found"
+msgstr "No results found"
 
 #~ msgid "Breeding site others"
 #~ msgstr "Others"
