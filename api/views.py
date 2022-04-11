@@ -6,7 +6,8 @@ from django.http import JsonResponse, HttpResponse
 from .models import MapAuxReport
 from django.core.serializers import serialize
 import json
-
+from django.db import connection
+    
 def get_feature(request, observation_id):
     """Return a feature."""
     # Mock up some random data
@@ -22,6 +23,37 @@ def get_feature(request, observation_id):
     if random.random() > 0.5:
         data["photo_url"] = 'http://localhost:8000/static/api/mosquito/dummy.jpg'
     return JsonResponse(data)
+
+def get_report(request, report_id):
+    SQL = f"""
+        SELECT jsonb_build_object(
+            'type',     'FeatureCollection',
+            'features', jsonb_agg(features.feature)
+		)   FROM(
+			SELECT row_to_json(f) As feature
+				 FROM (
+			 SELECT 'Feature' As type
+				  , ST_AsGeoJSON(st_setsrid(st_makepoint(lon, lat), 4326),6)::json As geometry
+				  ,row_to_json((SELECT l FROM (
+					  SELECT id, observation_date::date as d, private_webmap_layer as c,
+					  -- tags is string with square braquets, so firt remove them and cast to array
+					  coalesce(
+						  replace(regexp_replace(tags, '\[|\]', '', 'g'), '''', ''),
+					      '') as t
+					) As l
+				  )) As properties
+				   FROM map_aux_reports
+				   WHERE lat is not null and lon is not null AND report_id = '{report_id}'
+				   ORDER BY observation_date
+			) As f
+		) as features
+        """
+    with connection.cursor() as cursor:
+        cursor.execute(SQL)
+        data = cursor.fetchone()
+        # data = serialize("json", cursor.fetchone())
+
+    return HttpResponse(data, content_type="application/json")
 
 def get_observation(request, observation_id):
     qs = MapAuxReport.objects.get(pk = observation_id)
