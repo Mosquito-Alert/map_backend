@@ -86,7 +86,7 @@ def translations(request, lang):
         'Unknown': _("_Unknown"),
         'Outdoors': _("Outdoors"),
         'Inside building': _("Inside building"),
-        'inside vehicle': _("inside vehicle"),
+        'inside vehicle': _("Inside vehicle"),
         'At sunrise': _("At sunrise"),
         'At noon': _("At noon"),
         'At sunset': _("At sunset"),
