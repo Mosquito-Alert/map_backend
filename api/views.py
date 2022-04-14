@@ -50,7 +50,7 @@ def get_report(request, report_id):
         """
     with connection.cursor() as cursor:
         cursor.execute(SQL)
-        data = cursor.fetchone()
+        data = cursor.fetchall()[0]
         # data = serialize("json", cursor.fetchone())
 
     return HttpResponse(data, content_type="application/json")
