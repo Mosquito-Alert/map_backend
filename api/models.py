@@ -105,3 +105,28 @@ class MapAuxReport(models.Model):
         """Meta."""
 
         db_table = 'map_aux_reports'
+
+
+class Userfixes(models.Model):
+    """Userfixes model."""
+
+    id = models.IntegerField(primary_key=True)
+    fix_time = models.DateTimeField(blank=True, null=True)
+    server_upload_time = models.DateTimeField(blank=True, null=True)
+    phone_upload_time = models.DateTimeField(blank=True, null=True)
+    masked_lon = models.FloatField(blank=True, null=True)
+    masked_lat = models.FloatField(blank=True, null=True)
+    mask_size = models.FloatField(blank=True, null=True)
+    power = models.FloatField(blank=True, null=True)
+    user_coverage_uuid = models.CharField(max_length=36, blank=True, null=True)
+
+    def _get_the_type(self):
+        """a."""
+        return 'Feature'
+
+    thetype = property(_get_the_type)
+
+    class Meta:
+        """Meta information."""
+
+        db_table = 'tigaserver_app_fix'

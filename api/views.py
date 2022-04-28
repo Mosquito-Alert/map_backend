@@ -138,3 +138,7 @@ def getFormatedResponses(type, responses, private_webmap_layer):
         if not EXISTS_WATER_STATUS:
             formated['with_larva'] = 'Not available'
     return formated
+
+
+    def userfixes(request, startdate, enddate):
+        return 
