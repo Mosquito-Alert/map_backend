@@ -7,6 +7,8 @@ from .models import MapAuxReport
 from django.core.serializers import serialize
 import json
 from django.db import connection
+from .libs.userfixes import UserfixesManager
+
     
 def get_feature(request, observation_id):
     """Return a feature."""

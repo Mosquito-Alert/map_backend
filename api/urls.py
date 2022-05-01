@@ -2,7 +2,7 @@
 from django.urls import path, re_path
 from .views import get_feature, get_observation, get_report, userfixes
 
-re_date = '\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$'
+re_date = '\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])'
 
 
 urlpatterns = [
