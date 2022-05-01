@@ -140,5 +140,11 @@ def getFormatedResponses(type, responses, private_webmap_layer):
     return formated
 
 
-    def userfixes(request, startdate, enddate):
-        return 
+# def userfixes(request, startdate, enddate):
+#     return True
+
+# @cache_page(36000)
+def userfixes(request, **filters):
+    """Get Coverage Layer Info."""
+    manager = UserfixesManager(request)
+    return manager.get('GeoJSON', **filters)    
