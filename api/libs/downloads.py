@@ -10,6 +10,8 @@ import zipfile
 import geopandas
 from django.http import HttpResponse
 from shapely.geometry import Point
+from django.apps import apps
+
 
 class DownloadsManager(BaseManager):
     """Main Observations Downloads Library."""
@@ -77,7 +79,6 @@ class DownloadsManager(BaseManager):
         gdf = geopandas.GeoDataFrame(df, crs="EPSG:4326", geometry=geometry)
 
         with tempfile.TemporaryDirectory() as tmp_dir:
-            print(tmp_dir)
             # Export gdf as shapefile
             gdf.to_file(os.path.join(tmp_dir, f'{file_name}.shp'), driver='ESRI Shapefile')
             # gdf.to_file(os.path.join(tmp_dir, f'{file_name}.gpkg'), driver='GPKG')
@@ -92,6 +93,12 @@ class DownloadsManager(BaseManager):
             for file in os.listdir(tmp_dir):
                 if file != tmp_zip_file_name:
                     tmp_zip_obj.write(os.path.join(tmp_dir, file), file)
+
+            # Add datada files
+            folder = settings.DOWNLOAD_METADATA_FILES_LOCATION
+            print(folder)
+            for file in os.listdir(folder):
+                tmp_zip_obj.write(os.path.join(folder, file), file)
 
             tmp_zip_obj.close()
 
