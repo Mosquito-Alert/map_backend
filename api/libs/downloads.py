@@ -6,6 +6,7 @@ from api.models import MapAuxReport
 from django.conf import settings
 import tempfile
 import os
+import json
 import zipfile
 import geopandas
 from django.http import HttpResponse
@@ -32,6 +33,7 @@ class DownloadsManager(BaseManager):
         bbox = filters['bbox']
         layers = filters['observations']
         dates = filters['date'][0]
+  
         # hashtags = filters['hashtags']
         # ids = filters['ids']
         
@@ -48,6 +50,18 @@ class DownloadsManager(BaseManager):
                 lat__lt=bbox[3]
             )
 
+        if 'location' in filters:
+                # location = json.loads(filters['location'])
+                location = filters['location']
+                inter = """
+                    ST_CONTAINS(
+                        ST_GEOMFROMGEOJSON('{}'),
+                        ST_SETSRID(ST_MAKEPOINT(LON,LAT), 4326)
+                    )
+                """.format(location)
+                self.data = self.data.extra(where=[inter])
+                print(self.data.query)
+
         if layers is not None:
             self.data = self.data.filter(
                 private_webmap_layer__in=layers
@@ -59,7 +73,7 @@ class DownloadsManager(BaseManager):
                 observation_date__lt=(datetime.strptime(dates['to'], "%Y/%m/%d") +
                               timedelta(days=1))
             )
-        
+
         return self.data
 
     def get(self, filters):
