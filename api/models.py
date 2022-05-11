@@ -101,6 +101,10 @@ class MapAuxReport(models.Model):
     responses_json = models.TextField(blank=True, null=True)
     report_id = models.CharField(max_length=10, blank=True, null=True)
 
+    def save(self, *args, **kwargs):
+        self.tags = self.tags.lower()
+        return super(MapAuxReport, self).save(*args, **kwargs)
+
     class Meta:
         """Meta."""
 

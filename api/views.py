@@ -1,3 +1,4 @@
+from django.views.decorators.csrf import csrf_exempt
 import random
 from re import M
 from django.shortcuts import render
@@ -8,8 +9,16 @@ from django.core.serializers import serialize
 import json
 from django.db import connection
 from .libs.userfixes import UserfixesManager
+from .libs.downloads import DownloadsManager
 
+@csrf_exempt
+def downloads(request):
+    if request.method == "POST":
+        post_data = json.loads(request.body.decode("utf-8"))
+        manager = DownloadsManager(request)
+        return manager.get(post_data)
     
+
 def get_feature(request, observation_id):
     """Return a feature."""
     # Mock up some random data
