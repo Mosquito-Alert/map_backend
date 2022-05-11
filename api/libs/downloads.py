@@ -50,17 +50,25 @@ class DownloadsManager(BaseManager):
                 lat__lt=bbox[3]
             )
 
+        if 'hashtags' in filters:
+            tags = json.loads(filters['hashtags'])
+            tags_str = "'{0}'".format("', '".join(tags))
+            condition = """
+                LOWER(TAGS) IN ({})
+            """.format(tags_str)
+            self.data = self.data.extra(where=[condition])
+            print(self.data.query)
+            
         if 'location' in filters:
                 # location = json.loads(filters['location'])
                 location = filters['location']
-                inter = """
+                condition = """
                     ST_CONTAINS(
                         ST_GEOMFROMGEOJSON('{}'),
                         ST_SETSRID(ST_MAKEPOINT(LON,LAT), 4326)
                     )
                 """.format(location)
-                self.data = self.data.extra(where=[inter])
-                print(self.data.query)
+                self.data = self.data.extra(where=[condition])
 
         if layers is not None:
             self.data = self.data.filter(
@@ -78,7 +86,6 @@ class DownloadsManager(BaseManager):
 
     def get(self, filters):
         """Return Observations."""
-        print('filter data')
 
         # Main query
         self.data = self._get_main_data()
