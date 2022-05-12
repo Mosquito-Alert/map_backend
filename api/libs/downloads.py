@@ -62,7 +62,7 @@ class DownloadsManager(BaseManager):
                 location = filters['location']
                 condition = """
                     ST_CONTAINS(
-                        ST_GEOMFROMGEOJSON('{}'),
+                        ST_SETSRID(ST_GEOMFROMGEOJSON('{}'),4326),
                         ST_SETSRID(ST_MAKEPOINT(LON,LAT), 4326)
                     )
                 """.format(location)
