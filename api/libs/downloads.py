@@ -29,19 +29,9 @@ class DownloadsManager(BaseManager):
 
     def _filter_data(self, **filters):
         """Return data filtered according to time parameters."""
-        
         bbox = filters['bbox']
         layers = filters['observations']
-        dates = filters['date'][0]
-  
-        # hashtags = filters['hashtags']
-        # ids = filters['ids']
         
-        # if hashtags is not None:
-        #     self.data = self.data.filter(
-        #         tags__iregex=r'(' + '|'.join(hashtags) + ')'
-        #     ) 
-
         if bbox is not None:
             self.data = self.data.filter(
                 lon__gte=bbox[0],
@@ -50,15 +40,23 @@ class DownloadsManager(BaseManager):
                 lat__lt=bbox[3]
             )
 
-        if 'hashtags' in filters:
-            tags = json.loads(filters['hashtags'])
-            tags_str = "'{0}'".format("', '".join(tags))
-            condition = """
-                LOWER(TAGS) IN ({})
-            """.format(tags_str)
-            self.data = self.data.extra(where=[condition])
-            print(self.data.query)
-            
+        # Check if there is date to filter for
+        if 'date' in filters:
+            dates = filters['date'][0]
+            if dates['from'] is not None and dates['to'] is not None:
+                self.data = self.data.filter(
+                observation_date__gte=datetime.strptime(dates['from'], "%Y/%m/%d"),
+                observation_date__lt=(datetime.strptime(dates['to'], "%Y/%m/%d") +
+                              timedelta(days=1))
+            )
+
+        # There can be only one report
+        if 'report_id' in filters:
+            reports = filters['report_id']
+            for report in reports:
+                self.data = self.data.filter(report_id__icontains=report)
+
+        # Check if there is a location to filter for
         if 'location' in filters:
                 # location = json.loads(filters['location'])
                 location = filters['location']
@@ -75,12 +73,12 @@ class DownloadsManager(BaseManager):
                 private_webmap_layer__in=layers
             )            
 
-        if dates['from'] is not None and dates['to'] is not None:
-            self.data = self.data.filter(
-                observation_date__gte=datetime.strptime(dates['from'], "%Y/%m/%d"),
-                observation_date__lt=(datetime.strptime(dates['to'], "%Y/%m/%d") +
-                              timedelta(days=1))
-            )
+
+        if 'hashtags' in filters:
+            tags = json.loads(filters['hashtags'])
+            # tags_str = "'{0}'".format("', '".join(tags))
+            for tag in tags:
+                self.data = self.data.filter(tags__icontains=tag)
 
         return self.data
 
@@ -92,6 +90,9 @@ class DownloadsManager(BaseManager):
 
         # Filter data
         qs = self._filter_data(**filters)
+        if qs.count() == 0:
+            return {}
+
         file_name = 'observations'
         df = geopandas.GeoDataFrame(list(qs.values()))
         df["observation_date"] = df["observation_date"].astype(str)
@@ -101,8 +102,8 @@ class DownloadsManager(BaseManager):
 
         with tempfile.TemporaryDirectory() as tmp_dir:
             # Export gdf as shapefile
-            gdf.to_file(os.path.join(tmp_dir, f'{file_name}.shp'), driver='ESRI Shapefile')
-            # gdf.to_file(os.path.join(tmp_dir, f'{file_name}.gpkg'), driver='GPKG')
+            # gdf.to_file(os.path.join(tmp_dir, f'{file_name}.shp'), driver='ESRI Shapefile')
+            gdf.to_file(os.path.join(tmp_dir, f'{file_name}.gpkg'), driver='GPKG')
 
 
             # Zip the exported files to a single file
@@ -117,7 +118,7 @@ class DownloadsManager(BaseManager):
 
             # Add datada files
             folder = settings.DOWNLOAD_METADATA_FILES_LOCATION
-            print(folder)
+            
             for file in os.listdir(folder):
                 tmp_zip_obj.write(os.path.join(folder, file), file)
 
