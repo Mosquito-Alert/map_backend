@@ -107,5 +107,11 @@ def translations(request, lang):
         'Yes': _("Yes"),
 
         'Not available':_("Not available"),
-        'No results found': _("No results found")
+        'No results found': _("No results found"),
+
+        # Download
+        'Download': _("Download"),
+        'No features to download': _("No features to download"),
+        'Only data displayed in the current map view will be downloaded. Verify your current active layers, temporal filters and zoom.': _("Only data displayed in the current map view will be downloaded. Verify your current active layers, temporal filters and zoom."),
+        'Once verified, press the download button.': _("Once verified, press the download button.")
     })

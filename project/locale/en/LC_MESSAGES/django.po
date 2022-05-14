@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-08 11:28+0200\n"
-"PO-Revision-Date: 2022-04-07 17:00+0000\n"
+"POT-Creation-Date: 2022-05-14 13:49+0200\n"
+"PO-Revision-Date: 2022-05-14 11:51+0000\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,295 +19,313 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
 
-#: .\translations.py:12
+#: translations.py:12
 msgid "Open"
 msgstr "Open"
 
-#: .\translations.py:13
+#: translations.py:13
 msgid "Close"
 msgstr "Close"
 
-#: .\translations.py:14
+#: translations.py:14
 msgid "Select"
 msgstr "Select"
 
-#: .\translations.py:15
+#: translations.py:15
 msgid "Mosquitos"
 msgstr "Mosquitos"
 
-#: .\translations.py:16
+#: translations.py:16
 msgid "Bites"
 msgstr "Bites"
 
-#: .\translations.py:17
+#: translations.py:17
 msgid "Breeding sites"
 msgstr "Breeding Sites"
 
-#: .\translations.py:18
+#: translations.py:18
 msgid "Sampling effort"
 msgstr "Sampling Effort"
 
-#: .\translations.py:19
+#: translations.py:19
 msgid "Placeholder location"
 msgstr "Location (city, country...)"
 
-#: .\translations.py:20
+#: translations.py:20
 msgid "Placeholder hashtag"
 msgstr "#Hashtag"
 
-#: .\translations.py:21
+#: translations.py:21
 msgid "Filter"
 msgstr "Filter"
 
-#: .\translations.py:24
+#: translations.py:24
 msgid "Mosquito tiger probable"
 msgstr "Tiger Mosquito Probable"
 
-#: .\translations.py:25
+#: translations.py:25
 msgid "Breeding site not yet filtered"
 msgstr "Others"
 
-#: .\translations.py:26
+#: translations.py:26
 msgid "Conflict"
 msgstr "Conflict"
 
-#: .\translations.py:27
+#: translations.py:27
 msgid "Mosquito tiger confirmed"
 msgstr "Tiger Mosquito Confirmed"
 
-#: .\translations.py:28
+#: translations.py:28
 msgid "Unidentified"
 msgstr "Unidentified Mosquito"
 
-#: .\translations.py:29
+#: translations.py:29
 msgid "Yellow fever confirmed"
 msgstr "Yellow Fever Mosquito"
 
-#: .\translations.py:30
+#: translations.py:30
 msgid "Storm drain water"
 msgstr "Stormdrain With Water"
 
-#: .\translations.py:31 .\translations.py:56
+#: translations.py:31 translations.py:56
 msgid "Breeding site other"
 msgstr "Others"
 
-#: .\translations.py:32 .\translations.py:59
+#: translations.py:32 translations.py:59
 msgid "Other species"
 msgstr "Other species"
 
-#: .\translations.py:33
+#: translations.py:33
 msgid "Storm drain dry"
 msgstr "Stormdrain With Water"
 
-#: .\translations.py:34
+#: translations.py:34
 msgid "Not yet validated"
 msgstr "Not yet validated"
 
-#: .\translations.py:35
+#: translations.py:35
 msgid "Yellow fever probable"
 msgstr "Yellow fever mosquito"
 
-#: .\translations.py:36
+#: translations.py:36
 msgid "Trash layer"
 msgstr "Trash layer"
 
-#: .\translations.py:39 .\translations.py:40
+#: translations.py:39 translations.py:40
 msgid "Tiger mosquito"
 msgstr "Tiger mosquito"
 
-#: .\translations.py:41 .\translations.py:42
+#: translations.py:41 translations.py:42
 msgid "Yellow fever mosquito"
 msgstr "Yellow fever mosquito"
 
-#: .\translations.py:43 .\translations.py:44
+#: translations.py:43 translations.py:44
 msgid "Japonicus mosquito"
 msgstr "Asian bush mosquito"
 
-#: .\translations.py:45 .\translations.py:46
+#: translations.py:45 translations.py:46
 msgid "Koreicus mosquito"
 msgstr "Korean mosquito"
 
-#: .\translations.py:47 .\translations.py:48
+#: translations.py:47 translations.py:48
 msgid "Culex mosquito"
 msgstr "Common mosquito"
 
-#: .\translations.py:49 .\translations.py:50
+#: translations.py:49 translations.py:50
 msgid "Unidentified mosquito"
 msgstr "Unidentifiable "
 
-#: .\translations.py:51
+#: translations.py:51
 msgid "Others_mosquito"
 msgstr "Other species"
 
-#: .\translations.py:54
+#: translations.py:54
 msgid "Storm drain with water"
 msgstr "Stormdrain With Water"
 
-#: .\translations.py:55
+#: translations.py:55
 msgid "Storm drain without water"
 msgstr "Stormdrain Without Water"
 
-#: .\translations.py:62
+#: translations.py:62
 msgid "Layers"
 msgstr "Layers"
 
-#: .\translations.py:63
+#: translations.py:63
 msgid "Models"
 msgstr "Models"
 
-#: .\translations.py:64
+#: translations.py:64
 msgid "Lang"
 msgstr "Lang"
 
-#: .\translations.py:65
+#: translations.py:65
 msgid "Share"
 msgstr "Share"
 
-#: .\translations.py:66
+#: translations.py:66
 msgid "Help"
 msgstr "Help"
 
-#: .\translations.py:67
+#: translations.py:67
 msgid "Log in"
 msgstr "Log in"
 
-#: .\translations.py:70
+#: translations.py:70
 msgid "Time series"
 msgstr "Time Series"
 
-#: .\translations.py:71
+#: translations.py:71
 msgid "Pick a date range"
 msgstr "Pick a Date Range"
 
-#: .\translations.py:74
+#: translations.py:74
 msgid "How many bites"
 msgstr "Number of bites"
 
-#: .\translations.py:75
+#: translations.py:75
 msgid "Body part"
 msgstr "Body part"
 
-#: .\translations.py:76
+#: translations.py:76
 msgid "Bite location"
 msgstr "Bite location"
 
-#: .\translations.py:77
+#: translations.py:77
 msgid "Bite time"
 msgstr "Bite time"
 
-#: .\translations.py:79
+#: translations.py:79
 msgid "Date"
 msgstr "Date"
 
-#: .\translations.py:80
+#: translations.py:80
 msgid "Expert note"
 msgstr "Expert Note"
 
-#: .\translations.py:81
+#: translations.py:81
 msgid "Confirmed"
 msgstr "Confirmed"
 
-#: .\translations.py:82
+#: translations.py:82
 msgid "Probable"
 msgstr "Probable"
 
-#: .\translations.py:83
+#: translations.py:83
 msgid "Expert validation"
 msgstr "Expert Validation"
 
-#: .\translations.py:84
+#: translations.py:84
 msgid "AI validation"
 msgstr "AI Validation"
 
-#: .\translations.py:86
+#: translations.py:86
 msgid "_Unknown"
 msgstr "Unknown"
 
-#: .\translations.py:87
+#: translations.py:87
 msgid "Outdoors"
 msgstr "Outdoors"
 
-#: .\translations.py:88
+#: translations.py:88
 msgid "Inside building"
 msgstr "Inside building"
 
-#: .\translations.py:89
-#, fuzzy
-#| msgid "inside vehicle"
+#: translations.py:89
 msgid "Inside vehicle"
 msgstr "Inside vehicle"
 
-#: .\translations.py:90
+#: translations.py:90
 msgid "At sunrise"
 msgstr "At sunrise"
 
-#: .\translations.py:91
+#: translations.py:91
 msgid "At noon"
 msgstr "At noon"
 
-#: .\translations.py:92
+#: translations.py:92
 msgid "At sunset"
 msgstr "At sunset"
 
-#: .\translations.py:93
+#: translations.py:93
 msgid "At night"
 msgstr "At night"
 
-#: .\translations.py:94
+#: translations.py:94
 msgid "Not really sure"
 msgstr "Not really sure"
 
-#: .\translations.py:96
+#: translations.py:96
 msgid "Head"
 msgstr "Head"
 
-#: .\translations.py:97
+#: translations.py:97
 msgid "Left arm"
 msgstr "Left arm"
 
-#: .\translations.py:98
+#: translations.py:98
 msgid "Right arm"
 msgstr "Right arm"
 
-#: .\translations.py:99
+#: translations.py:99
 msgid "Chest"
 msgstr "Chest"
 
-#: .\translations.py:100
+#: translations.py:100
 msgid "Left leg"
 msgstr "Left leg"
 
-#: .\translations.py:101
+#: translations.py:101
 msgid "Right leg"
 msgstr "Right leg"
 
-#: .\translations.py:103
+#: translations.py:103
 msgid "Breeding site with water"
 msgstr "Others"
 
-#: .\translations.py:104
+#: translations.py:104
 msgid "Breeding site without water"
 msgstr "Others"
 
-#: .\translations.py:105
+#: translations.py:105
 msgid "Breeding site with larva"
 msgstr "Does it have larvae?"
 
-#: .\translations.py:106
+#: translations.py:106
 msgid "No"
 msgstr "No"
 
-#: .\translations.py:107
+#: translations.py:107
 msgid "Yes"
 msgstr "Yes"
 
-#: .\translations.py:109
+#: translations.py:109
 msgid "Not available"
 msgstr "Not available"
 
-#: .\translations.py:110
+#: translations.py:110
 msgid "No results found"
 msgstr "No results found"
+
+#: translations.py:113
+msgid "Download"
+msgstr "Download"
+
+#: translations.py:114
+msgid "No features to download"
+msgstr "There are no points"
+
+#: translations.py:115
+msgid ""
+"Only data displayed in the current map view will be downloaded. Verify your "
+"current active layers, temporal filters and zoom."
+msgstr ""
+"Only data displayed in the current map view will be downloaded. Verify your "
+"current active layers, temporal filters and zoom."
+
+#: translations.py:116
+msgid "Once verified, press the download button."
+msgstr "Once verified, press the download button."
 
 #~ msgid "Breeding site others"
 #~ msgstr "Others"
