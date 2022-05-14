@@ -1,5 +1,5 @@
 from django.db import models
-import json
+import uuid
 
 # Create your models here.
 class ProvinceManager(models.Manager):
@@ -138,6 +138,6 @@ class Userfixes(models.Model):
 
 class MapView(models.Model):
     """MapView model."""
-
+    code=models.CharField(max_length=6, null=False, blank=False, unique=True)    
     view = models.TextField(blank=True, null=True)
     date = models.DateTimeField(blank=True, null=True)
