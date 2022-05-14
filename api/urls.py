@@ -1,6 +1,6 @@
 """API urls."""
 from django.urls import path, re_path
-from .views import downloads, get_feature, get_observation, get_report, userfixes
+from .views import share, downloads, get_feature, get_observation, get_report, userfixes
 
 re_date = '\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])'
 
@@ -10,5 +10,6 @@ urlpatterns = [
     path('get_observation/<observation_id>/', get_observation),
     path('get_reports/<report_id>/', get_report),
     path('downloads/', downloads),
+    path('share/', share),
     re_path('userfixes/(?P<startdate>' + re_date + ')/(?P<enddate>' + re_date + ')/?$', userfixes)
 ]

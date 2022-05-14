@@ -113,5 +113,9 @@ def translations(request, lang):
         'Download': _("Download"),
         'No features to download': _("No features to download"),
         'Only data displayed in the current map view will be downloaded. Verify your current active layers, temporal filters and zoom.': _("Only data displayed in the current map view will be downloaded. Verify your current active layers, temporal filters and zoom."),
-        'Once verified, press the download button.': _("Once verified, press the download button.")
+        'Once verified, press the download button.': _("Once verified, press the download button."),
+
+        # Share view
+        'Share this map view': _("Share this map view")
+
     })

@@ -10,6 +10,7 @@ import json
 from django.db import connection
 from .libs.userfixes import UserfixesManager
 from .libs.downloads import DownloadsManager
+from .libs.shareview import ShareViewManager
 
 @csrf_exempt
 def downloads(request):
@@ -17,7 +18,12 @@ def downloads(request):
         post_data = json.loads(request.body.decode("utf-8"))
         manager = DownloadsManager(request)
         return manager.get(post_data)
-    
+
+@csrf_exempt
+def share(request):
+    if request.method == "POST":
+        manager = ShareViewManager(request)
+        return manager.save()
 
 def get_feature(request, observation_id):
     """Return a feature."""

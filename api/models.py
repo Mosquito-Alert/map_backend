@@ -134,3 +134,10 @@ class Userfixes(models.Model):
         """Meta information."""
 
         db_table = 'tigaserver_app_fix'
+
+
+class MapView(models.Model):
+    """MapView model."""
+
+    view = models.TextField(blank=True, null=True)
+    date = models.DateTimeField(blank=True, null=True)

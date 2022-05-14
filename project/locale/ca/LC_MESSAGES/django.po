@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-14 13:49+0200\n"
-"PO-Revision-Date: 2022-05-14 11:51+0000\n"
+"POT-Creation-Date: 2022-05-14 18:45+0200\n"
+"PO-Revision-Date: 2022-05-14 16:48+0000\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -327,6 +327,10 @@ msgstr ""
 #: translations.py:116
 msgid "Once verified, press the download button."
 msgstr "Un cop definida la vista desitjada, fes clic al botó de descàrrega."
+
+#: translations.py:119
+msgid "Share this map view"
+msgstr "Comparteix la vista d'aquest mapa"
 
 #~ msgid "Breeding site others"
 #~ msgstr "Altres"
