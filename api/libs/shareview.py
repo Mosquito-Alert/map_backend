@@ -1,22 +1,37 @@
 """Userfixes Libraries."""
-from datetime import datetime
-from django.conf import settings
+from datetime import datetime, date
 import json
 from django.http import JsonResponse
 from api.models import MapView
 import random
 import string
+import json
+
+def json_serial(obj):
+    """JSON serializer for objects not serializable by default json code"""
+
+    if isinstance(obj, (datetime, date)):
+        return obj.isoformat()
+    raise TypeError ("Type %s not serializable" % type(obj))
 
 
 class ShareViewManager():
     """Main Observations Downloads Library."""  
 
-    def __init__(self, request):
+    def __init__(self):
         """Constructor."""
+        
+        self.data = None
 
-        self.data = json.loads(request.body.decode("utf-8"))       
+    def get_random_string(self, length):
+        """Generates a new unique code for views"""
+        letters = string.ascii_letters
+        result_str = ''.join(random.choice(letters) for i in range(length))
+        return result_str
 
-    def save(self):
+    def save(self, request):
+        """Save view param into models."""
+        self.data = request.body.decode("utf-8")
         try:
             while True:
                 try:
@@ -38,8 +53,18 @@ class ShareViewManager():
         else:
             return JsonResponse({ "status": "ok", "code": random_code })
         
-    def get_random_string(self, length):
-        # choose from all lowercase letter
-        letters = string.ascii_letters
-        result_str = ''.join(random.choice(letters) for i in range(length))
-        return result_str
+    def load(self, code):
+        """Loads view params by code from models"""
+        try:
+            qs = MapView.objects.filter(
+                code__exact=code
+            ).values('code','view', 'date')[:1]
+
+        except Exception as e:
+            return JsonResponse({ "status": "error", "msg": str(e) })
+        else:
+            # view = serialize('json', qs, fields=('code','view','date',))
+            print(list(qs))
+            view = json.dumps(list(qs), default=json_serial)
+            view = json.loads(view)
+            return JsonResponse({ "status": "ok", "view": view })

@@ -20,10 +20,17 @@ def downloads(request):
         return manager.get(post_data)
 
 @csrf_exempt
-def share(request):
+def saveView(request):
     if request.method == "POST":
-        manager = ShareViewManager(request)
-        return manager.save()
+        manager = ShareViewManager()
+        return manager.save(request)
+
+@csrf_exempt
+def loadView(request, code):
+    if request.method == "GET":
+        manager = ShareViewManager()
+        return manager.load(code)
+
 
 def get_feature(request, observation_id):
     """Return a feature."""
