@@ -64,7 +64,6 @@ class ShareViewManager():
             return JsonResponse({ "status": "error", "msg": str(e) })
         else:
             # view = serialize('json', qs, fields=('code','view','date',))
-            print(list(qs))
             view = json.dumps(list(qs), default=json_serial)
             view = json.loads(view)
             return JsonResponse({ "status": "ok", "view": view })

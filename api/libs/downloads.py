@@ -45,8 +45,8 @@ class DownloadsManager(BaseManager):
             dates = filters['date'][0]
             if dates['from'] is not None and dates['to'] is not None:
                 self.data = self.data.filter(
-                observation_date__gte=datetime.strptime(dates['from'], "%Y/%m/%d"),
-                observation_date__lt=(datetime.strptime(dates['to'], "%Y/%m/%d") +
+                observation_date__gte=datetime.strptime(dates['from'], "%Y-%m-%d"),
+                observation_date__lt=(datetime.strptime(dates['to'], "%Y-%m-%d") +
                               timedelta(days=1))
             )
 
