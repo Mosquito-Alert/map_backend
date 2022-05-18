@@ -13,11 +13,11 @@ from .libs.downloads import DownloadsManager
 from .libs.shareview import ShareViewManager
 
 @csrf_exempt
-def downloads(request):
+def downloads(request, fext):
     if request.method == "POST":
         post_data = json.loads(request.body.decode("utf-8"))
         manager = DownloadsManager(request)
-        return manager.get(post_data)
+        return manager.get(post_data, fext)
 
 @csrf_exempt
 def saveView(request):

@@ -19,13 +19,17 @@ class DownloadsManager(BaseManager):
     
     def _get_main_data(self):
         """Return the data without filtering."""
-        return MapAuxReport.objects.all().filter(
+        return MapAuxReport.objects.filter(
                 lat__isnull = False
             ).filter(
                 lon__isnull = False
             ).filter(
                 private_webmap_layer__isnull = False
+            ).values(
+                'id', 'observation_date', 'lon', 'lat',
+                'ref_system', 'type', 'expert_validated', 'expert_validation_result'
             )
+            # Map link required       
 
     def _filter_data(self, **filters):
         """Return data filtered according to time parameters."""
@@ -80,9 +84,10 @@ class DownloadsManager(BaseManager):
             for tag in tags:
                 self.data = self.data.filter(tags__icontains=tag)
 
+
         return self.data
 
-    def get(self, filters):
+    def get(self, filters, fext):
         """Return Observations."""
 
         # Main query
@@ -94,17 +99,28 @@ class DownloadsManager(BaseManager):
             return {}
 
         file_name = 'observations'
-        df = geopandas.GeoDataFrame(list(qs.values()))
-        df["observation_date"] = df["observation_date"].astype(str)
-
-        geometry = [Point(xy) for xy in zip(df.lon, df.lat)]
-        gdf = geopandas.GeoDataFrame(df, crs="EPSG:4326", geometry=geometry)
 
         with tempfile.TemporaryDirectory() as tmp_dir:
-            # Export gdf as shapefile
-            # gdf.to_file(os.path.join(tmp_dir, f'{file_name}.shp'), driver='ESRI Shapefile')
-            gdf.to_file(os.path.join(tmp_dir, f'{file_name}.gpkg'), driver='GPKG')
+            df = geopandas.GeoDataFrame(list(self.data))
+            df["observation_date"] = df["observation_date"].astype(str)            
 
+            df.rename(columns = {
+                    'id':'ID',
+                    'observation_date':'Date',
+                    'lon':'Longitud',
+                    'lat':'Latitud',
+                    'Ref. System':'ref_system',
+                    'Type':'type',
+                    'Expert Validated':'expert_validated',
+                    'Expert Validation result':'expert_validation_result',
+                }, inplace = True)
+
+            if fext.lower() == 'gpkg':
+                geometry = [Point(xy) for xy in zip(df.Longitud, df.Latitud)]
+                gdf = geopandas.GeoDataFrame(df, crs="EPSG:4326", geometry=geometry)
+                gdf.to_file(os.path.join(tmp_dir, f'{file_name}.gpkg'), driver='GPKG')            
+            else:
+                df.to_excel(os.path.join(tmp_dir, f'{file_name}.xlsx'))
 
             # Zip the exported files to a single file
             tmp_zip_file_name = f'{file_name}.zip'
