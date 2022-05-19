@@ -111,8 +111,8 @@ def getFormatedResponses(type, responses, private_webmap_layer):
         '25': 'Left leg', '26': 'Right leg'
     }
     waterStatus = {
-        '101': 'Breeding site with water',
-        '81': 'Breeding site without water'
+        '101': 'Yes',
+        '81': 'No'
     }
     withLarva = { '81': 'No', '101': 'Yes' }
 
