@@ -122,7 +122,7 @@ def getFormatedResponses(type, responses, private_webmap_layer):
     }
     waterStatus = {
         '101': 'Yes',
-        '81': 'Nor'
+        '81': 'No'
     }
     withLarva = { '81': 'No', '101': 'Yes' }
 
