@@ -48,7 +48,17 @@ def get_feature(request, observation_id):
         data["photo_url"] = 'http://localhost:8000/static/api/mosquito/dummy.jpg'
     return JsonResponse(data)
 
-def get_report(request, report_id):
+@csrf_exempt
+def get_reports(request):
+    if request.method == "POST":
+        post_data = json.loads(request.body.decode("utf-8"))
+        reports = post_data['reports'].split(',')
+        reports_str = ','.join("'" + r  + "'" for r in reports)
+        
+    else: 
+        return HttpResponse({}, content_type="application/json")
+
+
     SQL = f"""
         SELECT jsonb_build_object(
             'type',     'FeatureCollection',
@@ -59,7 +69,7 @@ def get_report(request, report_id):
 			 SELECT 'Feature' As type
 				  , ST_AsGeoJSON(st_setsrid(st_makepoint(lon, lat), 4326),6)::json As geometry
 				  ,row_to_json((SELECT l FROM (
-					  SELECT id, observation_date::date as d, private_webmap_layer as c,
+					  SELECT id, observation_date::date as d, private_webmap_layer as c, report_id,
 					  -- tags is string with square braquets, so firt remove them and cast to array
 					  coalesce(
 						  replace(regexp_replace(tags, '\[|\]', '', 'g'), '''', ''),
@@ -67,7 +77,7 @@ def get_report(request, report_id):
 					) As l
 				  )) As properties
 				   FROM map_aux_reports
-				   WHERE lat is not null and lon is not null AND report_id = '{report_id}'
+				   WHERE lat is not null and lon is not null AND report_id in ({reports_str})
 				   ORDER BY observation_date
 			) As f
 		) as features
@@ -112,7 +122,7 @@ def getFormatedResponses(type, responses, private_webmap_layer):
     }
     waterStatus = {
         '101': 'Yes',
-        '81': 'No'
+        '81': 'Nor'
     }
     withLarva = { '81': 'No', '101': 'Yes' }
 

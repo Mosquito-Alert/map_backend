@@ -57,8 +57,8 @@ class DownloadsManager(BaseManager):
         # There can be only one report
         if 'report_id' in filters:
             reports = filters['report_id']
-            for report in reports:
-                self.data = self.data.filter(report_id__icontains=report)
+            self.data = self.data.filter(report_id__in=reports)
+
 
         # Check if there is a location to filter for
         if 'location' in filters:
