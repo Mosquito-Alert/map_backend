@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-14 18:45+0200\n"
-"PO-Revision-Date: 2022-05-19 07:49+0000\n"
+"PO-Revision-Date: 2022-05-19 13:22+0000\n"
 "Last-Translator:   <toni.hernandez@udg.edu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -281,7 +281,7 @@ msgstr "Cama dreta"
 
 #: translations.py:103
 msgid "Breeding site with water"
-msgstr "Amb aigua"
+msgstr "Amb aigua?"
 
 #: translations.py:104
 msgid "Breeding site without water"
