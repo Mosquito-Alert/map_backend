@@ -98,6 +98,15 @@ def get_observation(request, observation_id):
         r['formatedResponses'] = getFormatedResponses(r['type'], r['responses_json'], r['private_webmap_layer'])
     return HttpResponse(json.dumps(r), content_type="application/json")
 
+def get_observation_by_id(request, id):
+    qs = MapAuxReport.objects.get(version_uuid = id)
+    data = serialize("json", [qs])
+    r = json.loads(data)[0]['fields']
+    r['responses_json'] = json.loads(r['responses_json'])
+    if (r['type'].lower() in ['bite', 'site']):
+        r['formatedResponses'] = getFormatedResponses(r['type'], r['responses_json'], r['private_webmap_layer'])
+    return HttpResponse(json.dumps(r), content_type="application/json")    
+
 def getValueOrNull(key, values):
     key = str(key)
     if key in values:
