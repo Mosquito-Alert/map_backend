@@ -17,7 +17,10 @@ def downloads(request, fext):
     if request.method == "POST":
         post_data = json.loads(request.body.decode("utf-8"))
         manager = DownloadsManager(request)
-        return manager.get(post_data, fext)
+        if (fext == 'features'):
+            return manager.getGeoJson(post_data)
+        else:
+            return manager.get(post_data, fext)
 
 @csrf_exempt
 def saveView(request):

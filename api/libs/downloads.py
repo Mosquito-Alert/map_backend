@@ -1,17 +1,93 @@
 """Userfixes Libraries."""
 from datetime import datetime, timedelta
-from operator import __or__ as OR
 from .base import BaseManager
 from api.models import MapAuxReport
 from django.conf import settings
 import tempfile
 import os
 import json
+import json
 import zipfile
 import geopandas
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from shapely.geometry import Point
-from django.apps import apps
+from django.core.serializers.json import DjangoJSONEncoder
+
+
+def getValueOrNull(key, values):
+    key = str(key)
+    if key in values:
+        return values[key]
+    else:
+        return 'unkown'
+
+def getFormatedResponses(type, responses, private_webmap_layer):
+    locations = {
+        '44': 'Unknown', '43': 'Outdoors',
+        '42': 'Inside building','41': 'Inside vehicle'
+    }
+    biteTimes = {
+        '31': 'At sunrise', '32': 'At noon',
+        '33': 'At sunset', '34': 'At night',
+        '35': 'Not really sure'
+    }
+    bodyParts = {
+        '21': 'Head', '22': 'Left arm',
+        '23': 'Right arm', '24': 'Chest',
+        '25': 'Left leg', '26': 'Right leg'
+    }
+    waterStatus = {
+        '101': 'Yes',
+        '81': 'No'
+    }
+    withLarva = { '81': 'No', '101': 'Yes' }
+
+    NUMBER_OF_BITES = 1
+    WHERE_DID_THEY_BITE_YOU = 4
+    BITE_TIME = 3
+    BODY_PART_BITTEN = 2
+    SITE_WATER_STATUS = 10
+    SITE_LARVA_STATUS = 17
+    formated = {}
+
+    if type.lower() == 'bite':
+        for response in responses:
+            if not response ['question_id'] is None:
+                if response['question_id'] == NUMBER_OF_BITES:
+                    formated['howManyBites'] = response['answer_value']
+
+                elif response['question_id'] == WHERE_DID_THEY_BITE_YOU:              
+                    formated['location'] = getValueOrNull(response['answer_id'], locations)
+
+                elif response['question_id'] == BITE_TIME:
+                    formated['biteTime'] = getValueOrNull(response['answer_id'], biteTimes)
+
+                elif response['question_id'] == BODY_PART_BITTEN:
+                    formated['bodyPart'] = getValueOrNull(response['answer_id'], bodyParts)
+                
+    else:
+        EXISTS_WATER_STATUS = False
+        EXISTS_LARVA_STATUS = False
+        for response in responses:
+            if not response ['question_id'] is None:
+                if response['question_id'] == SITE_WATER_STATUS:
+                    EXISTS_WATER_STATUS = True
+                    formated['with_water'] = getValueOrNull(response['answer_id'], waterStatus)
+
+                if response['question_id'] == SITE_LARVA_STATUS:
+                    EXISTS_LARVA_STATUS = True
+                    formated['with_larva'] = getValueOrNull(response['answer_id'], withLarva)
+            # If info not found, then take data from other attributes
+        if not EXISTS_WATER_STATUS:
+            if private_webmap_layer.lower() == 'storm_drain_water':
+                formated['with_water'] = getValueOrNull('101', waterStatus)
+            elif private_webmap_layer.lower() == 'storm_drain_dry':
+                formated['with_water'] = getValueOrNull('81', waterStatus)
+            else:
+                formated['with_water'] = 'Not available'
+        if not EXISTS_WATER_STATUS:
+            formated['with_larva'] = 'Not available'
+    return formated
 
 
 class DownloadsManager(BaseManager):
@@ -88,7 +164,7 @@ class DownloadsManager(BaseManager):
         return self.data
 
     def get(self, filters, fext):
-        """Return Observations."""
+        """Return Observations as attachment zip file."""
 
         # Main query
         self.data = self._get_main_data()
@@ -145,3 +221,15 @@ class DownloadsManager(BaseManager):
                 response = HttpResponse(file, content_type='application/force-download')
                 response['Content-Disposition'] = f'attachment; filename="{tmp_zip_file_name}"'
                 return response
+
+    def getGeoJson(self, filters):
+        """Return GeoJson Observations as json."""
+
+        # Main query
+        self.data = self._get_main_data()
+
+        # Filter data
+        qs = self._filter_data(**filters)
+
+        return JsonResponse(list(qs.values()), safe=False)
+
