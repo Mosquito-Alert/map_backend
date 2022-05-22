@@ -117,6 +117,7 @@ def translations(request, lang):
         'Once verified, press the download button.': _("Once verified, press the download button."),
 
         # Share view
+        'This view does not exist': _("This view does not exist"),
         'Share modal title': _("Share modal title"),
         'Share this map view': _("Share this map view"),
 

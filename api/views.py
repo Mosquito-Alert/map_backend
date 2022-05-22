@@ -11,6 +11,7 @@ from django.db import connection
 from .libs.userfixes import UserfixesManager
 from .libs.downloads import DownloadsManager
 from .libs.shareview import ShareViewManager
+from .libs.reportview import ReportManager
 
 @csrf_exempt
 def downloads(request, fext):
@@ -22,6 +23,7 @@ def downloads(request, fext):
         else:
             return manager.get(post_data, fext)
 
+# Share Map View
 @csrf_exempt
 def saveView(request):
     if request.method == "POST":
@@ -32,6 +34,19 @@ def saveView(request):
 def loadView(request, code):
     if request.method == "GET":
         manager = ShareViewManager()
+        return manager.load(code)
+
+# Map Report
+@csrf_exempt
+def saveReport(request):
+    if request.method == "POST":
+        manager = ReportManager()
+        return manager.save(request)
+
+@csrf_exempt
+def loadReport(request, code):
+    if request.method == "GET":
+        manager = ReportManager()
         return manager.load(code)
 
 

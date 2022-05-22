@@ -141,3 +141,9 @@ class MapView(models.Model):
     code=models.CharField(max_length=6, null=False, blank=False, unique=True)    
     view = models.TextField(blank=True, null=True)
     date = models.DateTimeField(blank=True, null=True)
+
+class ReportView(models.Model):
+    """MapView model."""
+    code=models.CharField(max_length=8, null=False, blank=False, unique=True)    
+    view = models.TextField(blank=True, null=True)
+    date = models.DateTimeField(blank=True, null=True)    

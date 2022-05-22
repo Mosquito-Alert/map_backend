@@ -2,7 +2,7 @@
 from datetime import datetime, date
 import json
 from django.http import JsonResponse
-from api.models import MapView
+from api.models import ReportView
 import random
 import string
 import json
@@ -15,7 +15,7 @@ def json_serial(obj):
     raise TypeError ("Type %s not serializable" % type(obj))
 
 
-class ShareViewManager():
+class ReportManager():
     """Main Observations Downloads Library."""  
 
     def __init__(self):
@@ -35,14 +35,14 @@ class ShareViewManager():
         try:
             while True:
                 try:
-                    random_code = self.get_random_string(4)
-                    qs = MapView.objects.filter(code__exact=random_code)
+                    random_code = self.get_random_string(6)
+                    qs = ReportView.objects.filter(code__exact=random_code)
                     if qs.count() == 0:
                         break
                 except Exception as e:
                     return JsonResponse({ "status": "error", "msg": str(e) })
 
-            view_instance = MapView.objects.create(
+            view_instance = ReportView.objects.create(
                 view=self.data,
                 date=datetime.now(),
                 code=random_code
@@ -56,12 +56,9 @@ class ShareViewManager():
     def load(self, code):
         """Loads view params by code from models"""
         try:
-            qs = MapView.objects.filter(
+            qs = ReportView.objects.filter(
                 code__exact=code
             ).values('code','view', 'date')[:1]
-
-            if qs.count() == 0:
-                raise Exception('This view does not exist')
 
         except Exception as e:
             return JsonResponse({ "status": "error", "msg": str(e) })
