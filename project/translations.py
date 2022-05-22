@@ -19,6 +19,7 @@ def translations(request, lang):
         "Placeholder location": _("Placeholder location"),
         "Placeholder hashtag": _("Placeholder hashtag"),
         "Filter": _("Filter"),
+        "Continue": _("Continue"),
 
         # observation categories
         "Mosquito_tiger_probable": _("Mosquito tiger probable"),
@@ -116,6 +117,12 @@ def translations(request, lang):
         'Once verified, press the download button.': _("Once verified, press the download button."),
 
         # Share view
-        'Share this map view': _("Share this map view")
+        'Share modal title': _("Share modal title"),
+        'Share this map view': _("Share this map view"),
+
+        # Reports modal
+        'Reports modal title': _("Reports modal title"),
+        'Report with the observations displayed in the current map view (maximum: 300 observations)': _("Report with the observations displayed in the current map view (maximum: 300 observations)"),
+        'Verify this by looking at the map point counter': _("Verify this by looking at the map point counter (on the down left map corner).")
 
     })
