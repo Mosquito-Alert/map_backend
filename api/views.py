@@ -21,7 +21,7 @@ def downloads(request, fext):
         if (fext == 'features'):
             return manager.getGeoJson(post_data)
         else:
-            return manager.get(post_data, fext)
+            return manager.get(post_data, fext)            
 
 # Share Map View
 @csrf_exempt

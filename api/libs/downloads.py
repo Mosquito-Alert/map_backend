@@ -1,4 +1,6 @@
 """Userfixes Libraries."""
+from api.constants import webserver_url
+from django.db.models.functions import Concat
 from datetime import datetime, timedelta
 from .base import BaseManager
 from api.models import MapAuxReport
@@ -12,7 +14,7 @@ import geopandas
 from django.http import HttpResponse, JsonResponse
 from shapely.geometry import Point
 from django.core.serializers.json import DjangoJSONEncoder
-
+from django.db.models import CharField, Value
 
 def getValueOrNull(key, values):
     key = str(key)
@@ -95,17 +97,21 @@ class DownloadsManager(BaseManager):
     
     def _get_main_data(self):
         """Return the data without filtering."""
-        return MapAuxReport.objects.filter(
+        qs = MapAuxReport.objects.filter(
                 lat__isnull = False
             ).filter(
                 lon__isnull = False
             ).filter(
                 private_webmap_layer__isnull = False
+            ).annotate(
+                map_link=Concat(Value(webserver_url), 'version_uuid')
             ).values(
                 'id', 'observation_date', 'lon', 'lat',
-                'ref_system', 'type', 'expert_validated', 'expert_validation_result'
+                'ref_system', 'type', 'expert_validated', 'expert_validation_result',
+                'nuts3_name', 'ia_value', 'larvae', 'bite_count', 'bite_location',
+                'map_link'
             )
-            # Map link required       
+        return qs
 
     def _filter_data(self, **filters):
         """Return data filtered according to time parameters."""
@@ -160,7 +166,6 @@ class DownloadsManager(BaseManager):
             for tag in tags:
                 self.data = self.data.filter(tags__icontains=tag)
 
-
         return self.data
 
     def get(self, filters, fext):
@@ -171,14 +176,13 @@ class DownloadsManager(BaseManager):
 
         # Filter data
         qs = self._filter_data(**filters)
-        if qs.count() == 0:
-            return {}
-
         file_name = 'observations'
 
         with tempfile.TemporaryDirectory() as tmp_dir:
             df = geopandas.GeoDataFrame(list(self.data))
-            df["observation_date"] = df["observation_date"].astype(str)            
+            
+            if qs.count() != 0:
+                df["observation_date"] = df["observation_date"].astype(str)            
 
             df.rename(columns = {
                     'id':'ID',
@@ -187,8 +191,14 @@ class DownloadsManager(BaseManager):
                     'lat':'Latitud',
                     'Ref. System':'ref_system',
                     'Type':'type',
-                    'Expert Validated':'expert_validated',
-                    'Expert Validation result':'expert_validation_result',
+                    'Expert Validated':'Validation',
+                    'Expert Validation result':'Category',
+                    'nuts3_name': 'Nuts',
+                    'ia_value': 'IA',
+                    'larvae': 'With larvae',
+                    'bite_count': 'Number of bites',
+                    'bite_location': 'Bite location',
+                    'map_link': 'Link to map'
                 }, inplace = True)
 
             if fext.lower() == 'gpkg':

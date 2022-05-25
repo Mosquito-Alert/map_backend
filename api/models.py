@@ -92,14 +92,36 @@ class MapAuxReport(models.Model):
     final_expert_status = models.IntegerField()
     note = models.TextField()
     tags = models.TextField(null=True)
-    municipality = models.ForeignKey(Municipality, null=True,
-                                     on_delete=models.CASCADE)
+
     breeding_site_answers = models.CharField(max_length=100, blank=True)
     mosquito_answers = models.CharField(max_length=100, blank=True)
     n_photos = models.IntegerField(blank=True, null=True)
     visible = models.BooleanField()
     responses_json = models.TextField(blank=True, null=True)
     report_id = models.CharField(max_length=10, blank=True, null=True)
+
+    nuts3_code = models.CharField(max_length=5, default=None, null=True)
+    nuts3_name = models.CharField(max_length=155, default=None, null=True)
+    bite_location = models.CharField(max_length=100, null=True, default=None)
+    validation = models.IntegerField(default=None, null=True)
+    ia_value = models.FloatField(default=None, null=True)
+    larvae = models.BooleanField(default=None, null=True)
+    bite_count = models.IntegerField(blank=True, default=None, null=True)
+    
+    t_q_1 = models.CharField(max_length=255, default=None, null=True)
+    t_q_2 = models.CharField(max_length=255, default=None, null=True)
+    t_q_3 = models.CharField(max_length=255, default=None, null=True)
+    t_a_1 = models.CharField(max_length=255, default=None, null=True)
+    t_a_2 = models.CharField(max_length=255, default=None, null=True)
+    t_a_3 = models.CharField(max_length=255, default=None, null=True)
+    s_q_1 = models.CharField(max_length=255, default=None, null=True)
+    s_q_2 = models.CharField(max_length=255, default=None, null=True)
+    s_q_3 = models.CharField(max_length=255, default=None, null=True)
+    s_q_4 = models.CharField(max_length=255, default=None, null=True)
+    s_a_1 = models.CharField(max_length=255, default=None, null=True)
+    s_a_2 = models.CharField(max_length=255, default=None, null=True)
+    s_a_3 = models.CharField(max_length=255, default=None, null=True)
+    s_a_4 = models.CharField(max_length=255, default=None, null=True)
 
     def save(self, *args, **kwargs):
         self.tags = self.tags.lower()

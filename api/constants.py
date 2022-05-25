@@ -19,43 +19,7 @@ All roles allowed
 user_roles = [superusers_group, managers_group]
 
 
-####################
-# EXPORT EXCEL/CSV #
-####################
-
-"""
-All fields available.
-
-Each field is a tuple. For each tuple:
-  - The first element is the name of the DB column (string)
-  - The second element is the name of the Excel/CSV column (string)
-
-Except for the fields restricted to specific roles, in such case:
-  - The first element remains the same.
-  - The second element is a dict with these attributes:
-      - label (string): the name of the Excel/CSV column
-      - permissions (list): the roles allowed to see this field
-"""
-fields_available = [
-    ('version_uuid', 'ID'),
-    ('user_id', {
-        'label': '(PRIVATE COLUMN!!) User',
-        'permissions':  [superusers_group, managers_group]
-    }),
-    ('observation_date', 'Date'),
-    ('lon', 'Longitude'),
-    ('lat', 'Latitude'),
-    ('ref_system', 'Ref. System'),
-    ('municipality__nombre', 'Municipality'),
-    ('type', 'Type'),
-    ('expert_validated', 'Expert validated'),
-    ('private_webmap_layer', 'Expert validation result'),
-    ('single_report_map_url', 'Map link'),
-    ('note', {
-         'label': '(PRIVATE COLUMN!!) Tags',
-         'permissions': [superusers_group]
-    })
-]
+webserver_url = 'https://webserver.mosquitoalert.com/'
 
 #############
 # USERFIXES #
