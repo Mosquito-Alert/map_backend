@@ -240,6 +240,5 @@ class DownloadsManager(BaseManager):
 
         # Filter data
         qs = self._filter_data(**filters)
-
         return JsonResponse(list(qs.values()), safe=False)
 
