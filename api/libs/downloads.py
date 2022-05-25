@@ -129,12 +129,13 @@ class DownloadsManager(BaseManager):
         # Check if there is date to filter for
         if 'date' in filters:
             dates = filters['date'][0]
-            if dates['from'] is not None and dates['to'] is not None:
-                self.data = self.data.filter(
-                observation_date__gte=datetime.strptime(dates['from'], "%Y-%m-%d"),
-                observation_date__lt=(datetime.strptime(dates['to'], "%Y-%m-%d") +
-                              timedelta(days=1))
-            )
+            if dates['from'] != '':
+                if dates['from'] is not None and dates['to'] is not None:
+                    self.data = self.data.filter(
+                    observation_date__gte=datetime.strptime(dates['from'], "%Y-%m-%d"),
+                    observation_date__lt=(datetime.strptime(dates['to'], "%Y-%m-%d") +
+                                timedelta(days=1))
+                )
 
         # There can be only one report
         if 'report_id' in filters:
