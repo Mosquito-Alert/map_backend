@@ -15,7 +15,7 @@ from django.http import HttpResponse, JsonResponse
 from shapely.geometry import Point
 from django.core.serializers.json import DjangoJSONEncoder
 from django.db.models import CharField, Value
-
+from django.db.models import Q
 def getValueOrNull(key, values):
     key = str(key)
     if key in values:
@@ -167,6 +167,7 @@ class DownloadsManager(BaseManager):
             for tag in tags:
                 self.data = self.data.filter(tags__icontains=tag)
 
+        # print(self.data.query)
         return self.data
 
     def get(self, filters, fext):

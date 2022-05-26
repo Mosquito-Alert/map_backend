@@ -43,6 +43,7 @@ def translations(request, lang):
         "Yellow": _("Yellow fever mosquito"),
         "Japonicus mosquito": _("Japonicus mosquito"),
         "Japonicus": _("Japonicus mosquito"),
+        "Mosquito japonicus/koreicus": _("Mosquito japonicus/koreicus"),
         "Koreicus mosquito": _("Koreicus mosquito"),
         "Koreicus": _("Koreicus mosquito"),
         "Culex mosquito": _("Culex mosquito"),
@@ -70,6 +71,8 @@ def translations(request, lang):
         # Timeseries
         "Time series": _("Time series"),
         "Pick a date range": _("Pick a date range"),
+        "Delete calendar": _("Delete calendar"),
+        "Apply calendar": _("Apply calendar"),
 
         # Map, Popup
         'How many bites': _("How many bites"),
@@ -122,6 +125,9 @@ def translations(request, lang):
         'Share this map view': _("Share this map view"),
 
         # Reports modal
+        'List of observations':_("List of observations"),       
+        'Selected observations': _("Selected observations"),
+        'Filters applied': _("Filters applied"),
         'Reports modal title': _("Reports modal title"),
         'Report with the observations displayed in the current map view (maximum: 300 observations)': _("Report with the observations displayed in the current map view (maximum: 300 observations)"),
         'Verify this by looking at the map point counter': _("Verify this by looking at the map point counter (on the down left map corner).")
