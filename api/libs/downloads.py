@@ -16,6 +16,9 @@ from shapely.geometry import Point
 from django.core.serializers.json import DjangoJSONEncoder
 from django.db.models import CharField, Value
 from django.db.models import Q
+import operator 
+from functools import reduce
+
 def getValueOrNull(key, values):
     key = str(key)
     if key in values:
@@ -163,11 +166,13 @@ class DownloadsManager(BaseManager):
 
         if 'hashtags' in filters:
             tags = json.loads(filters['hashtags'])
-            # tags_str = "'{0}'".format("', '".join(tags))
+            q_collect = None
+            rules = []
             for tag in tags:
-                self.data = self.data.filter(tags__icontains=tag)
+                rules.append(Q(tags__icontains=tag))
+            
+            self.data = self.data.filter(reduce(operator.or_, rules))
 
-        # print(self.data.query)
         return self.data
 
     def get(self, filters, fext):
