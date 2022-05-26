@@ -150,6 +150,7 @@ class DownloadsManager(BaseManager):
         if 'location' in filters:
                 # location = json.loads(filters['location'])
                 location = filters['location']
+                BB = json.loads(filters['locationBbox'])
                 condition = """
                     ST_CONTAINS(
                         ST_SETSRID(ST_GEOMFROMGEOJSON('{}'),4326),
@@ -196,10 +197,10 @@ class DownloadsManager(BaseManager):
                     'observation_date':'Date',
                     'lon':'Longitud',
                     'lat':'Latitud',
-                    'Ref. System':'ref_system',
-                    'Type':'type',
-                    'Expert Validated':'Validation',
-                    'Expert Validation result':'Category',
+                    'ref_system': 'Ref. System',
+                    'type':'Type',
+                    'expert_validated':'Validation',
+                    'expert_validation_result':'Category',
                     'nuts3_name': 'Nuts',
                     'ia_value': 'IA',
                     'larvae': 'With larvae',
