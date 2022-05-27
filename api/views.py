@@ -66,6 +66,45 @@ def get_feature(request, observation_id):
         data["photo_url"] = 'http://localhost:8000/static/api/mosquito/dummy.jpg'
     return JsonResponse(data)
 
+
+def get_data(request, year):
+    SQL = f"""
+        SELECT jsonb_build_object(
+            'year', {year},            
+            'type',     'FeatureCollection',
+            'features', jsonb_agg(features.feature)
+        )
+        from(
+            -- one raw for each feature
+            SELECT row_to_json(f) As feature
+                    FROM (
+                SELECT 'Feature' As type
+                    , ST_AsGeoJSON(st_setsrid(st_makepoint(lon, lat), 4326),6)::json As geometry
+                    ,row_to_json((SELECT l FROM (
+                        SELECT id, observation_date::date as d, private_webmap_layer as c,
+                        -- tags is string with square braquets, so firt remove them and cast to array
+                        coalesce(
+                            replace(regexp_replace(tags, '\[|\]', '', 'g'), '''', ''),
+                            '') as t
+                    ) As l
+                    )) As properties
+                    FROM map_aux_reports
+                    WHERE extract(year from observation_date) = {year} 
+                        AND LAT IS NOT NULL
+                        AND LON IS NOT NULL
+                    ORDER BY observation_date
+            ) As f
+        ) as features
+    """
+    with connection.cursor() as cursor:
+        cursor.execute(SQL)
+        data = cursor.fetchall()[0]
+        # data['year'] = year
+        # data = serialize("json", cursor.fetchone())
+
+    return HttpResponse(data, content_type="application/json")
+
+
 @csrf_exempt
 def get_reports(request):
     if request.method == "POST":
@@ -75,7 +114,6 @@ def get_reports(request):
         
     else: 
         return HttpResponse({}, content_type="application/json")
-
 
     SQL = f"""
         SELECT jsonb_build_object(
