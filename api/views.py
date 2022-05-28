@@ -96,13 +96,20 @@ def get_data(request, year):
             ) As f
         ) as features
     """
-    with connection.cursor() as cursor:
+
+    try:
+        cursor = connection.cursor()
         cursor.execute(SQL)
         data = cursor.fetchall()[0]
-        # data['year'] = year
-        # data = serialize("json", cursor.fetchone())
 
-    return HttpResponse(data, content_type="application/json")
+        # if year == '2019':
+        #     raise Exception('Error fetching data (%s)' % year)
+
+    except Exception as e:
+        return JsonResponse({ "status": "error", "msg": str(e) })
+    else:
+        return HttpResponse(data, content_type="application/json")
+
 
 
 @csrf_exempt
