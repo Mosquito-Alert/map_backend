@@ -9,6 +9,7 @@ def translations(request, lang):
     translation.activate(lang)
     return JsonResponse({
         # General
+        "Shown points": _("Shown points"),
         "Open": _("Open"),
         "Close": _("Close"),
         "Select": _("Select"),
