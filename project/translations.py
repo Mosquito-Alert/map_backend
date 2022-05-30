@@ -125,7 +125,8 @@ def translations(request, lang):
         'Share this map view': _("Share this map view"),
 
         # Reports modal
-        'Reports': _("Reports"),        
+        'Reports': _("Reports"),
+        'Reports limit exceeded': _("Reports limit exceeded"),
         'List of observations':_("List of observations"),       
         'Selected observations': _("Selected observations"),
         'Filters applied': _("Filters applied"),
