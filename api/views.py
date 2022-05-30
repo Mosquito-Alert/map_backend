@@ -1,3 +1,4 @@
+from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_exempt
 import random
 from re import M
@@ -66,7 +67,7 @@ def get_feature(request, observation_id):
         data["photo_url"] = 'http://localhost:8000/static/api/mosquito/dummy.jpg'
     return JsonResponse(data)
 
-
+@cache_page(86400)
 def get_data(request, year):
     SQL = f"""
         SELECT jsonb_build_object(
