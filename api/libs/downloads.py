@@ -1,5 +1,4 @@
 """Userfixes Libraries."""
-from api.constants import webserver_url
 from django.db.models.functions import Concat
 from datetime import datetime, timedelta
 from .base import BaseManager
@@ -18,6 +17,7 @@ from django.db.models import CharField, Value
 from django.db.models import Q
 import operator 
 from functools import reduce
+from django.core.serializers import serialize
 
 def getValueOrNull(key, values):
     key = str(key)
@@ -107,7 +107,7 @@ class DownloadsManager(BaseManager):
             ).filter(
                 private_webmap_layer__isnull = False
             ).annotate(
-                map_link=Concat(Value(webserver_url), 'version_uuid')
+                map_link=Concat(Value(settings.WEBSERVER_URL), 'version_uuid')
             ).values(
                 'id', 'observation_date', 'lon', 'lat',
                 'ref_system', 'type', 'expert_validated', 'expert_validation_result',
@@ -150,7 +150,7 @@ class DownloadsManager(BaseManager):
         if 'location' in filters:
                 # location = json.loads(filters['location'])
                 location = filters['location']
-                BB = json.loads(filters['locationBbox'])
+                # BB = json.loads(filters['locationBbox'])
                 condition = """
                     ST_CONTAINS(
                         ST_SETSRID(ST_GEOMFROMGEOJSON('{}'),4326),
@@ -248,5 +248,15 @@ class DownloadsManager(BaseManager):
 
         # Filter data
         qs = self._filter_data(**filters)
-        return JsonResponse(list(qs.values()), safe=False)
+        result = []
+        for r in qs.values():
+            if (r['type'].lower() in ['bite', 'site']):
+                r['formatedResponses'] = getFormatedResponses(
+                                            r['type'],
+                                            json.loads(r['responses_json']),
+                                            r['private_webmap_layer']
+                                        )
+            result.append(r)
+
+        return JsonResponse(result, safe=False)
 

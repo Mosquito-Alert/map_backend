@@ -19,8 +19,6 @@ All roles allowed
 user_roles = [superusers_group, managers_group]
 
 
-webserver_url = 'https://webserver.mosquitoalert.com/'
-
 #############
 # USERFIXES #
 #############
