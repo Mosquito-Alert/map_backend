@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-02 10:09+0200\n"
-"PO-Revision-Date: 2022-06-02 08:10+0000\n"
+"PO-Revision-Date: 2022-06-02 10:11+0000\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -340,10 +340,9 @@ msgid "Download geopackage"
 msgstr "Download geopackage"
 
 #: translations.py:121
-#, fuzzy
 #| msgid "Download"
 msgid "Download excel"
-msgstr "Download data"
+msgstr "Download excel"
 
 #: translations.py:122
 msgid "No features to download"
