@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-02 16:53+0200\n"
-"PO-Revision-Date: 2022-06-02 14:56+0000\n"
+"PO-Revision-Date: 2022-06-02 17:03+0000\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -375,7 +375,6 @@ msgid "This view does not exist"
 msgstr "Aquesta vista de mapa no existeix"
 
 #: translations.py:129
-#, fuzzy
 #| msgid "Share this map view"
 msgid "Share modal title"
 msgstr "Comparteix la vista d'aquest mapa"
