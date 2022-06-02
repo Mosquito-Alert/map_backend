@@ -18,6 +18,7 @@ from django.db.models import Q
 import operator 
 from functools import reduce
 from django.core.serializers import serialize
+import numpy as np
 
 def getValueOrNull(key, values):
     key = str(key)
@@ -110,8 +111,9 @@ class DownloadsManager(BaseManager):
                 map_link=Concat(Value(settings.WEBSERVER_URL), 'version_uuid')
             ).values(
                 'id', 'observation_date', 'lon', 'lat',
-                'ref_system', 'type', 'expert_validated', 'expert_validation_result',
-                'nuts3_name', 'ia_value', 'larvae', 'bite_count', 'bite_location',
+                'ref_system', 'nuts3_code', 'nuts3_name',
+                'type', 'expert_validated', 'private_webmap_layer',
+                'ia_value', 'larvae', 'bite_count', 'bite_location',
                 'map_link'
             )
         return qs
@@ -192,22 +194,26 @@ class DownloadsManager(BaseManager):
             if qs.count() != 0:
                 df["observation_date"] = df["observation_date"].astype(str)            
 
+            df["larvae"] = df["larvae"].map({True: 'YES', False: 'NO', None: 'NA'})
+           
             df.rename(columns = {
                     'id':'ID',
                     'observation_date':'Date',
-                    'lon':'Longitud',
-                    'lat':'Latitud',
+                    'lon':'Longitude',
+                    'lat':'Latitude',
                     'ref_system': 'Ref. System',
                     'type':'Type',
                     'expert_validated':'Validation',
-                    'expert_validation_result':'Category',
-                    'nuts3_name': 'Nuts',
-                    'ia_value': 'IA',
-                    'larvae': 'With larvae',
-                    'bite_count': 'Number of bites',
+                    'private_webmap_layer':'Category',
+                    'nuts3_code': 'Nuts3 ID',
+                    'nuts3_name': 'Nuts3 name',
+                    'ia_value': 'AI value',
+                    'larvae': 'Larvae',
+                    'bite_count': 'Bites count',
                     'bite_location': 'Bite location',
-                    'map_link': 'Link to map'
+                    'map_link': 'Map link'
                 }, inplace = True)
+
 
             if fext.lower() == 'gpkg':
                 geometry = [Point(xy) for xy in zip(df.Longitud, df.Latitud)]

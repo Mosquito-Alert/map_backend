@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-02 10:09+0200\n"
-"PO-Revision-Date: 2022-06-02 10:11+0000\n"
+"POT-Creation-Date: 2022-06-02 16:53+0200\n"
+"PO-Revision-Date: 2022-06-02 14:56+0000\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -340,7 +340,6 @@ msgid "Download geopackage"
 msgstr "Descarregar geopackage"
 
 #: translations.py:121
-#| msgid "Download"
 msgid "Download excel"
 msgstr "Descarregar excel"
 
@@ -361,49 +360,59 @@ msgstr ""
 msgid "Once verified, press the download button."
 msgstr "Un cop definida la vista desitjada, fes clic al botó de descàrrega."
 
-#: translations.py:127
+#: translations.py:125
+msgid ""
+"For the Mosquito Alert complete dataset, with advanced options, go to "
+"Mosquito Alert portal: http://www.mosquitoalert.com/en/access-to-mosquito-"
+"alert-data-portal/"
+msgstr ""
+"Si vols el set complet de Mosquito Alert, amb opcions avançades de "
+"documentació i descàrrega, dirigeix-te al Portal de Dades de Mosquito Alert:"
+" http://www.mosquitoalert.com/en/access-to-mosquito-alert-data-portal/'"
+
+#: translations.py:128
 msgid "This view does not exist"
 msgstr "Aquesta vista de mapa no existeix"
 
-#: translations.py:128
+#: translations.py:129
 #, fuzzy
 #| msgid "Share this map view"
 msgid "Share modal title"
 msgstr "Comparteix la vista d'aquest mapa"
 
-#: translations.py:129
+#: translations.py:130
 msgid "Share this map view"
 msgstr "Comparteix la vista d'aquest mapa"
 
-#: translations.py:132
+#: translations.py:133
 msgid "Coordinates (latitud, longitud)"
 msgstr "Coordenades (latitud, longitud)"
 
-#: translations.py:133
+#: translations.py:134
 msgid "Reports"
 msgstr "Llistat d'observacions"
 
-#: translations.py:134
+#: translations.py:135
 msgid "Reports limit exceeded"
 msgstr "El número d'observacions supera el màxim establert"
 
-#: translations.py:135
+#: translations.py:136
 msgid "List of observations"
 msgstr "Llistat d'observacions"
 
-#: translations.py:136
+#: translations.py:137
 msgid "Selected observations"
 msgstr "Observacions seleccionades"
 
-#: translations.py:137
+#: translations.py:138
 msgid "Filters applied"
 msgstr "Filtres aplicats"
 
-#: translations.py:138
+#: translations.py:139
 msgid "Reports modal title"
 msgstr "Llista d'observacions"
 
-#: translations.py:139
+#: translations.py:140
 msgid ""
 "Report with the observations displayed in the current map view (maximum: 300"
 " observations)"
@@ -411,7 +420,7 @@ msgstr ""
 "Informe de les observacions que es visualizen a la vista actual del mapa "
 "(màxim 300)."
 
-#: translations.py:140
+#: translations.py:141
 msgid ""
 "Verify this by looking at the map point counter (on the down left map "
 "corner)."

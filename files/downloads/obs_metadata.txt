@@ -1,39 +1,75 @@
-DETAILED LEGEND DESCRIPTION
+METADATA
 
-Description of the categories assigned to each citizen report in the map (see map legend).
+This metadata corresponds to the dataset downloaded through the Mosquito Alert public interactive online map. It describes each of the dataset fields, and how certain categories are assigned.
 
-*Tiger mosquito*: it includes reports from citizen tagged by them as "adult mosquito", that contain at least one picture and that it has been evaluated by entomological experts. According to these experts, the picture/s of this observation could be tiger mosquito (Aedes albopictus): their taxonomic features can be clearly seen in the picture/s, especially the white stripe on head and thorax; or only some characteristic features can be observed, but it could be this species nonetheless.
+To download a more extended version of the Mosquito Alert dataset with advanced features and more precise metadata, please visit the Mosquito Alert Data Portal: http://www.mosquitoalert.com/en/access-to-mosquito-alert-data-portal/ 
 
-*Yellow fever mosquito*: it includes reports from citizen tagged by them as "adult mosquito", that contain at least one picture and that it has been evaluated by entomological experts. According to these experts, the picture/s of this observation could be yellow fever mosquito (Aedes aegypti): their taxonomic features can be clearly seen in the picture/s, especially the lyre in the head and thorax; or only some characteristic features can be observed, but it could be this species nonetheless.
-
-*Other species*: it includes reports from citizen tagged by them as "adult mosquito", that contain at least one picture and that it has been evaluated by entomological experts. According to these experts, the pictures of this observation may be of other species of mosquito.
-
-*Unidentifiable*: it includes all reports from citizen tagged by them as "adult mosquito" that don't contain any picture attached and therefore, could not be evaluated by entomological experts. It also includes reports from citizen tagged by them as "adult mosquito", that contain at least one picture and that it has been evaluated by entomological experts. According to these experts, these observations and their photo/s do not help identify any particular species of mosquito (experts cannot decide on any other category according to the content of the pictures).
-
-*Breeding sites*: storm drain with or without water*: citizens' observations of possible breeding sites (storm drain) of tiger or yellow fever mosquitoes. It includes reports that contain at least one picture and that it has been evaluated by entomological experts, reports with at least one picture that have not been evaluated by experts and it might also contain reports without pictures. 
 
 
 DETAILED FIELD DESCRIPTION
 
-Description of each field found in the downloadable data base
+*ID*: unique identifier for each observation. UUID randomly generated on the phone to identify each unique report version. Must be exactly 36 characters (32 hex digits plus 4 hyphens). This corresponds to the latest version of the report (as opposed to an earlier version that the participant subsequently edited). Example: 8664a3b2-7646-42ab-8c7b-475245ac88db. 
 
-*ID*: unique identifier for each observation. UUID randomly generated on phone to identify each unique report version. Must be exactly 36 characters (32 hex digits plus 4 hyphens). This corresponds to the latest version of the report (as opposed to an earlier version that the participant subsequently edited). Example: 8664a3b2-7646-42ab-8c7b-475245ac88db.
+*Date*: creation date and time of the observation. Date and time on the phone when the first version of the report was created, converted to UTC time zone 0. Format as YYYY-MM-DD hh:mm:ss. Note that this date does not necessarily coincide with the date of the encounter with the reported mosquito, breeding site or bite. Example: 2016-07-31 17:39:12. 
 
-*Date*: creation date and time of the observation. Date and time on phone when first version of report was created, converted to UTC time zone 0. Format as YYYY-MM-DD hh:mm:ss. Example: 2016-07-31 17:39:12.
+*Longitude*: longitude of report location in decimal degrees. Participants select the location of the observation on a map, or use GPS and other smartphone services to record their current location at the time of sending the observation. Accuracy or precision of the coordinates cannot be specified for each particular case, because it depends on many factors (each participant's device, specific day of recording, network coverage, GPS availability, etc.). Example: -0.4045194. 
 
-*Longitude*: longitude of report location in decimal degrees. Participants select the location on a map, or use GPS and other Smartphone services to record their current location at the time of the observation. Accuracy or precision of the coordinates cannot be specified for each particular case, because it depends on many factors (each participant's device, specific day of recording, network coverage, GPS availability, etc.). Example: -0.4045194.
+*Latitude*: latitude of report location in decimal degrees. Participants select the location of the observation on a map, or use GPS and other smartphone services to record their current location at the time of sending the observation. Accuracy or precision of the coordinates cannot be specified for each particular case, because it depends on many factors (each participant's device, specific day of recording, network coverage, GPS availability, etc.). Example: 39.55819. 
 
-*Latitude*: latitude of report location in decimal degrees. Participants select the location on a map, or use GPS and other Smartphone services to record their current location at the time of the observation. Accuracy or precision of the coordinates cannot be specified for each particular case, because it depends on many factors (each participant's device, specific day of recording, network coverage, GPS availability, etc.). Example: 39.55819.
+*Ref. System*: Reference System of the Geographic Coordinates (latitude, longitude) in EPSG:4326. Example: WGS84. 
 
-*Ref. System*: Reference System of the Geographic Coordinates (latitude, longitude) in EPSG:4326. Example: WGS84.
+*NUTS3 ID*: NUTS_ID of the Nomenclature of Territorial Units for Statistics (NUTS), level 3, 2021, that corresponds to the longitude and latitude of the observation. More information at: https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts. © EuroGeographics for the administrative boundaries. Ex: ES511 
 
-*Municipality*: Municipality where the citizen report is located. Ex: Sabadell.
+*NUTS3 name*: NUTS_NAME of the Nomenclature of Territorial Units for Statistics (NUTS), level 3, year 2021, that corresponds to the longitude and latitude of the observation. More information at: https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts. © EuroGeographics for the administrative boundaries. Ex: Barcelona 
 
-*Type*: type of report. 'Adult' or 'site', depending on the app button that the participant selected to send the observation. Example: adult.
+*Type*: type of report: “adult”', “site” or “bite”', depending on the app button that the participant selected to send the observation. Example: adult. 
 
-*Expert validated*: it is a zero if the report has not been validated by entomology experts and 1, if yes. More information on the validation method on the project website. Example: 0.
+*Validation*:  “1” if the report has been validated by entomology experts, “2” if the report has been validated by Artificial Intelligence algorithms and “0” for reports not validated either by entomology experts or AI algorithms. More information on the validation method on the project website. Example: 0. 
 
-*Expert validation result*: Possible values are "mosquito_tiger_confirmed", "mosquito_tiger_probable", "yellow_fever_confirmed", "yellow_fever_probable", "other_species", "unidentified", "storm_drain_water", "storm_drain_dry"
+*Category*: according to the result of the validation, if any. Possible values are "mosquito_tiger_confirmed", "mosquito_tiger_probable", "yellow_fever_confirmed", "yellow_fever_probable",”japonicus_confirmed”,”japonicus_probable”,”koreicus_confirmed”,”koreicus_probable”,”culex_confirmed”,”culex_probable”,”japonicus_koreicus”,”albopictus_cretinus”, "other_species", "unidentifiable", "storm_drain_water", "storm_drain_dry", “other_breeding_sites”, “bites” 
 
-*Map link*: an HTML string that produces a small version of the selected report. Example:
-http://webserver.mosquitoalert.com/spain.html#/es/19/40.83933/14.24665/0/all/all/5979
+*AI value”: “NA” if not AI validated. Value range: [0-1]. Values close to one indicate a high chance of the automatic validation being right. For instance, a report with ‘mosquito_tiger_probable’ with an AI value of 0.9 is much more likely to really be a tiger mosquito than a report with an AI value of 0.2. For more information, visit the www.mosquitoalert.com website. Example: 0.4.  
+
+*Larvae*: for breeding sites, “yes” if, according to the sender of the observation, the corresponding breeding site had any mosquito larvae in it when sending the observation 
+
+*Bite count*: number of bites that were submitted in a single bites’ report. The number of bites is indicated in the Mosquito Alert app by selecting the number of bites and the corresponding affected body parts in a body figure. 
+
+*Bite location*: indicates the type of location where the bite/s happened: “inside a vehicle”, “inside a building”, “outdoors”, “don't know”. 
+
+*Map link*: an HTML string that produces a small version of the selected report. Example: 
+ 
+http://webserver.mosquitoalert.com/spain.html#/es/19/40.83933/14.24665/0/all/all/5979  
+ 
+
+
+DETAILED DESCRIPTION OF THE FIELD: VALIDATION 
+
+1 (expert validation): if experts validate the observations based on the analysis of the associated pictures. Usually, the validation is done aggregating the opinions of three independent experts and supervised by a senior entomologist. Depending on the taxonomic features observed in the pictures, experts try to determine the species, if possible, and the certainty associated with the decision (see field “category”).    
+
+2 (AI validation):  if citizen reports uploaded to the server are evaluated by a Convolutional Neural Network (CNN) trained to identify the species reported in the images. The CNN has been trained using Mosquito Alert images previously validated. For these reports, the field “category” is always “probable” (e.g. tiger_mosquito_probable) and the field “AI value” indicates the accuracy of the identification of the species. 
+
+  
+
+DETAILED DESCRIPTION OF THE FIELD: CATEGORY 
+
+“_probable” versus “_confirmed” (e.g. mosquito_tiger_confirmed; mosquito_tiger_probable): if validated by entomological experts (validation=1), the “_confirmed” or “_probable” option indicates how certain experts are about the species determination. AI validated observations (validation=2) are always “_probable”. “Probable” and “confirmed” categories of the same mosquito species are displayed aggregated in the online public map.    
+
+"mosquito_tiger_confirmed" and “mosquito_tiger_probable”: it includes reports from citizens sent as “mosquito” with the Mosquito Alert app, that contain at least one picture and have been evaluated by entomological experts or using AI algorithms. According to the result of the validation, the picture/s of this observation could be asian tiger mosquito (Aedes albopictus).   
+
+"yellow_fever_confirmed" and "yellow_fever_probable": it includes reports from citizens sent as "mosquito" with the Mosquito Alert app, that contain at least one picture and have been evaluated by entomological experts or using AI algorithms. According to the result of the validation, the picture/s of this observation could be yellow fever mosquito (Aedes aegypti)   
+
+”japonicus_confirmed”, and ”japonicus_probable”: it includes reports from citizens sent as “mosquito" with the Mosquito Alert app, that contain at least one picture and have been evaluated by entomological experts or using AI algorithms. According to the result of the validation, the picture/s of this observation could be asian bush mosquito (Aedes japonicus)   
+
+”koreicus_confirmed” and ”koreicus_probable”: it includes reports from citizens sent as “mosquito" with the Mosquito Alert app, that contain at least one picture and have been evaluated by entomological experts or using AI algorithms. According to the result of the validation, the picture/s of this observation could be a korean mosquito (Aedes koreicus)   
+
+”culex_confirmed” and ”culex_probable”: it includes reports from citizens sent as "mosquito" with the Mosquito Alert app, that contain at least one picture and have been evaluated by entomological experts or using AI algorithms. According to the result of the validation, the picture/s of this observation could be the common mosquito (Culex pipiens)  
+
+“japonicus_koreicus” and “albopictus_cretinus” (combo species): it includes reports from citizens sent as "mosquito" with the Mosquito Alert app, that contain at least one picture and have been evaluated by entomological experts or using AI algorithms. According to the result of the validation, there is a certainty that the mosquito belongs to one of the two close species, this is either Aedes japonicus or Aedes koreicus, and Aedes albopitcus or Aedes cretinus, but they cannot be separated. The Japonicus/koreicus combo is displayed in the map in the Asian bush mosquito layer, as well as in the Korean mosquito layer. The albopictus/cretinus combo is displayed in the map in the Tiger mosquito layer.    
+
+*Other species*: it includes reports from citizens sent as "mosquito" with the Mosquito Alert app, that contain at least one picture and have been evaluated by entomological experts or using AI algorithms. According to the result of the validation, there is a certainty that the pictures of this observation belong to other, non-target species of mosquito, or to another insect.  
+
+"Unidentified": it includes all reports from citizens sent as "mosquito" with the Mosquito Alert app that do not contain any picture attached and therefore, could not be evaluated by entomological experts or using AI algorithms based on the analysis of pictures. It also includes reports from citizens sent as "mosquito", that contain at least one picture and have been evaluated by entomological experts or AI algorithms. According to the result of the validation, the photo/s from these observations do not help identify any particular species of mosquito (experts cannot decide on any other category according to the content of the pictures).   
+
+"storm_drain_water", "storm_drain_dry" and “other_breeeding_sites”: citizens' observations with the Mosquito Alert app of possible mosquito breeding sites (sent as storm drains with or without water or other breeding site types). Some of these reports have been previously evaluated by experts, and others have not. In many cases, they have been previously checked for inappropriate content.     
+
+“bites”: reports from citizens sent as “bites' from the Mosquito Alert app. These reports do not contain any picture and thus, have not been previously evaluated by experts or by AI algorithms based on the content of the pictures.

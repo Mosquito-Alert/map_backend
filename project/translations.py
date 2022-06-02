@@ -122,7 +122,8 @@ def translations(request, lang):
         'No features to download': _("No features to download"),
         'Only data displayed in the current map view will be downloaded. Verify your current active layers, temporal filters and zoom.': _("Only data displayed in the current map view will be downloaded. Verify your current active layers, temporal filters and zoom."),
         'Once verified, press the download button.': _("Once verified, press the download button."),
-
+        'For the Mosquito Alert complete dataset, with advanced options, go to Mosquito Alert portal: http://www.mosquitoalert.com/en/access-to-mosquito-alert-data-portal/': _("For the Mosquito Alert complete dataset, with advanced options, go to Mosquito Alert portal: http://www.mosquitoalert.com/en/access-to-mosquito-alert-data-portal/"),   
+    
         # Share view
         'This view does not exist': _("This view does not exist"),
         'Share modal title': _("Share modal title"),

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-02 10:09+0200\n"
-"PO-Revision-Date: 2022-06-02 10:11+0000\n"
+"POT-Creation-Date: 2022-06-02 16:53+0200\n"
+"PO-Revision-Date: 2022-06-02 14:58+0000\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -340,7 +340,6 @@ msgid "Download geopackage"
 msgstr "Download geopackage"
 
 #: translations.py:121
-#| msgid "Download"
 msgid "Download excel"
 msgstr "Download excel"
 
@@ -360,49 +359,59 @@ msgstr ""
 msgid "Once verified, press the download button."
 msgstr "Once verified, press the download button."
 
-#: translations.py:127
+#: translations.py:125
+msgid ""
+"For the Mosquito Alert complete dataset, with advanced options, go to "
+"Mosquito Alert portal: http://www.mosquitoalert.com/en/access-to-mosquito-"
+"alert-data-portal/"
+msgstr ""
+"For the Mosquito Alert complete dataset, with advanced options, go to "
+"Mosquito Alert portal: http://www.mosquitoalert.com/en/access-to-mosquito-"
+"alert-data-portal/"
+
+#: translations.py:128
 msgid "This view does not exist"
 msgstr "This map view does not exist"
 
-#: translations.py:128
+#: translations.py:129
 #, fuzzy
 #| msgid "Share this map view"
 msgid "Share modal title"
 msgstr "Share this map view"
 
-#: translations.py:129
+#: translations.py:130
 msgid "Share this map view"
 msgstr "Share this map view"
 
-#: translations.py:132
-msgid "Coordinates (latitud, longitud)"
-msgstr "Coordinates (latitud, longitud)"
-
 #: translations.py:133
+msgid "Coordinates (latitud, longitud)"
+msgstr "Coordinates (latitude, longitude)"
+
+#: translations.py:134
 msgid "Reports"
 msgstr "List of observations"
 
-#: translations.py:134
+#: translations.py:135
 msgid "Reports limit exceeded"
 msgstr "Report limit exceeded"
 
-#: translations.py:135
+#: translations.py:136
 msgid "List of observations"
 msgstr "List of observations"
 
-#: translations.py:136
+#: translations.py:137
 msgid "Selected observations"
 msgstr "Selected observations"
 
-#: translations.py:137
+#: translations.py:138
 msgid "Filters applied"
 msgstr "Filters applied"
 
-#: translations.py:138
+#: translations.py:139
 msgid "Reports modal title"
 msgstr "List of observations"
 
-#: translations.py:139
+#: translations.py:140
 msgid ""
 "Report with the observations displayed in the current map view (maximum: 300"
 " observations)"
@@ -410,7 +419,7 @@ msgstr ""
 "Report with the observations displayed in the current map view (maximum: 300"
 " observations)"
 
-#: translations.py:140
+#: translations.py:141
 msgid ""
 "Verify this by looking at the map point counter (on the down left map "
 "corner)."
