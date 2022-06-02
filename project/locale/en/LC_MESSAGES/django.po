@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-30 19:33+0200\n"
-"PO-Revision-Date: 2022-05-30 17:34+0000\n"
+"POT-Creation-Date: 2022-06-02 10:09+0200\n"
+"PO-Revision-Date: 2022-06-02 08:10+0000\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: translations.py:12
 msgid "Shown points"
-msgstr "Shown points"
+msgstr "Displayed observations"
 
 #: translations.py:13
 msgid "Open"
@@ -200,142 +200,156 @@ msgid "Apply calendar"
 msgstr "Apply"
 
 #: translations.py:79
+msgid "Anonymous"
+msgstr "Anonymous"
+
+#: translations.py:80
 msgid "How many bites"
 msgstr "Number of bites"
 
-#: translations.py:80
+#: translations.py:81
 msgid "Body part"
 msgstr "Body part"
 
-#: translations.py:81
+#: translations.py:82
 msgid "Bite location"
 msgstr "Bite location"
 
-#: translations.py:82
+#: translations.py:83
 msgid "Bite time"
 msgstr "Bite time"
 
-#: translations.py:84
+#: translations.py:85
 msgid "Date"
 msgstr "Date"
 
-#: translations.py:85
+#: translations.py:86
 msgid "Expert note"
 msgstr "Expert Note"
 
-#: translations.py:86
+#: translations.py:87
 msgid "Confirmed"
 msgstr "Confirmed"
 
-#: translations.py:87
+#: translations.py:88
 msgid "Probable"
 msgstr "Probable"
 
-#: translations.py:88
+#: translations.py:89
 msgid "Expert validation"
 msgstr "Expert Validation"
 
-#: translations.py:89
+#: translations.py:90
 msgid "AI validation"
 msgstr "AI Validation"
 
-#: translations.py:91
+#: translations.py:92
 msgid "_Unknown"
 msgstr "Unknown"
 
-#: translations.py:92
+#: translations.py:93
 msgid "Outdoors"
 msgstr "Outdoors"
 
-#: translations.py:93
+#: translations.py:94
 msgid "Inside building"
 msgstr "Inside building"
 
-#: translations.py:94
+#: translations.py:95
 msgid "Inside vehicle"
 msgstr "Inside vehicle"
 
-#: translations.py:95
+#: translations.py:96
 msgid "At sunrise"
 msgstr "At sunrise"
 
-#: translations.py:96
+#: translations.py:97
 msgid "At noon"
 msgstr "At noon"
 
-#: translations.py:97
+#: translations.py:98
 msgid "At sunset"
 msgstr "At sunset"
 
-#: translations.py:98
+#: translations.py:99
 msgid "At night"
 msgstr "At night"
 
-#: translations.py:99
+#: translations.py:100
 msgid "Not really sure"
 msgstr "Not really sure"
 
-#: translations.py:101
+#: translations.py:102
 msgid "Head"
 msgstr "Head"
 
-#: translations.py:102
+#: translations.py:103
 msgid "Left arm"
 msgstr "Left arm"
 
-#: translations.py:103
+#: translations.py:104
 msgid "Right arm"
 msgstr "Right arm"
 
-#: translations.py:104
+#: translations.py:105
 msgid "Chest"
 msgstr "Chest"
 
-#: translations.py:105
+#: translations.py:106
 msgid "Left leg"
 msgstr "Left leg"
 
-#: translations.py:106
+#: translations.py:107
 msgid "Right leg"
 msgstr "Right leg"
 
-#: translations.py:108
+#: translations.py:109
 msgid "Breeding site with water"
 msgstr "Breeding site with water?"
 
-#: translations.py:109
+#: translations.py:110
 msgid "Breeding site without water"
 msgstr "Others"
 
-#: translations.py:110
+#: translations.py:111
 msgid "Breeding site with larva"
 msgstr "Does it have larvae?"
 
-#: translations.py:111
+#: translations.py:112
 msgid "No"
 msgstr "No"
 
-#: translations.py:112
+#: translations.py:113
 msgid "Yes"
 msgstr "Yes"
 
-#: translations.py:114
+#: translations.py:115
 msgid "Not available"
 msgstr "Not available"
 
-#: translations.py:115
+#: translations.py:116
 msgid "No results found"
 msgstr "No results found"
 
-#: translations.py:118
-msgid "Download"
-msgstr "Download"
-
 #: translations.py:119
+msgid "Download"
+msgstr "Download data"
+
+#: translations.py:120
+msgid "Download geopackage"
+msgstr "Download geopackage"
+
+#: translations.py:121
+#, fuzzy
+#| msgid "Download"
+msgid "Download excel"
+msgstr "Download data"
+
+#: translations.py:122
 msgid "No features to download"
 msgstr "There are no points"
 
-#: translations.py:120
+#: translations.py:123
 msgid ""
 "Only data displayed in the current map view will be downloaded. Verify your "
 "current active layers, temporal filters and zoom."
@@ -343,49 +357,53 @@ msgstr ""
 "Only data displayed in the current map view will be downloaded. Verify your "
 "current active layers, temporal filters and zoom."
 
-#: translations.py:121
+#: translations.py:124
 msgid "Once verified, press the download button."
 msgstr "Once verified, press the download button."
 
-#: translations.py:124
+#: translations.py:127
 msgid "This view does not exist"
 msgstr "This map view does not exist"
 
-#: translations.py:125
+#: translations.py:128
 #, fuzzy
 #| msgid "Share this map view"
 msgid "Share modal title"
 msgstr "Share this map view"
 
-#: translations.py:126
+#: translations.py:129
 msgid "Share this map view"
 msgstr "Share this map view"
 
-#: translations.py:129
-msgid "Reports"
-msgstr "Reports"
+#: translations.py:132
+msgid "Coordinates (latitud, longitud)"
+msgstr "Coordinates (latitud, longitud)"
 
-#: translations.py:130
+#: translations.py:133
+msgid "Reports"
+msgstr "List of observations"
+
+#: translations.py:134
 msgid "Reports limit exceeded"
 msgstr "Report limit exceeded"
 
-#: translations.py:131
+#: translations.py:135
 msgid "List of observations"
 msgstr "List of observations"
 
-#: translations.py:132
+#: translations.py:136
 msgid "Selected observations"
 msgstr "Selected observations"
 
-#: translations.py:133
+#: translations.py:137
 msgid "Filters applied"
 msgstr "Filters applied"
 
-#: translations.py:134
+#: translations.py:138
 msgid "Reports modal title"
 msgstr "List of observations"
 
-#: translations.py:135
+#: translations.py:139
 msgid ""
 "Report with the observations displayed in the current map view (maximum: 300"
 " observations)"
@@ -393,7 +411,7 @@ msgstr ""
 "Report with the observations displayed in the current map view (maximum: 300"
 " observations)"
 
-#: translations.py:136
+#: translations.py:140
 msgid ""
 "Verify this by looking at the map point counter (on the down left map "
 "corner)."

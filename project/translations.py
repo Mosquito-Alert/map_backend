@@ -76,6 +76,7 @@ def translations(request, lang):
         "Apply calendar": _("Apply calendar"),
 
         # Map, Popup
+        'Anonymous': _("Anonymous"),
         'How many bites': _("How many bites"),
         'Body part': _("Body part"),
         'Bite location': _("Bite location"),   
@@ -116,6 +117,8 @@ def translations(request, lang):
 
         # Download
         'Download': _("Download"),
+        'Download geopackage': _("Download geopackage"),
+        'Download excel': _("Download excel"),
         'No features to download': _("No features to download"),
         'Only data displayed in the current map view will be downloaded. Verify your current active layers, temporal filters and zoom.': _("Only data displayed in the current map view will be downloaded. Verify your current active layers, temporal filters and zoom."),
         'Once verified, press the download button.': _("Once verified, press the download button."),
@@ -125,7 +128,8 @@ def translations(request, lang):
         'Share modal title': _("Share modal title"),
         'Share this map view': _("Share this map view"),
 
-        # Reports modal
+        # Reports / modal
+        'Coordinates (latitud, longitud)': _("Coordinates (latitud, longitud)"),
         'Reports': _("Reports"),
         'Reports limit exceeded': _("Reports limit exceeded"),
         'List of observations':_("List of observations"),       
