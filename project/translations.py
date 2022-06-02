@@ -125,6 +125,7 @@ def translations(request, lang):
         'For the Mosquito Alert complete dataset, with advanced options, go to Mosquito Alert portal: http://www.mosquitoalert.com/en/access-to-mosquito-alert-data-portal/': _("For the Mosquito Alert complete dataset, with advanced options, go to Mosquito Alert portal: http://www.mosquitoalert.com/en/access-to-mosquito-alert-data-portal/"),   
     
         # Share view
+        'This is the new view url': _("This is the new view url"),
         'This view does not exist': _("This view does not exist"),
         'Share modal title': _("Share modal title"),
         'Share this map view': _("Share this map view"),

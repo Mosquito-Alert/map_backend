@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-02 16:53+0200\n"
-"PO-Revision-Date: 2022-06-02 17:03+0000\n"
+"POT-Creation-Date: 2022-06-02 19:46+0200\n"
+"PO-Revision-Date: 2022-06-02 17:47+0000\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -372,47 +372,50 @@ msgstr ""
 "data-portal/"
 
 #: translations.py:128
+msgid "This is the new view url"
+msgstr "Enlace a la vista"
+
+#: translations.py:129
 msgid "This view does not exist"
 msgstr "Esta vista de mapa no existe"
 
-#: translations.py:129
-#| msgid "Share this map view"
+#: translations.py:130
 msgid "Share modal title"
 msgstr "Comparte la vista de este mapa"
 
-#: translations.py:130
+#: translations.py:131
 msgid "Share this map view"
 msgstr "Comparte la vista de este mapa"
 
-#: translations.py:133
+#: translations.py:134
 msgid "Coordinates (latitud, longitud)"
 msgstr "Coordenadas (latitud, longitud)"
 
-#: translations.py:134
+#: translations.py:135
 msgid "Reports"
 msgstr "Listado de observaciones"
 
-#: translations.py:135
+#: translations.py:136
 msgid "Reports limit exceeded"
 msgstr "El número de observaciones supera el máximo establecido"
 
-#: translations.py:136
+#: translations.py:137
 msgid "List of observations"
 msgstr "Listado de observaciones"
 
-#: translations.py:137
+#: translations.py:138
 msgid "Selected observations"
 msgstr "Observaciones seleccionadas"
 
-#: translations.py:138
+#: translations.py:139
 msgid "Filters applied"
 msgstr "Filtros aplicados"
 
-#: translations.py:139
+#: translations.py:140
 msgid "Reports modal title"
 msgstr "Listado de observaciones"
 
-#: translations.py:140
+#: translations.py:141
 msgid ""
 "Report with the observations displayed in the current map view (maximum: 300"
 " observations)"
@@ -420,7 +423,7 @@ msgstr ""
 "Informe de las observaciones que se visualizan en la vista actual del mapa "
 "(máximo 300)."
 
-#: translations.py:141
+#: translations.py:142
 msgid ""
 "Verify this by looking at the map point counter (on the down left map "
 "corner)."
