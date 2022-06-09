@@ -67,7 +67,7 @@ def get_feature(request, observation_id):
         data["photo_url"] = 'http://localhost:8000/static/api/mosquito/dummy.jpg'
     return JsonResponse(data)
 
-@cache_page(86400)
+# @cache_page(86400)
 def get_data(request, year):
     SQL = f"""
         SELECT jsonb_build_object(
@@ -93,6 +93,12 @@ def get_data(request, year):
                     WHERE extract(year from observation_date) = {year} 
                         AND LAT IS NOT NULL
                         AND LON IS NOT NULL
+                        AND PRIVATE_WEBMAP_LAYER IN ('mosquito_tiger_probable',
+                            'mosquito_tiger_confirmed', 'yellow_fever_probable', 'yellow_fever_confirmed',
+                            'japonicus_probable', 'japonicus_confirmed', 'japonicus_koreicus',
+                            'koreicus_probable', 'koreicus_confirmed', 'japonicus_koreicus',
+                            'culex_probable', 'culex_confirmed','unidentified', 'other_species','bite',
+                            'storm_drain_water','storm_drain_dry','breeding_site_other')
                     ORDER BY observation_date
             ) As f
         ) as features
