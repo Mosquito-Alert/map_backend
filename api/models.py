@@ -77,7 +77,7 @@ class MapAuxReport(models.Model):
     ref_system = models.CharField(max_length=36, blank=True)
     type = models.CharField(max_length=7, blank=True)
 
-    expert_validated = models.BooleanField(null=True)    
+    expert_validated = models.IntegerField(default=None, null=True)
     expert_validation_result = models.CharField(max_length=100, blank=True)
     simplified_expert_validation_result = models.CharField(max_length=100,
                                                            blank=True)
