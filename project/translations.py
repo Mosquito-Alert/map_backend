@@ -131,6 +131,7 @@ def translations(request, lang):
         'Share modal title': _("Share modal title"),
         'Share this map view': _("Share this map view"),
         'Url has been copied': _("Url has been copied"),
+        'Copy url to clipboard': _("Copy url to clipboard"),
 
         # Reports / modal
         'Coordinates (latitud, longitud)': _("Coordinates (latitud, longitud)"),
