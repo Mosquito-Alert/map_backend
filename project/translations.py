@@ -130,6 +130,7 @@ def translations(request, lang):
         'This view does not exist': _("This view does not exist"),
         'Share modal title': _("Share modal title"),
         'Share this map view': _("Share this map view"),
+        'Url has been copied': _("Url has been copied"),
 
         # Reports / modal
         'Coordinates (latitud, longitud)': _("Coordinates (latitud, longitud)"),
