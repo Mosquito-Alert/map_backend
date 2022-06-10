@@ -28,3 +28,14 @@ This value indicates the minimum distance between the points stored in the
 table tigaserver_app_fix. Do not change this value unless it has already
 changed in that table."""
 gridsize = 0.05
+
+#############
+# DOWNLOADS #
+#############
+
+""" Download columns values.
+
+This values are used to determine if some column values should be included 
+when downloading"""
+
+site_value = 'site'

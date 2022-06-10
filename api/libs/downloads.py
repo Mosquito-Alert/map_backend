@@ -1,6 +1,6 @@
 """Userfixes Libraries."""
 from django.db.models.functions import Concat
-from datetime import datetime, timedelta
+from datetime import datetime, timezone, timedelta
 from .base import BaseManager
 from api.models import MapAuxReport
 from django.conf import settings
@@ -19,6 +19,8 @@ import operator
 from functools import reduce
 from django.core.serializers import serialize
 import numpy as np
+from api.constants import site_value
+
 
 def getValueOrNull(key, values):
     key = str(key)
@@ -137,8 +139,8 @@ class DownloadsManager(BaseManager):
             if dates['from'] != '':
                 if dates['from'] is not None and dates['to'] is not None:
                     self.data = self.data.filter(
-                    observation_date__gte=datetime.strptime(dates['from'], "%Y-%m-%d"),
-                    observation_date__lt=(datetime.strptime(dates['to'], "%Y-%m-%d") +
+                    observation_date__gte=datetime.strptime(dates['from'], "%Y-%m-%d").replace(tzinfo=timezone.utc),
+                    observation_date__lt=(datetime.strptime(dates['to'], "%Y-%m-%d").replace(tzinfo=timezone.utc) +
                                 timedelta(days=1))
                 )
 
@@ -192,9 +194,19 @@ class DownloadsManager(BaseManager):
             df = geopandas.GeoDataFrame(list(self.data))
             
             if qs.count() != 0:
-                df["observation_date"] = df["observation_date"].astype(str)            
+                df["observation_date"] = df["observation_date"].astype(str)
 
-            df["larvae"] = df["larvae"].map({True: 'YES', False: 'NO', None: 'NA'})
+            df['larvae'] = np.where(
+                        (df['type'] == site_value),
+                        df["larvae"].map({True: 'YES', False: 'NO', None: 'NA'}),      #We place column3 values
+                        df['larvae'])
+
+            df['larvae'] = np.where(
+                        (df['type'] != site_value),
+                        None,      #We place column3 values
+                        df['larvae'])
+
+            # df["larvae"] = df["larvae"].map({True: 'YES', False: 'NO', None: 'NA'})
            
             df.rename(columns = {
                     'id':'ID',
