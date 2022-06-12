@@ -39,3 +39,20 @@ This values are used to determine if some column values should be included
 when downloading"""
 
 site_value = 'site'
+
+###############
+# MODELS DATA #
+###############
+
+""" Models data location
+
+This values are used to determine where models data is located"""
+
+VECTORS_MODEL_NAMES = ['tig', 'jap']
+VECTORS_MODEL_FOLDER = settings.BASE_DIR / 'media/models/vector/'
+VECTORS_FILE_NAME = 'model'
+VECTORS_FILE_EXTENSION = '.csv'
+
+BITES_MODEL_FOLDER = settings.BASE_DIR / 'media/models/biting/'
+BITES_FILE_NAME = 'model'
+BITES_FILE_EXTENSION = '.csv'

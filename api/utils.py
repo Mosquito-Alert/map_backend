@@ -257,6 +257,8 @@ def get_directory_structure(rootdir, filename):
 
     Creates an ordered list (desc) that represents the availability of models
     """
+    print(rootdir)
+    print(filename)
     valid_ext = [filename]
     files = []
     folders = []
@@ -265,14 +267,16 @@ def get_directory_structure(rootdir, filename):
 
     # models folder patterns yyyy/mm
     pattern = re.compile("^(\d{4}\/(0[1-9]|1[0-2]))$")
-    # pattern = re.compile("^(\d{4}\/0[1-9]|\d{4}\/1[0-2])$")
 
     for root, dirs, files in sorted(os.walk(rootdir)):
-        if root[len(rootdir)+1:].count(os.sep) < 2:
+        str_rootdir = str(rootdir)
+        if root[len(str_rootdir)+1:].count(os.sep) < 2:
             for f in files:
                 if f.endswith(tuple(valid_ext)):
-                    root = root.replace(rootdir, '')
+                    root = root.replace(str_rootdir, '')
                     root = root.replace('\\', '/')
+                    root = root.strip("/")
+
                     if (re.match(pattern, root)):
                         # split
                         folders = root.split('/')
@@ -283,6 +287,7 @@ def get_directory_structure(rootdir, filename):
 
                         # Enable current month
                         dict[folders[0]][int(folders[1]) - 1] = 1
+                    
 
     # Turn dict into array
     for key, value in dict.items():

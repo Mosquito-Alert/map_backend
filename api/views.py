@@ -13,6 +13,15 @@ from .libs.userfixes import UserfixesManager
 from .libs.downloads import DownloadsManager
 from .libs.shareview import ShareViewManager
 from .libs.reportview import ReportManager
+import os
+from django.conf import settings
+from .utils import get_directory_structure
+from api.constants import (
+    VECTORS_MODEL_NAMES, VECTORS_MODEL_FOLDER,
+    VECTORS_FILE_NAME, VECTORS_FILE_EXTENSION,
+    BITES_MODEL_FOLDER, BITES_FILE_NAME, BITES_FILE_EXTENSION
+)
+
 
 @csrf_exempt
 def downloads(request, fext):
@@ -261,3 +270,64 @@ def userfixes(request, **filters):
     """Get Coverage Layer Info."""
     manager = UserfixesManager(request)
     return manager.get('GeoJSON', **filters)    
+
+def doTile(request, layer, z, x, y):
+    CACHE_DIR = os.path.join(settings.BASE_DIR,'cache')
+    tilefolder = "{}/{}/{}/{}".format(CACHE_DIR,layer,z,x)    
+    tilepath = "{}/{}.pbf".format(tilefolder,y)
+    
+    query = """
+        WITH mvtgeom AS
+        (
+            SELECT nuts_id,
+                ST_AsMVTGeom(
+                St_Transform(geom,3857),
+                ST_TileEnvelope({1}, {2}, {3})
+            ) AS geom
+            FROM   {0}
+        )
+        SELECT ST_AsMVT(mvtgeom.*)
+        FROM   mvtgeom
+        """.format(layer, z, x, y)
+
+    cursor = connection.cursor()
+    cursor.execute(query)
+    tile = bytes(cursor.fetchone()[0])
+
+    if not os.path.exists(tilefolder):
+        os.makedirs(tilefolder)
+
+    with open(tilepath, 'wb') as f:
+        f.write(tile)
+        f.close()
+
+    cursor.close()
+
+    # if not len(tile):
+    #     raise Http404()
+
+    return HttpResponse(tile, content_type="application/x-protobuf")
+
+
+def availableModels(request):
+    response = {}
+    response['vector'] = {}
+    response['biting'] = {}
+
+    filename = BITES_FILE_NAME + BITES_FILE_EXTENSION
+    response['biting'] = get_directory_structure(BITES_MODEL_FOLDER, filename)
+
+    isVectorDataAvailable = False
+    filename = VECTORS_FILE_NAME + VECTORS_FILE_EXTENSION
+
+    for v in VECTORS_MODEL_NAMES:
+        path = VECTORS_MODEL_FOLDER / v
+        response['vector'][v] = get_directory_structure(path, filename)
+
+        if (len(response['vector'][v]) > 0):
+            isVectorDataAvailable = True
+
+    response['availableVectorData'] = isVectorDataAvailable
+
+    return HttpResponse(json.dumps(response),
+                        content_type='application/json')
