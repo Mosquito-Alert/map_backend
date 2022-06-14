@@ -271,24 +271,34 @@ def userfixes(request, **filters):
     manager = UserfixesManager(request)
     return manager.get('GeoJSON', **filters)    
 
-def doTile(request, layer, z, x, y):
+def doContinent(request, layer, continent, z, x, y):
+    return doTile(request, layer, z, x, y, continent)
+
+def doTile(request, layer, z, x, y, continent = None):
     CACHE_DIR = os.path.join(settings.BASE_DIR,'cache')
     tilefolder = "{}/{}/{}/{}".format(CACHE_DIR,layer,z,x)    
     tilepath = "{}/{}.pbf".format(tilefolder,y)
     
+    if continent is None:
+        code = "nuts_id as id"
+        where = ''
+    else:
+        code = "id_2 as id"
+        where = "WHERE CONTINENT ilike '%" + continent + "%'"
+
     query = """
         WITH mvtgeom AS
         (
-            SELECT nuts_id,
+            SELECT {0},
                 ST_AsMVTGeom(
                 St_Transform(geom,3857),
-                ST_TileEnvelope({1}, {2}, {3})
+                ST_TileEnvelope({2}, {3}, {4})
             ) AS geom
-            FROM   {0}
+            FROM  {1} {5}
         )
         SELECT ST_AsMVT(mvtgeom.*)
         FROM   mvtgeom
-        """.format(layer, z, x, y)
+        """.format(code, layer, z, x, y, where)
 
     cursor = connection.cursor()
     cursor.execute(query)
@@ -331,3 +341,4 @@ def availableModels(request):
 
     return HttpResponse(json.dumps(response),
                         content_type='application/json')
+

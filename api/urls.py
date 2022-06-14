@@ -2,7 +2,8 @@
 from django.urls import path, re_path
 from .views import (saveView, loadView, saveReport, loadReport, downloads,
                     get_feature, get_observation, get_observation_by_id,
-                    get_data, get_reports, userfixes, doTile, availableModels)
+                    get_data, get_reports, userfixes, doTile, doContinent,
+                    availableModels)
 
 re_date = '\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])'
 
@@ -21,5 +22,6 @@ urlpatterns = [
     re_path('report/load/(?P<code>[a-zA-Z0-9]{6})/$', loadReport),    
     re_path('userfixes/(?P<startdate>' + re_date + ')/(?P<enddate>' + re_date + ')/?$', userfixes),
     path('tiles/<str:layer>/<int:z>/<int:x>/<int:y>/', doTile),
+    path('tiles/<str:layer>/<str:continent>/<int:z>/<int:x>/<int:y>/', doContinent),
     path('models/available/', availableModels)
 ]
