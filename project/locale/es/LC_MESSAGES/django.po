@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-10 19:33+0200\n"
-"PO-Revision-Date: 2022-06-10 17:34+0000\n"
+"POT-Creation-Date: 2022-06-18 19:03+0200\n"
+"PO-Revision-Date: 2022-06-18 17:04+0000\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -398,34 +398,38 @@ msgid "Copy url to clipboard"
 msgstr "Copia la dirección al portapapeles"
 
 #: translations.py:137
+msgid "Observation code"
+msgstr "Código de observación"
+
+#: translations.py:138
 msgid "Coordinates (latitud, longitud)"
 msgstr "Coordenadas (latitud, longitud)"
 
-#: translations.py:138
+#: translations.py:139
 msgid "Reports"
 msgstr "Listado de observaciones"
 
-#: translations.py:139
+#: translations.py:140
 msgid "Reports limit exceeded"
 msgstr "El número de observaciones supera el máximo establecido"
 
-#: translations.py:140
+#: translations.py:141
 msgid "List of observations"
 msgstr "Listado de observaciones"
 
-#: translations.py:141
+#: translations.py:142
 msgid "Selected observations"
 msgstr "Observaciones seleccionadas"
 
-#: translations.py:142
+#: translations.py:143
 msgid "Filters applied"
 msgstr "Filtros aplicados"
 
-#: translations.py:143
+#: translations.py:144
 msgid "Reports modal title"
 msgstr "Listado de observaciones"
 
-#: translations.py:144
+#: translations.py:145
 msgid ""
 "Report with the observations displayed in the current map view (maximum: 300"
 " observations)"
@@ -433,7 +437,7 @@ msgstr ""
 "Informe de las observaciones que se visualizan en la vista actual del mapa "
 "(máximo 300)."
 
-#: translations.py:145
+#: translations.py:146
 msgid ""
 "Verify this by looking at the map point counter (on the down left map "
 "corner)."

@@ -134,6 +134,7 @@ def translations(request, lang):
         'Copy url to clipboard': _("Copy url to clipboard"),
 
         # Reports / modal
+        'Observation code': _("Observation code"),
         'Coordinates (latitud, longitud)': _("Coordinates (latitud, longitud)"),
         'Reports': _("Reports"),
         'Reports limit exceeded': _("Reports limit exceeded"),
