@@ -132,6 +132,7 @@ def translations(request, lang):
         'Share this map view': _("Share this map view"),
         'Url has been copied': _("Url has been copied"),
         'Copy url to clipboard': _("Copy url to clipboard"),
+        'Share view': _("Share view"),
 
         # Reports / modal
         'Observation code': _("Observation code"),

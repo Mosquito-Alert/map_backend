@@ -177,7 +177,6 @@ class DownloadsManager(BaseManager):
                 rules.append(Q(tags__icontains=tag))
             
             self.data = self.data.filter(reduce(operator.or_, rules))
-
         return self.data
 
     def get(self, filters, fext):

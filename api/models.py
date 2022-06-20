@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.gis.db import models
 
 # Create your models here.
 class ProvinceManager(models.Manager):
@@ -168,3 +169,12 @@ class ReportView(models.Model):
     code=models.CharField(max_length=8, null=False, blank=False, unique=True)    
     view = models.TextField(blank=True, null=True)
     date = models.DateTimeField(blank=True, null=True)    
+
+class Gadm(models.Model):
+    id_0 = models.CharField(max_length=5)
+    id_2 = models.CharField(max_length=15)
+    country = models.CharField(max_length=50)
+    name_1 = models.CharField(max_length=50)
+    type_2 = models.CharField(max_length=50)
+    continent = models.CharField(max_length=25)
+    geom = models.PolygonField()
