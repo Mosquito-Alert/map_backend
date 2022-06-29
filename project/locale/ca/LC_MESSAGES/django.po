@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-20 12:16+0200\n"
-"PO-Revision-Date: 2022-06-21 13:21+0000\n"
+"POT-Creation-Date: 2022-06-29 08:46+0200\n"
+"PO-Revision-Date: 2022-06-29 08:54+0000\n"
 "Last-Translator:   <toni.hernandez@udg.edu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -397,7 +397,6 @@ msgid "Copy url to clipboard"
 msgstr "Copia l'adreça al portapapers"
 
 #: .\translations.py:135
-#| msgid "Share this map view"
 msgid "Share view"
 msgstr "Comparteix la vista d'aquest mapa"
 
@@ -448,6 +447,68 @@ msgid ""
 msgstr ""
 "Verifica el número d'observacions amb el comptador de punts al marge "
 "superior dret de la vista del mapa."
+
+#: .\translations.py:151
+msgid "Check the"
+msgstr "Consulta les"
+
+#: .\translations.py:152
+msgid "data on mosquitoes, breeding places and bites"
+msgstr "dades de mosquits, llocs de cria i picades"
+
+#: .\translations.py:153
+msgid " sent by citizens, through the Mosquito Alert app."
+msgstr "enviats per la ciutadania, mitjançant l'app Mosquito Alert."
+
+#: .\translations.py:154
+#| msgid ""
+#| "sent by citizens, through the Mosquito Alert app. Part of this data has been"
+#| " validated by entomology professionals or by Artificial Intelligence (AI) "
+#| "algorithms. You will also find data modeled from the original data."
+msgid ""
+"Part of this data has been validated by entomology professionals or by "
+"Artificial Intelligence (AI) algorithms. You will also find data modeled "
+"from the original data."
+msgstr ""
+"Part d'aquestes dades han estat validades per professionals de l'entomologia"
+" o per algoritmes d'intel·ligència artificial (IA). També trobaràs dades "
+"modelades a partir de les dades originals."
+
+#: .\translations.py:155
+msgid "You can "
+msgstr "Podràs"
+
+#: .\translations.py:156
+msgid "view, filter and download data"
+msgstr "visualitzar, filtrar i descarregar dades"
+
+#: .\translations.py:157
+msgid "among other functions"
+msgstr "entre d'altres funcions"
+
+#: .\translations.py:158
+msgid "Use the Help"
+msgstr "Utilitza l'ajuda"
+
+#: .\translations.py:159
+msgid "and Info"
+msgstr "i la Info"
+
+#: .\translations.py:160
+msgid "for more information."
+msgstr "per a més informació."
+
+#: .\translations.py:161
+msgid ""
+"If you want the complete Mosquito Alert data set, with advanced "
+"documentation and download options, go to the Mosquito Alert Data Portal:"
+msgstr ""
+"Si vols el set complet de Mosquito Alert, amb opcions avançades de "
+"documentació i descàrrega, dirigeix-te al Portal de Dades de Mosquito Alert:"
+
+#: .\translations.py:162
+msgid "You can also consult the Mosquito Alert website: "
+msgstr "També podeu consultar la web de Mosquito Alert: "
 
 #, fuzzy
 #~ msgid ""

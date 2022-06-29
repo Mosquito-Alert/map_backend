@@ -144,6 +144,21 @@ def translations(request, lang):
         'Filters applied': _("Filters applied"),
         'Reports modal title': _("Reports modal title"),
         'Report with the observations displayed in the current map view (maximum: 300 observations)': _("Report with the observations displayed in the current map view (maximum: 300 observations)"),
-        'Verify this by looking at the map point counter': _("Verify this by looking at the map point counter (on the down left map corner).")
+        'Verify this by looking at the map point counter': _("Verify this by looking at the map point counter (on the down left map corner)."),
 
+        # Info modal
+
+        'Check the': _("Check the"),
+        'data on mosquitoes, breeding places and bites': _("data on mosquitoes, breeding places and bites"),
+        'sent by citizens, through the Mosquito Alert app.': _(" sent by citizens, through the Mosquito Alert app."),
+        'Part of this data has been validated by entomology professionals or by Artificial Intelligence (AI) algorithms. You will also find data modeled from the original data.': _("Part of this data has been validated by entomology professionals or by Artificial Intelligence (AI) algorithms. You will also find data modeled from the original data."),
+        'You can ': _("You can "),
+        'view, filter and download data': _("view, filter and download data"),
+        'among other functions': _("among other functions"),
+        'Use the Help': _("Use the Help"),
+        'and Info': _("and Info"), 
+        'for more information.': _("for more information."), 
+        'If you want the complete Mosquito Alert data set, with advanced documentation and download options, go to the Mosquito Alert Data Portal:': _("If you want the complete Mosquito Alert data set, with advanced documentation and download options, go to the Mosquito Alert Data Portal:"), 
+        'You can also consult the Mosquito Alert website: ': _("You can also consult the Mosquito Alert website: "), 
     })
+
