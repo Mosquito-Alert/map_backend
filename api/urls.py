@@ -22,6 +22,6 @@ urlpatterns = [
     re_path('report/load/(?P<code>[a-zA-Z0-9]{6})/$', loadReport),    
     re_path('userfixes/(?P<startdate>' + re_date + ')/(?P<enddate>' + re_date + ')/?$', userfixes),
     path('tiles/<str:layer>/<int:z>/<int:x>/<int:y>/', doTile),
-    path('tiles/<str:layer>/<str:continent>/<int:z>/<int:x>/<int:y>.pbf/', doContinent),
+    path('tiles/<str:layer>/<str:continent>/<int:z>/<int:x>/<int:y>.pbf', doContinent),
     path('models/available/', availableModels)
 ]
