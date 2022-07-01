@@ -275,7 +275,7 @@ def doContinent(request, layer, continent, z, x, y):
     return doTile(request, layer, z, x, y, continent)
 
 def doTile(request, layer, z, x, y, continent = None):
-    CACHE_DIR = os.path.join(settings.BASE_DIR,'cache')
+    CACHE_DIR = os.path.join(settings.MEDIA_ROOT,'cache')
     tilefolder = "{}/{}/{}/{}".format(CACHE_DIR,layer,z,x)    
     tilepath = "{}/{}.pbf".format(tilefolder,y)
 
