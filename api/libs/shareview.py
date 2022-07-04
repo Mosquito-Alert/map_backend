@@ -32,10 +32,15 @@ class ShareViewManager():
     def save(self, request):
         """Save view param into models."""
         self.data = request.body.decode("utf-8")
+        jsonData = json.loads(self.data)
+        print(jsonData)
         try:
             while True:
                 try:
                     random_code = self.get_random_string(4)
+                    if jsonData['viewType'] == 'models':
+                        random_code = 'M-' + random_code
+
                     qs = MapView.objects.filter(code__exact=random_code)
                     if qs.count() == 0:
                         break

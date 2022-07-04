@@ -18,7 +18,7 @@ urlpatterns = [
     re_path('get_observation/(?P<id>[\-a-zA-Z0-9]{36})/$', get_observation_by_id),
     re_path('get/data/(?P<year>(\d{4}))/$', get_data),
     re_path('downloads/(?P<fext>(xlsx|gpkg|features))/$', downloads),
-    re_path('view/load/(?P<code>[a-zA-Z0-9]{4})/$', loadView),    
+    re_path('view/load/(?P<code>[a-zA-Z0-9\-]{4,6})/$', loadView),    
     re_path('report/load/(?P<code>[a-zA-Z0-9]{6})/$', loadReport),    
     re_path('userfixes/(?P<startdate>' + re_date + ')/(?P<enddate>' + re_date + ')/?$', userfixes),
     path('tiles/<str:layer>/<int:z>/<int:x>/<int:y>', doTile),
