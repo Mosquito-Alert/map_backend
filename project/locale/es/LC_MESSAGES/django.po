@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-29 08:46+0200\n"
-"PO-Revision-Date: 2022-06-29 08:50+0000\n"
+"POT-Creation-Date: 2022-07-06 11:11+0200\n"
+"PO-Revision-Date: 2022-07-06 11:12+0000\n"
 "Last-Translator:   <toni.hernandez@udg.edu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -462,10 +462,6 @@ msgid " sent by citizens, through the Mosquito Alert app."
 msgstr "enviados por la ciudadanía, mediante la app Mosquito Alert."
 
 #: .\translations.py:154
-#| msgid ""
-#| "sent by citizens, through the Mosquito Alert app. Part of this data has been"
-#| " validated by entomology professionals or by Artificial Intelligence (AI) "
-#| "algorithms. You will also find data modeled from the original data."
 msgid ""
 "Part of this data has been validated by entomology professionals or by "
 "Artificial Intelligence (AI) algorithms. You will also find data modeled "
@@ -511,6 +507,39 @@ msgstr ""
 #: .\translations.py:162
 msgid "You can also consult the Mosquito Alert website: "
 msgstr "También puedes consultar la web de Mosquito Alert: "
+
+#: .\translations.py:165
+#| msgid "Coockies comply title"
+msgid "Cookies comply title"
+msgstr "Política de cookies"
+
+#: .\translations.py:166
+msgid ""
+"We use cookies and similar technologies to help personalize content and "
+"offer a better experience. You can opt to customize them by clicking the "
+"preferences button"
+msgstr "Utilizamos las cookies ...."
+
+#: .\translations.py:167
+msgid "Tecnical cookies"
+msgstr "Cookies necesarias"
+
+#: .\translations.py:168
+msgid "Tecnical cookies description"
+msgstr ""
+"Descripción de las cookies necesarias para el funcionamiento de la web"
+
+#: .\translations.py:169
+msgid "Analytics cookie title"
+msgstr "Google Analytics"
+
+#: .\translations.py:170
+msgid "Analytics cookie description"
+msgstr "Estas cookies nos permiten ...."
+
+#: .\translations.py:171
+msgid "Save cookie preferences"
+msgstr "Guardar preferencias"
 
 #, fuzzy
 #~ msgid ""
