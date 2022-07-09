@@ -7,7 +7,7 @@ import os
 from django.contrib.auth.models import User
 import re
 from .constants import (managers_group, superusers_group, user_roles,
-                       epidemiologist_editor_group,
+                       epidemiologist_editor_group, BITES_FILE_EXTENSION,
                        epidemiologist_viewer_group,
                        irideon_traps_viewer)
 
@@ -257,41 +257,46 @@ def get_directory_structure(rootdir, filename):
 
     Creates an ordered list (desc) that represents the availability of models
     """
-    print(rootdir)
-    print(filename)
+    # print(rootdir)
+    # print(filename)
     valid_ext = [filename]
     files = []
     folders = []
     dictlist = []
     dict = {}
 
-    # models folder patterns yyyy/mm
-    pattern = re.compile("^(\d{4}\/(0[1-9]|1[0-2]))$")
+    # models folder patterns gadmX/yyyy/mm
+    pattern = re.compile("^(gadm\d\/\d{4}\/(0[1-9]|1[0-2]))$")
 
     for root, dirs, files in sorted(os.walk(rootdir)):
         str_rootdir = str(rootdir)
-        if root[len(str_rootdir)+1:].count(os.sep) < 2:
+
+        if root[len(str_rootdir)+1:].count(os.sep) == 2:
             for f in files:
-                if f.endswith(tuple(valid_ext)):
+                if f.endswith(tuple(BITES_FILE_EXTENSION)):
                     root = root.replace(str_rootdir, '')
                     root = root.replace('\\', '/')
                     root = root.strip("/")
-
                     if (re.match(pattern, root)):
                         # split
                         folders = root.split('/')
                         if not folders[0] in dict:
-                            # initialize all 12 months as disabled
-                            dict[folders[0]] = [0, 0, 0, 0, 0, 0,
-                                                0, 0, 0, 0, 0, 0]
-
-                        # Enable current month
-                        dict[folders[0]][int(folders[1]) - 1] = 1
-                    
-
-    # Turn dict into array
-    for key, value in dict.items():
-        temp = [key, value]
-        dictlist.append(temp)
-    # Return properly ordered list
-    return sorted(dictlist, key=lambda l: l[0], reverse=True)
+                            dict[folders[0]] = {
+                                folders[1]: [
+                                    0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0
+                                ]
+                            }
+                        else:
+                            if not folders[1] in dict[folders[0]]:
+                                dict[folders[0]][folders[1]] = [0, 0, 0, 0, 0, 0,
+                                                                0, 0, 0, 0, 0, 0]
+                        # Enable current month. January is month 0, not one ( - 1)
+                        dict[folders[0]][folders[1]][int(folders[2]) - 1] = 1
+    return dict        
+    # print(dict)
+    # # Turn dict into array
+    # for key, value in dict.items():
+    #     temp = [key, value]
+    #     dictlist.append(temp)
+    # # Return properly ordered list
+    # return sorted(dictlist, key=lambda l: l[0], reverse=True)
