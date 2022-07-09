@@ -1,0 +1,98 @@
+Text inicial
+
+La web de Universidad de Girona utiliza cookies propias y de terceros con finalidades técnicas y analíticas. Para administrarlas utilice el gestor. Si desea más información acceda a la Política de cookies.
+
+Escoge qué tipos de galletas aceptas que la web de la Universidad de Girona pueda guardar en tu navegador.
+
+
+Necesarias
+
+Las imprescindibles para facilitar vuestra conexión. No hay opción de inhabilitarlas, dado que son las necesarias por el funcionamiento del sitio web.
+
+
+Analytics
+
+Proporcionan información estadística y permiten mejorar los servicios. Utilizamos cookies de Google Analytics que podéis desactivar instalándoos este plugin.
+
+
+
+Política de cookies
+
+Política de cookies
+Web institucional
+
+Las galletas o cookies son pequeños archivos de texto que se instalan en los equipos desde los cuales se accede a nuestro sitio web. Entre otras finalidades, las cookies registran las preferencias y los hábitos de navegación de un usuario. Se asocian al usuario y a su equipo, pero no proporcionan datos directamente identificativos. Algunas cookies, por ejemplo las que permiten elaborar estadísticas o anuncios, necesitan el consentimiento del usuario de nuestro sitio web. En cambio otras cookies, las de carácter técnico o las necesarias para ofrecer un servicio solicitado por el usuario, son imprescindibles para el funcionamiento del sitio. Las cookies se pueden clasificar según su vigencia, quien las gestiona o su finalidad.
+Según la vigencia
+
+    De sesión: son temporales y quedan en el archivo de galletas de vuestro navegador hasta el momento que abandonáis el sitio web.
+    Persistentes: quedan almacenadas y el sitio web les lee cada vez que hacéis una visita.
+
+Según quién las gestione
+
+    Propias: son las propias del titular del sitio web desde lo que se prestan los servicios al usuario.
+    De terceros: se envían al usuario por parte de uno tercero, diferente al titular del lugar.
+
+Según la finalidad
+
+    Necesarias: las imprescindibles para facilitar vuestra conexión. No hay opción de inhabilitarlas, dado que son las necesarias por el funcionamiento del sitio web.
+    Técnicas: las que permiten controlar el tráfico y comunicación de datos, identificar la sesión y acceder a páginas de acceso restringido, entre otros.
+    De preferencias: permiten recordar vuestras opciones (por ejemplo lengua o región desde la cual accedéis), con el fin de proporcionaros servicios avanzados.
+    Analíticas: proporcionan información estadística y permiten mejorar los servicios. Utilizamos cookies de Google Analytics que podéis desactivar instalándoos este plugin.
+    De publicidad: para ofrecer contenidos publicitarios relacionados con los intereses del usuario, bien directamente, bien por medio de terceros (“adservers”). Es necesario activarlas si quieres ver los vídeos de Youtube dentro del sitio web de la Universidad de Girona. 
+    De geolocalización: para conocer la localización geográfica del usuario.
+
+Las cookies que utilizamos
+
+Queremos que este lugar ofrezca un buen servicio y que sea fácil de utilizar. En este sentido utilizamos cookies de Google Analytics y de DNN Software. Eso nos permite:
+
+    Recopilar y utilizar vuestra información personal para operar dentro de la web UdG y proporcionar los servicios que habéis solicitado. 
+    Analizar estadísticamente la información a que acceden los usuarios de nuestro lugar. Los datos recopilados pueden incluir la actividad del navegador del usuario cuando nos visita, la ruta que siguen los usuarios en nuestro lugar, información del proveedor de servicios de Internet del visitante, el número a veces que los usuarios acceden al lugar y el comportamiento de los usuarios en nuestro lugar (páginas que ha visitado, formularios que se han completado y similares).
+    Identificar a los usuarios que nos visitan desde la invitación de un sitio web asociado o de un enlace patrocinado.
+
+Puedes obtener más información sobre DNN Software a www.dnnsoftware.com. Para controlar el uso y finalidad de los datos puedes ir a https://www.dnnsoftware.com/answers/dnn-platform-cookies-and-what-do-they-do.
+
+Puedes obtener más información sobre Google Analytics a www.google.com/analytics/. Para controlar la recopilación de datos con finalidades analíticas por parte de Google Analytics, puedes ir a ¿https://tools.google.com/dlpage/gaoptout?hl=en
+
+
+TAULA
+
+Finalidad   Proveedor         Nombre de la cookie       Gestión        Vigencia         Función
+
+Necesarias 	MOSQQUITO ALERT   ma-visited               	Propia 	       Persistente 	    Mostrar la ventana informativa solo en la primera visita
+
+
+Analíticas 	Google 	          _ga 	     3ers 	2 años 	
+
+Registra una identificación única que se utiliza para generar datos estadísticos sobre cómo se utiliza el visitante el sitio web
+
+Proveedor: google
+
+Nombre de la cookie: _ga_ZLD12V4W3V
+
+Gestión: Google
+Vigencia: 1 año
+Función: Analitics
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZLD12V4W3V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZLD12V4W3V');
+</script>
+
+Para inhabilitar Analytics de forma programática, asigna el valor true a la siguiente propiedad de ventana:
+
+window['ga-disable-G-ZLD12V4W3V'] = true;
+
+Sustituye GA_MEASUREMENT_ID por el ID de Analytics de la propiedad que quieras inhabilitar.
+
+Esta propiedad window se debe definir antes de que se hagan llamadas a gtag() y se debe incluir en cada página en la que quieras inhabilitar Analytics. Si la propiedad no se configura o no tiene el valor false, Analytics funcionará de la forma habitual.
+
+
+
+
