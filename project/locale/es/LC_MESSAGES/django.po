@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-08 12:00+0200\n"
-"PO-Revision-Date: 2022-07-08 10:03+0000\n"
+"POT-Creation-Date: 2022-07-11 16:45+0200\n"
+"PO-Revision-Date: 2022-07-11 14:46+0000\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -537,16 +537,18 @@ msgid "Analytics cookie description"
 msgstr "Estas cookies nos permiten ...."
 
 #: translations.py:171
-msgid "Save cookie preferences"
-msgstr "Guardar preferencias"
+msgid "Save and close"
+msgstr "Guardar y cerrar"
 
 #: translations.py:172
-msgid "Cookie preferences"
-msgstr "Configurar"
-
-#: translations.py:173
 msgid "Accept all"
 msgstr "Aceptar"
+
+#~ msgid "Save cookie preferences"
+#~ msgstr "Guardar preferencias"
+
+#~ msgid "Cookie preferences"
+#~ msgstr "Configurar"
 
 #, fuzzy
 #~ msgid ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-08 12:00+0200\n"
+"POT-Creation-Date: 2022-07-11 16:45+0200\n"
 "PO-Revision-Date: 2022-07-08 10:03+0000\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -433,11 +433,11 @@ msgstr "List of observations"
 
 #: translations.py:146
 msgid ""
-"Report with the observations displayed in the current map view (maximum: 300"
-" observations)"
+"Report with the observations displayed in the current map view (maximum: 300 "
+"observations)"
 msgstr ""
-"Report with the observations displayed in the current map view (maximum: 300"
-" observations)"
+"Report with the observations displayed in the current map view (maximum: 300 "
+"observations)"
 
 #: translations.py:147
 msgid ""
@@ -533,24 +533,26 @@ msgid "Analytics cookie description"
 msgstr "Google Analytics description goes here ....."
 
 #: translations.py:171
-msgid "Save cookie preferences"
-msgstr "Save cookie preferences"
+msgid "Save and close"
+msgstr ""
 
 #: translations.py:172
-msgid "Cookie preferences"
-msgstr "Settings"
-
-#: translations.py:173
 msgid "Accept all"
 msgstr "Accept"
 
+#~ msgid "Save cookie preferences"
+#~ msgstr "Save cookie preferences"
+
+#~ msgid "Cookie preferences"
+#~ msgstr "Settings"
+
 #, fuzzy
 #~ msgid ""
-#~ "Report with the observations displayed in the current map view (maximum: 300"
-#~ " observations)."
+#~ "Report with the observations displayed in the current map view (maximum: "
+#~ "300 observations)."
 #~ msgstr ""
-#~ "Report with the observations displayed in the current map view (maximum: 300"
-#~ " observations)"
+#~ "Report with the observations displayed in the current map view (maximum: "
+#~ "300 observations)"
 
 #~ msgid "Breeding site others"
 #~ msgstr "Others"

@@ -168,7 +168,6 @@ def translations(request, lang):
         'Tecnical cookies description': _("Tecnical cookies description"),        
         'Analytics cookie title': _("Analytics cookie title"),        
         'Analytics cookie description': _("Analytics cookie description"),        
-        'Save cookie preferences': _("Save cookie preferences"),
-        'Cookie preferences': _("Cookie preferences"),
+        'Save and close': _("Save and close"),
         'Accept all': _("Accept all"),        
     })
