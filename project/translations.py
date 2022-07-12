@@ -74,6 +74,7 @@ def translations(request, lang):
         "Pick a date range": _("Pick a date range"),
         "Delete calendar": _("Delete calendar"),
         "Apply calendar": _("Apply calendar"),
+        "All years and all months": _("All years and all months"),
 
         # Map, Popup
         'Anonymous': _("Anonymous"),
