@@ -170,5 +170,6 @@ def translations(request, lang):
         'Analytics cookie title': _("Analytics cookie title"),        
         'Analytics cookie description': _("Analytics cookie description"),        
         'Save and close': _("Save and close"),
-        'Accept all': _("Accept all"),        
+        'Accept all': _("Accept all"),
+        'Is required': _("Is required")
     })
