@@ -112,12 +112,16 @@ class DownloadsManager(BaseManager):
             ).annotate(
                 map_link=Concat(Value(settings.WEBSERVER_URL), 'version_uuid')
             ).values(
-                'id', 'observation_date', 'lon', 'lat',
+                'version_uuid', 'report_id', 'observation_date', 'lon', 'lat',
                 'ref_system', 'nuts3_code', 'nuts3_name',
                 'type', 'expert_validated', 'private_webmap_layer',
                 'ia_value', 'larvae', 'bite_count', 'bite_location',
-                'map_link'
+                'bite_time', 'lau_code', 'lau_name', 'nuts0_code',
+                'nuts0_name', 'map_link'
             )
+
+
+            
         return qs
 
     def _filter_data(self, **filters):
@@ -208,7 +212,8 @@ class DownloadsManager(BaseManager):
             # df["larvae"] = df["larvae"].map({True: 'YES', False: 'NO', None: 'NA'})
            
             df.rename(columns = {
-                    'id':'ID',
+                    'version_uuid':'ID',
+                    'report_id': 'Code',
                     'observation_date':'Date',
                     'lon':'Longitude',
                     'lat':'Latitude',
@@ -222,6 +227,11 @@ class DownloadsManager(BaseManager):
                     'larvae': 'Larvae',
                     'bite_count': 'Bites count',
                     'bite_location': 'Bite location',
+                    'bite_time': 'Bite time',
+                    'lau_code': 'Lau code',
+                    'lau_name': 'Lau name',
+                    'nuts0_code': 'Nuts0 code',
+                    'nuts0_name': 'Nuts0 name',
                     'map_link': 'Map link'
                 }, inplace = True)
 

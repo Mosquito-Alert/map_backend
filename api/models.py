@@ -108,6 +108,12 @@ class MapAuxReport(models.Model):
     larvae = models.BooleanField(default=None, null=True)
     bite_count = models.IntegerField(blank=True, default=None, null=True)
     
+    bite_time = models.CharField(max_length=255, default=None, null=True)
+    lau_code = models.CharField(max_length=20, default=None, null=True)
+    lau_name = models.CharField(max_length=255, default=None, null=True)
+    nuts0_code = models.CharField(max_length=20, default=None, null=True)
+    nuts0_name = models.CharField(max_length=255, default=None, null=True)
+
     t_q_1 = models.CharField(max_length=255, default=None, null=True)
     t_q_2 = models.CharField(max_length=255, default=None, null=True)
     t_q_3 = models.CharField(max_length=255, default=None, null=True)
