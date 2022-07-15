@@ -91,11 +91,7 @@ def get_data(request, year):
                 SELECT 'Feature' As type
                     , ST_AsGeoJSON(st_setsrid(st_makepoint(lon, lat), 4326),6)::json As geometry
                     ,row_to_json((SELECT l FROM (
-                        SELECT id, observation_date::date as d, private_webmap_layer as c,
-                        -- tags is string with square braquets, so firt remove them and cast to array
-                        coalesce(
-                            replace(regexp_replace(tags, '\[|\]', '', 'g'), '''', ''),
-                            '') as t
+                        SELECT id, observation_date::date as d, private_webmap_layer as c
                     ) As l
                     )) As properties
                     FROM map_aux_reports
