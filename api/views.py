@@ -127,6 +127,46 @@ def get_data(request, year):
         return HttpResponse(data, content_type="application/json")
 
 
+@csrf_exempt
+def get_hashtags(request):
+    if request.method == "POST":
+        post_data = json.loads(request.body.decode("utf-8"))
+        hashtags = post_data['hashtags'].split(',')
+        NOTES = []
+        for h in hashtags:
+            formatHashtag =  h if h.startswith('#') else ('#' + h)
+            NOTES.append(" NOTE ILIKE '%{}%'".format(formatHashtag))
+        notes_str = ' OR '.join(NOTES)
+    else: 
+        return HttpResponse({}, content_type="application/json")
+
+    SQL = f"""
+        SELECT jsonb_build_object(
+            'type',     'FeatureCollection',
+            'features', jsonb_agg(features.feature)
+		)   FROM(
+			SELECT row_to_json(f) As feature
+				 FROM (
+			 SELECT 'Feature' As type
+				  , ST_AsGeoJSON(st_setsrid(st_makepoint(lon, lat), 4326),6)::json As geometry
+				  ,row_to_json((SELECT l FROM (
+					  SELECT id, observation_date::date as d, private_webmap_layer as c, report_id
+					) As l
+				  )) As properties
+				   FROM map_aux_reports
+				   WHERE lat is not null and lon is not null AND ({notes_str})
+				   ORDER BY observation_date
+			) As f
+		) as features
+        """
+
+    with connection.cursor() as cursor:
+        cursor.execute(SQL)
+        data = cursor.fetchall()[0]
+        # data = serialize("json", cursor.fetchone())
+
+    return HttpResponse(data, content_type="application/json")
+
 
 @csrf_exempt
 def get_reports(request):
