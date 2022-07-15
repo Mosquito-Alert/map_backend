@@ -131,7 +131,9 @@ def get_hashtags(request):
         NOTES = []
         for h in hashtags:
             formatHashtag =  h if h.startswith('#') else ('#' + h)
-            NOTES.append(" NOTE ILIKE '%{}%'".format(formatHashtag))
+            wordHashtag =  h + ' '
+            NOTES.append(" NOTE ILIKE '%{}%'".format(wordHashtag))
+            NOTES.append(" NOTE ILIKE '%{}'".format(formatHashtag))
         notes_str = ' OR '.join(NOTES)
     else: 
         return HttpResponse({}, content_type="application/json")
