@@ -178,11 +178,13 @@ class DownloadsManager(BaseManager):
             q_collect = None
             rules = []
             for tag in hashtags:
-                formatHashtag =  tag if tag.startswith('#') else ('#' + tag)
+                formatHashtag =  tag + ' ' if tag.startswith('#') else ('#' + tag)
+                hashtagWord = tag + ' '
+                rules.append(Q(note__icontains=hashtagWord))
                 rules.append(Q(note__iendswith=formatHashtag))
             
             self.data = self.data.filter(reduce(operator.or_, rules))
-            print(self.data.query)
+
         return self.data
 
     def get(self, filters, fext):
