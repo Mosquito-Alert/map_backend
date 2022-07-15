@@ -174,13 +174,15 @@ class DownloadsManager(BaseManager):
 
 
         if 'hashtags' in filters:
-            tags = json.loads(filters['hashtags'])
+            hashtags = json.loads(filters['hashtags'])
             q_collect = None
             rules = []
-            for tag in tags:
-                rules.append(Q(tags__icontains=tag))
+            for tag in hashtags:
+                formatHashtag =  tag if tag.startswith('#') else ('#' + tag)
+                rules.append(Q(note__iendswith=formatHashtag))
             
             self.data = self.data.filter(reduce(operator.or_, rules))
+            print(self.data.query)
         return self.data
 
     def get(self, filters, fext):

@@ -171,5 +171,12 @@ def translations(request, lang):
         'Analytics cookie description': _("Analytics cookie description"),        
         'Save and close': _("Save and close"),
         'Accept all': _("Accept all"),
-        'Is required': _("Is required")
+        'Is required': _("Is required"),
+
+        # HELP
+        'Layers selector help': _("Layers selector help"),
+        'Filters help': _("Filters help"),
+        'Download and reports help': _("Download and reports help"),
+        'Graph help': _("Graph help"),
+        'Shareview help': _("Shareview help"),
     })
