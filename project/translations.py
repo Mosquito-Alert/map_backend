@@ -75,6 +75,7 @@ def translations(request, lang):
         "Delete calendar": _("Delete calendar"),
         "Apply calendar": _("Apply calendar"),
         "All years and all months": _("All years and all months"),
+        "Reset zoom graph": _("Reset zoom graph"),
 
         # Map, Popup
         'Anonymous': _("Anonymous"),
