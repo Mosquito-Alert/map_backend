@@ -164,10 +164,13 @@ def translations(request, lang):
         'You can also consult the Mosquito Alert website: ': _("You can also consult the Mosquito Alert website: "), 
 
         # Cookies comply
+        'Manage cookies': _("Manage cookies"),
         'Cookies comply title': _("Cookies comply title"),
         'We use cookies and similar technologies to help personalize content and offer a better experience. You can opt to customize them by clicking the preferences button': _("We use cookies and similar technologies to help personalize content and offer a better experience. You can opt to customize them by clicking the preferences button"),
         'Tecnical cookies': _("Tecnical cookies"),        
         'Tecnical cookies description': _("Tecnical cookies description"),        
+        'Analytics title': _("Analytics title"),
+        'Analytics tooltip': _("Analytics tooltip"),
         'Analytics cookie title': _("Analytics cookie title"),        
         'Analytics cookie description': _("Analytics cookie description"),        
         'Save and close': _("Save and close"),
