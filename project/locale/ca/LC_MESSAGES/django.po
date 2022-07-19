@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-18 13:09+0200\n"
-"PO-Revision-Date: 2022-07-18 13:14+0000\n"
+"POT-Creation-Date: 2022-07-19 09:56+0200\n"
+"PO-Revision-Date: 2022-07-19 09:58+0000\n"
 "Last-Translator:   <toni.hernandez@udg.edu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -515,75 +515,78 @@ msgid "You can also consult the Mosquito Alert website: "
 msgstr "També podeu consultar la web de Mosquito Alert: "
 
 #: .\translations.py:167
+#| msgid "Cookies comply title"
+msgid "Cookies policy"
+msgstr "Política de cookies"
+
+#: .\translations.py:168
 msgid "Manage cookies"
 msgstr "Gestionar"
 
-#: .\translations.py:168
+#: .\translations.py:169
 msgid "Cookies comply title"
 msgstr "Política de galetes"
 
-#: .\translations.py:169
+#: .\translations.py:170
 msgid ""
 "We use cookies and similar technologies to help personalize content and "
 "offer a better experience. You can opt to customize them by clicking the "
 "preferences button"
 msgstr "Utilitzem les galetes per ..."
 
-#: .\translations.py:170
+#: .\translations.py:171
 msgid "Tecnical cookies"
 msgstr "Galetes necessàries"
 
-#: .\translations.py:171
+#: .\translations.py:172
 msgid "Tecnical cookies description"
 msgstr "Aquestes galetes són imprescindibles pel bon funcionament del web"
 
-#: .\translations.py:172
-#| msgid "Analytics cookie title"
+#: .\translations.py:173
 msgid "Analytics title"
 msgstr "Google Analytics"
 
-#: .\translations.py:173
-#| msgid "Analytics cookie title"
+#: .\translations.py:174
 msgid "Analytics tooltip"
 msgstr "Google Analytics"
 
-#: .\translations.py:174
+#: .\translations.py:175
 msgid "Analytics cookie title"
 msgstr "Google Analytics"
 
-#: .\translations.py:175
+#: .\translations.py:176
 msgid "Analytics cookie description"
 msgstr "Aquestes galetes ens permeten ....."
 
-#: .\translations.py:176
+#: .\translations.py:177
 msgid "Save and close"
 msgstr "Desar i tancar"
 
-#: .\translations.py:177
+#: .\translations.py:178
 msgid "Accept all"
 msgstr "Acceptar totes"
 
-#: .\translations.py:178
+#: .\translations.py:179
 msgid "Is required"
 msgstr "Galeta requerida"
 
-#: .\translations.py:181
+#: .\translations.py:182
 msgid "Layers selector help"
 msgstr "Selección de capas"
 
-#: .\translations.py:182
+#: .\translations.py:183
 msgid "Filters help"
 msgstr "Selección de filtros"
 
-#: .\translations.py:183
+#: .\translations.py:184
 msgid "Download and reports help"
 msgstr "Descargar datos"
 
-#: .\translations.py:184
+#: .\translations.py:185
 msgid "Graph help"
 msgstr "Consultar el gráfico temporal"
 
-#: .\translations.py:185
+#: .\translations.py:186
 msgid "Shareview help"
 msgstr "Comparte la vista del mapa"
 
