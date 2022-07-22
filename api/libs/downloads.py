@@ -241,7 +241,7 @@ class DownloadsManager(BaseManager):
 
 
             if fext.lower() == 'gpkg':
-                geometry = [Point(xy) for xy in zip(df.Longitud, df.Latitud)]
+                geometry = [Point(xy) for xy in zip(df.Longitude, df.Latitude)]
                 gdf = geopandas.GeoDataFrame(df, crs="EPSG:4326", geometry=geometry)
                 gdf.to_file(os.path.join(tmp_dir, f'{file_name}.gpkg'), driver='GPKG')            
             else:
