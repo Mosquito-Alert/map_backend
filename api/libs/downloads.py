@@ -214,7 +214,6 @@ class DownloadsManager(BaseManager):
                         df['larvae'])
 
             # df["larvae"] = df["larvae"].map({True: 'YES', False: 'NO', None: 'NA'})
-           
             df.rename(columns = {
                     'version_uuid':'ID',
                     'report_id': 'Code',
@@ -245,7 +244,7 @@ class DownloadsManager(BaseManager):
                 gdf = geopandas.GeoDataFrame(df, crs="EPSG:4326", geometry=geometry)
                 gdf.to_file(os.path.join(tmp_dir, f'{file_name}.gpkg'), driver='GPKG')            
             else:
-                df.to_excel(os.path.join(tmp_dir, f'{file_name}.xlsx'))
+                df.to_excel(os.path.join(tmp_dir, f'{file_name}.xlsx'),  index = False)
 
             # Zip the exported files to a single file
             tmp_zip_file_name = f'{file_name}.zip'
