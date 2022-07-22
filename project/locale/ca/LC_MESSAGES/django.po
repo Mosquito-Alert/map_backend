@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-18 13:09+0200\n"
-"PO-Revision-Date: 2022-07-18 13:14+0000\n"
-"Last-Translator:   <toni.hernandez@udg.edu>\n"
+"PO-Revision-Date: 2022-07-22 09:04+0000\n"
+"Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -516,7 +516,7 @@ msgstr "També podeu consultar la web de Mosquito Alert: "
 
 #: .\translations.py:167
 msgid "Manage cookies"
-msgstr "Gestionar"
+msgstr "GESTIONAR"
 
 #: .\translations.py:168
 msgid "Cookies comply title"
@@ -561,7 +561,7 @@ msgstr "Desar i tancar"
 
 #: .\translations.py:177
 msgid "Accept all"
-msgstr "Acceptar totes"
+msgstr "ACCEPTAR TOTES"
 
 #: .\translations.py:178
 msgid "Is required"
