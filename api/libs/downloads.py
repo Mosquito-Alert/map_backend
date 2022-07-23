@@ -113,15 +113,12 @@ class DownloadsManager(BaseManager):
                 map_link=Concat(Value(settings.WEBSERVER_URL), 'version_uuid')
             ).values(
                 'version_uuid', 'report_id', 'observation_date', 'lon', 'lat',
-                'ref_system', 'nuts3_code', 'nuts3_name',
-                'type', 'expert_validated', 'private_webmap_layer',
+                'ref_system', 'nuts0_code', 'nuts0_name', 'nuts3_code', 'nuts3_name',
+                'lau_code', 'lau_name', 'type', 'expert_validated', 'private_webmap_layer',
                 'ia_value', 'larvae', 'bite_count', 'bite_location',
-                'bite_time', 'lau_code', 'lau_name', 'nuts0_code',
-                'nuts0_name', 'map_link'
+                'bite_time', 'map_link'
             )
 
-
-            
         return qs
 
     def _filter_data(self, **filters):
@@ -215,32 +212,32 @@ class DownloadsManager(BaseManager):
 
             # df["larvae"] = df["larvae"].map({True: 'YES', False: 'NO', None: 'NA'})
             df.rename(columns = {
-                    'version_uuid':'ID',
-                    'report_id': 'Code',
-                    'observation_date':'Date',
-                    'lon':'Longitude',
-                    'lat':'Latitude',
-                    'ref_system': 'Ref. System',
-                    'type':'Type',
-                    'expert_validated':'Validation',
-                    'private_webmap_layer':'Category',
-                    'nuts3_code': 'Nuts3 ID',
-                    'nuts3_name': 'Nuts3 name',
-                    'ia_value': 'AI value',
-                    'larvae': 'Larvae',
-                    'bite_count': 'Bites count',
-                    'bite_location': 'Bite location',
-                    'bite_time': 'Bite time',
-                    'lau_code': 'Lau code',
-                    'lau_name': 'Lau name',
-                    'nuts0_code': 'Nuts0 code',
-                    'nuts0_name': 'Nuts0 name',
-                    'map_link': 'Map link'
+                    'version_uuid':'id',
+                    'report_id': 'code',
+                    'observation_date':'date',
+                    'lon':'longitude',
+                    'lat':'latitude',
+                    'ref_system': 'ref_system',
+                    'nuts0_code': 'nuts0_id',
+                    'nuts0_name': 'nuts0_name',
+                    'nuts3_code': 'nuts3_id',
+                    'nuts3_name': 'nuts3_name',
+                    'lau_code': 'lau_id',
+                    'lau_name': 'lau_name',
+                    'type':'type',
+                    'expert_validated':'validation',
+                    'private_webmap_layer':'category',
+                    'ia_value': 'ai value',
+                    'larvae': 'larvae',
+                    'bite_count': 'bite_count',
+                    'bite_location': 'bite_location',
+                    'bite_time': 'bite_time',
+                    'map_link': 'map_link'
                 }, inplace = True)
 
 
             if fext.lower() == 'gpkg':
-                geometry = [Point(xy) for xy in zip(df.Longitude, df.Latitude)]
+                geometry = [Point(xy) for xy in zip(df.longitude, df.latitude)]
                 gdf = geopandas.GeoDataFrame(df, crs="EPSG:4326", geometry=geometry)
                 gdf.to_file(os.path.join(tmp_dir, f'{file_name}.gpkg'), driver='GPKG')            
             else:
