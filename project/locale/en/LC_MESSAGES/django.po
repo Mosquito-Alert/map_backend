@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Mosquito Alert SIGTE map\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-07-20 09:43+0200\n"
-"PO-Revision-Date: 2022-07-26 10:24+0000\n"
+"PO-Revision-Date: 2022-07-26 11:44+0000\n"
 "Last-Translator:   <toni.hernandez@udg.edu>\n"
 "Language-Team: English (USA)\n"
 "Language: en-US\n"
@@ -1139,7 +1139,7 @@ msgstr ""
 #: .\translations.py:243 loco:62d7b342fc24dc08c43a194e
 #| msgid "Mosquitoes"
 msgid "Mosquito Común"
-msgstr "Mosquitoes"
+msgstr "Common moquito"
 
 #: .\translations.py:244 loco:62d7b342fc24dc08c43a194f
 #| msgid ""
