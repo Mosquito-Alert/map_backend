@@ -231,15 +231,20 @@ def translations(request, lang):
         'y el mosquito común': _("y el mosquito común"),
         'Además, puedes visualizar posibles lugares de cría de estos insectos en la vía pública. Esta información se complementa con modelos de probabilidad, elaborados a partir de los datos ciudadanos y con el esfuerzo de muestreo o distribución de participantes.': _("Además, puedes visualizar posibles lugares de cría de estos insectos en la vía pública. Esta información se complementa con modelos de probabilidad, elaborados a partir de los datos ciudadanos y con el esfuerzo de muestreo o distribución de participantes."),
         'DATOS NO MODELADOS': _("DATOS NO MODELADOS"),
-        'según los expertos o los algoritmos de Inteligencia Artificial (IA), las fotos de esta observación podrían ser de mosquito tigre (Aedes albopictus). También incluye observaciones que podrían ser o de Aedes albopictus o de Aedes cretinus; en estos casos, no es posible determinar con seguridad de qué especie se trata.': _("según los expertos o los algoritmos de Inteligencia Artificial (IA), las fotos de esta observación podrían ser de mosquito tigre (Aedes albopictus). También incluye observaciones que podrían ser o de Aedes albopictus o de Aedes cretinus; en estos casos, no es posible determinar con seguridad de qué especie se trata."),
-        'Mosquito de la fiebre amarilla': _("Mosquito de la fiebre amarilla"),
-        ': según los expertos o los algoritmos de IA, las fotos de esta observación podrían ser del mosquito de la fiebre amarilla': _(": según los expertos o los algoritmos de IA, las fotos de esta observación podrían ser del mosquito de la fiebre amarilla"),
+
+
+        'según los expertos o los algoritmos de Inteligencia Artificial (IA), las fotos de esta observación podrían ser de mosquito tigre': _("según los expertos o los algoritmos de Inteligencia Artificial (IA), las fotos de esta observación podrían ser de mosquito tigre"),
+        'o de': _("o de"),
+        'en estos casos, no es posible determinar con seguridad de qué especie se trata.': _("en estos casos, no es posible determinar con seguridad de qué especie se trata."),
+
+        ': según los expertos o los algoritmos de IA, las fotos de esta observación podrían ser de la fiebre amarilla': _(": según los expertos o los algoritmos de IA, las fotos de esta observación podrían ser del mosquito de la fiebre amarilla"),
         'Mosquito del Japón': _("Mosquito del Japón"),
+
         ': según los expertos o los algoritmos de IA, las fotos de esta observación podrían ser del mosquito del Japón': _(": según los expertos o los algoritmos de IA, las fotos de esta observación podrían ser del mosquito del Japón"),
-        'También incluye observaciones que podrían ser o de Aedes japonicus o de Aedes koreicus; en estos casos, no es posible determinar con seguridad de qué especie se trata.': _("También incluye observaciones que podrían ser o de Aedes japonicus o de Aedes koreicus; en estos casos, no es posible determinar con seguridad de qué especie se trata."),
+        
+        'También incluye observaciones que podrían ser o de': _("También incluye observaciones que podrían ser o de"),
         'Mosquito del Corea': _("Mosquito del Corea"),
         'según los expertos o los algoritmos de IA, las fotos de esta observación podrían ser del mosquito de Corea': _("según los expertos o los algoritmos de IA, las fotos de esta observación podrían ser del mosquito de Corea"),
-        '. También incluye observaciones que podrían ser o de Aedes japonicus o de Aedes koreicus; en estos casos, no es posible determinar con seguridad de qué especie se trata.': _(". También incluye observaciones que podrían ser o de Aedes japonicus o de Aedes koreicus; en estos casos, no es posible determinar con seguridad de qué especie se trata."),
         'Mosquito Común': _("Mosquito Común"),
         ': según los expertos o los algoritmos de IA, las fotos de esta observación podrían ser del mosquito común': _(": según los expertos o los algoritmos de IA, las fotos de esta observación podrían ser del mosquito común"),
         'Otras categorías. Mosquito no identificable:': _("Otras categorías. Mosquito no identificable:"),

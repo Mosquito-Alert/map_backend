@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mosquito Alert SIGTE map\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-26 12:09+0200\n"
-"PO-Revision-Date: 2022-07-26 12:39+0000\n"
+"POT-Creation-Date: 2022-07-26 13:42+0200\n"
+"PO-Revision-Date: 2022-07-26 13:48+0000\n"
 "Last-Translator:   <toni.hernandez@udg.edu>\n"
 "Language-Team: English (USA)\n"
 "Language: en-US\n"
@@ -783,7 +783,6 @@ msgid "Mostrar la ventana informativa solo en la primera visita"
 msgstr "how info window only on first visit"
 
 #: .\translations.py:213
-#, fuzzy
 #| msgid "Google Analytics"
 msgid "Analíticas"
 msgstr "Google Analytics"
@@ -876,28 +875,34 @@ msgstr ""
 msgid "DATOS NO MODELADOS"
 msgstr "NOT MODELED DATA"
 
-#: .\translations.py:234
-msgid ""
-"según los expertos o los algoritmos de Inteligencia Artificial (IA), las "
-"fotos de esta observación podrían ser de mosquito tigre (Aedes albopictus). "
-"También incluye observaciones que podrían ser o de Aedes albopictus o de "
-"Aedes cretinus; en estos casos, no es posible determinar con seguridad de "
-"qué especie se trata."
-msgstr ""
-"according to experts or Artificial Intelligence (AI) algorithms, the photos "
-"of this observation could be of a tiger mosquito (Aedes albopictus). It also"
-" includes observations that could be either Aedes albopictus or Aedes "
-"cretinus; in these cases, it is not possible to determine with certainty "
-"which species it is."
-
-#: .\translations.py:235
-msgid "Mosquito de la fiebre amarilla"
-msgstr "Yellow fever mosquito"
-
 #: .\translations.py:236
 #| msgid ""
 #| "según los expertos o los algoritmos de IA, las fotos de esta observación "
 #| "podrían ser del mosquito de Corea"
+msgid ""
+"según los expertos o los algoritmos de Inteligencia Artificial (IA), las "
+"fotos de esta observación podrían ser de mosquito tigre"
+msgstr ""
+"according to experts or AI algorithms, the photos of this observation could "
+"be from Tiger mosquito"
+
+#: .\translations.py:237
+msgid "o de"
+msgstr "or"
+
+#: .\translations.py:238
+#| msgid ""
+#| "También incluye observaciones que podrían ser o de Aedes japonicus o de "
+#| "Aedes koreicus; en estos casos, no es posible determinar con seguridad de "
+#| "qué especie se trata."
+msgid ""
+"en estos casos, no es posible determinar con seguridad de qué especie se "
+"trata."
+msgstr ""
+" in these cases, it is not possible to determine with certainty which "
+"species it is."
+
+#: .\translations.py:240
 msgid ""
 ": según los expertos o los algoritmos de IA, las fotos de esta observación "
 "podrían ser del mosquito de la fiebre amarilla"
@@ -905,11 +910,11 @@ msgstr ""
 ": according to experts or Artificial Intelligence (AI) algorithms, the "
 "photos of this observation could be of a yellow fever mosquito"
 
-#: .\translations.py:237
+#: .\translations.py:241
 msgid "Mosquito del Japón"
 msgstr "Asian bush mosquito"
 
-#: .\translations.py:238
+#: .\translations.py:243
 msgid ""
 ": según los expertos o los algoritmos de IA, las fotos de esta observación "
 "podrían ser del mosquito del Japón"
@@ -917,21 +922,15 @@ msgstr ""
 ": according to experts or AI algorithms, the photos of this observation "
 "could be from the Asian bush mosquito"
 
-#: .\translations.py:239
-msgid ""
-"También incluye observaciones que podrían ser o de Aedes japonicus o de "
-"Aedes koreicus; en estos casos, no es posible determinar con seguridad de "
-"qué especie se trata."
-msgstr ""
-"It also includes observations that could be either Aedes japonicus or Aedes "
-"koreicus; in these cases, it is not possible to determine with certainty "
-"which species it is."
+#: .\translations.py:245
+msgid "También incluye observaciones que podrían ser o de"
+msgstr " It also includes observations that could be either"
 
-#: .\translations.py:240
+#: .\translations.py:246
 msgid "Mosquito del Corea"
 msgstr "Korean mosquito"
 
-#: .\translations.py:241
+#: .\translations.py:247
 msgid ""
 "según los expertos o los algoritmos de IA, las fotos de esta observación "
 "podrían ser del mosquito de Corea"
@@ -939,21 +938,11 @@ msgstr ""
 "according to experts or AI algorithms, the photos of this observation could "
 "be from the Korean mosquito"
 
-#: .\translations.py:242
-msgid ""
-". También incluye observaciones que podrían ser o de Aedes japonicus o de "
-"Aedes koreicus; en estos casos, no es posible determinar con seguridad de "
-"qué especie se trata."
-msgstr ""
-"It also includes observations that could be either Aedes japonicus or Aedes "
-"koreicus; in these cases, it is not possible to determine with certainty "
-"which species it is."
-
-#: .\translations.py:243
+#: .\translations.py:248
 msgid "Mosquito Común"
 msgstr "Common moquito"
 
-#: .\translations.py:244
+#: .\translations.py:249
 msgid ""
 ": según los expertos o los algoritmos de IA, las fotos de esta observación "
 "podrían ser del mosquito común"
@@ -961,11 +950,11 @@ msgstr ""
 ": according to experts or AI algorithms, the photos of this observation "
 "could be of the common house mosquito"
 
-#: .\translations.py:245
+#: .\translations.py:250
 msgid "Otras categorías. Mosquito no identificable:"
 msgstr "Unidentifiable mosquito:"
 
-#: .\translations.py:246
+#: .\translations.py:251
 msgid ""
 "según los expertos o los algoritmos de IA, estas observaciones y sus fotos "
 "no permiten determinar ninguna especie de mosquito en concreto. También "
@@ -977,7 +966,7 @@ msgstr ""
 "observations sent as “mosquito” that have not been evaluated as they do not "
 "contain associated images."
 
-#: .\translations.py:247
+#: .\translations.py:252
 msgid ""
 " Observaciones ciudadanas de picaduras de mosquito, de cualquier especie y "
 "sin ningún tipo de validación por parte de expertos o de algoritmos de IA."
@@ -985,7 +974,7 @@ msgstr ""
 "Citizen observations of mosquito bites, of any species and without any type "
 "of validation by experts or AI algorithms."
 
-#: .\translations.py:249
+#: .\translations.py:254
 msgid ""
 ": observaciones ciudadanas de posibles lugares de cría de mosquitos "
 "(identificadas por la ciudadanía como “imbornales con agua”) en su mayoría, "
@@ -995,7 +984,7 @@ msgstr ""
 "citizens as \"stormdrain with water\"), mostly without any kind of "
 "validation by experts or AI algorithms."
 
-#: .\translations.py:250
+#: .\translations.py:255
 msgid ""
 "observaciones ciudadanas de posibles lugares de cría de mosquitos "
 "(identificadas por la ciudadanía como “imbornales sin agua”), en su mayoría,"
@@ -1005,7 +994,7 @@ msgstr ""
 "citizens as “storm drain without water\"), mostly without any kind of "
 "validation by experts or AI algorithms."
 
-#: .\translations.py:251
+#: .\translations.py:256
 msgid ""
 ": observaciones ciudadanas de posibles lugares de cría de mosquitos "
 "(identificadas por la ciudadanía como “otros tipos de lugares de cría”), en "
@@ -1016,7 +1005,7 @@ msgstr ""
 "citizens as “other types of breeding sites”), mostly without any kind of "
 "validation by experts or AI algorithms."
 
-#: .\translations.py:252
+#: .\translations.py:257
 msgid ""
 "Según los expertos o los algoritmos de IA, las fotos de esta observación "
 "podrían ser de otras especies de mosquito"
@@ -1024,7 +1013,7 @@ msgstr ""
 "according to experts or AI algorithms, the photos of this observation could "
 "be of other species of mosquito"
 
-#: .\translations.py:253
+#: .\translations.py:258
 msgid ""
 "La capa muestra la distribución de los participantes, donde las cuadrículas "
 "más oscuras indican un mayor número de dispositivos con la app instalada o "
@@ -1042,7 +1031,7 @@ msgstr ""
 " In ecology, this information is known as sampling effort, allowing "
 "observations to be corrected to make them comparable between areas."
 
-#: .\translations.py:254
+#: .\translations.py:259
 msgid ""
 "Selecciona las capas de información que te interese visualizar: "
 "observaciones de mosquito, picaduras, lugares de cría, otras especies y "
@@ -1052,23 +1041,23 @@ msgstr ""
 "mosquito observations, bites, breeding sites, other species and sampling "
 "effort."
 
-#: .\translations.py:255
+#: .\translations.py:260
 msgid "Filtra tu selección de distintas maneras:"
 msgstr "Filter your selection in different ways:"
 
-#: .\translations.py:256
+#: .\translations.py:261
 msgid "POR LOCALIZACIÓN"
 msgstr "BY LOCATION"
 
-#: .\translations.py:257
+#: .\translations.py:262
 msgid "Escribe y selecciona del desplegable tu lugar de interés"
 msgstr "Write and select your place of interest from the dropdown."
 
-#: .\translations.py:258
+#: .\translations.py:263
 msgid "POR HASHTAG"
 msgstr "BY HASHTAG"
 
-#: .\translations.py:259
+#: .\translations.py:264
 msgid ""
 "puedes usar más de una etiqueta. Se mostrarán las observaciones que "
 "contengan como mínimo una de las etiquetas utilizadas."
@@ -1076,11 +1065,11 @@ msgstr ""
 "you can use more than one tag. Observations that contain at least one of the"
 " labels used will be displayed."
 
-#: .\translations.py:260
+#: .\translations.py:265
 msgid "POR IDENTIFICADOR"
 msgstr "BY IDENTIFIER"
 
-#: .\translations.py:261
+#: .\translations.py:266
 msgid ""
 ": escribe el identificador corto de un informe en el buscador de hashtag "
 "precedido por el símbolo :"
@@ -1088,7 +1077,7 @@ msgstr ""
 ": type the short identifier of a report in the hashtag search engine "
 "preceded by the symbol:"
 
-#: .\translations.py:262
+#: .\translations.py:267
 msgid ""
 "Ejemplo > :6RUID. Puedes usar más de un identificador. Se mostrarán las "
 "observaciones que contengan como mínimo uno de los identificadores "
@@ -1097,11 +1086,11 @@ msgstr ""
 "Example > :6RUID. You can use more than one identifier. Observations that "
 "contain at least one of the identifiers used will be displayed."
 
-#: .\translations.py:263
+#: .\translations.py:268
 msgid "POR FECHA O RANGO DE FECHAS"
 msgstr "BY DATE OR RANGE OF DATES"
 
-#: .\translations.py:264
+#: .\translations.py:269
 msgid ""
 "Los filtros aplican a todas las capas de información de las observaciones "
 "(mosquitos, lugares de cría, picaduras, otras especies). La capa \"esfuerzo "
@@ -1111,7 +1100,7 @@ msgstr ""
 "(mosquitoes, breeding sites, bites, other species). The \"sampling effort\" "
 "layer can only be filtered by date or date range."
 
-#: .\translations.py:265
+#: .\translations.py:270
 msgid ""
 "Los filtros son acumulativos, es decir, que actúan sobre el rango de datos "
 "previamente seleccionados. Por ejemplo, si filtramos mosquitos de la ciudad "
@@ -1124,7 +1113,7 @@ msgstr ""
 "then search for a hashtag, the map will return only those observations from "
 "the city of Barcelona that have that hashtag."
 
-#: .\translations.py:266
+#: .\translations.py:271
 msgid ""
 "Descarga los datos seleccionados en la vista de tu mapa y genera informes "
 "html con los datos seleccionados en la vista de tu mapa."
@@ -1132,18 +1121,52 @@ msgstr ""
 "Download the selected data in your map view and generate html reports with "
 "the selected data in your map view."
 
-#: .\translations.py:267
+#: .\translations.py:272
 msgid ""
 "Consulta la información de la vista del mapa en formato de gráfico temporal"
 msgstr "View map view information in a time series graph format."
 
-#: .\translations.py:268
+#: .\translations.py:273
 msgid ""
 "Comparte la vista del mapa, consulta la ayuda y la información del mapa y "
 "cambia el idioma del mapa"
 msgstr ""
 "Share the map view, get help and map information, and change the map "
 "language."
+
+#~ msgid ""
+#~ "según los expertos o los algoritmos de Inteligencia Artificial (IA), las "
+#~ "fotos de esta observación podrían ser de mosquito tigre (Aedes albopictus). "
+#~ "También incluye observaciones que podrían ser o de Aedes albopictus o de "
+#~ "Aedes cretinus; en estos casos, no es posible determinar con seguridad de "
+#~ "qué especie se trata."
+#~ msgstr ""
+#~ "according to experts or Artificial Intelligence (AI) algorithms, the photos "
+#~ "of this observation could be of a tiger mosquito (Aedes albopictus). It also"
+#~ " includes observations that could be either Aedes albopictus or Aedes "
+#~ "cretinus; in these cases, it is not possible to determine with certainty "
+#~ "which species it is."
+
+#~ msgid "Mosquito de la fiebre amarilla"
+#~ msgstr "Yellow fever mosquito"
+
+#~ msgid ""
+#~ "También incluye observaciones que podrían ser o de Aedes japonicus o de "
+#~ "Aedes koreicus; en estos casos, no es posible determinar con seguridad de "
+#~ "qué especie se trata."
+#~ msgstr ""
+#~ "It also includes observations that could be either Aedes japonicus or Aedes "
+#~ "koreicus; in these cases, it is not possible to determine with certainty "
+#~ "which species it is."
+
+#~ msgid ""
+#~ ". También incluye observaciones que podrían ser o de Aedes japonicus o de "
+#~ "Aedes koreicus; en estos casos, no es posible determinar con seguridad de "
+#~ "qué especie se trata."
+#~ msgstr ""
+#~ "It also includes observations that could be either Aedes japonicus or Aedes "
+#~ "koreicus; in these cases, it is not possible to determine with certainty "
+#~ "which species it is."
 
 #~ msgid "Permite-recordar-las-cookies-aceptadas-con-anterio"
 #~ msgstr "Allows you to remember previously accepted cookies"
