@@ -231,13 +231,11 @@ def translations(request, lang):
         'y el mosquito común': _("y el mosquito común"),
         'Además, puedes visualizar posibles lugares de cría de estos insectos en la vía pública. Esta información se complementa con modelos de probabilidad, elaborados a partir de los datos ciudadanos y con el esfuerzo de muestreo o distribución de participantes.': _("Además, puedes visualizar posibles lugares de cría de estos insectos en la vía pública. Esta información se complementa con modelos de probabilidad, elaborados a partir de los datos ciudadanos y con el esfuerzo de muestreo o distribución de participantes."),
         'DATOS NO MODELADOS': _("DATOS NO MODELADOS"),
-
-
-        'según los expertos o los algoritmos de Inteligencia Artificial (IA), las fotos de esta observación podrían ser de mosquito tigre': _("según los expertos o los algoritmos de Inteligencia Artificial (IA), las fotos de esta observación podrían ser de mosquito tigre"),
+        'según los expertos o los algoritmos de  Inteligencia Artificial (IA), las fotos de esta observación podrían ser de mosquito tigre': _("según los expertos o los algoritmos de  Inteligencia Artificial (IA), las fotos de esta observación podrían ser de mosquito tigre"),
         'o de': _("o de"),
         'en estos casos, no es posible determinar con seguridad de qué especie se trata.': _("en estos casos, no es posible determinar con seguridad de qué especie se trata."),
 
-        ': según los expertos o los algoritmos de IA, las fotos de esta observación podrían ser de la fiebre amarilla': _(": según los expertos o los algoritmos de IA, las fotos de esta observación podrían ser del mosquito de la fiebre amarilla"),
+        ': según los expertos o los algoritmos de IA, las fotos de esta observación podrían ser del mosquito de la fiebre amarilla': _(": según los expertos o los algoritmos de IA, las fotos de esta observación podrían ser del mosquito de la fiebre amarilla"),
         'Mosquito del Japón': _("Mosquito del Japón"),
 
         ': según los expertos o los algoritmos de IA, las fotos de esta observación podrían ser del mosquito del Japón': _(": según los expertos o los algoritmos de IA, las fotos de esta observación podrían ser del mosquito del Japón"),
