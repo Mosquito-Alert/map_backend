@@ -269,4 +269,15 @@ def translations(request, lang):
         'Descarga los datos seleccionados en la vista de tu mapa y genera informes html con los datos seleccionados en la vista de tu mapa.': _("Descarga los datos seleccionados en la vista de tu mapa y genera informes html con los datos seleccionados en la vista de tu mapa."),
         'Consulta la información de la vista del mapa en formato de gráfico temporal': _("Consulta la información de la vista del mapa en formato de gráfico temporal"),
         'Comparte la vista del mapa, consulta la ayuda y la información del mapa y cambia el idioma del mapa': _("Comparte la vista del mapa, consulta la ayuda y la información del mapa y cambia el idioma del mapa"),
+
+        # MODELS
+        'Month / Year': _("Month / Year"),
+        'Low': _("Low"),
+        'Medium': _("Medium"),
+        'High': _("High"),
+        'Select model date': _("Select model date"),
+        'Click on year and month': _("Click on year and month"),
+        'Apply': _("Apply"),
+        'Probability': _("Probability"),
+        'Uncertainty': _("Uncertainty"),
     })
