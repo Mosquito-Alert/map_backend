@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mosquito Alert SIGTE map\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-31 10:30+0200\n"
-"PO-Revision-Date: 2022-07-31 08:30+0000\n"
+"POT-Creation-Date: 2022-07-31 11:11+0200\n"
+"PO-Revision-Date: 2022-07-31 09:12+0000\n"
 "Last-Translator:   <admin@gmail.com>\n"
 "Language-Team: Catalan (Spain)\n"
 "Language: ca-ES\n"
@@ -1136,34 +1136,38 @@ msgid "Month / Year"
 msgstr "Mes / Any"
 
 #: translations.py:275
+msgid "Very low"
+msgstr "Molt baixa"
+
+#: translations.py:276
 msgid "Low"
 msgstr "Baixa"
 
-#: translations.py:276
+#: translations.py:277
 msgid "Medium"
 msgstr "Mitja"
 
-#: translations.py:277
+#: translations.py:278
 msgid "High"
 msgstr "Alta"
 
-#: translations.py:278
+#: translations.py:279
 msgid "Select model date"
 msgstr "Selecciona mes i any"
 
-#: translations.py:279
+#: translations.py:280
 msgid "Click on year and month"
 msgstr "Cal seleccionar mes i any"
 
-#: translations.py:280
+#: translations.py:281
 msgid "Apply"
 msgstr "Aplica"
 
-#: translations.py:281
+#: translations.py:282
 msgid "Probability"
 msgstr "Probabilitat"
 
-#: translations.py:282
+#: translations.py:283
 msgid "Uncertainty"
 msgstr "Incertesa"
 

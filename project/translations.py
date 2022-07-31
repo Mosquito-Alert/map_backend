@@ -272,6 +272,7 @@ def translations(request, lang):
 
         # MODELS
         'Month / Year': _("Month / Year"),
+        'Very low': _("Very low"),
         'Low': _("Low"),
         'Medium': _("Medium"),
         'High': _("High"),
