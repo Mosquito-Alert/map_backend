@@ -45,19 +45,19 @@ def cross_domain_ajax(func):
 @csrf_exempt
 @never_cache
 @cross_domain_ajax
+@csrf_exempt
+@never_cache
+@cross_domain_ajax
 def ajax_login(request):
     """Ajax login."""
-
     if request.method == 'POST':
         response = {'success': False, 'data': {}}
-        post_data = json.loads(request.body.decode("utf-8"))
-        username = post_data.get('username')
-        password = post_data.get('password')        
+        username = request.POST.get('username', '')
+        password = request.POST.get('password', '')
         user = authenticate(username=username, password=password)
         if user is not None and user.is_active:
             request.session.set_expiry(86400)
             login(request, user)
-            print(user.id)
             request.session['user_id'] = user.id
             response['success'] = True
             roles = request.user.groups.values_list('name', flat=True)
@@ -67,7 +67,6 @@ def ajax_login(request):
                             content_type='application/json')
     else:
         return HttpResponse('Unauthorized', status=401)
-
 
 
 @csrf_exempt

@@ -3,9 +3,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mosquito Alert SIGTE map\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-31 11:11+0200\n"
-"PO-Revision-Date: 2022-07-31 09:12+0000\n"
-"Last-Translator:   <admin@gmail.com>\n"
+"POT-Creation-Date: 2022-08-03 12:33+0200\n"
+"PO-Revision-Date: 2022-08-03 12:35+0000\n"
+"Last-Translator:   <toni.hernandez@udg.edu>\n"
 "Language-Team: Catalan (Spain)\n"
 "Language: ca-ES\n"
 "MIME-Version: 1.0\n"
@@ -19,343 +19,343 @@ msgstr ""
 "X-Loco-Source-Locale: en-US\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
 
-#: translations.py:12
+#: .\translations.py:12
 msgid "Shown points"
 msgstr "Punts mostrats"
 
-#: translations.py:13
+#: .\translations.py:13
 msgid "Open"
 msgstr "Obrir"
 
-#: translations.py:14
+#: .\translations.py:14
 msgid "Close"
 msgstr "Tancar"
 
-#: translations.py:15
+#: .\translations.py:15
 msgid "Select"
 msgstr "SELECCIONA"
 
-#: translations.py:16
+#: .\translations.py:16
 msgid "Mosquitos"
 msgstr "Mosquits"
 
-#: translations.py:17
+#: .\translations.py:17
 msgid "Bites"
 msgstr "Picades"
 
-#: translations.py:18
+#: .\translations.py:18
 msgid "Breeding sites"
 msgstr "Llocs de cria"
 
-#: translations.py:19
+#: .\translations.py:19
 msgid "Sampling effort"
 msgstr "Esforç de mostreig"
 
-#: translations.py:20
+#: .\translations.py:20
 msgid "Placeholder location"
 msgstr "Localització (ciutat, provincia, comunitat, país)"
 
-#: translations.py:21
+#: .\translations.py:21
 msgid "Placeholder hashtag"
 msgstr "#hashtag"
 
-#: translations.py:22
+#: .\translations.py:22
 msgid "Filter"
 msgstr "Filtrar"
 
-#: translations.py:23
+#: .\translations.py:23
 msgid "Continue"
 msgstr "Continuar"
 
-#: translations.py:26
+#: .\translations.py:26
 msgid "Mosquito tiger probable"
 msgstr "Moquit tigre probable"
 
-#: translations.py:27
+#: .\translations.py:27
 msgid "Breeding site not yet filtered"
 msgstr "Altres"
 
-#: translations.py:28
+#: .\translations.py:28
 msgid "Conflict"
 msgstr "Conflicte"
 
-#: translations.py:29
+#: .\translations.py:29
 msgid "Mosquito tiger confirmed"
 msgstr "Mosquit tigre"
 
-#: translations.py:30
+#: .\translations.py:30
 msgid "Unidentified"
 msgstr "Mosquit no identificat"
 
-#: translations.py:31
+#: .\translations.py:31
 msgid "Yellow fever confirmed"
 msgstr "Mosquit de la febre groga"
 
-#: translations.py:32
+#: .\translations.py:32
 msgid "Storm drain water"
 msgstr "Embornal amb aigua"
 
-#: translations.py:33 translations.py:59
+#: .\translations.py:33 .\translations.py:59
 msgid "Breeding site other"
 msgstr "Altres"
 
-#: translations.py:34 translations.py:62
+#: .\translations.py:34 .\translations.py:62
 msgid "Other species"
 msgstr "Altres espècies"
 
-#: translations.py:35
+#: .\translations.py:35
 msgid "Storm drain dry"
 msgstr "Embornal amb aigua"
 
-#: translations.py:36
+#: .\translations.py:36
 msgid "Not yet validated"
 msgstr "Pendent de validació"
 
-#: translations.py:37
+#: .\translations.py:37
 msgid "Yellow fever probable"
 msgstr "Mosquit de la febre groga"
 
-#: translations.py:38
+#: .\translations.py:38
 msgid "Trash layer"
 msgstr "Capa trash"
 
-#: translations.py:41 translations.py:42
+#: .\translations.py:41 .\translations.py:42
 msgid "Tiger mosquito"
 msgstr "Mosquit tigre"
 
-#: translations.py:43 translations.py:44
+#: .\translations.py:43 .\translations.py:44
 msgid "Yellow fever mosquito"
 msgstr "Mosquit  de la febre groga"
 
-#: translations.py:45 translations.py:46
+#: .\translations.py:45 .\translations.py:46
 msgid "Japonicus mosquito"
 msgstr "Mosquit del Japó"
 
-#: translations.py:47
+#: .\translations.py:47
 msgid "Mosquito japonicus/koreicus"
 msgstr "Mosquit del Japó / de Corea"
 
-#: translations.py:48 translations.py:49
+#: .\translations.py:48 .\translations.py:49
 msgid "Koreicus mosquito"
 msgstr "Mosquit de Corea"
 
-#: translations.py:50 translations.py:51
+#: .\translations.py:50 .\translations.py:51
 msgid "Culex mosquito"
 msgstr "Mosquit comú"
 
-#: translations.py:52 translations.py:53
+#: .\translations.py:52 .\translations.py:53
 msgid "Unidentified mosquito"
 msgstr "No identificable"
 
-#: translations.py:54
+#: .\translations.py:54
 msgid "Others_mosquito"
 msgstr "Altres mosquits"
 
-#: translations.py:57
+#: .\translations.py:57
 msgid "Storm drain with water"
 msgstr "Embornal amb aigua"
 
-#: translations.py:58
+#: .\translations.py:58
 msgid "Storm drain without water"
 msgstr "Embornal sense aigua"
 
-#: translations.py:65
+#: .\translations.py:65
 msgid "Layers"
 msgstr "Capes"
 
-#: translations.py:66
+#: .\translations.py:66
 msgid "Models"
 msgstr "Models"
 
-#: translations.py:67
+#: .\translations.py:67
 msgid "Lang"
 msgstr "Idioma"
 
-#: translations.py:68
+#: .\translations.py:68
 msgid "Share"
 msgstr "Compartir"
 
-#: translations.py:69
+#: .\translations.py:69
 msgid "Help"
 msgstr "Ajuda"
 
-#: translations.py:70
+#: .\translations.py:70
 msgid "Log in"
 msgstr "Entrar"
 
-#: translations.py:73
+#: .\translations.py:73
 msgid "Time series"
 msgstr "Sèrie temporal"
 
-#: translations.py:74
+#: .\translations.py:74
 msgid "Pick a date range"
 msgstr "Rang de dates"
 
-#: translations.py:75
+#: .\translations.py:75
 msgid "Delete calendar"
 msgstr "Neteja"
 
-#: translations.py:76
+#: .\translations.py:76
 msgid "Apply calendar"
 msgstr "Aplica"
 
-#: translations.py:77
+#: .\translations.py:77
 msgid "All years and all months"
 msgstr "Tots els anys i tots els mesos"
 
-#: translations.py:78
+#: .\translations.py:78
 msgid "Reset zoom graph"
 msgstr "Tornar al zoom inicial"
 
-#: translations.py:81
+#: .\translations.py:81
 msgid "Anonymous"
 msgstr "Anònim"
 
-#: translations.py:82
+#: .\translations.py:82
 msgid "How many bites"
 msgstr "Número de picades"
 
-#: translations.py:83
+#: .\translations.py:83
 msgid "Body part"
 msgstr "Part del cos"
 
-#: translations.py:84
+#: .\translations.py:84
 msgid "Bite location"
 msgstr "Lloc"
 
-#: translations.py:85
+#: .\translations.py:85
 msgid "Bite time"
 msgstr "Hora"
 
-#: translations.py:87
+#: .\translations.py:87
 msgid "Date"
 msgstr "Data"
 
-#: translations.py:88
+#: .\translations.py:88
 msgid "Expert note"
 msgstr "Nota experta"
 
-#: translations.py:89
+#: .\translations.py:89
 msgid "Confirmed"
 msgstr "Confirmat"
 
-#: translations.py:90
+#: .\translations.py:90
 msgid "Probable"
 msgstr "Probable"
 
-#: translations.py:91
+#: .\translations.py:91
 msgid "Expert validation"
 msgstr "Validació experta"
 
-#: translations.py:92
+#: .\translations.py:92
 msgid "AI validation"
 msgstr "Validació IA"
 
-#: translations.py:94
+#: .\translations.py:94
 msgid "_Unknown"
 msgstr "No ho sé"
 
-#: translations.py:95
+#: .\translations.py:95
 msgid "Outdoors"
 msgstr "A l'aire lliure"
 
-#: translations.py:96
+#: .\translations.py:96
 msgid "Inside building"
 msgstr "Dins d'un edifici"
 
-#: translations.py:97
+#: .\translations.py:97
 msgid "Inside vehicle"
 msgstr "Dins d'un cotxe"
 
-#: translations.py:98
+#: .\translations.py:98
 msgid "At sunrise"
 msgstr "Al matí"
 
-#: translations.py:99
+#: .\translations.py:99
 msgid "At noon"
 msgstr "Al migdia"
 
-#: translations.py:100
+#: .\translations.py:100
 msgid "At sunset"
 msgstr "Al capvespre"
 
-#: translations.py:101
+#: .\translations.py:101
 msgid "At night"
 msgstr "A la nit"
 
-#: translations.py:102
+#: .\translations.py:102
 msgid "Not really sure"
 msgstr "No ho sé"
 
-#: translations.py:104
+#: .\translations.py:104
 msgid "Head"
 msgstr "Cap"
 
-#: translations.py:105
+#: .\translations.py:105
 msgid "Left arm"
 msgstr "Braç esquerre"
 
-#: translations.py:106
+#: .\translations.py:106
 msgid "Right arm"
 msgstr "Braç dret"
 
-#: translations.py:107
+#: .\translations.py:107
 msgid "Chest"
 msgstr "Pit"
 
-#: translations.py:108
+#: .\translations.py:108
 msgid "Left leg"
 msgstr "Cama esquerre"
 
-#: translations.py:109
+#: .\translations.py:109
 msgid "Right leg"
 msgstr "Cama dreta"
 
-#: translations.py:111
+#: .\translations.py:111
 msgid "Breeding site with water"
 msgstr "Amb aigua?"
 
-#: translations.py:112
+#: .\translations.py:112
 msgid "Breeding site without water"
 msgstr "Sense aigua"
 
-#: translations.py:113
+#: .\translations.py:113
 msgid "Breeding site with larva"
 msgstr "Té larves?"
 
-#: translations.py:114
+#: .\translations.py:114
 msgid "No"
 msgstr "No"
 
-#: translations.py:115
+#: .\translations.py:115
 msgid "Yes"
 msgstr "Sí"
 
-#: translations.py:117
+#: .\translations.py:117
 msgid "Not available"
 msgstr "No disponible"
 
-#: translations.py:118
+#: .\translations.py:118
 msgid "No results found"
 msgstr "No hi ha resultats"
 
-#: translations.py:121
+#: .\translations.py:121
 msgid "Download"
 msgstr "Descarregar dades"
 
-#: translations.py:122
+#: .\translations.py:122
 msgid "Download geopackage"
 msgstr "Geopackage"
 
-#: translations.py:123
+#: .\translations.py:123
 msgid "Download excel"
 msgstr "Excel"
 
-#: translations.py:124
+#: .\translations.py:124
 msgid "No features to download"
 msgstr "No hi ha cap punt"
 
-#: translations.py:125
+#: .\translations.py:125
 msgid ""
 "Only data displayed in the current map view will be downloaded. Verify your "
 "current active layers, temporal filters and zoom."
@@ -364,11 +364,11 @@ msgstr ""
 "mapa. Comprova que tens actives les capes de la llegenda que desitges, els "
 "filtres temporals i el nivell de zoom."
 
-#: translations.py:126
+#: .\translations.py:126
 msgid "Once verified, press the download button."
 msgstr "Un cop definida la vista desitjada, fes clic al botó de descàrrega."
 
-#: translations.py:127
+#: .\translations.py:127
 msgid ""
 "For the Mosquito Alert complete dataset, with advanced options, go to "
 "Mosquito Alert portal:"
@@ -376,71 +376,71 @@ msgstr ""
 "Si vols el set complet de Mosquito Alert, amb opcions avançades de "
 "documentació i descàrrega, dirigeix-te al Portal de Dades de Mosquito Alert:"
 
-#: translations.py:128
+#: .\translations.py:128
 msgid "Mosquito portal URL"
 msgstr "http://www.mosquitoalert.com/ca/mosquito-alert-data-portal/"
 
-#: translations.py:131
+#: .\translations.py:131
 msgid "This is the new view url"
 msgstr "Enllaç a la vista"
 
-#: translations.py:132
+#: .\translations.py:132
 msgid "This view does not exist"
 msgstr "Aquesta vista de mapa no existeix"
 
-#: translations.py:133
+#: .\translations.py:133
 msgid "Share modal title"
 msgstr "Comparteix la vista d'aquest mapa"
 
-#: translations.py:134
+#: .\translations.py:134
 msgid "Share this map view"
 msgstr "Comparteix la vista d'aquest mapa"
 
-#: translations.py:135
+#: .\translations.py:135
 msgid "Url has been copied"
 msgstr "L'adreça s'ha copiat"
 
-#: translations.py:136
+#: .\translations.py:136
 msgid "Copy url to clipboard"
 msgstr "Copia l'adreça al portapapers"
 
-#: translations.py:137
+#: .\translations.py:137
 msgid "Share view"
 msgstr "Comparteix la vista d'aquest mapa"
 
-#: translations.py:140
+#: .\translations.py:140
 msgid "Observation code"
 msgstr "Codi d'observació"
 
-#: translations.py:141
+#: .\translations.py:141
 msgid "Coordinates (latitud, longitud)"
 msgstr "Coordenades (latitud, longitud)"
 
-#: translations.py:142
+#: .\translations.py:142
 msgid "Reports"
 msgstr "Llistat d'observacions"
 
-#: translations.py:143
+#: .\translations.py:143
 msgid "Reports limit exceeded"
 msgstr "El número d'observacions supera el màxim establert (300)"
 
-#: translations.py:144
+#: .\translations.py:144
 msgid "List of observations"
 msgstr "Llistat d'observacions"
 
-#: translations.py:145
+#: .\translations.py:145
 msgid "Selected observations"
 msgstr "Observacions seleccionades"
 
-#: translations.py:146
+#: .\translations.py:146
 msgid "Filters applied"
 msgstr "Filtres aplicats"
 
-#: translations.py:147
+#: .\translations.py:147
 msgid "Reports modal title"
 msgstr "Llista d'observacions"
 
-#: translations.py:148
+#: .\translations.py:148
 msgid ""
 "Report with the observations displayed in the current map view (maximum: 300"
 " observations)"
@@ -448,7 +448,7 @@ msgstr ""
 "Informe de les observacions que es visualizen a la vista actual del mapa "
 "(màxim 300)"
 
-#: translations.py:149
+#: .\translations.py:149
 msgid ""
 "Verify this by looking at the map point counter (on the down left map "
 "corner)."
@@ -456,19 +456,19 @@ msgstr ""
 "Verifica el número d'observacions amb el comptador de punts al marge "
 "superior dret del mapa"
 
-#: translations.py:153
+#: .\translations.py:153
 msgid "Check the"
 msgstr "Consulta les"
 
-#: translations.py:154
+#: .\translations.py:154
 msgid "data on mosquitoes, breeding places and bites"
 msgstr "dades de mosquits, llocs de cria i picades"
 
-#: translations.py:155
+#: .\translations.py:155
 msgid " sent by citizens, through the Mosquito Alert app."
 msgstr "enviades per la ciutadania, mitjançant l'app Mosquito Alert."
 
-#: translations.py:156
+#: .\translations.py:156
 msgid ""
 "Part of this data has been validated by entomology professionals or by "
 "Artificial Intelligence (AI) algorithms. You will also find data modeled "
@@ -478,31 +478,31 @@ msgstr ""
 " o per algoritmes d'intel·ligència artificial (IA). També trobaràs dades "
 "modelades a partir de les dades originals"
 
-#: translations.py:157
+#: .\translations.py:157
 msgid "You can "
 msgstr "Podràs"
 
-#: translations.py:158
+#: .\translations.py:158
 msgid "view, filter and download data"
 msgstr "visualitzar, filtrar i descarregar les dades"
 
-#: translations.py:159
+#: .\translations.py:159
 msgid "among other functions"
 msgstr "entre d'altres funcions"
 
-#: translations.py:160
+#: .\translations.py:160
 msgid "Use the Help"
 msgstr "Utilitza l'ajuda"
 
-#: translations.py:161
+#: .\translations.py:161
 msgid "and Info"
 msgstr "i la Info"
 
-#: translations.py:162
+#: .\translations.py:162
 msgid "for more information."
 msgstr "per a més informació."
 
-#: translations.py:163
+#: .\translations.py:163
 msgid ""
 "If you want the complete Mosquito Alert data set, with advanced "
 "documentation and download options, go to the Mosquito Alert Data Portal:"
@@ -510,70 +510,70 @@ msgstr ""
 "Si vols el set complet de Mosquito Alert, amb opcions avançades de "
 "documentació i descàrrega, dirigeix-te al Portal de Dades de Mosquito Alert:"
 
-#: translations.py:164
+#: .\translations.py:164
 msgid "You can also consult the Mosquito Alert website: "
 msgstr "També podeu consultar la web de Mosquito Alert: "
 
-#: translations.py:167
+#: .\translations.py:167
 msgid "Cookies policy"
 msgstr "Política de cookies"
 
-#: translations.py:168
+#: .\translations.py:168
 msgid "Manage cookies"
 msgstr "Gestionar"
 
-#: translations.py:169
+#: .\translations.py:169
 msgid "Cookies comply title"
 msgstr "Política de cookies"
 
-#: translations.py:170
+#: .\translations.py:170
 msgid ""
 "We use cookies and similar technologies to help personalize content and "
 "offer a better experience. You can opt to customize them by clicking the "
 "preferences button"
 msgstr "Utilitzem les cookies per ..."
 
-#: translations.py:171
+#: .\translations.py:171
 msgid "Tecnical cookies"
 msgstr "Cookies necessàries"
 
-#: translations.py:172
+#: .\translations.py:172
 msgid "Tecnical cookies description"
 msgstr "Aquestes cookies són imprescindibles pel bon funcionament de la web"
 
-#: translations.py:173
+#: .\translations.py:173
 msgid "Analytics title"
 msgstr "Google Analytics"
 
-#: translations.py:174
+#: .\translations.py:174
 msgid "Analytics tooltip"
 msgstr "Google Analytics"
 
-#: translations.py:175
+#: .\translations.py:175
 msgid "Analytics cookie title"
 msgstr "Google Analytics"
 
-#: translations.py:176
+#: .\translations.py:176
 msgid "Analytics cookie description"
 msgstr "Aquestes cookies ens permeten ....."
 
-#: translations.py:177
+#: .\translations.py:177
 msgid "Save and close"
 msgstr "Desar i tancar"
 
-#: translations.py:178
+#: .\translations.py:178
 msgid "Accept all"
 msgstr "Acceptar totes"
 
-#: translations.py:179
+#: .\translations.py:179
 msgid "Is required"
 msgstr "Cookie requerida"
 
-#: translations.py:180
+#: .\translations.py:180
 msgid "La web de Mosquito Alert utiliza"
 msgstr "La web de Mosquito Alert utiliza"
 
-#: translations.py:181
+#: .\translations.py:181
 msgid ""
 "Escoge qué tipos de galletas aceptas que Mosquito Alert pueda guardar en tu "
 "navegador."
@@ -581,7 +581,7 @@ msgstr ""
 "Tria quins tipus de coockies acceptes que Mosquito Alert pugui guardar en el"
 " teu navegador."
 
-#: translations.py:182
+#: .\translations.py:182
 msgid ""
 "Las galletas o cookies son pequeños archivos de texto que se instalan en los"
 " equipos desde los cuales se accede a nuestro sitio web. Entre otras "
@@ -593,7 +593,7 @@ msgstr ""
 "finalitats, les cookies registren les preferències i els hàbits de navegació"
 " d'un usuari."
 
-#: translations.py:183
+#: .\translations.py:183
 msgid ""
 "Se asocian al usuario y a su equipo, pero no proporcionan datos directamente"
 " identificativos. Algunas cookies, por ejemplo las que permiten elaborar "
@@ -609,7 +609,7 @@ msgstr ""
 "per a oferir un servei sol·licitat per l'usuari, són imprescindibles per al "
 "funcionament del lloc."
 
-#: translations.py:184
+#: .\translations.py:184
 msgid ""
 "Las cookies se pueden clasificar según su vigencia, quien las gestiona o su "
 "finalidad."
@@ -617,11 +617,11 @@ msgstr ""
 "Les cookies es poden classificar segons la seva vigència, qui les gestiona o"
 " la seva finalitat."
 
-#: translations.py:185
+#: .\translations.py:185
 msgid "Según la vigencia"
 msgstr "Segons la vigència"
 
-#: translations.py:186
+#: .\translations.py:186
 msgid ""
 "De sesión: son temporales y quedan en el archivo de galletas de vuestro "
 "navegador hasta el momento que abandonáis el sitio web"
@@ -629,7 +629,7 @@ msgstr ""
 "De sessió: són temporals i queden en l'arxiu de cookies del vostre navegador"
 " fins al moment que abandoneu el lloc web"
 
-#: translations.py:187
+#: .\translations.py:187
 msgid ""
 "Persistentes: quedan almacenadas y el sitio web les lee cada vez que hacéis "
 "una visita"
@@ -637,11 +637,11 @@ msgstr ""
 "Persistents: queden emmagatzemades i el lloc web els llegeix cada vegada que"
 " feu una visita"
 
-#: translations.py:188
+#: .\translations.py:188
 msgid "Según quién las gestione"
 msgstr "Segons qui les gestioni"
 
-#: translations.py:189
+#: .\translations.py:189
 msgid ""
 "Propias: son las propias del titular del sitio web desde lo que se prestan "
 "los servicios al usuario"
@@ -649,7 +649,7 @@ msgstr ""
 "Pròpies: són les pròpies del titular del lloc web des del que es presten els"
 " serveis a l'usuari"
 
-#: translations.py:190
+#: .\translations.py:190
 msgid ""
 "De terceros: se envían al usuario por parte de uno tercero, diferente al "
 "titular del lugar"
@@ -657,11 +657,11 @@ msgstr ""
 "De tercers: s'envien a l'usuari per part d'un tercer, diferent del titular "
 "del lloc"
 
-#: translations.py:191
+#: .\translations.py:191
 msgid "Según la finalidad"
 msgstr "Segons la finalitat"
 
-#: translations.py:192
+#: .\translations.py:192
 msgid ""
 "Necesarias: las imprescindibles para facilitar vuestra conexión. No hay "
 "opción de inhabilitarlas, dado que son las necesarias por el funcionamiento "
@@ -671,7 +671,7 @@ msgstr ""
 "ha opció d'inhabilitar-les, atès que són les necessàries pel funcionament "
 "del lloc web"
 
-#: translations.py:193
+#: .\translations.py:193
 msgid ""
 "Técnicas: las que permiten controlar el tráfico y comunicación de datos, "
 "identificar la sesión y acceder a páginas de acceso restringido, entre otros"
@@ -679,7 +679,7 @@ msgstr ""
 "Tècniques: les que permeten controlar el trànsit i comunicació de dades, "
 "identificar la sessió i accedir a pàgines d'accés restringit, entre altres"
 
-#: translations.py:194
+#: .\translations.py:194
 msgid ""
 "Analíticas: proporcionan información estadística y permiten mejorar los "
 "servicios"
@@ -687,11 +687,11 @@ msgstr ""
 "Analítiques: proporcionen informació estadística i permeten millorar els "
 "serveis"
 
-#: translations.py:195
+#: .\translations.py:195
 msgid "Listado de cookies utilizadas"
 msgstr "Llistat de cookies utilitzades"
 
-#: translations.py:196
+#: .\translations.py:196
 msgid ""
 "En la web de Mosquito Alert utilizamos una única cookie de tipo técnico y "
 "las cookies de Google Analytics"
@@ -699,7 +699,7 @@ msgstr ""
 "En la web de Mosquito Alert utilitzem una única cookie de tipus tècnic i les"
 " cookies de Google Analytics"
 
-#: translations.py:197
+#: .\translations.py:197
 msgid ""
 "Las cookies de Google Analytics, permiten analizar estadísticamente la "
 "información a que acceden los usuarios de nuestro lugar. Los datos "
@@ -718,11 +718,11 @@ msgstr ""
 "usuaris accedeixen al lloc i el comportament dels usuaris en el nostre lloc "
 "(pàgines que ha visitat, formularis que s'han completat i similars)"
 
-#: translations.py:198
+#: .\translations.py:198
 msgid "Puedes obtener más información sobre Google Analytics a"
 msgstr "Pots obtenir més informació sobre Google Analytics a"
 
-#: translations.py:199
+#: .\translations.py:199
 msgid ""
 "Para controlar la recopilación de datos con finalidades analíticas por parte"
 " de Google Analytics, puedes ir a"
@@ -730,7 +730,7 @@ msgstr ""
 "Per a controlar la recopilació de dades amb finalitats analítiques per part "
 "de Google Analytics, pots anar a"
 
-#: translations.py:200 translations.py:201
+#: .\translations.py:200 .\translations.py:201
 msgid ""
 "A continuación mostramos una tabla con las cookies utilizadas. Para cada "
 "cookie incluimos los siguientes atributos: finalidad, proveedor, nombre de "
@@ -740,63 +740,63 @@ msgstr ""
 "cookie incloem els següents atributs: finalitat, proveïdor, nom de la "
 "cookie, gestió, vigència i funció"
 
-#: translations.py:202
+#: .\translations.py:202
 msgid "Finalidad"
 msgstr "Finalitat"
 
-#: translations.py:203
+#: .\translations.py:203
 msgid "Proveedor"
 msgstr "Proveedor"
 
-#: translations.py:204
+#: .\translations.py:204
 msgid "Nombre de la cookie"
 msgstr "Nom de la cookie"
 
-#: translations.py:205
+#: .\translations.py:205
 msgid "Gestión"
 msgstr "Gestió"
 
-#: translations.py:206
+#: .\translations.py:206
 msgid "Vigencia"
 msgstr "Vigència"
 
-#: translations.py:207
+#: .\translations.py:207
 msgid "Función"
 msgstr "Funció"
 
-#: translations.py:208
+#: .\translations.py:208
 msgid "Necesarias"
 msgstr "Necessàries"
 
-#: translations.py:209
+#: .\translations.py:209
 msgid "MOSQQUITO ALERT"
 msgstr "MOSQUITO ALERT"
 
-#: translations.py:210
+#: .\translations.py:210
 msgid "Propia"
 msgstr "Pròpia"
 
-#: translations.py:211
+#: .\translations.py:211
 msgid "Persistente"
 msgstr "Persistent"
 
-#: translations.py:212
+#: .\translations.py:212
 msgid "Mostrar la ventana informativa solo en la primera visita"
 msgstr "Mostrar la finestra informativa només a la primera visita"
 
-#: translations.py:213
+#: .\translations.py:213
 msgid "Analíticas"
 msgstr "Google Analytics"
 
-#: translations.py:214
+#: .\translations.py:214
 msgid "terceros"
 msgstr "tercers"
 
-#: translations.py:215
+#: .\translations.py:215
 msgid "2 años"
 msgstr "2 anys"
 
-#: translations.py:216
+#: .\translations.py:216
 msgid ""
 "Registra una identificación única que se utiliza para generar datos "
 "estadísticos sobre cómo se utiliza el visitante el sitio web"
@@ -804,62 +804,62 @@ msgstr ""
 "Registra una identificació única que s'utilitza per a generar dades "
 "estadístiques sobre com s'utilitza el visitant el lloc web"
 
-#: translations.py:217
+#: .\translations.py:217
 msgid "1 año"
 msgstr "1 any"
 
-#: translations.py:220
+#: .\translations.py:220
 msgid "Layers selector help"
 msgstr "Selecció de capes"
 
-#: translations.py:221
+#: .\translations.py:221
 msgid "Filters help"
 msgstr "Selecció de filtres"
 
-#: translations.py:222
+#: .\translations.py:222
 msgid "Download and reports help"
 msgstr "Descarregar dades"
 
-#: translations.py:223
+#: .\translations.py:223
 msgid "Graph help"
 msgstr "Consultar el gràfic temporal"
 
-#: translations.py:224
+#: .\translations.py:224
 msgid "Shareview help"
 msgstr "Comparteix la vista del mapa"
 
-#: translations.py:225
+#: .\translations.py:225
 msgid "Información de los datos"
 msgstr "Informació de les dades"
 
-#: translations.py:226
+#: .\translations.py:226
 msgid ""
 "El mapa contiene información de 5 especies de mosquitos vectores de "
 "enfermedades:"
 msgstr ""
 "El mapa conté informació de 5 espècies de mosquits vectors de malalties:"
 
-#: translations.py:227
+#: .\translations.py:227
 msgid "el mosquito tigre"
 msgstr "Moquit tigre probable"
 
-#: translations.py:228
+#: .\translations.py:228
 msgid "el mosquito de la fiebre amarilla"
 msgstr "el mosquit de la febre groga"
 
-#: translations.py:229
+#: .\translations.py:229
 msgid "el mosquito del Japón"
 msgstr "el mosquit del Japó"
 
-#: translations.py:230
+#: .\translations.py:230
 msgid "el mosquito de Corea"
 msgstr "el mosquit de Corea"
 
-#: translations.py:231
+#: .\translations.py:231
 msgid "y el mosquito común"
 msgstr "i el mosquit comú"
 
-#: translations.py:232
+#: .\translations.py:232
 msgid ""
 "Además, puedes visualizar posibles lugares de cría de estos insectos en la "
 "vía pública. Esta información se complementa con modelos de probabilidad, "
@@ -871,11 +871,11 @@ msgstr ""
 "elaborats a partir de les dades ciutadanes i amb l'esforç de mostreig o "
 "distribució de participants."
 
-#: translations.py:233
+#: .\translations.py:233
 msgid "DATOS NO MODELADOS"
 msgstr "DADES NO MODELADES"
 
-#: translations.py:234
+#: .\translations.py:234
 msgid ""
 "según los expertos o los algoritmos de  Inteligencia Artificial (IA), las "
 "fotos de esta observación podrían ser de mosquito tigre"
@@ -883,11 +883,11 @@ msgstr ""
 "segons els experts o els algorismes de IA, les fotos d'aquesta observació "
 "podrien ser del mosquit tigre"
 
-#: translations.py:235
+#: .\translations.py:235
 msgid "o de"
 msgstr "o de"
 
-#: translations.py:236
+#: .\translations.py:236
 msgid ""
 "en estos casos, no es posible determinar con seguridad de qué especie se "
 "trata."
@@ -895,7 +895,7 @@ msgstr ""
 "en aquests casos, no és possible determinar amb seguretat de quina espècie "
 "es tracta."
 
-#: translations.py:238
+#: .\translations.py:238
 msgid ""
 ": según los expertos o los algoritmos de IA, las fotos de esta observación "
 "podrían ser del mosquito de la fiebre amarilla"
@@ -903,11 +903,11 @@ msgstr ""
 ": segons els experts o els algorismes d'Intel·ligència Artificial (IA), les "
 "fotos d'aquesta observació podrien ser de mosquit de la febre groga"
 
-#: translations.py:239
+#: .\translations.py:239
 msgid "Mosquito del Japón"
 msgstr "Mosquit del Japó"
 
-#: translations.py:241
+#: .\translations.py:241
 msgid ""
 ": según los expertos o los algoritmos de IA, las fotos de esta observación "
 "podrían ser del mosquito del Japón"
@@ -915,15 +915,15 @@ msgstr ""
 ": segons els experts o els algorismes de IA, les fotos d'aquesta observació "
 "podrien ser del mosquit del Japó"
 
-#: translations.py:243
+#: .\translations.py:243
 msgid "También incluye observaciones que podrían ser o de"
 msgstr "També inclou observacions que podrien ser o de"
 
-#: translations.py:244
+#: .\translations.py:244
 msgid "Mosquito del Corea"
 msgstr "Mosquit de Corea"
 
-#: translations.py:245
+#: .\translations.py:245
 msgid ""
 "según los expertos o los algoritmos de IA, las fotos de esta observación "
 "podrían ser del mosquito de Corea"
@@ -931,11 +931,11 @@ msgstr ""
 "segons els experts o els algorismes de IA, les fotos d'aquesta observació "
 "podrien ser del mosquit de Corea"
 
-#: translations.py:246
+#: .\translations.py:246
 msgid "Mosquito Común"
 msgstr "Mosquit comú"
 
-#: translations.py:247
+#: .\translations.py:247
 msgid ""
 ": según los expertos o los algoritmos de IA, las fotos de esta observación "
 "podrían ser del mosquito común"
@@ -943,11 +943,11 @@ msgstr ""
 ": segons els experts o els algorismes de IA, les fotos d'aquesta observació "
 "podrien ser del mosquit comú"
 
-#: translations.py:248
+#: .\translations.py:248
 msgid "Otras categorías. Mosquito no identificable:"
 msgstr "Mosquit no identificable:"
 
-#: translations.py:249
+#: .\translations.py:249
 msgid ""
 "según los expertos o los algoritmos de IA, estas observaciones y sus fotos "
 "no permiten determinar ninguna especie de mosquito en concreto. También "
@@ -959,7 +959,7 @@ msgstr ""
 "inclou observacions enviades com a “mosquit” que no han estat avaluades al "
 "no contenir imatges associades."
 
-#: translations.py:250
+#: .\translations.py:250
 msgid ""
 " Observaciones ciudadanas de picaduras de mosquito, de cualquier especie y "
 "sin ningún tipo de validación por parte de expertos o de algoritmos de IA."
@@ -967,7 +967,7 @@ msgstr ""
 "Observacions ciutadanes de picades de mosquit, de qualsevol espècie i sense "
 "cap mena de validació per part d'experts o d'algorismes de IA."
 
-#: translations.py:252
+#: .\translations.py:252
 msgid ""
 ": observaciones ciudadanas de posibles lugares de cría de mosquitos "
 "(identificadas por la ciudadanía como “imbornales con agua”) en su mayoría, "
@@ -978,7 +978,7 @@ msgstr ""
 "majoria, sense cap mena de validació per part d'experts o d'algorismes de "
 "IA."
 
-#: translations.py:253
+#: .\translations.py:253
 msgid ""
 "observaciones ciudadanas de posibles lugares de cría de mosquitos "
 "(identificadas por la ciudadanía como “imbornales sin agua”), en su mayoría,"
@@ -989,7 +989,7 @@ msgstr ""
 "majoria, sense cap mena de validació per part d'experts o d'algorismes de "
 "IA."
 
-#: translations.py:254
+#: .\translations.py:254
 msgid ""
 ": observaciones ciudadanas de posibles lugares de cría de mosquitos "
 "(identificadas por la ciudadanía como “otros tipos de lugares de cría”), en "
@@ -1001,7 +1001,7 @@ msgstr ""
 " seva majoria, sense cap mena de validació per part d'experts o d'algorismes"
 " de IA."
 
-#: translations.py:255
+#: .\translations.py:255
 msgid ""
 "Según los expertos o los algoritmos de IA, las fotos de esta observación "
 "podrían ser de otras especies de mosquito"
@@ -1009,7 +1009,7 @@ msgstr ""
 "Segons els experts o els algorismes de IA, les fotos d'aquesta observació "
 "podrien ser d'altres espècies de mosquit"
 
-#: translations.py:256
+#: .\translations.py:256
 msgid ""
 "La capa muestra la distribución de los participantes, donde las cuadrículas "
 "más oscuras indican un mayor número de dispositivos con la app instalada o "
@@ -1027,7 +1027,7 @@ msgstr ""
 "aquesta informació es coneix com a esforç de mostreig, permetent corregir "
 "les observacions per a fer-les comparables entre àrees."
 
-#: translations.py:257
+#: .\translations.py:257
 msgid ""
 "Selecciona las capas de información que te interese visualizar: "
 "observaciones de mosquito, picaduras, lugares de cría, otras especies y "
@@ -1036,23 +1036,23 @@ msgstr ""
 "Selecciona les capes d'informació que t'interessi visualitzar: observacions "
 "de mosquit, picades, llocs de cria, altres espècies i esforç de mostreig."
 
-#: translations.py:258
+#: .\translations.py:258
 msgid "Filtra tu selección de distintas maneras:"
 msgstr "Filtra la teva selecció de diferents maneres:"
 
-#: translations.py:259
+#: .\translations.py:259
 msgid "POR LOCALIZACIÓN"
 msgstr "PER LOCALITZACIÓ"
 
-#: translations.py:260
+#: .\translations.py:260
 msgid "Escribe y selecciona del desplegable tu lugar de interés"
 msgstr "Escriu i selecciona del desplegable el teu lloc d'interès"
 
-#: translations.py:261
+#: .\translations.py:261
 msgid "POR HASHTAG"
 msgstr "PER HASHTAG"
 
-#: translations.py:262
+#: .\translations.py:262
 msgid ""
 "puedes usar más de una etiqueta. Se mostrarán las observaciones que "
 "contengan como mínimo una de las etiquetas utilizadas."
@@ -1060,11 +1060,11 @@ msgstr ""
 "pots usar més d'una etiqueta. Es mostraran les observacions que continguin "
 "com a mínim una de les etiquetes utilitzades."
 
-#: translations.py:263
+#: .\translations.py:263
 msgid "POR IDENTIFICADOR"
 msgstr "PER IDENTIFICADOR"
 
-#: translations.py:264
+#: .\translations.py:264
 msgid ""
 ": escribe el identificador corto de un informe en el buscador de hashtag "
 "precedido por el símbolo :"
@@ -1072,7 +1072,7 @@ msgstr ""
 ": escriu l'identificador curt d'un informe en el cercador d'etiqueta "
 "precedida pel símbol:"
 
-#: translations.py:265
+#: .\translations.py:265
 msgid ""
 "Ejemplo > :6RUID. Puedes usar más de un identificador. Se mostrarán las "
 "observaciones que contengan como mínimo uno de los identificadores "
@@ -1081,11 +1081,11 @@ msgstr ""
 "Exemple > :6RUID. Pots usar més d'un identificador. Es mostraran les "
 "observacions que continguin com a mínim un dels identificadors utilitzats."
 
-#: translations.py:266
+#: .\translations.py:266
 msgid "POR FECHA O RANGO DE FECHAS"
 msgstr "PER DATA O RANG DE DATES"
 
-#: translations.py:267
+#: .\translations.py:267
 msgid ""
 "Los filtros aplican a todas las capas de información de las observaciones "
 "(mosquitos, lugares de cría, picaduras, otras especies). La capa \"esfuerzo "
@@ -1095,7 +1095,7 @@ msgstr ""
 "(mosquits, llocs de cria, picades, altres espècies). La capa \"esforço de "
 "mostreig\" només pot filtrar-se per data o rang de data."
 
-#: translations.py:268
+#: .\translations.py:268
 msgid ""
 "Los filtros son acumulativos, es decir, que actúan sobre el rango de datos "
 "previamente seleccionados. Por ejemplo, si filtramos mosquitos de la ciudad "
@@ -1109,7 +1109,7 @@ msgstr ""
 "solament aquelles observacions de la ciutat de Barcelona que tinguin aquesta"
 " etiqueta."
 
-#: translations.py:269
+#: .\translations.py:269
 msgid ""
 "Descarga los datos seleccionados en la vista de tu mapa y genera informes "
 "html con los datos seleccionados en la vista de tu mapa."
@@ -1117,13 +1117,13 @@ msgstr ""
 "Descàrrega les dades seleccionades en la vista del teu mapa i genera "
 "informes html amb les dades seleccionades en la vista del teu mapa."
 
-#: translations.py:270
+#: .\translations.py:270
 msgid ""
 "Consulta la información de la vista del mapa en formato de gráfico temporal"
 msgstr ""
 "Consulta la informació de la vista del mapa en format de gràfic temporal"
 
-#: translations.py:271
+#: .\translations.py:271
 msgid ""
 "Comparte la vista del mapa, consulta la ayuda y la información del mapa y "
 "cambia el idioma del mapa"
@@ -1131,45 +1131,50 @@ msgstr ""
 "Comparteix la vista del mapa, consulta l'ajuda i la informació del mapa i "
 "canvia l'idioma del mapa"
 
-#: translations.py:274
+#: .\translations.py:274
 msgid "Month / Year"
 msgstr "Mes / Any"
 
-#: translations.py:275
+#: .\translations.py:275
 msgid "Very low"
 msgstr "Molt baixa"
 
-#: translations.py:276
+#: .\translations.py:276
 msgid "Low"
 msgstr "Baixa"
 
-#: translations.py:277
+#: .\translations.py:277
 msgid "Medium"
 msgstr "Mitja"
 
-#: translations.py:278
+#: .\translations.py:278
 msgid "High"
 msgstr "Alta"
 
-#: translations.py:279
+#: .\translations.py:279
 msgid "Select model date"
 msgstr "Selecciona mes i any"
 
-#: translations.py:280
+#: .\translations.py:280
 msgid "Click on year and month"
 msgstr "Cal seleccionar mes i any"
 
-#: translations.py:281
+#: .\translations.py:281
 msgid "Apply"
 msgstr "Aplica"
 
-#: translations.py:282
+#: .\translations.py:282
 msgid "Probability"
 msgstr "Probabilitat"
 
-#: translations.py:283
+#: .\translations.py:283
 msgid "Uncertainty"
 msgstr "Incertesa"
+
+#: .\translations.py:286
+#| msgid "Is required"
+msgid "Field required"
+msgstr "Camp requerit"
 
 #~ msgid ""
 #~ "según los expertos o los algoritmos de Inteligencia Artificial (IA), las "
