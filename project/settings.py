@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',    
+    'rest_framework.authtoken',    
 ]
 
 MIDDLEWARE = [
@@ -153,6 +154,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Rosetta on admin page
 ROSETTA_SHOW_AT_ADMIN_PANEL = True
 
+# RESTFRAMEWORK
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}
 # Overwrite settings
 extra_settings_dir = os.path.dirname(os.path.abspath(__file__))
 ENVIRONMENT_NAME = os.environ.get('ENVIRONMENT_NAME', 'localhost')

@@ -21,6 +21,53 @@ from api.constants import (
     VECTORS_FILE_NAME, VECTORS_FILE_EXTENSION,
     BITES_MODEL_FOLDER, BITES_FILE_NAME, BITES_FILE_EXTENSION
 )
+from django.contrib.auth import authenticate, login, logout
+from django.views.decorators.cache import never_cache, cache_page
+
+ACC_HEADERS = {'Access-Control-Allow-Origin': '*',
+               'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+               'Access-Control-Max-Age': 1000,
+               'Access-Control-Allow-Headers': '*'}
+
+def cross_domain_ajax(func):
+    """Set Access Control request headers."""
+    def wrap(request, *args, **kwargs):
+        # Firefox sends 'OPTIONS' request for cross-domain javascript call.
+        if request.method != "OPTIONS":
+            response = func(request, *args, **kwargs)
+        else:
+            response = HttpResponse()
+        for k, v in ACC_HEADERS.items():
+            response[k] = v
+        return response
+    return wrap
+
+@csrf_exempt
+@never_cache
+@cross_domain_ajax
+def ajax_login(request):
+    """Ajax login."""
+
+    if request.method == 'POST':
+        response = {'success': False, 'data': {}}
+        post_data = json.loads(request.body.decode("utf-8"))
+        username = post_data.get('username')
+        password = post_data.get('password')        
+        user = authenticate(username=username, password=password)
+        if user is not None and user.is_active:
+            request.session.set_expiry(86400)
+            login(request, user)
+            print(user.id)
+            request.session['user_id'] = user.id
+            response['success'] = True
+            roles = request.user.groups.values_list('name', flat=True)
+            response['data']['roles'] = list(roles)
+
+        return HttpResponse(json.dumps(response),
+                            content_type='application/json')
+    else:
+        return HttpResponse('Unauthorized', status=401)
+
 
 
 @csrf_exempt
