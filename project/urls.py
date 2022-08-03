@@ -22,7 +22,8 @@ from .translations import translations
 urlpatterns = [
     path('admin/', admin.site.urls, name="admin"),
     path('api/', include('api.urls')),
-    path('translations/<lang>/', translations)
+    path('translations/<lang>/', translations),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if 'rosetta' in settings.INSTALLED_APPS:
