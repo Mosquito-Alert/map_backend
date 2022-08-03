@@ -283,5 +283,7 @@ def translations(request, lang):
         'Uncertainty': _("Uncertainty"),
 
         # LOGIN 
-        'Field required': _("Field required")
+        'Field required': _("Field required"),
+        'Username *': _("Username *"),
+        'Password *': _("Password *"),
     })

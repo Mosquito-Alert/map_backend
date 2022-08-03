@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mosquito Alert SIGTE map\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 12:33+0200\n"
-"PO-Revision-Date: 2022-08-03 12:35+0000\n"
+"POT-Creation-Date: 2022-08-03 13:16+0200\n"
+"PO-Revision-Date: 2022-08-03 13:19+0000\n"
 "Last-Translator:   <toni.hernandez@udg.edu>\n"
 "Language-Team: English (USA)\n"
 "Language: en-US\n"
@@ -1167,9 +1167,16 @@ msgid "Uncertainty"
 msgstr "Uncertainty"
 
 #: .\translations.py:286
-#| msgid "Is required"
 msgid "Field required"
 msgstr "Required field"
+
+#: .\translations.py:287
+msgid "Username *"
+msgstr "Username"
+
+#: .\translations.py:288
+msgid "Password *"
+msgstr "Password"
 
 #~ msgid ""
 #~ "según los expertos o los algoritmos de Inteligencia Artificial (IA), las "
