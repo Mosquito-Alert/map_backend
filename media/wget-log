@@ -1,0 +1,10 @@
+--2022-07-02 11:55:39--  http://localhost:8000/api/tiles/gadm2/7/8/118
+Resolving localhost (localhost)... 127.0.0.1
+Connecting to localhost (localhost)|127.0.0.1|:8000... connected.
+HTTP request sent, awaiting response... No data received.
+Retrying.
+
+--2022-07-02 11:55:40--  (try: 2)  http://localhost:8000/api/tiles/gadm2/7/8/118
+Connecting to localhost (localhost)|127.0.0.1|:8000... failed: Connection refused.
+Resolving localhost (localhost)... 127.0.0.1
+Connecting to localhost (localhost)|127.0.0.1|:8000... failed: Connection refused.
