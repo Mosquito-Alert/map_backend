@@ -205,6 +205,8 @@ def translations(request, lang):
         'Para controlar la recopilación de datos con finalidades analíticas por parte de Google Analytics, puedes ir a': _("Para controlar la recopilación de datos con finalidades analíticas por parte de Google Analytics, puedes ir a"),
         'A continuación mostramos una tabla con las cookies utilizadas. Para cada cookie incluimos los siguientes atributos: finalidad, proveedor, nombre de la cookie, gestión, vigencia y función': _("A continuación mostramos una tabla con las cookies utilizadas. Para cada cookie incluimos los siguientes atributos: finalidad, proveedor, nombre de la cookie, gestión, vigencia y función"),
         'A continuación mostramos una tabla con las cookies utilizadas. Para cada cookie incluimos los siguientes atributos: finalidad, proveedor, nombre de la cookie, gestión, vigencia y función': _("A continuación mostramos una tabla con las cookies utilizadas. Para cada cookie incluimos los siguientes atributos: finalidad, proveedor, nombre de la cookie, gestión, vigencia y función"),
+        'Permite recordar el idioma seleccionado con anterioridad': _("Permite recordar el idioma seleccionado con anterioridad"),
+        'Permite recordar las cookies aceptadas con anterioridad': _("Permite recordar las cookies aceptadas con anterioridad"),
         'Finalidad': _("Finalidad"),
         'Proveedor': _("Proveedor"),
         'Nombre de la cookie': _("Nombre de la cookie"),
