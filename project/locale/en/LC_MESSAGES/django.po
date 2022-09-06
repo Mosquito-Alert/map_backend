@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Mosquito Alert SIGTE map\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-06 09:14+0200\n"
-"PO-Revision-Date: 2022-09-06 09:23+0000\n"
+"PO-Revision-Date: 2022-09-06 12:42+0000\n"
 "Last-Translator:   <toni.hernandez@udg.edu>\n"
 "Language-Team: English (USA)\n"
 "Language: en-US\n"
@@ -878,7 +878,7 @@ msgstr "how info window only on first visit"
 
 #: .\translations.py:221
 msgid "Analíticas"
-msgstr "Google Analytics"
+msgstr "Analytics"
 
 #: .\translations.py:222
 msgid "terceros"
