@@ -367,10 +367,13 @@ def doTile(request, layer, z, x, y, continent = None):
         code = "id_0 as id" 
     else:
         if layer == 'gadm1':
-            code = "id_1 as id" 
+            code = "gid_1 as id" 
         else:
             if layer == 'gadm2':
-                code = "id_2 as id" 
+                code = "gid_2 as id"
+            else:
+                if layer == 'gadm4':
+                    code = "gid_4 as id" 
 
     if continent is None:
         where = ''
@@ -382,7 +385,7 @@ def doTile(request, layer, z, x, y, continent = None):
         (
             SELECT {0},
                 ST_AsMVTGeom(
-                St_Transform(geom2,3857),
+                St_Transform(geom,3857),
                 ST_TileEnvelope({2}, {3}, {4})
             ) AS geom
             FROM  {1} {5}
