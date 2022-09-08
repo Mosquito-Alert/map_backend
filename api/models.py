@@ -184,3 +184,17 @@ class Gadm(models.Model):
     type_2 = models.CharField(max_length=50)
     continent = models.CharField(max_length=25)
     geom = models.PolygonField()
+
+class Gadm1(models.Model):
+    gid_0 = models.CharField(max_length=5)
+    gid_1 = models.CharField(max_length=15)
+    name_1 = models.CharField(max_length=50)
+    geom = models.PolygonField()
+
+class Gadm2(models.Model):
+    gid_2 = models.CharField(max_length=15)
+    geom = models.PolygonField()
+
+class Gadm4(models.Model):
+    gid_4 = models.CharField(max_length=15)
+    geom = models.PolygonField()        
