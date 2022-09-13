@@ -385,7 +385,7 @@ def doTile(request, layer, z, x, y, continent = None):
         (
             SELECT {0},
                 ST_AsMVTGeom(
-                St_Transform(geom,3857),
+                ST_Transform(geom, 3857),
                 ST_TileEnvelope({2}, {3}, {4})
             ) AS geom
             FROM  {1} {5}
