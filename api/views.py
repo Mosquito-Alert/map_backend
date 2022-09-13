@@ -372,8 +372,11 @@ def doTile(request, layer, z, x, y, continent = None):
             if layer == 'gadm2':
                 code = "gid_2 as id"
             else:
-                if layer == 'gadm4':
-                    code = "gid_4 as id" 
+                if layer == 'gadm3':
+                    code = "gid_3 as id" 
+                else:
+                    if layer == 'gadm4':
+                        code = "gid_4 as id" 
 
     if continent is None:
         where = ''
