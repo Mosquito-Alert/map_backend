@@ -364,19 +364,19 @@ def doTile(request, layer, z, x, y, continent = None):
     tilepath = "{}/{}.pbf".format(tilefolder,y)
 
     if layer == 'gadm0':
-        code = "id_0 as id" 
+        code = "gid_0" 
     else:
         if layer == 'gadm1':
-            code = "gid_1 as id" 
+            code = "gid_1" 
         else:
             if layer == 'gadm2':
-                code = "gid_2 as id"
+                code = "gid_2"
             else:
                 if layer == 'gadm3':
-                    code = "gid_3 as id" 
+                    code = "gid_3" 
                 else:
                     if layer == 'gadm4':
-                        code = "gid_4 as id" 
+                        code = "gid_4" 
 
     if continent is None:
         where = ''
