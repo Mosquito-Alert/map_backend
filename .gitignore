@@ -9,6 +9,7 @@ dist/
 data/
 settings-*.py
 db.sqlite3
+media/cache
 *.bat
 # Compiled Java class files
 *.class
