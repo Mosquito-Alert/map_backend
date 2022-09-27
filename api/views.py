@@ -2,8 +2,6 @@ from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_exempt
 import random
 from re import M
-from django.shortcuts import render
-from django.templatetags.static import static
 from django.http import JsonResponse, HttpResponse
 from .models import MapAuxReport
 from django.core.serializers import serialize
@@ -15,12 +13,6 @@ from .libs.shareview import ShareViewManager
 from .libs.reportview import ReportManager
 import os
 from django.conf import settings
-from .utils import get_directory_structure
-from api.constants import (
-    VECTORS_MODEL_NAMES, VECTORS_MODEL_FOLDER,
-    VECTORS_FILE_NAME, VECTORS_FILE_EXTENSION,
-    BITES_MODEL_FOLDER, BITES_FILE_NAME, BITES_FILE_EXTENSION
-)
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.cache import never_cache, cache_page
 
@@ -122,7 +114,7 @@ def get_feature(request, observation_id):
         data["photo_url"] = 'http://localhost:8000/static/api/mosquito/dummy.jpg'
     return JsonResponse(data)
 
-# @cache_page(86400)
+@cache_page(86400)
 def get_data(request, year):
     SQL = f"""
         SELECT jsonb_build_object(
@@ -349,7 +341,7 @@ def getFormatedResponses(type, responses, private_webmap_layer):
 # def userfixes(request, startdate, enddate):
 #     return True
 
-# @cache_page(36000)
+@cache_page(36000)
 def userfixes(request, **filters):
     """Get Coverage Layer Info."""
     manager = UserfixesManager(request)
@@ -414,28 +406,3 @@ def doTile(request, layer, z, x, y, continent = None):
     #     raise Http404()
 
     return HttpResponse(tile, content_type="application/x-protobuf")
-
-
-def availableModels(request):
-    response = {}
-    response['vector'] = {}
-    response['biting'] = {}
-
-    filename = BITES_FILE_NAME + BITES_FILE_EXTENSION
-    response['biting'] = get_directory_structure(BITES_MODEL_FOLDER, filename)
-
-    isVectorDataAvailable = False
-    filename = VECTORS_FILE_NAME + VECTORS_FILE_EXTENSION
-
-    for v in VECTORS_MODEL_NAMES:
-        path = VECTORS_MODEL_FOLDER / v
-        response['vector'][v] = get_directory_structure(path, filename)
-
-        if (len(response['vector'][v]) > 0):
-            isVectorDataAvailable = True
-
-    response['availableVectorData'] = isVectorDataAvailable
-
-    return HttpResponse(json.dumps(response),
-                        content_type='application/json')
-

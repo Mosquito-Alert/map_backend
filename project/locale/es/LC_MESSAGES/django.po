@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mosquito Alert SIGTE map\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-06 09:14+0200\n"
-"PO-Revision-Date: 2022-09-06 12:42+0000\n"
+"POT-Creation-Date: 2022-09-27 08:04+0200\n"
+"PO-Revision-Date: 2022-09-27 08:06+0000\n"
 "Last-Translator:   <toni.hernandez@udg.edu>\n"
 "Language-Team: Spanish (Spain)\n"
 "Language: es-ES\n"
@@ -834,12 +834,10 @@ msgstr ""
 "la cookie, gestión, vigencia y función"
 
 #: .\translations.py:208
-#| msgid "Permite-recordar-las-cookies-aceptadas-con-anterio"
 msgid "Permite recordar el idioma seleccionado con anterioridad"
 msgstr "Permite recordar el idioma seleccionado"
 
 #: .\translations.py:209
-#| msgid "Permite-recordar-las-cookies-aceptadas-con-anterio"
 msgid "Permite recordar las cookies aceptadas con anterioridad"
 msgstr "Permite recordar la política de cookies aceptada con anterioridad"
 
@@ -1261,7 +1259,7 @@ msgstr "Selecciona mes y año"
 
 #: .\translations.py:288
 msgid "Click on year and month"
-msgstr "Selecciona mes i año"
+msgstr "Selecciona mes y año"
 
 #: .\translations.py:289
 msgid "Apply"
@@ -1275,15 +1273,19 @@ msgstr "Probabilidad"
 msgid "Uncertainty"
 msgstr "Incertidumbre"
 
-#: .\translations.py:294
+#: .\translations.py:292
+msgid "Transparency"
+msgstr "Transparencia"
+
+#: .\translations.py:295
 msgid "Field required"
 msgstr "Campo requerido"
 
-#: .\translations.py:295
+#: .\translations.py:296
 msgid "Username *"
 msgstr "Usuario"
 
-#: .\translations.py:296
+#: .\translations.py:297
 msgid "Password *"
 msgstr "Contraseña"
 
