@@ -1,6 +1,9 @@
-DESPLEGAMENT.
+DESPLEGAMENT
+============
 
-BBDD.
+BBDD
+----
+
 Aquesta versió del backend inclou algunes taules de nova creació. Algunes d'aquestes taules són gestionades directament pel django i altre no (managed = False).
 
 Taules gestionades pel django
@@ -17,15 +20,40 @@ Aquestes taules s'utilitzen per generar els vector tiles.
 - gadm3: Conté les geometries del nivell administratiu gadm3 + aquelles geometries de la taula gadm2 que no tenen divisions de nivell gadm3
 - gadm4: Conté les geometries del nivell administratiu gadm4 + aquelles geometries de la taula gadm3 que no tenen divisions de nivell gadm4
 
+La carpeta 'fixtures' conté un backup d'aquestes 4 taules. El backup inclou la creació de la taula
+
+
+ARXIU contants.py
+-----------------
+
+Aquest arxiu conté algunes constants que es fan servir
 
 
 ARXIUS STATICS
+--------------
 
 En el backend de django, i dins de la carpeta media hi ha una sèrie d'arxius estàtics que es fan servir des del frontend. Aquesta és l'estructura de carpetes.
 
-- /media/tiles. Aquí hi ha els vector tiles pre-generats. Si aquests arxius no existeixen, el backend els generarà i els guardarà a la carpeta corresponent. Per genera els tailes agafan la informació de les taules gadm1, gadm2, gadm3 i gadm4
+- /media/tiles. Aquí hi ha els vector tiles pre-generats. Requereix certa configuració del servidor web, perquè si aquests arxius NO existeixen, passi la petició al backend perquè els generi. Un cop generats es guarden a la carpeta corresponent perquè estiguin disponibles per properes peticions.
+
+Requereix certa configuració del servidor web perquè si el vector tile 
+
+    location ~ /apps/mosquito2_backend/api/tiles/(?<tile>.*)$ {
+            alias /data/apps/mosquito2_backend/media/tiles;
+            try_files /$tile.pbf @ma_tiles;
+    }
+
+    location @ma_tiles {
+            rewrite ^/apps/(?<appname>[^/]+)/(?<app>.*)/?$ /$app break;
+            uwsgi_pass unix:/data/sock/$appname.sock;
+            include uwsgi_params;
+            uwsgi_param SCRIPT_NAME /apps/$appname;
+    }
+
 
 - /media/centroids. En aquesta carpeta hi ha 4 arxius en format json. Un arxiu per cada nivell gadmX. Aquests arxius contenen, en format geojson, els centroides de les geometries dels vector tiles. 
+
+- /media/global_minimal_model_estimates-main/model_manifest.csv. Aquest arxiu conté la relació de quins models estan disponibles a partir de cada any. També inclou una columna 'cell' que indica si els models s'han de representar a escala de cel·la o no. 
 
 - /media/global_minimal_model_estimates-main. Aquí és on hi ha els models generats. Hi ha una carpeta per cada nivell gadmX. Cadascuna d'aquestes carpetes gadmX inclou la següent estructura.
 
