@@ -1,0 +1,34 @@
+DESPLEGAMENT.
+
+BBDD.
+Aquesta versió del backend inclou algunes taules de nova creació. Algunes d'aquestes taules són gestionades directament pel django i altre no (managed = False).
+
+Taules gestionades pel django
+
+- api_mapview: Guarda les propietats de totes les vistes compartides del mapa
+- api_reportview: Guarda les propietats de tots els reports generats
+
+Taules no gestionades directament pel django. 
+
+Aquestes taules s'utilitzen per generar els vector tiles.
+
+- gadm1: Conté les geometries del nivell administratiu gadm1
+- gadm2: Conté les geometries del nivell administratiu gadm2 + aquelles geometries del nivell gadm1 que no tenen divisions de nivell gadm2
+- gadm3: Conté les geometries del nivell administratiu gadm3 + aquelles geometries de la taula gadm2 que no tenen divisions de nivell gadm3
+- gadm4: Conté les geometries del nivell administratiu gadm4 + aquelles geometries de la taula gadm3 que no tenen divisions de nivell gadm4
+
+
+
+ARXIUS STATICS
+
+En el backend de django, i dins de la carpeta media hi ha una sèrie d'arxius estàtics que es fan servir des del frontend. Aquesta és l'estructura de carpetes.
+
+- /media/tiles. Aquí hi ha els vector tiles pre-generats. Si aquests arxius no existeixen, el backend els generarà i els guardarà a la carpeta corresponent. Per genera els tailes agafan la informació de les taules gadm1, gadm2, gadm3 i gadm4
+
+- /media/centroids. En aquesta carpeta hi ha 4 arxius en format json. Un arxiu per cada nivell gadmX. Aquests arxius contenen, en format geojson, els centroides de les geometries dels vector tiles. 
+
+- /media/global_minimal_model_estimates-main. Aquí és on hi ha els models generats. Hi ha una carpeta per cada nivell gadmX. Cadascuna d'aquestes carpetes gadmX inclou la següent estructura.
+
+gadmX\nom_vector\any\mes\arxiu.csv
+
+on el la carpeta "mes" té valors de 01 a 12. Sempre amb dos dígits.

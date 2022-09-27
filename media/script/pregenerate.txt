@@ -1,8 +1,0 @@
-Spherical mercator planet bounds.
-
-xmin: -PI * 6378137,
-ymin: -PI * 6378137,
-xmax:  PI * 6378137,
-ymax:  PI * 6378137
-
-Cada mosaico tiene coordenadas XY que van de (0, 0) en la esquina superior izquierda a ( (2^zoom)–1, (2^zoom)–1) en la esquina inferior derecha. Por ejemplo, en el nivel de zoom 3, las coordenadas del mosaico van de (0, 0) a (7, 7) de la manera siguiente:

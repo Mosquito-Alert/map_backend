@@ -289,6 +289,7 @@ def translations(request, lang):
         'Apply': _("Apply"),
         'Probability': _("Probability"),
         'Uncertainty': _("Uncertainty"),
+        'Transparency': _("Transparency"),
 
         # LOGIN 
         'Field required': _("Field required"),

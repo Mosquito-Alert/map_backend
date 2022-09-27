@@ -7,7 +7,7 @@ import os
 from django.contrib.auth.models import User
 import re
 from .constants import (managers_group, superusers_group, user_roles,
-                       epidemiologist_editor_group, BITES_FILE_EXTENSION,
+                       epidemiologist_editor_group,
                        epidemiologist_viewer_group,
                        irideon_traps_viewer)
 
@@ -264,7 +264,7 @@ def get_directory_structure(rootdir, filename):
     folders = []
     dictlist = []
     dict = {}
-
+    BITES_FILE_EXTENSION = 'Should get value from contants.yp'
     # models folder patterns gadmX/yyyy/mm
     pattern = re.compile("^(gadm\d\/\d{4}\/(0[1-9]|1[0-2]))$")
 
