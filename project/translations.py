@@ -19,6 +19,8 @@ def translations(request, lang):
         "Sampling effort": _("Sampling effort"),
         "Placeholder location": _("Placeholder location"),
         "Placeholder hashtag": _("Placeholder hashtag"),
+        'Reports': _("Reports"),        
+        'Estimates': _("Estimates"),        
         "Filter": _("Filter"),
         "Continue": _("Continue"),
 
@@ -73,6 +75,7 @@ def translations(request, lang):
         "Time series": _("Time series"),
         "Pick a date range": _("Pick a date range"),
         "Delete calendar": _("Delete calendar"),
+        "Select all": _("Select all"),
         "Apply calendar": _("Apply calendar"),
         "All years and all months": _("All years and all months"),
         "Reset zoom graph": _("Reset zoom graph"),
@@ -139,7 +142,7 @@ def translations(request, lang):
         # Reports / modal
         'Observation code': _("Observation code"),
         'Coordinates (latitud, longitud)': _("Coordinates (latitud, longitud)"),
-        'Reports': _("Reports"),
+        'List of observations': _("List of observations"),
         'Reports limit exceeded': _("Reports limit exceeded"),
         'List of observations':_("List of observations"),       
         'Selected observations': _("Selected observations"),
