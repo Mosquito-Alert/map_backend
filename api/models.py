@@ -175,3 +175,15 @@ class ReportView(models.Model):
     code=models.CharField(max_length=8, null=False, blank=False, unique=True)    
     view = models.TextField(blank=True, null=True)
     date = models.DateTimeField(blank=True, null=True)   
+
+class AppSettings(models.Model):
+    key = models.CharField(unique=True, null=False, max_length=254, blank=True)
+    value = models.CharField(null=False, max_length=254, blank=True)
+
+    def __str__(self):
+        """Convert the object into a string."""
+        return self.key + ' (' + self.value + ')'
+
+    class Meta:
+        verbose_name = "App settings"    
+        verbose_name_plural = "App settings"    
