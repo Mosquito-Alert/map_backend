@@ -33,7 +33,6 @@ class ShareViewManager():
         """Save view param into models."""
         self.data = request.body.decode("utf-8")
         jsonData = json.loads(self.data)
-        print(jsonData)
         try:
             while True:
                 try:

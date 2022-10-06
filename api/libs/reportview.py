@@ -60,6 +60,9 @@ class ReportManager():
                 code__exact=code
             ).values('code','view', 'date')[:1]
 
+            if qs.count() == 0:
+                raise Exception('This report does not exist')
+
         except Exception as e:
             return JsonResponse({ "status": "error", "msg": str(e) })
         else:
