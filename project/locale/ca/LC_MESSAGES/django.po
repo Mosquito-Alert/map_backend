@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mosquito Alert SIGTE map\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-03 10:20+0200\n"
-"PO-Revision-Date: 2022-10-03 10:24+0000\n"
+"POT-Creation-Date: 2022-10-06 08:09+0200\n"
+"PO-Revision-Date: 2022-10-06 08:15+0000\n"
 "Last-Translator:   <toni.hernandez@udg.edu>\n"
 "Language-Team: Catalan (Spain)\n"
 "Language: ca-ES\n"
@@ -204,7 +204,6 @@ msgid "Delete calendar"
 msgstr "Neteja"
 
 #: .\translations.py:78
-#| msgid "Select"
 msgid "Select all"
 msgstr "SELECCIONA TOT"
 
@@ -399,7 +398,7 @@ msgstr "Enllaç a la vista"
 
 #: .\translations.py:135
 msgid "This view does not exist"
-msgstr "Aquesta vista de mapa no existeix"
+msgstr "Aquesta vista del mapa no existeix"
 
 #: .\translations.py:136
 msgid "Share modal title"
@@ -1290,6 +1289,16 @@ msgstr "Usuari"
 #: .\translations.py:300
 msgid "Password *"
 msgstr "Contrasenya"
+
+#: .\translations.py:303
+#| msgid "This view does not exist"
+msgid "This map view does not exist"
+msgstr "This map view does not exist"
+
+#: .\translations.py:304
+#| msgid "This view does not exist"
+msgid "This report does not exist"
+msgstr "This report does not exist"
 
 #~ msgid ""
 #~ "según los expertos o los algoritmos de Inteligencia Artificial (IA), las "

@@ -298,4 +298,8 @@ def translations(request, lang):
         'Field required': _("Field required"),
         'Username *': _("Username *"),
         'Password *': _("Password *"),
+
+        # MODALS ERRORS
+        'This map view does not exist': _("This map view does not exist"),
+        'This report does not exist': _("This report does not exist")
     })
