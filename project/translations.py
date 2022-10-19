@@ -280,7 +280,8 @@ def translations(request, lang):
         'Descarga los datos seleccionados en la vista de tu mapa y genera informes html con los datos seleccionados en la vista de tu mapa.': _("Descarga los datos seleccionados en la vista de tu mapa y genera informes html con los datos seleccionados en la vista de tu mapa."),
         'Consulta la información de la vista del mapa en formato de gráfico temporal': _("Consulta la información de la vista del mapa en formato de gráfico temporal"),
         'Comparte la vista del mapa, consulta la ayuda y la información del mapa y cambia el idioma del mapa': _("Comparte la vista del mapa, consulta la ayuda y la información del mapa y cambia el idioma del mapa"),
-
+        'Estimates help': _("Estimates help"),
+        'Consulta el grado de probabilidad e incertidumbre de encontrar una especie de mosquito concreta. Selecciona la especie que quieras consultar y el rango temporal': _("Consulta el grado de probabilidad e incertidumbre de encontrar una especie de mosquito concreta. Selecciona la especie que quieras consultar y el rango temporal"),
         # MODELS
         'Month / Year': _("Month / Year"),
         'Very low': _("Very low"),
