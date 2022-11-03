@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mosquito Alert SIGTE map\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-19 10:08+0200\n"
-"PO-Revision-Date: 2022-10-19 10:17+0000\n"
+"POT-Creation-Date: 2022-11-03 08:28+0100\n"
+"PO-Revision-Date: 2022-11-03 08:29+0000\n"
 "Last-Translator:   <toni.hernandez@udg.edu>\n"
 "Language-Team: English (USA)\n"
 "Language: en-US\n"
@@ -1227,7 +1227,6 @@ msgstr ""
 "language."
 
 #: .\translations.py:283
-#| msgid "Estimates"
 msgid "Estimates help"
 msgstr "Estimates"
 
@@ -1240,74 +1239,77 @@ msgstr ""
 "Check the probability and uncertainty of encountering a specific mosquito "
 "species. Select the species and the time range."
 
-#: .\translations.py:286
+#: .\translations.py:287
 msgid "Month / Year"
 msgstr "Month / Year"
 
-#: .\translations.py:287
+#: .\translations.py:288
 msgid "Very low"
 msgstr "Very low"
 
-#: .\translations.py:288
+#: .\translations.py:289
 msgid "Low"
 msgstr "Low"
 
-#: .\translations.py:289
+#: .\translations.py:290
 msgid "Medium"
 msgstr "Medium"
 
-#: .\translations.py:290
+#: .\translations.py:291
 msgid "High"
 msgstr "High"
 
-#: .\translations.py:291
+#: .\translations.py:292
 msgid "Select model date"
 msgstr "Select month and year"
 
-#: .\translations.py:292
+#: .\translations.py:293
 msgid "Click on year and month"
 msgstr "Select month and year"
 
-#: .\translations.py:293
+#: .\translations.py:294
 msgid "Apply"
 msgstr "Apply"
 
-#: .\translations.py:294
+#: .\translations.py:295
 msgid "Probability"
 msgstr "Probability"
 
-#: .\translations.py:295
+#: .\translations.py:296
 msgid "Uncertainty"
 msgstr "Uncertainty"
 
-#: .\translations.py:296
+#: .\translations.py:297
 msgid "Transparency"
 msgstr "Transparency"
 
-#: .\translations.py:297
+#: .\translations.py:298
 msgid "Select species"
 msgstr "Select species"
 
-#: .\translations.py:300
+#: .\translations.py:301
 msgid "Field required"
 msgstr "Required field"
 
-#: .\translations.py:301
+#: .\translations.py:302
 msgid "Username *"
 msgstr "Username"
 
-#: .\translations.py:302
+#: .\translations.py:303
 msgid "Password *"
 msgstr "Password"
 
-#: .\translations.py:305
-#| msgid "This view does not exist"
+#: .\translations.py:306
 msgid "This map view does not exist"
 msgstr "This map view does not exist"
 
-#: .\translations.py:306
+#: .\translations.py:307
 msgid "This report does not exist"
 msgstr "This report does not exist"
+
+#: .\translations.py:310
+msgid "This interactive map has been funded by"
+msgstr "This interactive map has been funded by"
 
 #~ msgid ""
 #~ "según los expertos o los algoritmos de Inteligencia Artificial (IA), las "
