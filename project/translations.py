@@ -282,6 +282,7 @@ def translations(request, lang):
         'Comparte la vista del mapa, consulta la ayuda y la información del mapa y cambia el idioma del mapa': _("Comparte la vista del mapa, consulta la ayuda y la información del mapa y cambia el idioma del mapa"),
         'Estimates help': _("Estimates help"),
         'Consulta el grado de probabilidad e incertidumbre de encontrar una especie de mosquito concreta. Selecciona la especie que quieras consultar y el rango temporal': _("Consulta el grado de probabilidad e incertidumbre de encontrar una especie de mosquito concreta. Selecciona la especie que quieras consultar y el rango temporal"),
+        
         # MODELS
         'Month / Year': _("Month / Year"),
         'Very low': _("Very low"),
@@ -303,5 +304,8 @@ def translations(request, lang):
 
         # MODALS ERRORS
         'This map view does not exist': _("This map view does not exist"),
-        'This report does not exist': _("This report does not exist")
+        'This report does not exist': _("This report does not exist"),
+
+        # LOGOS
+        'This interactive map has been funded by': _("This interactive map has been funded by")
     })
