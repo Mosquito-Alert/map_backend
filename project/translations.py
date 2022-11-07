@@ -58,6 +58,7 @@ def translations(request, lang):
         # breeding sites
         "Stormdrain with water": _("Storm drain with water"),
         "Stormdrain without water": _("Storm drain without water"),
+        "Storm_drain_dry": _("Storm_drain_dry"),
         "Breeding site other": _("Breeding site other"),
         
         # other observations
