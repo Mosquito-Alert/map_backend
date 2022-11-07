@@ -308,5 +308,6 @@ def translations(request, lang):
         'This report does not exist': _("This report does not exist"),
 
         # LOGOS
-        'This interactive map has been funded by': _("This interactive map has been funded by")
+        'This interactive map has been funded by': _("This interactive map has been funded by"),
+        'Coordinators': _("Coordinators")
     })
