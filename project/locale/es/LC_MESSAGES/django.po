@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mosquito Alert SIGTE map\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-07 08:34+0100\n"
-"PO-Revision-Date: 2022-11-07 08:34+0000\n"
+"POT-Creation-Date: 2022-11-07 12:41+0100\n"
+"PO-Revision-Date: 2022-11-07 12:42+0000\n"
 "Last-Translator:   <toni.hernandez@udg.edu>\n"
 "Language-Team: Spanish (Spain)\n"
 "Language: es-ES\n"
@@ -168,7 +168,6 @@ msgid "Storm drain without water"
 msgstr "Imbornal sin agua"
 
 #: .\translations.py:61
-#| msgid "Storm drain dry"
 msgid "Storm_drain_dry"
 msgstr "Imbornal sin agua"
 
@@ -1082,6 +1081,21 @@ msgstr ""
 "Observaciones ciudadanas de picaduras de mosquito, de cualquier especie y "
 "sin ningún tipo de validación por parte de expertos o de algoritmos de IA."
 
+#: .\translations.py:263
+#, fuzzy
+#| msgid ""
+#| ": observaciones ciudadanas de posibles lugares de cría de mosquitos "
+#| "(identificadas por la ciudadanía como “imbornales con agua”) en su mayoría, "
+#| "sin ningún tipo de validación por parte de expertos o de algoritmos de IA."
+msgid ""
+": observaciones ciudadanas de posibles lugares de cría de mosquitos "
+"(identificadas por la ciudadanía como imbornales con agua) en su mayoría, "
+"sin ningún tipo de validación por parte de expertos o de algoritmos de IA."
+msgstr ""
+": observaciones ciudadanas de posibles lugares de cría de mosquitos "
+"(identificadas por la ciudadanía como “imbornales con agua”) en su mayoría, "
+"sin ningún tipo de validación por parte de expertos o de algoritmos de IA."
+
 #: .\translations.py:264
 msgid ""
 ": observaciones ciudadanas de posibles lugares de cría de mosquitos "
@@ -1331,6 +1345,10 @@ msgstr "Esta página no existe"
 #: .\translations.py:311
 msgid "This interactive map has been funded by"
 msgstr "Este mapa interactivo ha recibido el apoyo de"
+
+#: .\translations.py:312
+msgid "Coordinators"
+msgstr "Coordinadores"
 
 #~ msgid ""
 #~ "según los expertos o los algoritmos de Inteligencia Artificial (IA), las "
