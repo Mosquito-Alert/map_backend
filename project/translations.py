@@ -311,7 +311,7 @@ def translations(request, lang):
         # LOGOS
         'This interactive map has been funded by': _("This interactive map has been funded by"),
         'Coordinators': _("Coordinators"),
-        'Este mapa interactivo ha sido coordinado por': _("Este mapa interactivo ha sido coordinado por"),
+        'Mosquito Alert está coordinado por': _("Mosquito Alert está coordinado por"),
         'Con el apoyo de': _("Con el apoyo de"),
         'About us': _("About us")
     })
