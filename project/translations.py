@@ -306,6 +306,7 @@ def translations(request, lang):
         # MODALS ERRORS
         'This map view does not exist': _("This map view does not exist"),
         'This report does not exist': _("This report does not exist"),
+        'If you are using Safari, please Check that your pop-up windows block is not blocking the list of observations': _("If you are using Safari, please Check that your pop-up windows block is not blocking the list of observations"),
 
         # LOGOS
         'This interactive map has been funded by': _("This interactive map has been funded by"),
