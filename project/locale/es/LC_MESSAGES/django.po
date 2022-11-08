@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mosquito Alert SIGTE map\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-08 10:57+0100\n"
-"PO-Revision-Date: 2022-11-08 10:59+0000\n"
+"POT-Creation-Date: 2022-11-08 11:58+0100\n"
+"PO-Revision-Date: 2022-11-08 12:00+0000\n"
 "Last-Translator:   <toni.hernandez@udg.edu>\n"
 "Language-Team: Spanish (Spain)\n"
 "Language: es-ES\n"
@@ -1354,8 +1354,8 @@ msgid "Coordinators"
 msgstr "Coordinadores"
 
 #: .\translations.py:314
-msgid "Este mapa interactivo ha sido coordinado por"
-msgstr "Este mapa interactivo ha sido coordinado por"
+msgid "Mosquito Alert está coordinado por"
+msgstr "Mosquito Alert está coordinado por"
 
 #: .\translations.py:315
 msgid "Con el apoyo de"
@@ -1364,6 +1364,9 @@ msgstr "Con el apoyo de"
 #: .\translations.py:316
 msgid "About us"
 msgstr "Sobre nosotros"
+
+#~ msgid "Este mapa interactivo ha sido coordinado por"
+#~ msgstr "Este mapa interactivo ha sido coordinado por"
 
 #~ msgid ""
 #~ "según los expertos o los algoritmos de Inteligencia Artificial (IA), las "
