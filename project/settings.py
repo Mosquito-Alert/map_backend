@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.gis',    
-    'rest_framework.authtoken',    
+    'django.contrib.gis',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -167,7 +167,7 @@ extra_settings_dir = os.path.dirname(os.path.abspath(__file__))
 ENVIRONMENT_NAME = os.environ.get('ENVIRONMENT_NAME', 'localhost')
 extra_settings_file = 'settings-%s.py' % ENVIRONMENT_NAME
 extra_settings_path = os.path.join(extra_settings_dir, extra_settings_file)
-
+print(extra_settings_path)
 if os.path.exists(extra_settings_path):
     exec(compile(
         open(

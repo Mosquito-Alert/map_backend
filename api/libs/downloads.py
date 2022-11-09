@@ -64,7 +64,7 @@ def getFormatedResponses(type, responses, private_webmap_layer):
                 if response['question_id'] == NUMBER_OF_BITES:
                     formated['howManyBites'] = response['answer_value']
 
-                elif response['question_id'] == WHERE_DID_THEY_BITE_YOU:              
+                elif response['question_id'] == WHERE_DID_THEY_BITE_YOU:
                     formated['location'] = getValueOrNull(response['answer_id'], locations)
 
                 elif response['question_id'] == BITE_TIME:
@@ -72,7 +72,7 @@ def getFormatedResponses(type, responses, private_webmap_layer):
 
                 elif response['question_id'] == BODY_PART_BITTEN:
                     formated['bodyPart'] = getValueOrNull(response['answer_id'], bodyParts)
-                
+
     else:
         EXISTS_WATER_STATUS = False
         EXISTS_LARVA_STATUS = False
@@ -100,7 +100,7 @@ def getFormatedResponses(type, responses, private_webmap_layer):
 
 class DownloadsManager(BaseManager):
     """Main Observations Downloads Library."""
-    
+
     def _get_main_data(self):
         """Return the data without filtering."""
         qs = MapAuxReport.objects.filter(
@@ -125,7 +125,7 @@ class DownloadsManager(BaseManager):
         """Return data filtered according to time parameters."""
         bbox = filters['bbox']
         layers = filters['observations']
-        
+
         if bbox is not None:
             self.data = self.data.filter(
                 lon__gte=bbox[0],
