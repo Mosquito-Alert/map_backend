@@ -259,6 +259,7 @@ def translations(request, lang):
         ': según los expertos o los algoritmos de IA, las fotos de esta observación podrían ser del mosquito del Japón': _(": según los expertos o los algoritmos de IA, las fotos de esta observación podrían ser del mosquito del Japón"),
         
         'También incluye observaciones que podrían ser o de': _("También incluye observaciones que podrían ser o de"),
+        'Mosquito del Japón': _("Mosquito del Japón"),
         'Mosquito del Corea': _("Mosquito del Corea"),
         'según los expertos o los algoritmos de IA, las fotos de esta observación podrían ser del mosquito de Corea': _("según los expertos o los algoritmos de IA, las fotos de esta observación podrían ser del mosquito de Corea"),
         'Mosquito Común': _("Mosquito Común"),
