@@ -227,6 +227,12 @@ def translations(request, lang):
         '2 años': _("2 años"),
         'Registra una identificación única que se utiliza para generar datos estadísticos sobre cómo se utiliza el visitante el sitio web': _("Registra una identificación única que se utiliza para generar datos estadísticos sobre cómo se utiliza el visitante el sitio web"),
         '1 año': _("1 año"),
+        'Necesarias': _("Necesarias"),
+        'las imprescindibles para facilitar vuestra conexión. No hay opción de inhabilitarlas, dado que son las necesarias por el funcionamiento del sitio web': _("las imprescindibles para facilitar vuestra conexión. No hay opción de inhabilitarlas, dado que son las necesarias por el funcionamiento del sitio web"),
+        'Técnicas': _("Técnicas"),
+        'las que permiten controlar el tráfico y comunicación de datos, identificar la sesión y acceder a páginas de acceso restringido, entre otros': _("las que permiten controlar el tráfico y comunicación de datos, identificar la sesión y acceder a páginas de acceso restringido, entre otros"),
+        'Analíticas':_("Analíticas"),
+        'proporcionan información estadística y permiten mejorar los servicios':_("proporcionan información estadística y permiten mejorar los servicios"),
 
         # HELP
         'Layers selector help': _("Layers selector help"),
