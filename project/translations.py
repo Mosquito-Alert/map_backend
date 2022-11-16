@@ -80,6 +80,7 @@ def translations(request, lang):
         "Apply calendar": _("Apply calendar"),
         "All years and all months": _("All years and all months"),
         "Reset zoom graph": _("Reset zoom graph"),
+        "reloading graph": _("reloading graph"),
 
         # Map, Popup
         'Anonymous': _("Anonymous"),
