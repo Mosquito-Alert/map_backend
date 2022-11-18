@@ -342,17 +342,24 @@ def getFormatedResponses(type, responses, private_webmap_layer):
 #     return True
 
 @cache_page(36000)
+def userfixes_all(request, **filters):
+    """Get Coverage Layer Info."""
+    manager = UserfixesManager(request)
+    params = { 'startdate': None, 'enddate': None }
+    return manager.get('GeoJSON', **params)
+
+@cache_page(36000)
 def userfixes(request, **filters):
     """Get Coverage Layer Info."""
     manager = UserfixesManager(request)
-    return manager.get('GeoJSON', **filters)    
+    return manager.get('GeoJSON', **filters)
 
 def doContinent(request, layer, continent, z, x, y):
     return doTile(request, layer, z, x, y, continent)
 
 def doTile(request, layer, z, x, y, continent = None):
     CACHE_DIR = os.path.join(settings.MEDIA_ROOT,'tiles')
-    tilefolder = "{}/{}/{}/{}".format(CACHE_DIR,layer,z,x)    
+    tilefolder = "{}/{}/{}/{}".format(CACHE_DIR,layer,z,x)
     tilepath = "{}/{}.pbf".format(tilefolder,y)
 
     if layer == 'gadm0':
