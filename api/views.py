@@ -137,7 +137,7 @@ def get_data(request, year):
                         AND LAT IS NOT NULL
                         AND LON IS NOT NULL
                         AND PRIVATE_WEBMAP_LAYER IN ('mosquito_tiger_probable',
-                            'mosquito_tiger_confirmed', 'yellow_fever_probable', 'yellow_fever_confirmed',
+                            'mosquito_tiger_confirmed', 'albopictus_cretinus', 'yellow_fever_probable', 'yellow_fever_confirmed',
                             'japonicus_probable', 'japonicus_confirmed', 'japonicus_koreicus',
                             'koreicus_probable', 'koreicus_confirmed', 'japonicus_koreicus',
                             'culex_probable', 'culex_confirmed','unidentified', 'other_species','bite',
