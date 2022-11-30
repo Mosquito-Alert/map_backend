@@ -47,6 +47,7 @@ def translations(request, lang):
         "Japonicus mosquito": _("Japonicus mosquito"),
         "Japonicus": _("Japonicus mosquito"),
         "Mosquito japonicus/koreicus": _("Mosquito japonicus/koreicus"),
+        "Mosquito albopictus/cretinus": _("Mosquito albopictus/cretinus"),
         "Koreicus mosquito": _("Koreicus mosquito"),
         "Koreicus": _("Koreicus mosquito"),
         "Culex mosquito": _("Culex mosquito"),
