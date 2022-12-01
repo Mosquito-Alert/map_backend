@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Mosquito Alert SIGTE map\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-30 13:09+0100\n"
-"PO-Revision-Date: 2022-11-30 13:13+0000\n"
+"PO-Revision-Date: 2022-12-01 11:41+0000\n"
 "Last-Translator:   <toni.hernandez@udg.edu>\n"
 "Language-Team: Catalan (Spain)\n"
 "Language: ca-ES\n"
@@ -146,7 +146,7 @@ msgstr "Mosquit del Japó / de Corea"
 #: .\translations.py:50
 #| msgid "Mosquito japonicus/koreicus"
 msgid "Mosquito albopictus/cretinus"
-msgstr "Mosquit tigre / cretinus"
+msgstr "Mosquit tigre / de Creta"
 
 #: .\translations.py:51 .\translations.py:52
 msgid "Koreicus mosquito"
