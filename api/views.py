@@ -120,7 +120,7 @@ def get_data(request, year):
         SELECT jsonb_build_object(
             'year', {year},            
             'type',     'FeatureCollection',
-            'features', jsonb_agg(features.feature)
+            'features', coalesce(jsonb_agg(features.feature), '[]')
         )
         from(
             -- one raw for each feature
