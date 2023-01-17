@@ -16,6 +16,8 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.cache import never_cache, cache_page
 
+from .decorators import deny_empty_origin
+
 ACC_HEADERS = {'Access-Control-Allow-Origin': '*',
                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
                'Access-Control-Max-Age': 1000,
@@ -34,9 +36,6 @@ def cross_domain_ajax(func):
         return response
     return wrap
 
-@csrf_exempt
-@never_cache
-@cross_domain_ajax
 @csrf_exempt
 @never_cache
 @cross_domain_ajax
@@ -62,6 +61,7 @@ def ajax_login(request):
 
 
 @csrf_exempt
+@never_cache
 def downloads(request, fext):
     if request.method == "POST":
         post_data = json.loads(request.body.decode("utf-8"))
@@ -114,13 +114,15 @@ def get_feature(request, observation_id):
         data["photo_url"] = 'http://localhost:8000/static/api/mosquito/dummy.jpg'
     return JsonResponse(data)
 
-@cache_page(86400)
-def get_data(request, year):
+# @cache_page(86400)
+@never_cache
+@deny_empty_origin
+def get_data(request, year):    
     SQL = f"""
         SELECT jsonb_build_object(
             'year', {year},            
             'type',     'FeatureCollection',
-            'features', jsonb_agg(features.feature)
+            'features', coalesce(jsonb_agg(features.feature), '[]')
         )
         from(
             -- one raw for each feature
