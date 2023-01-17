@@ -1,10 +1,11 @@
 from django.utils.translation import gettext as _
 from django.http import JsonResponse
 from django.utils import translation
+from api.decorators import deny_empty_origin
 
 a = ("Open", "Layers")
 
-
+@deny_empty_origin
 def translations(request, lang):
     translation.activate(lang)
     return JsonResponse({

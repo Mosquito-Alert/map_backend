@@ -39,3 +39,11 @@ This is the value of the column 'type' in MapAuxReport model for mosquito reprod
 """
 
 site_value = 'site'
+
+#################################
+# CORS.  ACCEPT CALLS ONLY FROM #
+#################################
+
+allowed_origins = [
+  'http://localhost:8080',
+  ]
