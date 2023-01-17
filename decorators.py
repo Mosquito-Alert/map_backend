@@ -1,4 +1,4 @@
-from .constants import (allowed_origins)
+from .constants import (allowed_referers)
 from django.http import HttpResponseForbidden
 import functools
 

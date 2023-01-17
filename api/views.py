@@ -62,6 +62,7 @@ def ajax_login(request):
 
 @csrf_exempt
 @never_cache
+@deny_empty_origin
 def downloads(request, fext):
     if request.method == "POST":
         post_data = json.loads(request.body.decode("utf-8"))
