@@ -44,6 +44,8 @@ site_value = 'site'
 # CORS.  ACCEPT CALLS ONLY FROM #
 #################################
 
-allowed_origins = [
+allowed_referers = [
+  # This referers must be contained in request header referer
   'http://localhost:8080',
+  'https://sigserver4.udg.edu/mos/spa'
   ]
