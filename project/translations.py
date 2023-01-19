@@ -5,10 +5,11 @@ from api.decorators import deny_empty_origin
 
 a = ("Open", "Layers")
 
-@deny_empty_origin
+# @deny_empty_origin
 def translations(request, lang):
     translation.activate(lang)
-    return JsonResponse({
+
+    response = JsonResponse({
         # General
         "Shown points": _("Shown points"),
         "Open": _("Open"),
@@ -326,3 +327,7 @@ def translations(request, lang):
         'Con el apoyo de': _("Con el apoyo de"),
         'About us': _("About us")
     })
+
+    response.set_cookie(key='referrer', value='mosquitoalert', domain='.example.com')
+    return response
+

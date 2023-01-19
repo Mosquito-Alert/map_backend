@@ -15,8 +15,8 @@ import os
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.cache import never_cache, cache_page
-
-from .decorators import deny_empty_origin
+from django.http import HttpResponseForbidden
+from .decorators import deny_empty_origin, referrer_cookie_required
 
 ACC_HEADERS = {'Access-Control-Allow-Origin': '*',
                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
@@ -62,7 +62,7 @@ def ajax_login(request):
 
 @csrf_exempt
 @never_cache
-@deny_empty_origin
+@referrer_cookie_required
 def downloads(request, fext):
     if request.method == "POST":
         post_data = json.loads(request.body.decode("utf-8"))
@@ -74,12 +74,14 @@ def downloads(request, fext):
 
 # Share Map View
 @csrf_exempt
+@referrer_cookie_required
 def saveView(request):
     if request.method == "POST":
         manager = ShareViewManager()
         return manager.save(request)
 
 @csrf_exempt
+@referrer_cookie_required
 def loadView(request, code):
     if request.method == "GET":
         manager = ShareViewManager()
@@ -87,18 +89,20 @@ def loadView(request, code):
 
 # Map Report
 @csrf_exempt
+@referrer_cookie_required
 def saveReport(request):
     if request.method == "POST":
         manager = ReportManager()
         return manager.save(request)
 
 @csrf_exempt
+@referrer_cookie_required
 def loadReport(request, code):
     if request.method == "GET":
         manager = ReportManager()
         return manager.load(code)
 
-
+@referrer_cookie_required
 def get_feature(request, observation_id):
     """Return a feature."""
     # Mock up some random data
@@ -117,11 +121,11 @@ def get_feature(request, observation_id):
 
 # @cache_page(86400)
 @never_cache
-@deny_empty_origin
-def get_data(request, year):    
+@referrer_cookie_required
+def get_data(request, year):
     SQL = f"""
         SELECT jsonb_build_object(
-            'year', {year},            
+            'year', {year},
             'type',     'FeatureCollection',
             'features', coalesce(jsonb_agg(features.feature), '[]')
         )
@@ -165,6 +169,7 @@ def get_data(request, year):
 
 
 @csrf_exempt
+@referrer_cookie_required
 def get_hashtags(request):
     if request.method == "POST":
         post_data = json.loads(request.body.decode("utf-8"))
@@ -208,6 +213,7 @@ def get_hashtags(request):
 
 
 @csrf_exempt
+@referrer_cookie_required
 def get_reports(request):
     if request.method == "POST":
         post_data = json.loads(request.body.decode("utf-8"))
@@ -247,6 +253,7 @@ def get_reports(request):
 
     return HttpResponse(data, content_type="application/json")
 
+@referrer_cookie_required
 def get_observation(request, observation_id):
     qs = MapAuxReport.objects.get(pk = observation_id)
     data = serialize("json", [qs])
@@ -255,6 +262,7 @@ def get_observation(request, observation_id):
     if (r['type'].lower() in ['bite', 'site']):
         r['formatedResponses'] = getFormatedResponses(r['type'], r['responses_json'], r['private_webmap_layer'])
     return HttpResponse(json.dumps(r), content_type="application/json")
+
 
 def get_observation_by_id(request, id):
     qs = MapAuxReport.objects.get(version_uuid = id)
@@ -307,7 +315,7 @@ def getFormatedResponses(type, responses, private_webmap_layer):
                 if response['question_id'] == NUMBER_OF_BITES:
                     formated['howManyBites'] = response['answer_value']
 
-                elif response['question_id'] == WHERE_DID_THEY_BITE_YOU:              
+                elif response['question_id'] == WHERE_DID_THEY_BITE_YOU:
                     formated['location'] = getValueOrNull(response['answer_id'], locations)
 
                 elif response['question_id'] == BITE_TIME:
@@ -315,7 +323,7 @@ def getFormatedResponses(type, responses, private_webmap_layer):
 
                 elif response['question_id'] == BODY_PART_BITTEN:
                     formated['bodyPart'] = getValueOrNull(response['answer_id'], bodyParts)
-                
+
     else:
         EXISTS_WATER_STATUS = False
         EXISTS_LARVA_STATUS = False
@@ -352,6 +360,7 @@ def userfixes_all(request, **filters):
     return manager.get('GeoJSON', **params)
 
 @cache_page(36000)
+@referrer_cookie_required
 def userfixes(request, **filters):
     """Get Coverage Layer Info."""
     manager = UserfixesManager(request)
@@ -360,6 +369,7 @@ def userfixes(request, **filters):
 def doContinent(request, layer, continent, z, x, y):
     return doTile(request, layer, z, x, y, continent)
 
+@referrer_cookie_required
 def doTile(request, layer, z, x, y, continent = None):
     CACHE_DIR = os.path.join(settings.MEDIA_ROOT,'tiles')
     tilefolder = "{}/{}/{}/{}".format(CACHE_DIR,layer,z,x)

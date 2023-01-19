@@ -2,6 +2,16 @@ from .constants import (allowed_referers)
 from django.http import HttpResponseForbidden
 import functools
 
+def referrer_cookie_required(view_func):
+    @functools.wraps(view_func)
+    def wrapper(request, *args, **kwargs):
+        if request.COOKIES.get('referrer') is None:
+            return HttpResponseForbidden()
+        return view_func(request, *args, **kwargs)
+
+    return wrapper
+    
+
 def deny_empty_origin(view_func):
     """
     this decorators ensures that the view func accepts only 
