@@ -26,8 +26,6 @@ SECRET_KEY = 'django-insecure-nb%c4$!2#s*-n$ghpuf-79jk$f_646$(g5578sg10!2#-9$9^@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -172,4 +170,3 @@ if os.path.exists(extra_settings_path):
         ).read(), extra_settings_path, 'exec'), globals())
 else:
     print("Extra settings path does not exist as %s." % extra_settings_path)
-
