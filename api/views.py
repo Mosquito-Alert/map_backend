@@ -102,27 +102,11 @@ def loadReport(request, code):
         manager = ReportManager()
         return manager.load(code)
 
-@referrer_cookie_required
-def get_feature(request, observation_id):
-    """Return a feature."""
-    # Mock up some random data
-    data = {
-        'layer': 'mosquito_tiger_confirmed',
-        'date': '21-02-2021',
-        'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vitae magna nulla. Integer vitae tempor felis. Phasellus ornare risus non lacus sagittis, eget pulvinar metus consectetur. Ut non viverra libero. Maecenas laoreet sapien quis imperdiet iaculis. Morbi vulputate porta odio, a tincidunt lacus sagittis et. Nam hendrerit erat est, ac tincidunt nisl ultrices non.'
-    }
-    if random.random() > 0.5:
-        data["layer"] = 'mosquito_tiger_probable'
-    if random.random() > 0.5:
-        data["description"] = 'Lorem ipsum dolor sit amet.'
-    if random.random() > 0.5:
-        data["photo_url"] = 'http://localhost:8000/static/api/mosquito/dummy.jpg'
-    return JsonResponse(data)
-
-# @cache_page(86400)
-@never_cache
+@cache_page(86400)
 @referrer_cookie_required
 def get_data(request, year):
+    """Get data observations as geojson for the requested year."""
+
     SQL = f"""
         SELECT jsonb_build_object(
             'year', {year},
@@ -261,9 +245,10 @@ def get_observation(request, observation_id):
     r['responses_json'] = json.loads(r['responses_json'])
     if (r['type'].lower() in ['bite', 'site']):
         r['formatedResponses'] = getFormatedResponses(r['type'], r['responses_json'], r['private_webmap_layer'])
+
     return HttpResponse(json.dumps(r), content_type="application/json")
 
-
+@referrer_cookie_required
 def get_observation_by_id(request, id):
     qs = MapAuxReport.objects.get(version_uuid = id)
     data = serialize("json", [qs])

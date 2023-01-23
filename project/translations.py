@@ -8,7 +8,10 @@ a = ("Open", "Layers")
 # @deny_empty_origin
 def translations(request, lang):
     if not request.session or not request.session.session_key:
+        print('cookie save')
         request.session.save()
+    else:
+        print('NO SAVE')
 
     # request.session.session_key now set    
     translation.activate(lang)
@@ -332,6 +335,6 @@ def translations(request, lang):
         'About us': _("About us")
     })
 
-    response.set_cookie(key='referrer', value='mosquitoalert', domain='.localhost')
+    response.set_cookie(key='referrer', value='mosquitoalert')
     return response
 
