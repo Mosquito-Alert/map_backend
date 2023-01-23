@@ -16,7 +16,7 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.cache import never_cache, cache_page
 from django.http import HttpResponseForbidden
-from .decorators import deny_empty_origin, referrer_cookie_required
+from .decorators import referrer_cookie_required
 
 ACC_HEADERS = {'Access-Control-Allow-Origin': '*',
                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
@@ -352,14 +352,15 @@ def getFormatedResponses(type, responses, private_webmap_layer):
 # def userfixes(request, startdate, enddate):
 #     return True
 
-@cache_page(36000)
+@cache_page(86400)
+@referrer_cookie_required
 def userfixes_all(request, **filters):
     """Get Coverage Layer Info."""
     manager = UserfixesManager(request)
     params = { 'startdate': None, 'enddate': None }
     return manager.get('GeoJSON', **params)
 
-@cache_page(36000)
+@cache_page(86400)
 @referrer_cookie_required
 def userfixes(request, **filters):
     """Get Coverage Layer Info."""
