@@ -7,6 +7,10 @@ a = ("Open", "Layers")
 
 # @deny_empty_origin
 def translations(request, lang):
+    if not request.session or not request.session.session_key:
+        request.session.save()
+
+    # request.session.session_key now set    
     translation.activate(lang)
 
     response = JsonResponse({
@@ -328,6 +332,6 @@ def translations(request, lang):
         'About us': _("About us")
     })
 
-    response.set_cookie(key='referrer', value='mosquitoalert', domain='.example.com')
+    response.set_cookie(key='referrer', value='mosquitoalert', domain='.localhost')
     return response
 
