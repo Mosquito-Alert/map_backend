@@ -1,13 +1,22 @@
 from django.utils.translation import gettext as _
 from django.http import JsonResponse
 from django.utils import translation
+from api.decorators import deny_empty_origin
 
 a = ("Open", "Layers")
 
-
+# @deny_empty_origin
 def translations(request, lang):
+    if not request.session or not request.session.session_key:
+        print('cookie save')
+        request.session.save()
+    else:
+        print('NO SAVE')
+
+    # request.session.session_key now set    
     translation.activate(lang)
-    return JsonResponse({
+
+    response = JsonResponse({
         # General
         "Shown points": _("Shown points"),
         "Open": _("Open"),
@@ -325,3 +334,7 @@ def translations(request, lang):
         'Con el apoyo de': _("Con el apoyo de"),
         'About us': _("About us")
     })
+
+    response.set_cookie(key='referrer', value='mosquitoalert')
+    return response
+

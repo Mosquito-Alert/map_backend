@@ -15,6 +15,8 @@ import os
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.cache import never_cache, cache_page
+from django.http import HttpResponseForbidden
+from .decorators import referrer_cookie_required
 
 ACC_HEADERS = {'Access-Control-Allow-Origin': '*',
                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
@@ -34,9 +36,6 @@ def cross_domain_ajax(func):
         return response
     return wrap
 
-@csrf_exempt
-@never_cache
-@cross_domain_ajax
 @csrf_exempt
 @never_cache
 @cross_domain_ajax
@@ -62,6 +61,8 @@ def ajax_login(request):
 
 
 @csrf_exempt
+@never_cache
+@referrer_cookie_required
 def downloads(request, fext):
     if request.method == "POST":
         post_data = json.loads(request.body.decode("utf-8"))
@@ -69,16 +70,18 @@ def downloads(request, fext):
         if (fext == 'features'):
             return manager.getGeoJson(post_data)
         else:
-            return manager.get(post_data, fext)            
+            return manager.get(post_data, fext)
 
 # Share Map View
 @csrf_exempt
+@referrer_cookie_required
 def saveView(request):
     if request.method == "POST":
         manager = ShareViewManager()
         return manager.save(request)
 
 @csrf_exempt
+@referrer_cookie_required
 def loadView(request, code):
     if request.method == "GET":
         manager = ShareViewManager()
@@ -86,39 +89,27 @@ def loadView(request, code):
 
 # Map Report
 @csrf_exempt
+@referrer_cookie_required
 def saveReport(request):
     if request.method == "POST":
         manager = ReportManager()
         return manager.save(request)
 
 @csrf_exempt
+@referrer_cookie_required
 def loadReport(request, code):
     if request.method == "GET":
         manager = ReportManager()
         return manager.load(code)
 
-
-def get_feature(request, observation_id):
-    """Return a feature."""
-    # Mock up some random data
-    data = {
-        'layer': 'mosquito_tiger_confirmed',
-        'date': '21-02-2021',
-        'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vitae magna nulla. Integer vitae tempor felis. Phasellus ornare risus non lacus sagittis, eget pulvinar metus consectetur. Ut non viverra libero. Maecenas laoreet sapien quis imperdiet iaculis. Morbi vulputate porta odio, a tincidunt lacus sagittis et. Nam hendrerit erat est, ac tincidunt nisl ultrices non.'
-    }
-    if random.random() > 0.5:
-        data["layer"] = 'mosquito_tiger_probable'
-    if random.random() > 0.5:
-        data["description"] = 'Lorem ipsum dolor sit amet.'
-    if random.random() > 0.5:
-        data["photo_url"] = 'http://localhost:8000/static/api/mosquito/dummy.jpg'
-    return JsonResponse(data)
-
 @cache_page(86400)
+@referrer_cookie_required
 def get_data(request, year):
+    """Get data observations as geojson for the requested year."""
+
     SQL = f"""
         SELECT jsonb_build_object(
-            'year', {year},            
+            'year', {year},
             'type',     'FeatureCollection',
             'features', coalesce(jsonb_agg(features.feature), '[]')
         )
@@ -162,6 +153,7 @@ def get_data(request, year):
 
 
 @csrf_exempt
+@referrer_cookie_required
 def get_hashtags(request):
     if request.method == "POST":
         post_data = json.loads(request.body.decode("utf-8"))
@@ -205,6 +197,7 @@ def get_hashtags(request):
 
 
 @csrf_exempt
+@referrer_cookie_required
 def get_reports(request):
     if request.method == "POST":
         post_data = json.loads(request.body.decode("utf-8"))
@@ -244,6 +237,7 @@ def get_reports(request):
 
     return HttpResponse(data, content_type="application/json")
 
+@referrer_cookie_required
 def get_observation(request, observation_id):
     qs = MapAuxReport.objects.get(pk = observation_id)
     data = serialize("json", [qs])
@@ -251,8 +245,10 @@ def get_observation(request, observation_id):
     r['responses_json'] = json.loads(r['responses_json'])
     if (r['type'].lower() in ['bite', 'site']):
         r['formatedResponses'] = getFormatedResponses(r['type'], r['responses_json'], r['private_webmap_layer'])
+
     return HttpResponse(json.dumps(r), content_type="application/json")
 
+@referrer_cookie_required
 def get_observation_by_id(request, id):
     qs = MapAuxReport.objects.get(version_uuid = id)
     data = serialize("json", [qs])
@@ -304,7 +300,7 @@ def getFormatedResponses(type, responses, private_webmap_layer):
                 if response['question_id'] == NUMBER_OF_BITES:
                     formated['howManyBites'] = response['answer_value']
 
-                elif response['question_id'] == WHERE_DID_THEY_BITE_YOU:              
+                elif response['question_id'] == WHERE_DID_THEY_BITE_YOU:
                     formated['location'] = getValueOrNull(response['answer_id'], locations)
 
                 elif response['question_id'] == BITE_TIME:
@@ -312,7 +308,7 @@ def getFormatedResponses(type, responses, private_webmap_layer):
 
                 elif response['question_id'] == BODY_PART_BITTEN:
                     formated['bodyPart'] = getValueOrNull(response['answer_id'], bodyParts)
-                
+
     else:
         EXISTS_WATER_STATUS = False
         EXISTS_LARVA_STATUS = False
@@ -341,14 +337,16 @@ def getFormatedResponses(type, responses, private_webmap_layer):
 # def userfixes(request, startdate, enddate):
 #     return True
 
-@cache_page(36000)
+@cache_page(86400)
+@referrer_cookie_required
 def userfixes_all(request, **filters):
     """Get Coverage Layer Info."""
     manager = UserfixesManager(request)
     params = { 'startdate': None, 'enddate': None }
     return manager.get('GeoJSON', **params)
 
-@cache_page(36000)
+@cache_page(86400)
+@referrer_cookie_required
 def userfixes(request, **filters):
     """Get Coverage Layer Info."""
     manager = UserfixesManager(request)
@@ -357,6 +355,7 @@ def userfixes(request, **filters):
 def doContinent(request, layer, continent, z, x, y):
     return doTile(request, layer, z, x, y, continent)
 
+@referrer_cookie_required
 def doTile(request, layer, z, x, y, continent = None):
     CACHE_DIR = os.path.join(settings.MEDIA_ROOT,'tiles')
     tilefolder = "{}/{}/{}/{}".format(CACHE_DIR,layer,z,x)
