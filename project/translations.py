@@ -1,17 +1,12 @@
 from django.utils.translation import gettext as _
 from django.http import JsonResponse
 from django.utils import translation
-from api.decorators import deny_empty_origin
 
 a = ("Open", "Layers")
 
-# @deny_empty_origin
 def translations(request, lang):
     if not request.session or not request.session.session_key:
-        print('cookie save')
         request.session.save()
-    else:
-        print('NO SAVE')
 
     # request.session.session_key now set    
     translation.activate(lang)
@@ -245,6 +240,7 @@ def translations(request, lang):
         'las que permiten controlar el tráfico y comunicación de datos, identificar la sesión y acceder a páginas de acceso restringido, entre otros': _("las que permiten controlar el tráfico y comunicación de datos, identificar la sesión y acceder a páginas de acceso restringido, entre otros"),
         'Analíticas':_("Analíticas"),
         'proporcionan información estadística y permiten mejorar los servicios':_("proporcionan información estadística y permiten mejorar los servicios"),
+        'Cookie de sesión': _("Cookie de sesión"),
 
         # HELP
         'Layers selector help': _("Layers selector help"),
@@ -335,6 +331,6 @@ def translations(request, lang):
         'About us': _("About us")
     })
 
-    response.set_cookie(key='referrer', value='mosquitoalert')
+    # response.set_cookie(key='referrer', value='mosquitoalert')
     return response
 
