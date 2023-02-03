@@ -1,5 +1,5 @@
 from django.views.decorators.cache import cache_page
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 import random
 from re import M
 from django.http import JsonResponse, HttpResponse
@@ -17,6 +17,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.cache import never_cache, cache_page
 from django.http import HttpResponseForbidden
 from .decorators import referrer_cookie_required
+from .constants import (public_fields, private_fields,
+                        private_layers, public_layers)
+from rest_framework.decorators import api_view
 
 ACC_HEADERS = {'Access-Control-Allow-Origin': '*',
                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
@@ -60,10 +63,15 @@ def ajax_login(request):
         return HttpResponse('Unauthorized', status=401)
 
 
-@csrf_exempt
+# @csrf_exempt
+# @csrf_protect
 @never_cache
 @referrer_cookie_required
+# @api_view(['POST'])
 def downloads(request, fext):
+    print('VIEWS ')
+    print(request.user.is_authenticated)
+
     if request.method == "POST":
         post_data = json.loads(request.body.decode("utf-8"))
         manager = DownloadsManager(request)
@@ -102,9 +110,22 @@ def loadReport(request, code):
         manager = ReportManager()
         return manager.load(code)
 
-@cache_page(86400)
+
 @referrer_cookie_required
 def get_data(request, year):
+    print('GET DATA')
+    print(request.user.is_authenticated)
+    if request.user.is_authenticated:
+        layers = private_layers + public_layers
+    else:
+        layers = public_layers
+
+    return get_data_fields(request, year, ', '.join(f"'{l}'" for l in layers))
+
+# @cache_page(86400)
+@never_cache
+@referrer_cookie_required
+def get_data_fields(request, year, map_layers):
     """Get data observations as geojson for the requested year."""
 
     SQL = f"""
@@ -127,12 +148,7 @@ def get_data(request, year):
                     WHERE extract(year from observation_date) = {year} 
                         AND LAT IS NOT NULL
                         AND LON IS NOT NULL
-                        AND PRIVATE_WEBMAP_LAYER IN ('mosquito_tiger_probable',
-                            'mosquito_tiger_confirmed', 'albopictus_cretinus', 'yellow_fever_probable', 'yellow_fever_confirmed',
-                            'japonicus_probable', 'japonicus_confirmed', 'japonicus_koreicus',
-                            'koreicus_probable', 'koreicus_confirmed', 'japonicus_koreicus',
-                            'culex_probable', 'culex_confirmed','unidentified', 'other_species','bite',
-                            'storm_drain_water','storm_drain_dry','breeding_site_other')
+                        AND PRIVATE_WEBMAP_LAYER IN ({map_layers})
                     ORDER BY observation_date
             ) As f
         ) as features
@@ -143,13 +159,11 @@ def get_data(request, year):
         cursor.execute(SQL)
         data = cursor.fetchall()[0]
 
-        # if year == '2019':
-        #     raise Exception('Error fetching data (%s)' % year)
-
     except Exception as e:
         return JsonResponse({ "status": "error", "msg": str(e) })
     else:
         return HttpResponse(data, content_type="application/json")
+
 
 
 @csrf_exempt
@@ -237,26 +251,43 @@ def get_reports(request):
 
     return HttpResponse(data, content_type="application/json")
 
+# @referrer_cookie_required
+# def get_observation(request, observation_id):
+#     qs = MapAuxReport.objects.get(pk = observation_id)
+#     data = serialize("json", [qs])
+#     r = json.loads(data)[0]['fields']
+#     r['responses_json'] = json.loads(r['responses_json'])
+#     if (r['type'].lower() in ['bite', 'site']):
+#         r['formatedResponses'] = getFormatedResponses(r['type'], r['responses_json'], r['private_webmap_layer'])
+
+#     return HttpResponse(json.dumps(r), content_type="application/json")
+
 @referrer_cookie_required
 def get_observation(request, observation_id):
-    qs = MapAuxReport.objects.get(pk = observation_id)
-    data = serialize("json", [qs])
-    r = json.loads(data)[0]['fields']
+    if request.user.is_authenticated:
+        qs = MapAuxReport.objects.values(*(private_fields + public_fields)).get(pk = observation_id)
+    else: 
+        qs = MapAuxReport.objects.values(*public_fields).get(pk = observation_id)
+
+    r = qs
     r['responses_json'] = json.loads(r['responses_json'])
     if (r['type'].lower() in ['bite', 'site']):
         r['formatedResponses'] = getFormatedResponses(r['type'], r['responses_json'], r['private_webmap_layer'])
 
-    return HttpResponse(json.dumps(r), content_type="application/json")
+    return HttpResponse(json.dumps(r, default=str), content_type="application/json")
 
 @referrer_cookie_required
 def get_observation_by_id(request, id):
-    qs = MapAuxReport.objects.get(version_uuid = id)
-    data = serialize("json", [qs])
-    r = json.loads(data)[0]['fields']
+    if request.user.is_authenticated:
+        qs = MapAuxReport.objects.values(*(private_fields + public_fields)).get(version_uuid = id)
+    else: 
+        qs = MapAuxReport.objects.values(*public_fields).get(version_uuid = id)
+
+    r = qs
     r['responses_json'] = json.loads(r['responses_json'])
     if (r['type'].lower() in ['bite', 'site']):
         r['formatedResponses'] = getFormatedResponses(r['type'], r['responses_json'], r['private_webmap_layer'])
-    return HttpResponse(json.dumps(r), content_type="application/json")    
+    return HttpResponse(json.dumps(r, default=str), content_type="application/json")
 
 def getValueOrNull(key, values):
     key = str(key)

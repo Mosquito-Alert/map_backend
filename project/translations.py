@@ -2,16 +2,29 @@ from django.utils.translation import gettext as _
 from django.http import JsonResponse
 from django.utils import translation
 from api.decorators import deny_empty_origin
+from django.views.decorators.csrf import ensure_csrf_cookie
+from django.middleware.csrf import get_token
+
+# from django.shortcuts import render
+# from django.contrib.auth import authenticate, login
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+# from rest_framework import status
+
+@api_view(['GET'])
+def get_csrf_token(request):
+    response = Response({"message": "Set CSRF cookie"})
+    response["X-CSRFToken"] = get_token(request)
+    return response
+
 
 a = ("Open", "Layers")
 
 # @deny_empty_origin
+@ensure_csrf_cookie
 def translations(request, lang):
     if not request.session or not request.session.session_key:
-        print('cookie save')
         request.session.save()
-    else:
-        print('NO SAVE')
 
     # request.session.session_key now set    
     translation.activate(lang)
@@ -50,17 +63,32 @@ def translations(request, lang):
 
         # Mosquito types
         "Tiger mosquito": _("Tiger mosquito"),
+        "Tiger mosquito confirmed": _("Tiger mosquito confirmed"),
+        "Tiger mosquito possible": _("Tiger mosquito possible"),
         "Tiger": _("Tiger mosquito"),
+
         "Yellow fever mosquito": _("Yellow fever mosquito"),
+        "Yellow fever mosquito confirmed": _("Yellow fever mosquito confirmed"),
+        "Yellow fever mosquito possible": _("Yellow fever mosquito possible"),
         "Yellow": _("Yellow fever mosquito"),
+
         "Japonicus mosquito": _("Japonicus mosquito"),
+        "Japonicus mosquito confirmed": _("Japonicus mosquito confirmed"),
+        "Japonicus mosquito possible": _("Japonicus mosquito possible"),
         "Japonicus": _("Japonicus mosquito"),
+
         "Mosquito japonicus/koreicus": _("Mosquito japonicus/koreicus"),
         "Mosquito albopictus/cretinus": _("Mosquito albopictus/cretinus"),
         "Koreicus mosquito": _("Koreicus mosquito"),
+        "Koreicus mosquito confirmed": _("Koreicus mosquito confirmed"),
+        "Koreicus mosquito possible": _("Koreicus mosquito possible"),
         "Koreicus": _("Koreicus mosquito"),
+
         "Culex mosquito": _("Culex mosquito"),
+        "Culex mosquito confirmed": _("Culex mosquito confirmed"),
+        "Culex mosquito possible": _("Culex mosquito possible"),
         "Culex": _("Culex mosquito"),
+
         "Unidentified mosquito": _("Unidentified mosquito"),
         "Unidentified": _("Unidentified mosquito"),
         "Others_mosquito": _("Others_mosquito"),
