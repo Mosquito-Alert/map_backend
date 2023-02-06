@@ -112,7 +112,7 @@ class DownloadsManager(BaseManager):
         print('DOWNLOADS ')
         print(self.request.user.is_authenticated)
         if self.request.user.is_authenticated:
-            fields = private_download_fields + public_download_fields
+            fields = public_download_fields + private_download_fields
         else:
             fields = public_download_fields
 
@@ -238,6 +238,7 @@ class DownloadsManager(BaseManager):
                     'bite_count': 'bite_count',
                     'bite_location': 'bite_location',
                     'bite_time': 'bite_time',
+                    'note': 'tags (PRIVATE!!!)',
                     'map_link': 'map_link'
                 }, inplace = True)
 

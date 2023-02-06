@@ -2,10 +2,10 @@ from .constants import (allowed_referers)
 from django.http import HttpResponseForbidden
 import functools
 
-def referrer_cookie_required(view_func):
+def session_cookie_required(view_func):
     @functools.wraps(view_func)
     def wrapper(request, *args, **kwargs):
-        if request.COOKIES.get('referrer') is None:
+        if request.COOKIES.get('sessionid') is None:
             return HttpResponseForbidden()
         return view_func(request, *args, **kwargs)
 

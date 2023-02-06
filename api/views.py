@@ -16,7 +16,7 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.cache import never_cache, cache_page
 from django.http import HttpResponseForbidden
-from .decorators import referrer_cookie_required
+from .decorators import session_cookie_required
 from .constants import (public_fields, private_fields,
                         private_layers, public_layers)
 from rest_framework.decorators import api_view
@@ -63,10 +63,10 @@ def ajax_login(request):
         return HttpResponse('Unauthorized', status=401)
 
 
-# @csrf_exempt
+@csrf_exempt
 # @csrf_protect
 @never_cache
-@referrer_cookie_required
+@session_cookie_required
 # @api_view(['POST'])
 def downloads(request, fext):
     print('VIEWS ')
@@ -82,14 +82,14 @@ def downloads(request, fext):
 
 # Share Map View
 @csrf_exempt
-@referrer_cookie_required
+@session_cookie_required
 def saveView(request):
     if request.method == "POST":
         manager = ShareViewManager()
         return manager.save(request)
 
 @csrf_exempt
-@referrer_cookie_required
+@session_cookie_required
 def loadView(request, code):
     if request.method == "GET":
         manager = ShareViewManager()
@@ -97,21 +97,21 @@ def loadView(request, code):
 
 # Map Report
 @csrf_exempt
-@referrer_cookie_required
+@session_cookie_required
 def saveReport(request):
     if request.method == "POST":
         manager = ReportManager()
         return manager.save(request)
 
 @csrf_exempt
-@referrer_cookie_required
+@session_cookie_required
 def loadReport(request, code):
     if request.method == "GET":
         manager = ReportManager()
         return manager.load(code)
 
 
-@referrer_cookie_required
+@session_cookie_required
 def get_data(request, year):
     print('GET DATA')
     print(request.user.is_authenticated)
@@ -124,7 +124,7 @@ def get_data(request, year):
 
 # @cache_page(86400)
 @never_cache
-@referrer_cookie_required
+@session_cookie_required
 def get_data_fields(request, year, map_layers):
     """Get data observations as geojson for the requested year."""
 
@@ -167,7 +167,7 @@ def get_data_fields(request, year, map_layers):
 
 
 @csrf_exempt
-@referrer_cookie_required
+@session_cookie_required
 def get_hashtags(request):
     if request.method == "POST":
         post_data = json.loads(request.body.decode("utf-8"))
@@ -211,7 +211,7 @@ def get_hashtags(request):
 
 
 @csrf_exempt
-@referrer_cookie_required
+@session_cookie_required
 def get_reports(request):
     if request.method == "POST":
         post_data = json.loads(request.body.decode("utf-8"))
@@ -251,7 +251,7 @@ def get_reports(request):
 
     return HttpResponse(data, content_type="application/json")
 
-# @referrer_cookie_required
+# @session_cookie_required
 # def get_observation(request, observation_id):
 #     qs = MapAuxReport.objects.get(pk = observation_id)
 #     data = serialize("json", [qs])
@@ -262,7 +262,7 @@ def get_reports(request):
 
 #     return HttpResponse(json.dumps(r), content_type="application/json")
 
-@referrer_cookie_required
+@session_cookie_required
 def get_observation(request, observation_id):
     if request.user.is_authenticated:
         qs = MapAuxReport.objects.values(*(private_fields + public_fields)).get(pk = observation_id)
@@ -276,7 +276,7 @@ def get_observation(request, observation_id):
 
     return HttpResponse(json.dumps(r, default=str), content_type="application/json")
 
-@referrer_cookie_required
+@session_cookie_required
 def get_observation_by_id(request, id):
     if request.user.is_authenticated:
         qs = MapAuxReport.objects.values(*(private_fields + public_fields)).get(version_uuid = id)
@@ -369,7 +369,7 @@ def getFormatedResponses(type, responses, private_webmap_layer):
 #     return True
 
 @cache_page(86400)
-@referrer_cookie_required
+@session_cookie_required
 def userfixes_all(request, **filters):
     """Get Coverage Layer Info."""
     manager = UserfixesManager(request)
@@ -377,7 +377,7 @@ def userfixes_all(request, **filters):
     return manager.get('GeoJSON', **params)
 
 @cache_page(86400)
-@referrer_cookie_required
+@session_cookie_required
 def userfixes(request, **filters):
     """Get Coverage Layer Info."""
     manager = UserfixesManager(request)
@@ -386,7 +386,7 @@ def userfixes(request, **filters):
 def doContinent(request, layer, continent, z, x, y):
     return doTile(request, layer, z, x, y, continent)
 
-@referrer_cookie_required
+@session_cookie_required
 def doTile(request, layer, z, x, y, continent = None):
     CACHE_DIR = os.path.join(settings.MEDIA_ROOT,'tiles')
     tilefolder = "{}/{}/{}/{}".format(CACHE_DIR,layer,z,x)

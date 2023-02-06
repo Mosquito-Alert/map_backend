@@ -18,9 +18,9 @@ All roles allowed
 """
 user_roles = [superusers_group, managers_group]
 
-#################
-# PUBLIC FIELDS #
-#################
+###########################
+# PUBLIC / PRIVATE FIELDS #
+###########################
 
 private_fields = [ 'note' ]
 public_fields = [
@@ -33,14 +33,15 @@ public_fields = [
 
 private_layers = [ 'not_yet_validated', 'breeding_site_not_yet_filtered' ]
 public_layers = [
-  'mosquito_tiger_confirmed', 'albopictus_cretinus', 'yellow_fever_probable', 'yellow_fever_confirmed',
+  'mosquito_tiger_confirmed', 'mosquito_tiger_probable', 'albopictus_cretinus',
+  'yellow_fever_probable', 'yellow_fever_confirmed',
   'japonicus_probable', 'japonicus_confirmed', 'japonicus_koreicus',
   'koreicus_probable', 'koreicus_confirmed', 'japonicus_koreicus',
   'culex_probable', 'culex_confirmed','unidentified', 'other_species','bite',
   'storm_drain_water','storm_drain_dry','breeding_site_other'  
 ]
 
-private_download_fields = ['report_id', 'note']
+private_download_fields = ['note']
 public_download_fields =[
   'version_uuid', 'report_id', 'observation_date', 'lon', 'lat',
   'ref_system', 'nuts0_code', 'nuts0_name', 'nuts3_code', 'nuts3_name',
