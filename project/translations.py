@@ -11,25 +11,21 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 # from rest_framework import status
 
-@api_view(['GET'])
-def get_csrf_token(request):
-    response = Response({"message": "Set CSRF cookie"})
-    response["X-CSRFToken"] = get_token(request)
-    return response
-
 
 a = ("Open", "Layers")
 
 # @deny_empty_origin
-@ensure_csrf_cookie
 def translations(request, lang):
     if not request.session or not request.session.session_key:
         request.session.save()
 
-    # request.session.session_key now set    
+    authorized = request.user.is_authenticated
+
     translation.activate(lang)
 
     response = JsonResponse({
+        # User
+        "registered-user": authorized,
         # General
         "Shown points": _("Shown points"),
         "Open": _("Open"),
@@ -109,6 +105,7 @@ def translations(request, lang):
         "Share": _("Share"),
         "Help": _("Help"),
         "Log in": _("Log in"),
+        "Log out": _("Log out"),
         
         # Timeseries
         "Time series": _("Time series"),
@@ -364,6 +361,4 @@ def translations(request, lang):
         'About us': _("About us")
     })
 
-    response.set_cookie(key='referrer', value='mosquitoalert')
     return response
-

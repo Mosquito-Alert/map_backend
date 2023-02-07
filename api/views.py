@@ -19,55 +19,66 @@ from django.http import HttpResponseForbidden
 from .decorators import session_cookie_required
 from .constants import (public_fields, private_fields,
                         private_layers, public_layers)
-from rest_framework.decorators import api_view
+
+from django.http import JsonResponse
+from django.middleware.csrf import get_token
+from django.views.decorators.csrf import ensure_csrf_cookie
+from django.views.decorators.http import require_POST
 
 ACC_HEADERS = {'Access-Control-Allow-Origin': '*',
                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
                'Access-Control-Max-Age': 1000,
                'Access-Control-Allow-Headers': '*'}
 
-def cross_domain_ajax(func):
-    """Set Access Control request headers."""
-    def wrap(request, *args, **kwargs):
-        # Firefox sends 'OPTIONS' request for cross-domain javascript call.
-        if request.method != "OPTIONS":
-            response = func(request, *args, **kwargs)
-        else:
-            response = HttpResponse()
-        for k, v in ACC_HEADERS.items():
-            response[k] = v
-        return response
-    return wrap
-
-@csrf_exempt
-@never_cache
-@cross_domain_ajax
-def ajax_login(request):
-    """Ajax login."""
-    if request.method == 'POST':
-        response = {'success': False, 'data': {}}
-        username = request.POST.get('username', '')
-        password = request.POST.get('password', '')
-        user = authenticate(username=username, password=password)
-        if user is not None and user.is_active:
-            request.session.set_expiry(86400)
-            login(request, user)
-            request.session['user_id'] = user.id
-            response['success'] = True
-            roles = request.user.groups.values_list('name', flat=True)
-            response['data']['roles'] = list(roles)
-
-        return HttpResponse(json.dumps(response),
-                            content_type='application/json')
-    else:
-        return HttpResponse('Unauthorized', status=401)
+def get_csrf(request):
+    response = JsonResponse({'detail': 'CSRF cookie set'})
+    response['X-CSRFToken'] = get_token(request)
+    return response
 
 
-@csrf_exempt
-# @csrf_protect
+@require_POST
+def login_view(request):
+    data = json.loads(request.body)
+    username = data.get('username')
+    password = data.get('password')
+
+    if username is None or password is None:
+        return JsonResponse({'detail': 'Please provide username and password.'}, status=400)
+
+    user = authenticate(username=username, password=password)
+
+    if user is None:
+        return JsonResponse({'detail': 'Invalid credentials.'}, status=400)
+
+    login(request, user)
+    return JsonResponse({'detail': 'Successfully logged in.'})
+
+
+def logout_view(request):
+    if not request.user.is_authenticated:
+        return JsonResponse({'detail': 'You\'re not logged in.'}, status=400)
+
+    logout(request)
+    return JsonResponse({'detail': 'Successfully logged out.'})
+
+
+@ensure_csrf_cookie
+def session_view(request):
+    if not request.user.is_authenticated:
+        return JsonResponse({'isAuthenticated': False})
+
+    return JsonResponse({'isAuthenticated': True})
+
+
+def whoami_view(request):
+    if not request.user.is_authenticated:
+        return JsonResponse({'isAuthenticated': False})
+
+    return JsonResponse({'username': request.user.username})
+
+
 @never_cache
 @session_cookie_required
-# @api_view(['POST'])
 def downloads(request, fext):
     print('VIEWS ')
     print(request.user.is_authenticated)
@@ -81,14 +92,12 @@ def downloads(request, fext):
             return manager.get(post_data, fext)
 
 # Share Map View
-@csrf_exempt
 @session_cookie_required
 def saveView(request):
     if request.method == "POST":
         manager = ShareViewManager()
         return manager.save(request)
 
-@csrf_exempt
 @session_cookie_required
 def loadView(request, code):
     if request.method == "GET":
@@ -96,14 +105,12 @@ def loadView(request, code):
         return manager.load(code)
 
 # Map Report
-@csrf_exempt
 @session_cookie_required
 def saveReport(request):
     if request.method == "POST":
         manager = ReportManager()
         return manager.save(request)
 
-@csrf_exempt
 @session_cookie_required
 def loadReport(request, code):
     if request.method == "GET":
