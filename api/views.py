@@ -117,7 +117,7 @@ def loadReport(request, code):
         manager = ReportManager()
         return manager.load(code)
 
-
+@cache_page(86400)
 @session_cookie_required
 def get_data(request, year):
     print('GET DATA')
