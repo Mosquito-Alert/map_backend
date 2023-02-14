@@ -347,6 +347,9 @@ def translations(request, lang):
         'Field required': _("Field required"),
         'Username *': _("Username *"),
         'Password *': _("Password *"),
+        'Confirm Logout Title': _("Confirm Logout Title"),
+        'Confirm Logout Message': _("Confirm Logout Message"),
+        'Confirm Logout': _("Confirm Logout"),
 
         # MODALS ERRORS
         'This map view does not exist': _("This map view does not exist"),

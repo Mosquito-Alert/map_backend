@@ -157,6 +157,11 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ]
 }
+
+# PROD ONLY
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
+
 # Overwrite settings
 extra_settings_dir = os.path.dirname(os.path.abspath(__file__))
 ENVIRONMENT_NAME = os.environ.get('ENVIRONMENT_NAME', 'localhost')
