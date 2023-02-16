@@ -6,6 +6,7 @@ from django.http import JsonResponse, HttpResponse
 from .models import MapAuxReport
 from django.core.serializers import serialize
 import json
+from http import HTTPStatus
 from django.db import connection
 from .libs.userfixes import UserfixesManager
 from .libs.downloads import DownloadsManager
@@ -65,9 +66,9 @@ def logout_view(request):
 @ensure_csrf_cookie
 def session_view(request):
     if not request.user.is_authenticated:
-        return JsonResponse({'isAuthenticated': False})
+        return JsonResponse({'isAuthenticated': False}, status = HTTPStatus.OK)
 
-    return JsonResponse({'isAuthenticated': True})
+    return JsonResponse({'isAuthenticated': True}, status = HTTPStatus.OK)
 
 
 def whoami_view(request):
@@ -162,9 +163,9 @@ def get_data_fields(request, year, map_layers):
         data = cursor.fetchall()[0]
 
     except Exception as e:
-        return JsonResponse({ "status": "error", "msg": str(e) })
+        return JsonResponse({ "status": "error", "msg": str(e) }, status = HTTPStatus.BAD_GATEWAY)
     else:
-        return HttpResponse(data, content_type="application/json")
+        return HttpResponse(data, content_type="application/json", status = HTTPStatus.OK)
 
 
 
@@ -205,11 +206,13 @@ def get_hashtags(request):
         """
 
     with connection.cursor() as cursor:
-        cursor.execute(SQL)
-        data = cursor.fetchall()[0]
-        # data = serialize("json", cursor.fetchone())
+        try:
+            cursor.execute(SQL)
+            data = cursor.fetchall()[0]
+        except Exception as e:
+            return JsonResponse({ "status": HTTPStatus.BAD_GATEWAY, "msg": str(e) }, status = HTTPStatus.BAD_REQUEST)
 
-    return HttpResponse(data, content_type="application/json")
+    return HttpResponse(data, content_type="application/json", status = HTTPStatus.OK)
 
 
 @csrf_exempt
@@ -219,8 +222,8 @@ def get_reports(request):
         post_data = json.loads(request.body.decode("utf-8"))
         reports = post_data['reports'].split(',')
         reports_str = ','.join("'" + r  + "'" for r in reports)
-        
-    else: 
+
+    else:
         return HttpResponse({}, content_type="application/json")
 
     SQL = f"""
@@ -247,36 +250,32 @@ def get_reports(request):
 		) as features
         """
     with connection.cursor() as cursor:
-        cursor.execute(SQL)
-        data = cursor.fetchall()[0]
+        try:
+            cursor.execute(SQL)
+            data = cursor.fetchall()[0]
+        except Exception as e:
+            return JsonResponse({ "status": HTTPStatus.BAD_GATEWAY, "msg": str(e) }, status = HTTPStatus.BAD_REQUEST)
+
         # data = serialize("json", cursor.fetchone())
 
-    return HttpResponse(data, content_type="application/json")
-
-# @session_cookie_required
-# def get_observation(request, observation_id):
-#     qs = MapAuxReport.objects.get(pk = observation_id)
-#     data = serialize("json", [qs])
-#     r = json.loads(data)[0]['fields']
-#     r['responses_json'] = json.loads(r['responses_json'])
-#     if (r['type'].lower() in ['bite', 'site']):
-#         r['formatedResponses'] = getFormatedResponses(r['type'], r['responses_json'], r['private_webmap_layer'])
-
-#     return HttpResponse(json.dumps(r), content_type="application/json")
+    return HttpResponse(data, content_type="application/json", status = HTTPStatus.OK)
 
 @session_cookie_required
 def get_observation(request, observation_id):
-    if request.user.is_authenticated:
-        qs = MapAuxReport.objects.values(*(private_fields + public_fields)).get(pk = observation_id)
-    else: 
-        qs = MapAuxReport.objects.values(*public_fields).get(pk = observation_id)
+    try:
+        if request.user.is_authenticated:
+            qs = MapAuxReport.objects.values(*(private_fields + public_fields)).get(pk = observation_id)
+        else: 
+            qs = MapAuxReport.objects.values(*public_fields).get(pk = observation_id)
 
-    r = qs
-    r['responses_json'] = json.loads(r['responses_json'])
-    if (r['type'].lower() in ['bite', 'site']):
-        r['formatedResponses'] = getFormatedResponses(r['type'], r['responses_json'], r['private_webmap_layer'])
-
-    return HttpResponse(json.dumps(r, default=str), content_type="application/json")
+        r = qs
+        r['responses_json'] = json.loads(r['responses_json'])
+        if (r['type'].lower() in ['bite', 'site']):
+            r['formatedResponses'] = getFormatedResponses(r['type'], r['responses_json'], r['private_webmap_layer'])
+    except Exception as e:
+        return JsonResponse({ "status": "error", "msg": str(e) }, status = HTTPStatus.BAD_REQUEST)
+    else:
+        return HttpResponse(json.dumps(r, default=str), content_type="application/json", status = HTTPStatus.OK)
 
 @session_cookie_required
 def get_observation_by_id(request, id):
@@ -286,12 +285,14 @@ def get_observation_by_id(request, id):
         else: 
             qs = MapAuxReport.objects.values(*public_fields).get(version_uuid = id)
     except Exception as inst:
-        return JsonResponse({'status': 'error', 'error': str(inst)})
+        return JsonResponse({'status': 'error', 'error': str(inst)}, status = HTTPStatus.BAD_REQUEST)
+
     r = qs
     r['responses_json'] = json.loads(r['responses_json'])
     if (r['type'].lower() in ['bite', 'site']):
         r['formatedResponses'] = getFormatedResponses(r['type'], r['responses_json'], r['private_webmap_layer'])
-    return HttpResponse(json.dumps(r, default=str), content_type="application/json")
+
+    return HttpResponse(json.dumps(r, default=str), content_type="application/json", status = HTTPStatus.OK)
 
 def getValueOrNull(key, values):
     key = str(key)
@@ -430,20 +431,24 @@ def doTile(request, layer, z, x, y, continent = None):
         FROM   mvtgeom
         """.format(code, layer, z, x, y, where)
 
-    cursor = connection.cursor()
-    cursor.execute(query)
-    tile = bytes(cursor.fetchone()[0])
+    try:
+        cursor = connection.cursor()
+        cursor.execute(query)
+        tile = bytes(cursor.fetchone()[0])
 
-    if not os.path.exists(tilefolder):
-        os.makedirs(tilefolder)
+        if not os.path.exists(tilefolder):
+            os.makedirs(tilefolder)
 
-    with open(tilepath, 'wb') as f:
-        f.write(tile)
-        f.close()
+        with open(tilepath, 'wb') as f:
+            f.write(tile)
+            f.close()
 
-    cursor.close()
+        cursor.close()
+
+    except Exception as e:
+            return JsonResponse({ "status": "error", "msg": str(e) }, status = HTTPStatus.BAD_REQUEST)
 
     # if not len(tile):
     #     raise Http404()
 
-    return HttpResponse(tile, content_type="application/x-protobuf")
+    return HttpResponse(tile, content_type="application/x-protobuf", status = HTTPStatus.OK)

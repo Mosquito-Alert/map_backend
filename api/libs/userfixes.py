@@ -7,7 +7,7 @@ from django.db.models import Count, Q
 from .base import BaseManager
 from api.constants import gridsize
 from api.models import Userfixes
-
+from http import HTTPStatus
 
 class UserfixesManager(BaseManager):
     """Main Userfixes Library."""
@@ -69,7 +69,11 @@ class UserfixesManager(BaseManager):
     def get(self, format='GeoJSON', **filters):
         """Return the userfixes."""
         # Main query
-        self.data = self._get_main_data()
+        try:
+            self.data = self._get_main_data()
+        except Exception as e:
+            return JsonResponse({ "status": HTTPStatus.BAD_GATEWAY, "msg": str(e) }, status = HTTPStatus.BAD_GATEWAY)
+
         # Get grid size
         # This needs to be done before filtering, otherwise we might not have
         # enough data to detect the grid size

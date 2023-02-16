@@ -1,4 +1,5 @@
 """Userfixes Libraries."""
+from http import HTTPStatus
 from django.db.models.functions import Concat
 from datetime import datetime, timezone, timedelta
 from .base import BaseManager
@@ -196,7 +197,11 @@ class DownloadsManager(BaseManager):
         self.data = self._get_main_data()
 
         # Filter data
-        qs = self._filter_data(**filters)
+        try:
+            qs = self._filter_data(**filters)
+        except Exception as e:
+            return JsonResponse({ "status": "error", "msg": str(e) }, status = HTTPStatus.BAD_REQUEST)
+
         file_name = 'observations'
 
         with tempfile.TemporaryDirectory() as tmp_dir:
@@ -273,6 +278,7 @@ class DownloadsManager(BaseManager):
             with open(tmp_zip_file_path, 'rb') as file:
                 response = HttpResponse(file, content_type='application/force-download')
                 response['Content-Disposition'] = f'attachment; filename="{tmp_zip_file_name}"'
+                response['status'] = HTTPStatus.OK
                 return response
 
     def getGeoJson(self, filters):
@@ -281,7 +287,10 @@ class DownloadsManager(BaseManager):
         self.data = self._get_main_data()
 
         # Filter data
-        qs = self._filter_data(**filters)
+        try:
+            qs = self._filter_data(**filters)
+        except Exception as e:
+            return JsonResponse({ "status": "error", "msg": str(e) }, status = HTTPStatus.BAD_REQUEST)
 
         result = []
         if self.request.user.is_authenticated:
@@ -298,5 +307,5 @@ class DownloadsManager(BaseManager):
                                         )
             result.append(r)
 
-        return JsonResponse(result, safe=False)
+        return JsonResponse(result, safe=False, status = HTTPStatus.OK)
 
