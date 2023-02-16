@@ -80,9 +80,6 @@ def whoami_view(request):
 @never_cache
 @session_cookie_required
 def downloads(request, fext):
-    print('VIEWS ')
-    print(request.user.is_authenticated)
-
     if request.method == "POST":
         post_data = json.loads(request.body.decode("utf-8"))
         manager = DownloadsManager(request)
@@ -120,8 +117,6 @@ def loadReport(request, code):
 @cache_page(86400)
 @session_cookie_required
 def get_data(request, year):
-    print('GET DATA')
-    print(request.user.is_authenticated)
     if request.user.is_authenticated:
         layers = private_layers + public_layers
     else:
@@ -285,11 +280,13 @@ def get_observation(request, observation_id):
 
 @session_cookie_required
 def get_observation_by_id(request, id):
-    if request.user.is_authenticated:
-        qs = MapAuxReport.objects.values(*(private_fields + public_fields)).get(version_uuid = id)
-    else: 
-        qs = MapAuxReport.objects.values(*public_fields).get(version_uuid = id)
-
+    try:
+        if request.user.is_authenticated:
+            qs = MapAuxReport.objects.values(*(private_fields + public_fields)).get(version_uuid = id)
+        else: 
+            qs = MapAuxReport.objects.values(*public_fields).get(version_uuid = id)
+    except Exception as inst:
+        return JsonResponse({'status': 'error', 'error': str(inst)})
     r = qs
     r['responses_json'] = json.loads(r['responses_json'])
     if (r['type'].lower() in ['bite', 'site']):

@@ -109,8 +109,7 @@ class DownloadsManager(BaseManager):
 
     def _get_main_data(self):
         """Return the data without filtering."""
-        print('DOWNLOADS ')
-        print(self.request.user.is_authenticated)
+
         if self.request.user.is_authenticated:
             fields = public_download_fields + private_download_fields
         else:
@@ -259,8 +258,11 @@ class DownloadsManager(BaseManager):
                 if file != tmp_zip_file_name:
                     tmp_zip_obj.write(os.path.join(tmp_dir, file), file)
 
-            # Add datada files
-            folder = settings.DOWNLOAD_METADATA_FILES_LOCATION
+            # Add metadata files
+            if self.request.user.is_authenticated:
+                folder = settings.DOWNLOAD_REGISTERED_METADATA_FILES_LOCATION
+            else:
+                folder = settings.DOWNLOAD_PUBLIC_METADATA_FILES_LOCATION
 
             for file in os.listdir(folder):
                 tmp_zip_obj.write(os.path.join(folder, file), file)
@@ -286,8 +288,7 @@ class DownloadsManager(BaseManager):
             fields = private_fields + public_fields
         else:
             fields = public_fields
-        print('JSON ')
-        print(self.request.user.is_authenticated)
+
         for r in qs.values(*fields):
             if (r['type'].lower() in ['bite', 'site']):
                 r['formatedResponses'] = getFormatedResponses(
