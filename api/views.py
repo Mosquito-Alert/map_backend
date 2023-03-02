@@ -18,6 +18,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.cache import never_cache, cache_page
 from django.http import HttpResponseForbidden
 from .decorators import session_cookie_required
+from .libs.boundingBox import tile_bbox
 from .constants import (public_fields, private_fields,
                         private_layers, public_layers)
 
@@ -397,6 +398,8 @@ def doTile(request, layer, z, x, y, continent = None):
     tilefolder = "{}/{}/{}/{}".format(CACHE_DIR,layer,z,x)
     tilepath = "{}/{}.pbf".format(tilefolder,y)
 
+    bbox = tile_bbox(z, x, y)
+    
     if layer == 'gadm0':
         code = "gid_0 as id" 
     else:
@@ -423,13 +426,15 @@ def doTile(request, layer, z, x, y, continent = None):
             SELECT {0},
                 ST_AsMVTGeom(
                 ST_Transform(geom, 3857),
-                ST_TileEnvelope({2}, {3}, {4})
+                ST_TileEnvelope({2}, {3}, {4}, 
+                    ST_MakeEnvelope({5}, {6}, {7}, {8}, 3857)
+                )
             ) AS geom
-            FROM  {1} {5}
+            FROM  {1} {9}
         )
         SELECT ST_AsMVT(mvtgeom.*)
         FROM   mvtgeom
-        """.format(code, layer, z, x, y, where)
+        """.format(code, layer, z, x, y, bbox.west, bbox.south, bbox.east, bbox.north, where)
 
     try:
         cursor = connection.cursor()
