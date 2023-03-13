@@ -21,11 +21,6 @@ urlpatterns = [
     path('report/save/', views.saveReport),
     path('tiles/<str:layer>/<int:z>/<int:x>/<int:y>.pbf', views.doTile),
     path('tiles/<str:layer>/<str:continent>/<int:z>/<int:x>/<int:y>', views.doContinent),
-    # path('login/', ajax_login),
-    # path('logout/', ajax_logout),
     path('csrf/', views.get_csrf, name='api-csrf'),
-    path('login/', views.login_view, name='api-login'),
-    path('logout/', views.logout_view, name='api-logout'),
     path('session/', views.session_view, name='api-session'),
-    path('whoami/', views.whoami_view, name='api-whoami'),
 ]
