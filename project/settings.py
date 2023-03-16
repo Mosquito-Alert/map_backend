@@ -160,9 +160,11 @@ REST_FRAMEWORK = {
     ]
 }
 
-# PROD ONLY
-# CSRF_COOKIE_SECURE = True
-# SESSION_COOKIE_SECURE = True
+# AUTHENTIFICATION SETTINGS
+SESSION_COOKIE_HTTPONLY = True
+CSRF_TRUSTED_ORIGINS = ['http://sigserver4-nou.udg.edu']
+CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
+
 
 # Overwrite settings
 extra_settings_dir = os.path.dirname(os.path.abspath(__file__))
