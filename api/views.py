@@ -398,8 +398,6 @@ def doTile(request, layer, z, x, y, continent = None):
     tilefolder = "{}/{}/{}/{}".format(CACHE_DIR,layer,z,x)
     tilepath = "{}/{}.pbf".format(tilefolder,y)
 
-    bbox = tile_bbox(z, x, y)
-    
     if layer == 'gadm0':
         code = "gid_0 as id" 
     else:
@@ -426,34 +424,28 @@ def doTile(request, layer, z, x, y, continent = None):
             SELECT {0},
                 ST_AsMVTGeom(
                 ST_Transform(geom, 3857),
-                ST_TileEnvelope({2}, {3}, {4}, 
-                    ST_MakeEnvelope({5}, {6}, {7}, {8}, 3857)
-                )
+                ST_TileEnvelope({2}, {3}, {4})
             ) AS geom
-            FROM  {1} {9}
+            FROM  {1} {5}
         )
         SELECT ST_AsMVT(mvtgeom.*)
         FROM   mvtgeom
-        """.format(code, layer, z, x, y, bbox.west, bbox.south, bbox.east, bbox.north, where)
+        """.format(code, layer, z, x, y, where)
 
-    try:
-        cursor = connection.cursor()
-        cursor.execute(query)
-        tile = bytes(cursor.fetchone()[0])
+    cursor = connection.cursor()
+    cursor.execute(query)
+    tile = bytes(cursor.fetchone()[0])
 
-        if not os.path.exists(tilefolder):
-            os.makedirs(tilefolder)
+    if not os.path.exists(tilefolder):
+        os.makedirs(tilefolder)
 
-        with open(tilepath, 'wb') as f:
-            f.write(tile)
-            f.close()
+    with open(tilepath, 'wb') as f:
+        f.write(tile)
+        f.close()
 
-        cursor.close()
-
-    except Exception as e:
-            return JsonResponse({ "status": "error", "msg": str(e) }, status = HTTPStatus.BAD_REQUEST)
+    cursor.close()
 
     # if not len(tile):
     #     raise Http404()
 
-    return HttpResponse(tile, content_type="application/x-protobuf", status = HTTPStatus.OK)
+    return HttpResponse(tile, content_type="application/x-protobuf")
