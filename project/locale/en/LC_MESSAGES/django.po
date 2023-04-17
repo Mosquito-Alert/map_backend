@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mosquito Alert SIGTE map\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-14 16:55+0100\n"
-"PO-Revision-Date: 2023-02-14 16:57+0000\n"
+"POT-Creation-Date: 2023-04-17 09:59+0200\n"
+"PO-Revision-Date: 2023-04-17 10:01+0000\n"
 "Last-Translator:   <toni.hernandez@udg.edu>\n"
 "Language-Team: English (USA)\n"
 "Language: en-US\n"
@@ -1413,19 +1413,22 @@ msgid "Confirm Logout Message"
 msgstr "Are you sure you want to Logout?"
 
 #: .\translations.py:352
-#| msgid "Confirmed"
 msgid "Confirm Logout"
 msgstr "Yes, I want to Logout"
 
 #: .\translations.py:355
+msgid "Model not found on Server"
+msgstr "This models was not found on the server"
+
+#: .\translations.py:356
 msgid "This map view does not exist"
 msgstr "This map view does not exist"
 
-#: .\translations.py:356
+#: .\translations.py:357
 msgid "This report does not exist"
 msgstr "This report does not exist"
 
-#: .\translations.py:357
+#: .\translations.py:358
 msgid ""
 "If you are using Safari, please Check that your pop-up windows block is not "
 "blocking the list of observations"
@@ -1433,23 +1436,23 @@ msgstr ""
 "If you are using Safari, please Check that your pop-up windows block is not "
 "blocking the list of observations"
 
-#: .\translations.py:360
+#: .\translations.py:361
 msgid "This interactive map has been funded by"
 msgstr "This interactive map has been funded by"
 
-#: .\translations.py:361
+#: .\translations.py:362
 msgid "Coordinators"
 msgstr "Coordinators"
 
-#: .\translations.py:362
+#: .\translations.py:363
 msgid "Mosquito Alert está coordinado por"
 msgstr "Mosquito Alert is coordinated by"
 
-#: .\translations.py:363
+#: .\translations.py:364
 msgid "Con el apoyo de"
 msgstr "Supported by"
 
-#: .\translations.py:364
+#: .\translations.py:365
 msgid "About us"
 msgstr "About us"
 
