@@ -116,6 +116,7 @@ def translations(request, lang):
         "All years and all months": _("All years and all months"),
         "Reset zoom graph": _("Reset zoom graph"),
         "reloading graph": _("reloading graph"),
+        "Loading...": _("Loading..."),
 
         # Map, Popup
         'Anonymous': _("Anonymous"),
