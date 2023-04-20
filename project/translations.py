@@ -14,6 +14,7 @@ from rest_framework.decorators import api_view
 
 a = ("Open", "Layers")
 
+# @deny_empty_origin
 def translations(request, lang):
     if not request.session or not request.session.session_key:
         request.session.save()
@@ -366,8 +367,4 @@ def translations(request, lang):
         'About us': _("About us")
     })
 
-<<<<<<< HEAD
-    # response.set_cookie(key='referrer', value='mosquitoalert')
-=======
->>>>>>> master-gtm
     return response
