@@ -1,11 +1,12 @@
 from django.views.decorators.cache import cache_page
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 import random
 from re import M
 from django.http import JsonResponse, HttpResponse
 from .models import MapAuxReport
 from django.core.serializers import serialize
 import json
+from http import HTTPStatus
 from django.db import connection
 from .libs.userfixes import UserfixesManager
 from .libs.downloads import DownloadsManager
@@ -16,53 +17,70 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.cache import never_cache, cache_page
 from django.http import HttpResponseForbidden
-from .decorators import referrer_cookie_required
+from .decorators import session_cookie_required
+from .libs.boundingBox import tile_bbox
+from .constants import (public_fields, private_fields,
+                        private_layers, public_layers)
+
+from django.http import JsonResponse
+from django.middleware.csrf import get_token
+from django.views.decorators.csrf import ensure_csrf_cookie
+from django.views.decorators.http import require_POST
 
 ACC_HEADERS = {'Access-Control-Allow-Origin': '*',
                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
                'Access-Control-Max-Age': 1000,
                'Access-Control-Allow-Headers': '*'}
 
-def cross_domain_ajax(func):
-    """Set Access Control request headers."""
-    def wrap(request, *args, **kwargs):
-        # Firefox sends 'OPTIONS' request for cross-domain javascript call.
-        if request.method != "OPTIONS":
-            response = func(request, *args, **kwargs)
-        else:
-            response = HttpResponse()
-        for k, v in ACC_HEADERS.items():
-            response[k] = v
-        return response
-    return wrap
+def get_csrf(request):
+    response = JsonResponse({'detail': 'CSRF cookie set'})
+    response['X-CSRFToken'] = get_token(request)
+    return response
 
-@csrf_exempt
+
+@require_POST
+def login_view(request):
+    data = json.loads(request.body)
+    username = data.get('username')
+    password = data.get('password')
+
+    if username is None or password is None:
+        return JsonResponse({'detail': 'Please provide username and password.'}, status=400)
+
+    user = authenticate(username=username, password=password)
+
+    if user is None:
+        return JsonResponse({'detail': 'Invalid credentials.'}, status=400)
+
+    login(request, user)
+    return JsonResponse({'detail': 'Successfully logged in.'})
+
+
+def logout_view(request):
+    if not request.user.is_authenticated:
+        return JsonResponse({'detail': 'You\'re not logged in.'}, status=400)
+
+    logout(request)
+    return JsonResponse({'detail': 'Successfully logged out.'})
+
+
+@ensure_csrf_cookie
+def session_view(request):
+    if not request.user.is_authenticated:
+        return JsonResponse({'isAuthenticated': False}, status = HTTPStatus.OK)
+
+    return JsonResponse({'isAuthenticated': True}, status = HTTPStatus.OK)
+
+
+def whoami_view(request):
+    if not request.user.is_authenticated:
+        return JsonResponse({'isAuthenticated': False})
+
+    return JsonResponse({'username': request.user.username})
+
+
 @never_cache
-@cross_domain_ajax
-def ajax_login(request):
-    """Ajax login."""
-    if request.method == 'POST':
-        response = {'success': False, 'data': {}}
-        username = request.POST.get('username', '')
-        password = request.POST.get('password', '')
-        user = authenticate(username=username, password=password)
-        if user is not None and user.is_active:
-            request.session.set_expiry(86400)
-            login(request, user)
-            request.session['user_id'] = user.id
-            response['success'] = True
-            roles = request.user.groups.values_list('name', flat=True)
-            response['data']['roles'] = list(roles)
-
-        return HttpResponse(json.dumps(response),
-                            content_type='application/json')
-    else:
-        return HttpResponse('Unauthorized', status=401)
-
-
-@csrf_exempt
-@never_cache
-@referrer_cookie_required
+@session_cookie_required
 def downloads(request, fext):
     if request.method == "POST":
         post_data = json.loads(request.body.decode("utf-8"))
@@ -73,38 +91,45 @@ def downloads(request, fext):
             return manager.get(post_data, fext)
 
 # Share Map View
-@csrf_exempt
-@referrer_cookie_required
+@session_cookie_required
 def saveView(request):
     if request.method == "POST":
         manager = ShareViewManager()
         return manager.save(request)
 
-@csrf_exempt
-@referrer_cookie_required
+@session_cookie_required
 def loadView(request, code):
     if request.method == "GET":
         manager = ShareViewManager()
         return manager.load(code)
 
 # Map Report
-@csrf_exempt
-@referrer_cookie_required
+@session_cookie_required
 def saveReport(request):
     if request.method == "POST":
         manager = ReportManager()
         return manager.save(request)
 
-@csrf_exempt
-@referrer_cookie_required
+@session_cookie_required
 def loadReport(request, code):
     if request.method == "GET":
         manager = ReportManager()
         return manager.load(code)
 
 @cache_page(86400)
-@referrer_cookie_required
+@session_cookie_required
 def get_data(request, year):
+    if request.user.is_authenticated:
+        layers = private_layers + public_layers
+    else:
+        layers = public_layers
+
+    return get_data_fields(request, year, ', '.join(f"'{l}'" for l in layers))
+
+# @cache_page(86400)
+@never_cache
+@session_cookie_required
+def get_data_fields(request, year, map_layers):
     """Get data observations as geojson for the requested year."""
 
     SQL = f"""
@@ -127,12 +152,7 @@ def get_data(request, year):
                     WHERE extract(year from observation_date) = {year} 
                         AND LAT IS NOT NULL
                         AND LON IS NOT NULL
-                        AND PRIVATE_WEBMAP_LAYER IN ('mosquito_tiger_probable',
-                            'mosquito_tiger_confirmed', 'albopictus_cretinus', 'yellow_fever_probable', 'yellow_fever_confirmed',
-                            'japonicus_probable', 'japonicus_confirmed', 'japonicus_koreicus',
-                            'koreicus_probable', 'koreicus_confirmed', 'japonicus_koreicus',
-                            'culex_probable', 'culex_confirmed','unidentified', 'other_species','bite',
-                            'storm_drain_water','storm_drain_dry','breeding_site_other')
+                        AND PRIVATE_WEBMAP_LAYER IN ({map_layers})
                     ORDER BY observation_date
             ) As f
         ) as features
@@ -143,17 +163,15 @@ def get_data(request, year):
         cursor.execute(SQL)
         data = cursor.fetchall()[0]
 
-        # if year == '2019':
-        #     raise Exception('Error fetching data (%s)' % year)
-
     except Exception as e:
-        return JsonResponse({ "status": "error", "msg": str(e) })
+        return JsonResponse({ "status": "error", "msg": str(e) }, status = HTTPStatus.BAD_GATEWAY)
     else:
-        return HttpResponse(data, content_type="application/json")
+        return HttpResponse(data, content_type="application/json", status = HTTPStatus.OK)
+
 
 
 @csrf_exempt
-@referrer_cookie_required
+@session_cookie_required
 def get_hashtags(request):
     if request.method == "POST":
         post_data = json.loads(request.body.decode("utf-8"))
@@ -189,22 +207,24 @@ def get_hashtags(request):
         """
 
     with connection.cursor() as cursor:
-        cursor.execute(SQL)
-        data = cursor.fetchall()[0]
-        # data = serialize("json", cursor.fetchone())
+        try:
+            cursor.execute(SQL)
+            data = cursor.fetchall()[0]
+        except Exception as e:
+            return JsonResponse({ "status": HTTPStatus.BAD_GATEWAY, "msg": str(e) }, status = HTTPStatus.BAD_REQUEST)
 
-    return HttpResponse(data, content_type="application/json")
+    return HttpResponse(data, content_type="application/json", status = HTTPStatus.OK)
 
 
 @csrf_exempt
-@referrer_cookie_required
+@session_cookie_required
 def get_reports(request):
     if request.method == "POST":
         post_data = json.loads(request.body.decode("utf-8"))
         reports = post_data['reports'].split(',')
         reports_str = ','.join("'" + r  + "'" for r in reports)
-        
-    else: 
+
+    else:
         return HttpResponse({}, content_type="application/json")
 
     SQL = f"""
@@ -231,32 +251,49 @@ def get_reports(request):
 		) as features
         """
     with connection.cursor() as cursor:
-        cursor.execute(SQL)
-        data = cursor.fetchall()[0]
+        try:
+            cursor.execute(SQL)
+            data = cursor.fetchall()[0]
+        except Exception as e:
+            return JsonResponse({ "status": HTTPStatus.BAD_GATEWAY, "msg": str(e) }, status = HTTPStatus.BAD_REQUEST)
+
         # data = serialize("json", cursor.fetchone())
 
-    return HttpResponse(data, content_type="application/json")
+    return HttpResponse(data, content_type="application/json", status = HTTPStatus.OK)
 
-@referrer_cookie_required
+@session_cookie_required
 def get_observation(request, observation_id):
-    qs = MapAuxReport.objects.get(pk = observation_id)
-    data = serialize("json", [qs])
-    r = json.loads(data)[0]['fields']
-    r['responses_json'] = json.loads(r['responses_json'])
-    if (r['type'].lower() in ['bite', 'site']):
-        r['formatedResponses'] = getFormatedResponses(r['type'], r['responses_json'], r['private_webmap_layer'])
+    try:
+        if request.user.is_authenticated:
+            qs = MapAuxReport.objects.values(*(private_fields + public_fields)).get(pk = observation_id)
+        else: 
+            qs = MapAuxReport.objects.values(*public_fields).get(pk = observation_id)
 
-    return HttpResponse(json.dumps(r), content_type="application/json")
+        r = qs
+        r['responses_json'] = json.loads(r['responses_json'])
+        if (r['type'].lower() in ['bite', 'site']):
+            r['formatedResponses'] = getFormatedResponses(r['type'], r['responses_json'], r['private_webmap_layer'])
+    except Exception as e:
+        return JsonResponse({ "status": "error", "msg": str(e) }, status = HTTPStatus.BAD_REQUEST)
+    else:
+        return HttpResponse(json.dumps(r, default=str), content_type="application/json", status = HTTPStatus.OK)
 
-@referrer_cookie_required
+@session_cookie_required
 def get_observation_by_id(request, id):
-    qs = MapAuxReport.objects.get(version_uuid = id)
-    data = serialize("json", [qs])
-    r = json.loads(data)[0]['fields']
+    try:
+        if request.user.is_authenticated:
+            qs = MapAuxReport.objects.values(*(private_fields + public_fields)).get(version_uuid = id)
+        else: 
+            qs = MapAuxReport.objects.values(*public_fields).get(version_uuid = id)
+    except Exception as inst:
+        return JsonResponse({'status': 'error', 'error': str(inst)}, status = HTTPStatus.BAD_REQUEST)
+
+    r = qs
     r['responses_json'] = json.loads(r['responses_json'])
     if (r['type'].lower() in ['bite', 'site']):
         r['formatedResponses'] = getFormatedResponses(r['type'], r['responses_json'], r['private_webmap_layer'])
-    return HttpResponse(json.dumps(r), content_type="application/json")    
+
+    return HttpResponse(json.dumps(r, default=str), content_type="application/json", status = HTTPStatus.OK)
 
 def getValueOrNull(key, values):
     key = str(key)
@@ -338,7 +375,7 @@ def getFormatedResponses(type, responses, private_webmap_layer):
 #     return True
 
 @cache_page(86400)
-@referrer_cookie_required
+@session_cookie_required
 def userfixes_all(request, **filters):
     """Get Coverage Layer Info."""
     manager = UserfixesManager(request)
@@ -346,7 +383,7 @@ def userfixes_all(request, **filters):
     return manager.get('GeoJSON', **params)
 
 @cache_page(86400)
-@referrer_cookie_required
+@session_cookie_required
 def userfixes(request, **filters):
     """Get Coverage Layer Info."""
     manager = UserfixesManager(request)
@@ -355,7 +392,7 @@ def userfixes(request, **filters):
 def doContinent(request, layer, continent, z, x, y):
     return doTile(request, layer, z, x, y, continent)
 
-@referrer_cookie_required
+@session_cookie_required
 def doTile(request, layer, z, x, y, continent = None):
     CACHE_DIR = os.path.join(settings.MEDIA_ROOT,'tiles')
     tilefolder = "{}/{}/{}/{}".format(CACHE_DIR,layer,z,x)

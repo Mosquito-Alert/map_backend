@@ -140,7 +140,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 APP_FILES = os.path.join(BASE_DIR, 'files')
-DOWNLOAD_METADATA_FILES_LOCATION = os.path.join(APP_FILES, 'downloads')
+
+DOWNLOAD_REGISTERED_METADATA_FILES_LOCATION = os.path.join(APP_FILES, 'downloads_registered')
+DOWNLOAD_PUBLIC_METADATA_FILES_LOCATION = os.path.join(APP_FILES, 'downloads_public')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -157,6 +159,13 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ]
 }
+
+# AUTHENTIFICATION SETTINGS
+SESSION_COOKIE_HTTPONLY = True
+CSRF_TRUSTED_ORIGINS = ['http://sigserver4-nou.udg.edu']
+CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
+
+
 # Overwrite settings
 extra_settings_dir = os.path.dirname(os.path.abspath(__file__))
 ENVIRONMENT_NAME = os.environ.get('ENVIRONMENT_NAME', 'localhost')

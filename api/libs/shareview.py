@@ -6,6 +6,7 @@ from api.models import MapView
 import random
 import string
 import json
+from http import HTTPStatus
 
 def json_serial(obj):
     """JSON serializer for objects not serializable by default json code"""
@@ -16,11 +17,11 @@ def json_serial(obj):
 
 
 class ShareViewManager():
-    """Main Observations Downloads Library."""  
+    """Main Observations Downloads Library."""
 
     def __init__(self):
         """Constructor."""
-        
+
         self.data = None
 
     def get_random_string(self, length):
@@ -44,7 +45,7 @@ class ShareViewManager():
                     if qs.count() == 0:
                         break
                 except Exception as e:
-                    return JsonResponse({ "status": "error", "msg": str(e) })
+                    return JsonResponse({ "status": HTTPStatus.BAD_REQUEST, "msg": str(e) }, status = HTTPStatus.BAD_REQUEST)
 
             view_instance = MapView.objects.create(
                 view=self.data,
@@ -53,10 +54,10 @@ class ShareViewManager():
             )
 
         except Exception as e:
-            return JsonResponse({ "status": "error", "msg": str(e) })
+            return JsonResponse({ "status": HTTPStatus.BAD_REQUEST, "msg": str(e) }, status = HTTPStatus.BAD_REQUEST)
         else:
-            return JsonResponse({ "status": "ok", "code": random_code })
-        
+            return JsonResponse({ "status": HTTPStatus.OK, "code": random_code }, status = HTTPStatus.OK)
+
     def load(self, code):
         """Loads view params by code from models"""
         try:
@@ -68,9 +69,9 @@ class ShareViewManager():
                 raise Exception('This view does not exist')
 
         except Exception as e:
-            return JsonResponse({ "status": "error", "msg": str(e) })
+            return JsonResponse({ "status": HTTPStatus.BAD_REQUEST, "msg": str(e) }, status = HTTPStatus.BAD_REQUEST)
         else:
             # view = serialize('json', qs, fields=('code','view','date',))
             view = json.dumps(list(qs), default=json_serial)
             view = json.loads(view)
-            return JsonResponse({ "status": "ok", "view": view })
+            return JsonResponse({ "status": HTTPStatus.OK, "view": view }, status = HTTPStatus.OK)
