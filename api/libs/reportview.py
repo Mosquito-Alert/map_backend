@@ -6,6 +6,7 @@ from api.models import ReportView
 import random
 import string
 import json
+from http import HTTPStatus
 
 def json_serial(obj):
     """JSON serializer for objects not serializable by default json code"""
@@ -40,7 +41,7 @@ class ReportManager():
                     if qs.count() == 0:
                         break
                 except Exception as e:
-                    return JsonResponse({ "status": "error", "msg": str(e) })
+                    return JsonResponse({ "status": HTTPStatus.BAD_REQUEST, "msg": str(e) }, status = HTTPStatus.BAD_REQUEST)
 
             view_instance = ReportView.objects.create(
                 view=self.data,
@@ -49,10 +50,10 @@ class ReportManager():
             )
 
         except Exception as e:
-            return JsonResponse({ "status": "error", "msg": str(e) })
+            return JsonResponse({ "status": HTTPStatus.BAD_REQUEST, "msg": str(e) }, status = HTTPStatus.BAD_REQUEST)
         else:
-            return JsonResponse({ "status": "ok", "code": random_code })
-        
+            return JsonResponse({ "status": HTTPStatus.OK, "code": random_code }, status = HTTPStatus.OK)
+
     def load(self, code):
         """Loads view params by code from models"""
         try:
@@ -64,9 +65,9 @@ class ReportManager():
                 raise Exception('This report does not exist')
 
         except Exception as e:
-            return JsonResponse({ "status": "error", "msg": str(e) })
+            return JsonResponse({ "status": HTTPStatus.BAD_REQUEST, "msg": str(e) }, status = HTTPStatus.BAD_REQUEST)
         else:
             # view = serialize('json', qs, fields=('code','view','date',))
             view = json.dumps(list(qs), default=json_serial)
             view = json.loads(view)
-            return JsonResponse({ "status": "ok", "view": view })
+            return JsonResponse({ "status": HTTPStatus.OK, "view": view }, status = HTTPStatus.OK)

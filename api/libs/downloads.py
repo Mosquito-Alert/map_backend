@@ -1,4 +1,5 @@
 """Userfixes Libraries."""
+from http import HTTPStatus
 from django.db.models.functions import Concat
 from datetime import datetime, timezone, timedelta
 from .base import BaseManager
@@ -19,8 +20,8 @@ import operator
 from functools import reduce
 from django.core.serializers import serialize
 import numpy as np
-from api.constants import site_value
-
+from api.constants import (site_value, public_download_fields,
+                           private_download_fields, private_fields, public_fields)
 
 def getValueOrNull(key, values):
     key = str(key)
@@ -101,8 +102,20 @@ def getFormatedResponses(type, responses, private_webmap_layer):
 class DownloadsManager(BaseManager):
     """Main Observations Downloads Library."""
 
+    def __init__(self, request):
+        """Constructor."""
+
+        self.request = request
+
+
     def _get_main_data(self):
         """Return the data without filtering."""
+
+        if self.request.user.is_authenticated:
+            fields = public_download_fields + private_download_fields
+        else:
+            fields = public_download_fields
+
         qs = MapAuxReport.objects.filter(
                 lat__isnull = False
             ).filter(
@@ -111,14 +124,7 @@ class DownloadsManager(BaseManager):
                 private_webmap_layer__isnull = False
             ).annotate(
                 map_link=Concat(Value(settings.WEBSERVER_URL), 'version_uuid')
-            ).values(
-                'version_uuid', 'report_id', 'observation_date', 'lon', 'lat',
-                'ref_system', 'nuts0_code', 'nuts0_name', 'nuts3_code', 'nuts3_name',
-                'lau_code', 'lau_name', 'type', 'expert_validated', 'private_webmap_layer',
-                'ia_value', 'larvae', 'bite_count', 'bite_location',
-                'bite_time', 'map_link'
-            )
-
+            ).values(*fields)
         return qs
 
     def _filter_data(self, **filters):
@@ -167,7 +173,7 @@ class DownloadsManager(BaseManager):
         if layers is not None:
             self.data = self.data.filter(
                 private_webmap_layer__in=layers
-            )            
+            )
 
 
         if 'hashtags' in filters:
@@ -179,7 +185,7 @@ class DownloadsManager(BaseManager):
                 hashtagWord = tag + ' '
                 rules.append(Q(note__icontains=hashtagWord))
                 rules.append(Q(note__iendswith=formatHashtag))
-            
+
             self.data = self.data.filter(reduce(operator.or_, rules))
 
         return self.data
@@ -191,12 +197,16 @@ class DownloadsManager(BaseManager):
         self.data = self._get_main_data()
 
         # Filter data
-        qs = self._filter_data(**filters)
+        try:
+            qs = self._filter_data(**filters)
+        except Exception as e:
+            return JsonResponse({ "status": "error", "msg": str(e) }, status = HTTPStatus.BAD_REQUEST)
+
         file_name = 'observations'
 
         with tempfile.TemporaryDirectory() as tmp_dir:
             df = geopandas.GeoDataFrame(list(self.data))
-            
+
             if qs.count() != 0:
                 df["observation_date"] = df["observation_date"].astype(str)
 
@@ -232,6 +242,7 @@ class DownloadsManager(BaseManager):
                     'bite_count': 'bite_count',
                     'bite_location': 'bite_location',
                     'bite_time': 'bite_time',
+                    'note': 'tags (PRIVATE!!!)',
                     'map_link': 'map_link'
                 }, inplace = True)
 
@@ -239,23 +250,25 @@ class DownloadsManager(BaseManager):
             if fext.lower() == 'gpkg':
                 geometry = [Point(xy) for xy in zip(df.longitude, df.latitude)]
                 gdf = geopandas.GeoDataFrame(df, crs="EPSG:4326", geometry=geometry)
-                gdf.to_file(os.path.join(tmp_dir, f'{file_name}.gpkg'), driver='GPKG')            
+                gdf.to_file(os.path.join(tmp_dir, f'{file_name}.gpkg'), driver='GPKG')
             else:
                 df.to_excel(os.path.join(tmp_dir, f'{file_name}.xlsx'),  index = False)
 
             # Zip the exported files to a single file
             tmp_zip_file_name = f'{file_name}.zip'
             tmp_zip_file_path = f"{tmp_dir}/{tmp_zip_file_name}"
-            
             tmp_zip_obj = zipfile.ZipFile(tmp_zip_file_path, 'w')
 
             for file in os.listdir(tmp_dir):
                 if file != tmp_zip_file_name:
                     tmp_zip_obj.write(os.path.join(tmp_dir, file), file)
 
-            # Add datada files
-            folder = settings.DOWNLOAD_METADATA_FILES_LOCATION
-            
+            # Add metadata files
+            if self.request.user.is_authenticated:
+                folder = settings.DOWNLOAD_REGISTERED_METADATA_FILES_LOCATION
+            else:
+                folder = settings.DOWNLOAD_PUBLIC_METADATA_FILES_LOCATION
+
             for file in os.listdir(folder):
                 tmp_zip_obj.write(os.path.join(folder, file), file)
 
@@ -265,18 +278,27 @@ class DownloadsManager(BaseManager):
             with open(tmp_zip_file_path, 'rb') as file:
                 response = HttpResponse(file, content_type='application/force-download')
                 response['Content-Disposition'] = f'attachment; filename="{tmp_zip_file_name}"'
+                response['status'] = HTTPStatus.OK
                 return response
 
     def getGeoJson(self, filters):
         """Return GeoJson Observations as json."""
-
         # Main query
         self.data = self._get_main_data()
 
         # Filter data
-        qs = self._filter_data(**filters)
+        try:
+            qs = self._filter_data(**filters)
+        except Exception as e:
+            return JsonResponse({ "status": "error", "msg": str(e) }, status = HTTPStatus.BAD_REQUEST)
+
         result = []
-        for r in qs.values():
+        if self.request.user.is_authenticated:
+            fields = private_fields + public_fields
+        else:
+            fields = public_fields
+
+        for r in qs.values(*fields):
             if (r['type'].lower() in ['bite', 'site']):
                 r['formatedResponses'] = getFormatedResponses(
                                             r['type'],
@@ -285,5 +307,5 @@ class DownloadsManager(BaseManager):
                                         )
             result.append(r)
 
-        return JsonResponse(result, safe=False)
+        return JsonResponse(result, safe=False, status = HTTPStatus.OK)
 

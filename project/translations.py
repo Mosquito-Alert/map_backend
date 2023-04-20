@@ -1,6 +1,16 @@
 from django.utils.translation import gettext as _
 from django.http import JsonResponse
 from django.utils import translation
+from api.decorators import deny_empty_origin
+from django.views.decorators.csrf import ensure_csrf_cookie
+from django.middleware.csrf import get_token
+
+# from django.shortcuts import render
+# from django.contrib.auth import authenticate, login
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+# from rest_framework import status
+
 
 a = ("Open", "Layers")
 
@@ -8,10 +18,13 @@ def translations(request, lang):
     if not request.session or not request.session.session_key:
         request.session.save()
 
-    # request.session.session_key now set    
+    authorized = request.user.is_authenticated
+
     translation.activate(lang)
 
     response = JsonResponse({
+        # User
+        "registered-user": authorized,
         # General
         "Shown points": _("Shown points"),
         "Open": _("Open"),
@@ -45,17 +58,32 @@ def translations(request, lang):
 
         # Mosquito types
         "Tiger mosquito": _("Tiger mosquito"),
+        "Tiger mosquito confirmed": _("Tiger mosquito confirmed"),
+        "Tiger mosquito possible": _("Tiger mosquito possible"),
         "Tiger": _("Tiger mosquito"),
+
         "Yellow fever mosquito": _("Yellow fever mosquito"),
+        "Yellow fever mosquito confirmed": _("Yellow fever mosquito confirmed"),
+        "Yellow fever mosquito possible": _("Yellow fever mosquito possible"),
         "Yellow": _("Yellow fever mosquito"),
+
         "Japonicus mosquito": _("Japonicus mosquito"),
+        "Japonicus mosquito confirmed": _("Japonicus mosquito confirmed"),
+        "Japonicus mosquito possible": _("Japonicus mosquito possible"),
         "Japonicus": _("Japonicus mosquito"),
+
         "Mosquito japonicus/koreicus": _("Mosquito japonicus/koreicus"),
         "Mosquito albopictus/cretinus": _("Mosquito albopictus/cretinus"),
         "Koreicus mosquito": _("Koreicus mosquito"),
+        "Koreicus mosquito confirmed": _("Koreicus mosquito confirmed"),
+        "Koreicus mosquito possible": _("Koreicus mosquito possible"),
         "Koreicus": _("Koreicus mosquito"),
+
         "Culex mosquito": _("Culex mosquito"),
+        "Culex mosquito confirmed": _("Culex mosquito confirmed"),
+        "Culex mosquito possible": _("Culex mosquito possible"),
         "Culex": _("Culex mosquito"),
+
         "Unidentified mosquito": _("Unidentified mosquito"),
         "Unidentified": _("Unidentified mosquito"),
         "Others_mosquito": _("Others_mosquito"),
@@ -76,6 +104,7 @@ def translations(request, lang):
         "Share": _("Share"),
         "Help": _("Help"),
         "Log in": _("Log in"),
+        "Log out": _("Log out"),
         
         # Timeseries
         "Time series": _("Time series"),
@@ -86,6 +115,7 @@ def translations(request, lang):
         "All years and all months": _("All years and all months"),
         "Reset zoom graph": _("Reset zoom graph"),
         "reloading graph": _("reloading graph"),
+        "Loading...": _("Loading..."),
 
         # Map, Popup
         'Anonymous': _("Anonymous"),
@@ -96,6 +126,7 @@ def translations(request, lang):
 
         "Date": _("Date"),
         "Expert note": _("Expert note"),
+        "Citizen note": _("Citizen note"),
         "Confirmed": _("Confirmed"),
         "Probable": _("Probable"),
         "Expert validation": _("Expert validation"),
@@ -317,8 +348,12 @@ def translations(request, lang):
         'Field required': _("Field required"),
         'Username *': _("Username *"),
         'Password *': _("Password *"),
+        'Confirm Logout Title': _("Confirm Logout Title"),
+        'Confirm Logout Message': _("Confirm Logout Message"),
+        'Confirm Logout': _("Confirm Logout"),
 
         # MODALS ERRORS
+        'Model not found on Server': _("Model not found on Server"),
         'This map view does not exist': _("This map view does not exist"),
         'This report does not exist': _("This report does not exist"),
         'If you are using Safari, please Check that your pop-up windows block is not blocking the list of observations': _("If you are using Safari, please Check that your pop-up windows block is not blocking the list of observations"),
@@ -331,6 +366,8 @@ def translations(request, lang):
         'About us': _("About us")
     })
 
+<<<<<<< HEAD
     # response.set_cookie(key='referrer', value='mosquitoalert')
+=======
+>>>>>>> master-gtm
     return response
-
