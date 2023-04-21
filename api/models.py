@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.gis.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator 
+import datetime
 
 # Create your models here.
 class ProvinceManager(models.Manager):
@@ -176,6 +178,45 @@ class ReportView(models.Model):
     view = models.TextField(blank=True, null=True)
     date = models.DateTimeField(blank=True, null=True)   
 
+class WmsServer(models.Model):
+    name = models.CharField(max_length=255,
+                    unique=True)
+    url = models.URLField(max_length=250, null=False, verbose_name="URL del servei WMS")
+
+    def __str__(self):
+            """Convert the object into a string."""
+            return self.url
+
+def current_year():
+    return datetime.date.today().year
+
+class WmsMapLayer(models.Model):
+    wms_server = models.ForeignKey(WmsServer, null=False, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255,
+                       unique=True)
+    year = models.IntegerField(null=False, default=current_year, validators=[MinValueValidator(2020)])
+
+    def __str__(self):
+            """Convert the object into a string."""
+            return "{} ({})".format(self.name, self.year)
+
+
+class TabsStatus(models.Model):
+    TAB_CHOICES = (
+        ("estimates", "estimates"),
+        ("wms", "wms"),
+    )
+
+    tab = models.CharField(max_length=9,
+                    choices=TAB_CHOICES,
+                    default="estimates",
+                    unique=True)
+    active = models.BooleanField(default=True, null=False)
+
+    def __str__(self):
+            """Convert the object into a string."""
+            return self.tab
+
 class AppSettings(models.Model):
     key = models.CharField(unique=True, null=False, max_length=254, blank=True)
     value = models.CharField(null=False, max_length=254, blank=True)
@@ -187,3 +228,4 @@ class AppSettings(models.Model):
     class Meta:
         verbose_name = "App settings"    
         verbose_name_plural = "App settings"    
+
