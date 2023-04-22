@@ -10,7 +10,8 @@ from django.middleware.csrf import get_token
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 # from rest_framework import status
-from api.models import TabsStatus
+from api.models import TabsStatus, WmsMapLayer
+from api.serializers import WmsMapLayerSerializer
 import json
 from django.core.serializers import serialize
 from django.core.serializers.json import DjangoJSONEncoder
@@ -19,6 +20,7 @@ a = ("Open", "Layers")
 
 # @deny_empty_origin
 
+
 def translations(request, lang):
     if not request.session or not request.session.session_key:
         request.session.save()
@@ -26,13 +28,28 @@ def translations(request, lang):
     authorized = request.user.is_authenticated
     translation.activate(lang)
 
-    tabs = TabsStatus.objects.values('tab', 'active')
-    a = {}
-    for t in tabs:
-        a[t['tab']] = {
+    qs = TabsStatus.objects.values('tab', 'active')
+    tabs = {}
+    for t in qs:
+        tabs[t['tab']] = {
             "active": t['active']
         }
-    print(a)
+    data = json.loads(serialize('json', WmsMapLayer.objects.all().order_by('species','-year')))
+    wms = {}
+    for e in data:
+        if not e['fields']['species'] in wms:
+            wms[e['fields']['species']] = [{
+                "year": e['fields']['year'],
+                "layer": e['fields']['name'],
+                "transparency": 1,
+            }]
+        else:
+            wms[e['fields']['species']].append({
+                "year": e['fields']['year'],
+                "layer": e['fields']['name'],
+                "transparency": 1,
+            })
+
     response = JsonResponse({
         "trans": {
             # User
@@ -378,7 +395,8 @@ def translations(request, lang):
             'About us': _("About us")
         },
         "config": {
-            "tabs": a
+            "tabs": tabs,
+            "wms": wms
         }
     }, safe=False)
 

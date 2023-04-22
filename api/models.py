@@ -191,20 +191,30 @@ def current_year():
     return datetime.date.today().year
 
 class WmsMapLayer(models.Model):
+    SPECIES_CHOICES = (
+        ("tiger", "Tiger"),
+        ("yellow", "Yellow"),
+        ("japonicus", "Japonicus"),
+        ("koreicus", "Koreicus"),
+        ("culex", "Culex"),
+    )
     wms_server = models.ForeignKey(WmsServer, null=False, on_delete=models.CASCADE)
-    name = models.CharField(max_length=255,
-                       unique=True)
+    species = models.CharField(max_length=255, choices = SPECIES_CHOICES, default='tiger')
     year = models.IntegerField(null=False, default=current_year, validators=[MinValueValidator(2020)])
+    name = models.CharField(max_length=255)
 
     def __str__(self):
             """Convert the object into a string."""
-            return "{} ({})".format(self.name, self.year)
+            return "{} ({})".format(self.species, self.year)
+
+    class Meta:
+        unique_together = ('species', 'year',)
 
 
 class TabsStatus(models.Model):
     TAB_CHOICES = (
-        ("estimates", "estimates"),
-        ("wms", "wms"),
+        ("estimates", "Estimates"),
+        ("wms", "WMS"),
     )
 
     tab = models.CharField(max_length=9,
