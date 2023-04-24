@@ -3,6 +3,7 @@ from django.contrib import admin
 from .models import TabsStatus, WmsServer, WmsMapLayer
 from .widgets import MapWidget
 from django import forms
+from rest_framework.authtoken.models import Token
 
 class TabsStatusAdmin(admin.ModelAdmin):
     list_display = ('tab','active')
