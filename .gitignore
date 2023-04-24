@@ -9,6 +9,9 @@ dist/
 data/
 settings-*.py
 db.sqlite3
+env/
+settings-*
+# static/*
 
 *.bat
 # Compiled Java class files
@@ -52,6 +55,4 @@ Thumbs.db
 *.mov
 *.wmv
 
-env/
-settings-*
-static/*
+
