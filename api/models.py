@@ -3,6 +3,10 @@ from django.contrib.gis.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator 
 import datetime
 
+def current_year():
+    return datetime.date.today().year
+
+
 # Create your models here.
 class ProvinceManager(models.Manager):
     """Province manager. Ordering."""
@@ -186,9 +190,10 @@ class WmsServer(models.Model):
     def __str__(self):
             """Convert the object into a string."""
             return self.url
+    class Meta:
+        verbose_name = "Servidor WMS"    
+        verbose_name_plural = "Servidors WMS"   
 
-def current_year():
-    return datetime.date.today().year
 
 class WmsMapLayer(models.Model):
     SPECIES_CHOICES = (
@@ -209,7 +214,8 @@ class WmsMapLayer(models.Model):
 
     class Meta:
         unique_together = ('species', 'year',)
-
+        verbose_name = "Capa WMS"    
+        verbose_name_plural = "Capes WMS"   
 
 class TabsStatus(models.Model):
     TAB_CHOICES = (
@@ -226,6 +232,9 @@ class TabsStatus(models.Model):
     def __str__(self):
             """Convert the object into a string."""
             return self.tab
+    class Meta:
+        verbose_name = "Pestanya del frontend"    
+        verbose_name_plural = "Pestanyes del frontend"    
 
 class AppSettings(models.Model):
     key = models.CharField(unique=True, null=False, max_length=254, blank=True)
