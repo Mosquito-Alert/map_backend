@@ -76,8 +76,13 @@
         async function showWMSLayers() {
             var sel = document.getElementById("id_wms_server");
             var wms= sel.options[sel.selectedIndex].text;
-            
+            if (!miMapa.layers) {
+              document.getElementById('spinner-container').classList.remove('hide')            
+              document.getElementById('spinner-container').classList.add('show')            
+            }            
             var info = await miMapa.getLayersName(wms)
+            document.getElementById('spinner-container').classList.remove('show')            
+            document.getElementById('spinner-container').classList.add('hide')            
             if (info.success) {
               document.getElementById('modal-body').innerHTML = info.response
             } else {
