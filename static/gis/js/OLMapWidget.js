@@ -134,6 +134,16 @@ ol.inherits(GeometryTypeControl, ol.control.Control);
     }
 
     MapWidget.prototype.getLayersName = async function(url) {
+        function alphabetically( a, b ) {
+            if ( a.Name.toLowerCase() < b.Name.toLowerCase() ){
+              return -1;
+            }
+            if ( a.Name.toLowerCase() > b.Name.toLowerCase() ){
+              return 1;
+            }
+            return 0;
+        }        
+
         var info = {success: true}
         if (!this.layers) {
             info = await this.getWMSLayers(url)
@@ -141,6 +151,8 @@ ol.inherits(GeometryTypeControl, ol.control.Control);
                 this.layers = info.response
             }
         }
+
+        this.layers.sort(alphabetically)
 
         if (info.success) {
             var str ='<div class="list-group">'
