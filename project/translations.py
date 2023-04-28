@@ -34,19 +34,28 @@ def translations(request, lang):
         tabs[t['tab']] = {
             "active": t['active']
         }
-    data = json.loads(serialize('json', WmsMapLayer.objects.all().order_by('species','-year')))
+    qs = WmsMapLayer.objects.values(
+        'wms_server', 'wms_server__url',
+        'species', 'year', 'name'
+    ).order_by('species','-year')
+    
+
     wms = {}
-    for e in data:
-        if not e['fields']['species'] in wms:
-            wms[e['fields']['species']] = [{
-                "year": e['fields']['year'],
-                "layer": e['fields']['name'],
+    for e in qs:
+        if not e['species'] in wms:
+            wms[e['species']] = [{
+                "wms_id": e['wms_server'],
+                "wms_url": e['wms_server__url'],
+                "year": e['year'],
+                "layer": e['name'],
                 "transparency": 1,
             }]
         else:
-            wms[e['fields']['species']].append({
-                "year": e['fields']['year'],
-                "layer": e['fields']['name'],
+            wms[e['species']].append({
+                "wms_id": e['wms_server'],
+                "wms_url": e['wms_server__url'],
+                "year": e['year'],
+                "layer": e['name'],
                 "transparency": 1,
             })
 
