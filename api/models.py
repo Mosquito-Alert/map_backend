@@ -206,6 +206,8 @@ class WmsMapLayer(models.Model):
     wms_server = models.ForeignKey(WmsServer, null=False, on_delete=models.CASCADE)
     species = models.CharField(max_length=255, choices = SPECIES_CHOICES, default='tiger')
     year = models.IntegerField(null=False, default=current_year, validators=[MinValueValidator(2020)])
+    visible = models.BooleanField(blank=False, null=False, default=False)
+    transparency = models.FloatField(blank=False, null=False, default=0)
     name = models.CharField(max_length=255)
 
     def __str__(self):
