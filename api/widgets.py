@@ -2,6 +2,10 @@ from django.forms.widgets import Widget
 from django.template import loader
 from django.utils.safestring import mark_safe
 
+class SliderWidget(Widget):
+    # template_name = 'widgets/my_widget.html'
+    template_name = "api/slider.html"
+
 class MapWidget(Widget):
     # template_name = 'widgets/my_widget.html'
     template_name = "api/openlayers.html"

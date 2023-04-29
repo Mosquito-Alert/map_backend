@@ -1,7 +1,7 @@
 from django.contrib import admin
 # from .models import MapAuxReport, AppSettings
 from .models import TabsStatus, WmsServer, WmsMapLayer
-from .widgets import MapWidget
+from .widgets import MapWidget, SliderWidget
 from django import forms
 from rest_framework.authtoken.models import Token
 
@@ -24,11 +24,11 @@ class WmsMapLayerForm(forms.ModelForm):
         # Pass whatever data you want to the widget constructor here
         self.fields['name'].widget = MapWidget({'url': wmsUrl})
 
-
     class Meta:
         model = WmsMapLayer
         widgets = {
             'name': MapWidget(),
+            'transparency': SliderWidget(attrs={'type': 'range', 'class': 'form-range', 'min': '0', 'max': '1', 'step': '0.05'})
         }
         fields = '__all__' # required for Django 3.x
 

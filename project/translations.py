@@ -35,8 +35,9 @@ def translations(request, lang):
             "active": t['active']
         }
     qs = WmsMapLayer.objects.values(
-        'wms_server', 'wms_server__url',
-        'species', 'year', 'name'
+        'id', 'wms_server', 'wms_server__url',
+        'species', 'year', 'name',
+        'visible', 'transparency'
     ).order_by('species','-year')
     
 
@@ -45,18 +46,22 @@ def translations(request, lang):
         if not e['species'] in wms:
             wms[e['species']] = [{
                 "wms_id": e['wms_server'],
+                "id": e['id'],
                 "wms_url": e['wms_server__url'],
                 "year": e['year'],
                 "layer": e['name'],
-                "transparency": 1,
+                "visible": e['visible'],
+                "transparency": e['transparency']
             }]
         else:
             wms[e['species']].append({
+                "id": e['id'],
                 "wms_id": e['wms_server'],
                 "wms_url": e['wms_server__url'],
                 "year": e['year'],
                 "layer": e['name'],
-                "transparency": 1,
+                "visible": e['visible'],
+                "transparency": e['transparency']
             })
 
     response = JsonResponse({
