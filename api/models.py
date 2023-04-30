@@ -172,15 +172,21 @@ class Userfixes(models.Model):
 
 class MapView(models.Model):
     """MapView model."""
-    code=models.CharField(max_length=6, null=False, blank=False, unique=True)    
+    code=models.CharField(max_length=6, null=False, blank=False, unique=True)
     view = models.TextField(blank=True, null=True)
     date = models.DateTimeField(blank=True, null=True)
 
 class ReportView(models.Model):
     """MapView model."""
-    code=models.CharField(max_length=8, null=False, blank=False, unique=True)    
+    code=models.CharField(max_length=8, null=False, blank=False, unique=True)
     view = models.TextField(blank=True, null=True)
-    date = models.DateTimeField(blank=True, null=True)   
+    date = models.DateTimeField(blank=True, null=True)
+
+class WmsView(models.Model):
+    """MapView model."""
+    code=models.CharField(max_length=8, null=False, blank=False, unique=True)
+    view = models.TextField(blank=True, null=True)
+    date = models.DateTimeField(blank=True, null=True)    
 
 class WmsServer(models.Model):
     name = models.CharField(max_length=255,
@@ -191,8 +197,8 @@ class WmsServer(models.Model):
             """Convert the object into a string."""
             return self.url
     class Meta:
-        verbose_name = "Servidor WMS"    
-        verbose_name_plural = "Servidorsr WMS"   
+        verbose_name = "Servidor WMS"
+        verbose_name_plural = "Servidorsr WMS"
 
 
 class WmsMapLayer(models.Model):

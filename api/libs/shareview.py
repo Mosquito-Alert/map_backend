@@ -40,7 +40,9 @@ class ShareViewManager():
                     random_code = self.get_random_string(4)
                     if jsonData['viewType'] == 'models':
                         random_code = 'M-' + random_code
-
+                    else:
+                        if jsonData['viewType'] == 'wms':
+                            random_code = 'W-' + random_code
                     qs = MapView.objects.filter(code__exact=random_code)
                     if qs.count() == 0:
                         break
