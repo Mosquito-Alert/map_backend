@@ -406,7 +406,15 @@ def translations(request, lang):
             'Coordinators': _("Coordinators"),
             'Mosquito Alert está coordinado por': _("Mosquito Alert está coordinado por"),
             'Con el apoyo de': _("Con el apoyo de"),
-            'About us': _("About us")
+            'About us': _("About us"),
+
+            # WMS TAB
+            'WMS': _("WMS"),
+            'WMS info link': _("WMS info link"),
+            'WMS DATA': _("WMS DATA"),
+            'Must select wms first': _("Must select wms first"),
+            'Shareview error. No WMS is loaded': _("Shareview error. No WMS is loaded"),
+            'Legend': _("Legend")
         },
         "config": {
             "tabs": tabs,
