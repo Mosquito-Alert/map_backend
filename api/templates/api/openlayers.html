@@ -172,7 +172,8 @@
             document.getElementById('spinner-container').classList.remove('hide')
             var t = document.getElementById("id_wms_server");
             var wms = t.options[t.selectedIndex].text;
-            miMapa.reloadWms(wms, '{{ widget.value }}')
+            var transparency = document.getElementById('myRange').value
+            miMapa.reloadWms(wms, '{{ widget.value }}', transparency)
         {% endif %}
 
         document.addEventListener("DOMContentLoaded", (event) => {
@@ -190,6 +191,10 @@
             } else {
               collection[0].classList.remove('disabled');
             }
+        });
+        // LISTEN SLIDER FOR CHANGES AND APPLY TRANSPARENCY TO THE LAYER
+        document.getElementById('myRange').addEventListener("input", (event) => {
+          miMapa.applyTransparency(event.target.value)
         });
     </script>
 </div>
