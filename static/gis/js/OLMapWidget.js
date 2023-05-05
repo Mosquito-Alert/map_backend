@@ -199,9 +199,10 @@ ol.inherits(GeometryTypeControl, ol.control.Control);
         return res
     }
 
-    MapWidget.prototype.reloadWms = async function(url, layerName, bbox) {
+    MapWidget.prototype.reloadWms = async function(url, layerName, transparency, bbox) {
         const _this = this
         let layerExtent = null
+        var opacity = 1 - (transparency || 0)
         this.map.removeLayer(this.wmsLayer)
         if (!this.layers) {
             const info = await this.getWMSLayers(url)
@@ -223,6 +224,7 @@ ol.inherits(GeometryTypeControl, ol.control.Control);
         })
 
         this.wmsLayer = new ol.layer.Tile({
+            opacity: opacity,
             source: wmsSource
         })
 
@@ -269,8 +271,13 @@ ol.inherits(GeometryTypeControl, ol.control.Control);
         });
         return feature;
     }
+
     MapWidget.prototype.removeBBOX = function() {
         this.bbox_layer.getSource().clear()
+    }
+
+    MapWidget.prototype.applyTransparency = function(transparency) {
+        this.wmsLayer.setOpacity(1 - transparency)
     }
 
     MapWidget.prototype.createInteractions = function() {
