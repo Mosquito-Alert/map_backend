@@ -103,7 +103,6 @@ ol.inherits(GeometryTypeControl, ol.control.Control);
         // this.map.addLayer(this.bbox_layer);
         this.draw.on('drawend', function (e) {
             _this.map.removeInteraction(_this.draw)
-            console.log(e.feature.getGeometry().getCoordinates())
             setBBOX (e.feature.getGeometry().getCoordinates())
         });
     };
@@ -149,19 +148,26 @@ ol.inherits(GeometryTypeControl, ol.control.Control);
             info = await this.getWMSLayers(url)
             if (info.success){
                 this.layers = info.response
+                this.layers.sort(alphabetically)
+                var str ='<div class="list-group">'
+                this.layers.forEach(l => {
+                    str += '<a href="#" class="list-group-item" onclick="setLayer(\'' + l.Name + '\')">' + l.Name +'</a>'
+                })
+                str+='</div>'
+                info.response = str                
+            } else {
+                info.success = false
+                info.response = 'Server Request Timeout '
             }
-        }
-
-        this.layers.sort(alphabetically)
-
-        if (info.success) {
+        } else {
             var str ='<div class="list-group">'
             this.layers.forEach(l => {
                 str += '<a href="#" class="list-group-item" onclick="setLayer(\'' + l.Name + '\')">' + l.Name +'</a>'
             })
             str+='</div>'
-            info.response = str
+            info.response = str            
         }
+
         return info
     }
 
@@ -171,7 +177,16 @@ ol.inherits(GeometryTypeControl, ol.control.Control);
 
         const parser = new ol.format.WMSCapabilities();
         try {
-            await fetch(url + '?request=GetCapabilities&service=wms&version=1.3.0')
+            let timeout = 10000           
+            const controller = new AbortController();
+            const id = setTimeout(() => {
+                controller.abort()
+                return {success:false, response: 'Server timeout'}
+            }, timeout);
+          
+            await fetch(url + '?request=GetCapabilities&service=wms&version=1.3.0',{
+                    signal: controller.signal  
+                })
                 .then(function (response) {
                     status = response.status
                     statusText = response.statusText
@@ -193,6 +208,7 @@ ol.inherits(GeometryTypeControl, ol.control.Control);
                 .catch(function(err){
                     res = {success: false, response: err}
                 })
+            clearTimeout(id);
         } catch (e) {
             res = {success:false, response: e}
         }
@@ -204,13 +220,13 @@ ol.inherits(GeometryTypeControl, ol.control.Control);
         let layerExtent = null
         var opacity = 1 - (transparency || 0)
         this.map.removeLayer(this.wmsLayer)
+        var info
         if (!this.layers) {
-            const info = await this.getWMSLayers(url)
+            info = await this.getWMSLayers(url)
             if (info.success) {
                 this.layers = info.response
             } else {
-                alert('WMS Server not found!')
-                return
+                return info
             }
         }
 
