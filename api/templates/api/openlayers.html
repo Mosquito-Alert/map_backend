@@ -15,10 +15,11 @@
 <div class="layers-container" style="margin-bottom: 10px">
     <input type="text" id="my-widget-{{ widget.name }}" name="{{ widget.name }}" value="{{ widget.value }}" size="60"/>
     <!-- Type button to prevent submit -->
-    <button type="button" class="btn btn-secondary disabled" data-toggle="modal" data-target="#exampleModal" onclick="showWMSLayers()">
+    <!-- <button type="button" class="btn btn-secondary disabled" data-toggle="modal" data-target="#exampleModal" onclick="showWMSLayers()"> -->
+    <button type="button" class="btn btn-secondary disabled" data-target="#exampleModal" onclick="showWMSLayers()">
       {{ _("Show WMS Layers") }}
   </button>
-    <!-- <button type="button" class="btn btn-secondary disabled" onclick="reloadWms()">
+    <!-- <button type="button" class="btn btn-secondary disabled" onclick="refreshWms()">
       Reload
     </button> -->
 
@@ -40,7 +41,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary" id="saveChangesButton">Save changes</button>
         </div>
       </div>
     </div>
@@ -73,27 +74,39 @@
           const layerView = miMapa.drawBbox()
         }
 
+        function showSpinner(){
+          document.getElementById('spinner-container').classList.remove('hide')
+          document.getElementById('spinner-container').classList.add('show')
+        }
+
+        function hideSpinner(){
+          document.getElementById('spinner-container').classList.remove('show')
+          document.getElementById('spinner-container').classList.add('hide')
+        }
+                
         async function showWMSLayers() {
             var sel = document.getElementById("id_wms_server");
             var wms= sel.options[sel.selectedIndex].text;
             if (!miMapa.layers) {
-              document.getElementById('spinner-container').classList.remove('hide')
-              document.getElementById('spinner-container').classList.add('show')
+              showSpinner()
             }
             var info = await miMapa.getLayersName(wms)
-            document.getElementById('spinner-container').classList.remove('show')
-            document.getElementById('spinner-container').classList.add('hide')
+            hideSpinner()
             if (info.success) {
               document.getElementById('modal-body').innerHTML = info.response
+              document.getElementById('saveChangesButton').classList.remove('disabled')
+              $('#exampleModal').modal('show')
             } else {
+              document.getElementById('saveChangesButton').classList.add('disabled')
               document.getElementById('modal-body').innerHTML = info.response
-            }
+            }            
         }
+
         function setLayer(name) {
             document.getElementById('my-widget-name').value = name
             $('#exampleModal').modal('hide');
             // hideBboxButton();
-            reloadWms()
+            refreshWms()
         }
 
         function setBBOX(coords) {
@@ -127,11 +140,11 @@
           return [minX, minY, maxX, maxY]
         }
 
-        async function reloadWms() {
+        async function refreshWms() {
             var t = document.getElementById("id_wms_server");
             var wms = t.options[t.selectedIndex].text;
             document.getElementById('spinner-container').classList.remove('hide')
-            await miMapa.reloadWms(wms, document.getElementById('my-widget-name').value)
+            const info = await miMapa.reloadWms(wms, document.getElementById('my-widget-name').value)
             if (miMapa.version !== '1.3.0') {
               alert('Servei WMS. Versió ' + miMapa.version)
             }
@@ -173,7 +186,15 @@
             var t = document.getElementById("id_wms_server");
             var wms = t.options[t.selectedIndex].text;
             var transparency = document.getElementById('myRange').value
-            miMapa.reloadWms(wms, '{{ widget.value }}', transparency)
+
+            async function reloadMap(wms, value, transparency){
+              const info = await miMapa.reloadWms(wms, value, transparency)
+              if (!info.success) {
+                hideSpinner()
+                alert('Server Request Timeout ')
+              }
+            }
+            const info = reloadMap(wms, '{{ widget.value }}', transparency)
         {% endif %}
 
         document.addEventListener("DOMContentLoaded", (event) => {
