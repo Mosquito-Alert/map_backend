@@ -414,7 +414,8 @@ def translations(request, lang):
             'WMS DATA': _("WMS DATA"),
             'Must select wms first': _("Must select wms first"),
             'Shareview error. No WMS is loaded': _("Shareview error. No WMS is loaded"),
-            'Legend': _("Legend")
+            'Legend': _("Legend"),
+            'Export map image': _("Export map image"),
         },
         "config": {
             "tabs": tabs,
