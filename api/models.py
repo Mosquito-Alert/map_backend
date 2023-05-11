@@ -198,7 +198,7 @@ class WmsServer(models.Model):
             return self.url
     class Meta:
         verbose_name = "Servidor WMS"
-        verbose_name_plural = "Servidorsr WMS"
+        verbose_name_plural = "Servidors WMS"
 
 
 class WmsMapLayer(models.Model):
