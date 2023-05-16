@@ -416,6 +416,7 @@ def translations(request, lang):
             'Shareview error. No WMS is loaded': _("Shareview error. No WMS is loaded"),
             'Legend': _("Legend"),
             'Export map image': _("Export map image"),
+            'Download shp': _("Download shp file"),
         },
         "config": {
             "tabs": tabs,
