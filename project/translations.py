@@ -409,9 +409,8 @@ def translations(request, lang):
             'About us': _("About us"),
 
             # WMS TAB
-            'WMS': _("WMS"),
-            'WMS info link': _("WMS info link"),
-            'WMS DATA': _("WMS DATA"),
+            'Distribution': _("Distribution"),
+            'Distribution data': _("Distribution data"),
             'Must select wms first': _("Must select wms first"),
             'Shareview error. No WMS is loaded': _("Shareview error. No WMS is loaded"),
             'Legend': _("Legend"),
