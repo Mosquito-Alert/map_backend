@@ -222,16 +222,16 @@ class WmsMapLayer(models.Model):
 
     class Meta:
         unique_together = ('species', 'year',)
-        verbose_name = "Capa WMS"    
-        verbose_name_plural = "Capes WMS"   
+        verbose_name = "Capa Distribució"    
+        verbose_name_plural = "Capes de la Distribució"   
 
 class TabsStatus(models.Model):
     TAB_CHOICES = (
         ("estimates", "Estimates"),
-        ("wms", "WMS"),
+        ("distribution", "Distribution"),
     )
 
-    tab = models.CharField(max_length=9,
+    tab = models.CharField(max_length=15,
                     choices=TAB_CHOICES,
                     default="estimates",
                     unique=True)
