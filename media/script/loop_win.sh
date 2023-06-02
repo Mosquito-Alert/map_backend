@@ -13,23 +13,19 @@
 # zoom = 5, Numero iteracions 32
 # zoom = 7, Numero iteracions 128
 
+nIteracions = 31
+zoom=5
+gadmX=gadm3
 
-path='/home/toni/git/mosquito2_backend'
-nIteracions=31
-zoom=4
-gadmX=gadm2
-
-for x in $(seq 0 $nIteracions)
+for x in {0..$nIteracions}
 do
-    for y in $(seq 0 $nIteracions)
+    for y in {0..$nIteracions}
     do
-    filename=/home/toni/git/mosquito2_backend/media/tiles/$gadmX/$zoom/$x/$y.pbf
-    echo $filename
+    filename=/home/toni/git/mosquito2_backend/media/cache/$gadmX/$zoom/$x/$y.pbf
     if [ ! -f "$filename" ]; then
-        mkdir $path/media/tiles/$gadmX/$zoom
-        mkdir $path/media/tiles/$gadmX/$zoom/$x
-        echo localhost:8000/api/tiles/$gadmX/$zoom/$x/$y.pbf
-        wget localhost:8000/api/tiles/$gadmX/$zoom/$x/$y.pbf -O $path/media/tiles/$gadmX/$zoom/$x/$y.pbf
+        mkdir E:/toni/sigte/projectes/mosquito2_backend/media/cache/$gadmX/$zoom
+        mkdir E:/toni/sigte/projectes/mosquito2_backend/media/cache/$gadmX/$zoom/$x
+    	wget "localhost:8000/api/tiles/$gadmX/$zoom/$x/$y" -O E:/toni/sigte/projectes/mosquito2_backend/media/cache/$gadmX/$zoom/$x/$y.pbf
     fi
     done
 done
