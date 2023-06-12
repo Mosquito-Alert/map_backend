@@ -411,11 +411,23 @@ def translations(request, lang):
             # WMS TAB
             'Distribution': _("Distribution"),
             'Distribution data': _("Distribution data"),
+            'The-distribution-maps-provide-information-about-th': _('The-distribution-maps-provide-information-about-th'),
+            'For-invasive-species-the-possible-distribution-sta': _('For-invasive-species-the-possible-distribution-sta'),
+            'Red-Represent-areas-where-a-mosquito-population-is': _('Red-Represent-areas-where-a-mosquito-population-is'),
+            'Light-Yellow-Signifies-that-the-species-has-been-d': _('Light-Yellow-Signifies-that-the-species-has-been-d'),
+            'Dark-Yellow-Depicts-areas-where-both-the-ECDC-and': _('Dark-Yellow-Depicts-areas-where-both-the-ECDC-and'),
+            'Dark-Blue-Indicates-regions-where-Mosquito-Alert-h': _('Dark-Blue-Indicates-regions-where-Mosquito-Alert-h'),
+            'Light-Blue-Mark-regions-where-Mosquito-Alert-repor': _('Light-Blue-Mark-regions-where-Mosquito-Alert-repor'),
+            'These-maps-illustrate-the-geographical-spread-of-m': _('These-maps-illustrate-the-geographical-spread-of-m'),
+            'It-is-crucial-to-note-that-these-maps-do-not-signi': _('It-is-crucial-to-note-that-these-maps-do-not-signi'),
             'Must select wms first': _("Must select wms first"),
             'Shareview error. No WMS is loaded': _("Shareview error. No WMS is loaded"),
             'Legend': _("Legend"),
             'Export map image': _("Export map image"),
             'Download shp': _("Download shp file"),
+
+
+
         },
         "config": {
             "tabs": tabs,
