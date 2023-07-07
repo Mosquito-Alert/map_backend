@@ -9,21 +9,22 @@
 # zoom = 1, Numero iteracions 2
 # zoom = 2, Numero iteracions 4
 # zoom = 3, Numero iteracions 8
-# zoom = 4, Numero iteracions 32
+# zoom = 4, Numero iteracions 16
 # zoom = 5, Numero iteracions 32
 # zoom = 7, Numero iteracions 128
 
 
 path='/home/toni/git/mosquito2_backend'
+zoom=5
+gadmX=gadm3
 nIteracions=31
-zoom=4
-gadmX=gadm2
+
 
 for x in $(seq 0 $nIteracions)
 do
     for y in $(seq 0 $nIteracions)
     do
-    filename=/home/toni/git/mosquito2_backend/media/tiles/$gadmX/$zoom/$x/$y.pbf
+    filename=$path/media/tiles/$gadmX/$zoom/$x/$y.pbf
     echo $filename
     if [ ! -f "$filename" ]; then
         mkdir $path/media/tiles/$gadmX/$zoom
