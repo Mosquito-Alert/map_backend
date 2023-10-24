@@ -1,4 +1,3 @@
-from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 import random
 from re import M
@@ -15,7 +14,9 @@ from .libs.reportview import ReportManager
 import os
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
+from django.utils.cache import patch_cache_control, patch_response_headers
 from django.views.decorators.cache import never_cache, cache_page
+from django.views.decorators.vary import vary_on_cookie
 from django.http import HttpResponseForbidden
 from .decorators import session_cookie_required
 from .libs.boundingBox import tile_bbox
@@ -116,21 +117,22 @@ def loadReport(request, code):
         manager = ReportManager()
         return manager.load(code)
 
-@cache_page(86400)
+@vary_on_cookie
 @session_cookie_required
 def get_data(request, year):
+
+    layers = public_layers
     if request.user.is_authenticated:
-        layers = private_layers + public_layers
-    else:
-        layers = public_layers
+        layers += private_layers
 
-    return get_data_fields(request, year, ', '.join(f"'{l}'" for l in layers))
+    return get_data_fields(request=request, year=year, map_layers=layers)
 
-# @cache_page(86400)
-@never_cache
+@cache_page(3600*2)
 @session_cookie_required
 def get_data_fields(request, year, map_layers):
     """Get data observations as geojson for the requested year."""
+
+    map_layers_str = ', '.join(f"'{l}'" for l in map_layers)
 
     SQL = f"""
         SELECT jsonb_build_object(
@@ -152,7 +154,7 @@ def get_data_fields(request, year, map_layers):
                     WHERE extract(year from observation_date) = {year} 
                         AND LAT IS NOT NULL
                         AND LON IS NOT NULL
-                        AND PRIVATE_WEBMAP_LAYER IN ({map_layers})
+                        AND PRIVATE_WEBMAP_LAYER IN ({map_layers_str})
                     ORDER BY observation_date
             ) As f
         ) as features
@@ -164,10 +166,23 @@ def get_data_fields(request, year, map_layers):
         data = cursor.fetchall()[0]
 
     except Exception as e:
-        return JsonResponse({ "status": "error", "msg": str(e) }, status = HTTPStatus.BAD_GATEWAY)
+        response = JsonResponse({ "status": "error", "msg": str(e) }, status = HTTPStatus.BAD_GATEWAY)
     else:
-        return HttpResponse(data, content_type="application/json", status = HTTPStatus.OK)
+        response = HttpResponse(data, content_type="application/json", status = HTTPStatus.OK)
 
+    # Set Cache-Control response depending if there's any
+    # private layer on the result or not.
+    if set(map_layers).isdisjoint(private_layers):
+        # Case only public layers.
+        patch_cache_control(response, public=True)
+    else:
+        # Case at least one private layer.
+        patch_cache_control(response, private=True)
+
+    # Force Cache-Control header timeout (not set on private by default)
+    patch_response_headers(response, cache_timeout=3600*2)
+
+    return response
 
 
 @csrf_exempt
