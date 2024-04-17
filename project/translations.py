@@ -5,6 +5,7 @@ from api.decorators import deny_empty_origin
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.middleware.csrf import get_token
 
+from django.views.decorators.cache import cache_page
 # from django.shortcuts import render
 # from django.contrib.auth import authenticate, login
 from rest_framework.response import Response
@@ -20,7 +21,7 @@ a = ("Open", "Layers")
 
 # @deny_empty_origin
 
-
+@cache_page(900)
 def translations(request, lang):
     if not request.session or not request.session.session_key:
         request.session.save()
