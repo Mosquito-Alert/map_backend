@@ -19,8 +19,8 @@ urlpatterns = [
     path('get_hashtags/', views.get_hashtags),
     path('view/save/', views.saveView),
     path('report/save/', views.saveReport),
-    path('tiles/<str:layer>/<int:z>/<int:x>/<int:y>.pbf', views.doTile),
-    path('tiles/<str:layer>/<str:continent>/<int:z>/<int:x>/<int:y>', views.doContinent),
+    # path('tiles/<str:layer>/<int:z>/<int:x>/<int:y>.pbf', views.doTile),
+    # path('tiles/<str:layer>/<str:continent>/<int:z>/<int:x>/<int:y>', views.doContinent),
     path('csrf/', views.get_csrf, name='api-csrf'),
     path('session/', views.session_view, name='api-session'),
 ]

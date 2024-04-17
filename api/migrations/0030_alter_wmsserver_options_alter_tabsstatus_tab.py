@@ -19,4 +19,8 @@ class Migration(migrations.Migration):
             name='tab',
             field=models.CharField(choices=[('estimates', 'Estimates'), ('distribution', 'Distribution')], default='estimates', max_length=15, unique=True),
         ),
+        migrations.AlterModelOptions(
+            name='wmsserver',
+            options={'verbose_name': 'Servidor WMS', 'verbose_name_plural': 'Servidors WMS'},
+        ),
     ]
