@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=map_backend
+POSTGRES_USER=map_backend_user
+POSTGRES_PASSWORD=map_backend_password
